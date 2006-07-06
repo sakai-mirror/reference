@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -98,13 +98,8 @@ Button			: "Botón",
 SelectionField	: "Campo de Selección",
 ImageButton		: "Botón Imagen",
 
-FitWindow		: "Maximize the editor size",	//MISSING
-
 // Context Menu
 EditLink			: "Editar Vínculo",
-CellCM				: "Cell",	//MISSING
-RowCM				: "Row",	//MISSING
-ColumnCM			: "Column",	//MISSING
 InsertRow			: "Insertar Fila",
 DeleteRows			: "Eliminar Filas",
 InsertColumn		: "Insertar Columna",
@@ -151,12 +146,12 @@ DlgBtnCancel		: "Cancelar",
 DlgBtnClose			: "Cerrar",
 DlgBtnBrowseServer	: "Ver Servidor",
 DlgAdvancedTag		: "Avanzado",
-DlgOpOther			: "<Otro>",
+DlgOpOther			: "&lt;Otro&gt;",
 DlgInfoTab			: "Información",
 DlgAlertUrl			: "Inserte el URL",
 
 // General Dialogs Labels
-DlgGenNotSet		: "<No definido>",
+DlgGenNotSet		: "&lt;No definido&gt;",
 DlgGenId			: "Id",
 DlgGenLangDir		: "Orientación de idioma",
 DlgGenLangDirLtr	: "Izquierda a Derecha (LTR)",
@@ -220,12 +215,12 @@ DlgLnkTypeURL		: "URL",
 DlgLnkTypeAnchor	: "Referencia en esta página",
 DlgLnkTypeEMail		: "E-Mail",
 DlgLnkProto			: "Protocolo",
-DlgLnkProtoOther	: "<otro>",
+DlgLnkProtoOther	: "&lt;otro&gt;",
 DlgLnkURL			: "URL",
 DlgLnkAnchorSel		: "Seleccionar una referencia",
 DlgLnkAnchorByName	: "Por Nombre de Referencia",
 DlgLnkAnchorById	: "Por ID de elemento",
-DlgLnkNoAnchors		: "<No hay referencias disponibles en el documento>",
+DlgLnkNoAnchors		: "&lt;No hay referencias disponibles en el documento&gt;",
 DlgLnkEMail			: "Dirección de E-Mail",
 DlgLnkEMailSubject	: "Título del Mensaje",
 DlgLnkEMailBody		: "Cuerpo del Mensaje",
@@ -233,8 +228,8 @@ DlgLnkUpload		: "Cargar",
 DlgLnkBtnUpload		: "Enviar al Servidor",
 
 DlgLnkTarget		: "Destino",
-DlgLnkTargetFrame	: "<marco>",
-DlgLnkTargetPopup	: "<ventana emergente>",
+DlgLnkTargetFrame	: "&lt;marco&gt;",
+DlgLnkTargetPopup	: "&lt;ventana emergente&gt;",
 DlgLnkTargetBlank	: "Nueva Ventana(_blank)",
 DlgLnkTargetParent	: "Ventana Padre (_parent)",
 DlgLnkTargetSelf	: "Misma Ventana (_self)",
@@ -342,7 +337,8 @@ PasteFromWord	: "Pegar desde Word",
 DlgPasteMsg2	: "Por favor pegue dentro del cuadro utilizando el teclado (<STRONG>Ctrl+V</STRONG>); luego presione <STRONG>OK</STRONG>.",
 DlgPasteIgnoreFont		: "Ignorar definiciones de fuentes",
 DlgPasteRemoveStyles	: "Remover definiciones de estilo",
-DlgPasteCleanBox		: "Clean Up Box",	//MISSING
+DlgPasteCleanBox		: "Clean Up Box",
+
 
 // Color Picker
 ColorAutomatic	: "Automático",
@@ -479,7 +475,6 @@ DlgTemplatesNoTpl	: "(No hay plantillas definidas)",
 // About Dialog
 DlgAboutAboutTab	: "Acerca de",
 DlgAboutBrowserInfoTab	: "Información de Navegador",
-DlgAboutLicenseTab	: "License",	//MISSING
 DlgAboutVersion		: "versión",
 DlgAboutLicense		: "Licenciado bajo los términos de GNU Lesser General Public License",
 DlgAboutInfo		: "Para mayor información por favor dirigirse a"

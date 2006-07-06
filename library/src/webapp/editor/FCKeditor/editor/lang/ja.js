@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -98,13 +98,8 @@ Button			: "ボタン",
 SelectionField	: "選択フィールド",
 ImageButton		: "画像ボタン",
 
-FitWindow		: "エディタサイズを最大にします",
-
 // Context Menu
 EditLink			: "リンク編集",
-CellCM				: "セル",
-RowCM				: "行",
-ColumnCM			: "カラム",
 InsertRow			: "行挿入",
 DeleteRows			: "行削除",
 InsertColumn		: "列挿入",
@@ -151,12 +146,12 @@ DlgBtnCancel		: "キャンセル",
 DlgBtnClose			: "閉じる",
 DlgBtnBrowseServer	: "サーバーブラウザー",
 DlgAdvancedTag		: "高度な設定",
-DlgOpOther			: "<その他>",
+DlgOpOther			: "&lt;その他&gt;",
 DlgInfoTab			: "情報",
 DlgAlertUrl			: "URLを挿入してください",
 
 // General Dialogs Labels
-DlgGenNotSet		: "<なし>",
+DlgGenNotSet		: "&lt;なし&gt;",
 DlgGenId			: "Id",
 DlgGenLangDir		: "文字表記の方向",
 DlgGenLangDirLtr	: "左から右 (LTR)",
@@ -220,12 +215,12 @@ DlgLnkTypeURL		: "URL",
 DlgLnkTypeAnchor	: "このページのアンカー",
 DlgLnkTypeEMail		: "E-Mail",
 DlgLnkProto			: "プロトコル",
-DlgLnkProtoOther	: "<その他>",
+DlgLnkProtoOther	: "&lt;その他&gt;",
 DlgLnkURL			: "URL",
 DlgLnkAnchorSel		: "アンカーを選択",
 DlgLnkAnchorByName	: "アンカー名",
 DlgLnkAnchorById	: "エレメントID",
-DlgLnkNoAnchors		: "<ドキュメントにおいて利用可能なアンカーはありません。>",
+DlgLnkNoAnchors		: "&lt;ドキュメントにおいて利用可能なアンカーはありません。&gt;",
 DlgLnkEMail			: "E-Mail アドレス",
 DlgLnkEMailSubject	: "件名",
 DlgLnkEMailBody		: "本文",
@@ -233,8 +228,8 @@ DlgLnkUpload		: "アップロード",
 DlgLnkBtnUpload		: "サーバーに送信",
 
 DlgLnkTarget		: "ターゲット",
-DlgLnkTargetFrame	: "<フレーム>",
-DlgLnkTargetPopup	: "<ポップアップウィンドウ>",
+DlgLnkTargetFrame	: "&lt;フレーム&gt;",
+DlgLnkTargetPopup	: "&lt;ポップアップウィンドウ&gt;",
 DlgLnkTargetBlank	: "新しいウィンドウ (_blank)",
 DlgLnkTargetParent	: "親ウィンドウ (_parent)",
 DlgLnkTargetSelf	: "同じウィンドウ (_self)",
@@ -297,16 +292,16 @@ DlgCellWidthPx		: "ピクセル",
 DlgCellWidthPc		: "パーセント",
 DlgCellHeight		: "高さ",
 DlgCellWordWrap		: "折り返し",
-DlgCellWordWrapNotSet	: "<なし>",
+DlgCellWordWrapNotSet	: "&lt;なし&gt;",
 DlgCellWordWrapYes	: "Yes",
 DlgCellWordWrapNo	: "No",
 DlgCellHorAlign		: "セル横の整列",
-DlgCellHorAlignNotSet	: "<なし>",
+DlgCellHorAlignNotSet	: "&lt;なし&gt;",
 DlgCellHorAlignLeft	: "左",
 DlgCellHorAlignCenter	: "中央",
 DlgCellHorAlignRight: "右",
 DlgCellVerAlign		: "セル縦の整列",
-DlgCellVerAlignNotSet	: "<なし>",
+DlgCellVerAlignNotSet	: "&lt;なし&gt;",
 DlgCellVerAlignTop	: "上",
 DlgCellVerAlignMiddle	: "中央",
 DlgCellVerAlignBottom	: "下",
@@ -343,6 +338,7 @@ DlgPasteMsg2	: "キーボード(<STRONG>Ctrl+V</STRONG>)を使用して、次の
 DlgPasteIgnoreFont		: "FontタグのFace属性を無視します。",
 DlgPasteRemoveStyles	: "スタイル定義を削除します。",
 DlgPasteCleanBox		: "入力エリアクリア",
+
 
 // Color Picker
 ColorAutomatic	: "自動",
@@ -479,7 +475,6 @@ DlgTemplatesNoTpl	: "(テンプレートが定義されていません)",
 // About Dialog
 DlgAboutAboutTab	: "バージョン情報",
 DlgAboutBrowserInfoTab	: "ブラウザ情報",
-DlgAboutLicenseTab	: "ライセンス",
 DlgAboutVersion		: "バージョン",
 DlgAboutLicense		: "Licensed under the terms of the GNU Lesser General Public License",
 DlgAboutInfo		: "より詳しい情報はこちらで"

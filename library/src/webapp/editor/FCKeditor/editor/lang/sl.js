@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -85,8 +85,8 @@ Find				: "Najdi",
 Replace				: "Zamenjaj",
 SpellCheck			: "Preveri črkovanje",
 UniversalKeyboard	: "Večjezična tipkovnica",
-PageBreakLbl		: "Prelom strani",
-PageBreak			: "Vstavi prelom strani",
+PageBreakLbl		: "Page Break",	//MISSING
+PageBreak			: "Insert Page Break",	//MISSING
 
 Form			: "Obrazec",
 Checkbox		: "Potrditveno polje",
@@ -98,13 +98,8 @@ Button			: "Gumb",
 SelectionField	: "Spustni seznam",
 ImageButton		: "Gumb s sliko",
 
-FitWindow		: "Maximize the editor size",	//MISSING
-
 // Context Menu
 EditLink			: "Uredi povezavo",
-CellCM				: "Cell",	//MISSING
-RowCM				: "Row",	//MISSING
-ColumnCM			: "Column",	//MISSING
 InsertRow			: "Vstavi vrstico",
 DeleteRows			: "Izbriši vrstice",
 InsertColumn		: "Vstavi stolpec",
@@ -113,7 +108,7 @@ InsertCell			: "Vstavi celico",
 DeleteCells			: "Izbriši celice",
 MergeCells			: "Združi celice",
 SplitCell			: "Razdeli celico",
-TableDelete			: "Izbriši tabelo",
+TableDelete			: "Delete Table",	//MISSING
 CellProperties		: "Lastnosti celice",
 TableProperties		: "Lastnosti tabele",
 ImageProperties		: "Lastnosti slike",
@@ -141,7 +136,7 @@ UnknownToolbarItem	: "Neznan element orodne vrstice \"%1\"",
 UnknownCommand		: "Neznano ime ukaza \"%1\"",
 NotImplemented		: "Ukaz ni izdelan",
 UnknownToolbarSet	: "Skupina orodnih vrstic \"%1\" ne obstoja",
-NoActiveX			: "Your browser's security settings could limit some features of the editor. You must enable the option \"Run ActiveX controls and plug-ins\". You may experience errors and notice missing features.",	//MISSING
+NoActiveX			: "You browser's security settings could limit some features of the editor. You must enable the option \"Run ActiveX controls and plug-ins\". You may experience errors and notice missing features.",	//MISSING
 BrowseServerBlocked : "The resources browser could not be opened. Make sure that all popup blockers are disabled.",	//MISSING
 DialogBlocked		: "It was not possible to open the dialog window. Make sure all popup blockers are disabled.",	//MISSING
 
@@ -151,12 +146,12 @@ DlgBtnCancel		: "Prekliči",
 DlgBtnClose			: "Zapri",
 DlgBtnBrowseServer	: "Prebrskaj na strežniku",
 DlgAdvancedTag		: "Napredno",
-DlgOpOther			: "<Ostalo>",
+DlgOpOther			: "&lt;Ostalo&gt;",
 DlgInfoTab			: "Podatki",
 DlgAlertUrl			: "Prosim vpiši spletni naslov",
 
 // General Dialogs Labels
-DlgGenNotSet		: "<ni postavljen>",
+DlgGenNotSet		: "&lt;ni postavljen&gt;",
 DlgGenId			: "Id",
 DlgGenLangDir		: "Smer jezika",
 DlgGenLangDirLtr	: "Od leve proti desni (LTR)",
@@ -220,12 +215,12 @@ DlgLnkTypeURL		: "URL",
 DlgLnkTypeAnchor	: "Zaznamek na tej strani",
 DlgLnkTypeEMail		: "Elektronski naslov",
 DlgLnkProto			: "Protokol",
-DlgLnkProtoOther	: "<drugo>",
+DlgLnkProtoOther	: "&lt;drugo&gt;",
 DlgLnkURL			: "URL",
 DlgLnkAnchorSel		: "Izberi zaznamek",
 DlgLnkAnchorByName	: "Po imenu zaznamka",
 DlgLnkAnchorById	: "Po ID-ju elementa",
-DlgLnkNoAnchors		: "<V tem dokumentu ni zaznamkov>",
+DlgLnkNoAnchors		: "&lt;V tem dokumentu ni zaznamkov&gt;",
 DlgLnkEMail			: "Elektronski naslov",
 DlgLnkEMailSubject	: "Predmet sporočila",
 DlgLnkEMailBody		: "Vsebina sporočila",
@@ -233,8 +228,8 @@ DlgLnkUpload		: "Prenesi",
 DlgLnkBtnUpload		: "Pošlji na strežnik",
 
 DlgLnkTarget		: "Cilj",
-DlgLnkTargetFrame	: "<okvir>",
-DlgLnkTargetPopup	: "<pojavno okno>",
+DlgLnkTargetFrame	: "&lt;okvir&gt;",
+DlgLnkTargetPopup	: "&lt;pojavno okno&gt;",
 DlgLnkTargetBlank	: "Novo okno (_blank)",
 DlgLnkTargetParent	: "Starševsko okno (_parent)",
 DlgLnkTargetSelf	: "Isto okno (_self)",
@@ -288,7 +283,7 @@ DlgTableHeight		: "Višina",
 DlgTableCellSpace	: "Razmik med celicami",
 DlgTableCellPad		: "Polnilo med celicami",
 DlgTableCaption		: "Naslov",
-DlgTableSummary		: "Povzetek",
+DlgTableSummary		: "Summary",	//MISSING
 
 // Table Cell Dialog
 DlgCellTitle		: "Lastnosti celice",
@@ -343,6 +338,7 @@ DlgPasteMsg2	: "Prosim prilepite v sleči okvir s pomočjo tipkovnice (<STRONG>C
 DlgPasteIgnoreFont		: "Prezri obliko pisave",
 DlgPasteRemoveStyles	: "Odstrani nastavitve stila",
 DlgPasteCleanBox		: "Počisti okvir",
+
 
 // Color Picker
 ColorAutomatic	: "Samodejno",
@@ -426,7 +422,7 @@ BulletedListProp	: "Lastnosti označenega seznama",
 NumberedListProp	: "Lastnosti oštevilčenega seznama",
 DlgLstType			: "Tip",
 DlgLstTypeCircle	: "Pikica",
-DlgLstTypeDisc		: "Kroglica",
+DlgLstTypeDisc		: "Disc",	//MISSING
 DlgLstTypeSquare	: "Kvadratek",
 DlgLstTypeNumbers	: "Številke (1, 2, 3)",
 DlgLstTypeLCase		: "Male črke (a, b, c)",
@@ -479,7 +475,6 @@ DlgTemplatesNoTpl	: "(Ni pripravljenih predlog)",
 // About Dialog
 DlgAboutAboutTab	: "Vizitka",
 DlgAboutBrowserInfoTab	: "Informacije o brskalniku",
-DlgAboutLicenseTab	: "License",	//MISSING
 DlgAboutVersion		: "različica",
 DlgAboutLicense		: "Pravica za uporabo pod pogoji GNU Lesser General Public License",
 DlgAboutInfo		: "Za več informacij obiščite"

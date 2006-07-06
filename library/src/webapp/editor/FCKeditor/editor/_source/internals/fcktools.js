@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -19,21 +19,20 @@
 
 var FCKTools = new Object() ;
 
-/**
- * Gets the value of the hidden INPUT element that is associated to the editor.
- * This element has its ID set to the editor's instance name so the user refers
- * to the instance name when getting the posted data.
- */
+//**
+// FCKTools.GetLinkedFieldValue: Gets the value of the hidden INPUT element
+// that is associated to the editor. This element has its ID set to the 
+// editor's instance name so the user reffers to the instance name when getting
+// the posted data.
 FCKTools.GetLinkedFieldValue = function()
 {
 	return FCK.LinkedField.value ;
 }
 
-/**
- * Attachs a function call to the submit event of the linked field form. This
- * function us generally used to update the linked field value before
- * submitting the form.
- */
+//**
+// FCKTools.AttachToLinkedFieldFormSubmit: attaches a function call to the 
+// submit event of the linked field form. This function us generally used to
+// update the linked field value before submitting the form.
 FCKTools.AttachToLinkedFieldFormSubmit = function( functionPointer )
 {
 	// Gets the linked field form
@@ -46,7 +45,7 @@ FCKTools.AttachToLinkedFieldFormSubmit = function( functionPointer )
 	if ( FCKBrowserInfo.IsIE )
 		oForm.attachEvent( "onsubmit", functionPointer ) ;
 	else
-		oForm.addEventListener( 'submit', functionPointer, false ) ;
+		oForm.addEventListener( 'submit', functionPointer, true ) ;
 	
 	//**
 	// Attaches the functionPointer call to the submit method 
@@ -86,90 +85,11 @@ function FCKTools_SubmitReplacer()
 	this.originalSubmit() ;
 }
 
-// Get the window object where the element is placed in.
-FCKTools.GetElementWindow = function( element )
+//**
+// FCKTools.AddSelectOption: Adds a option to a SELECT element.
+FCKTools.AddSelectOption = function( targetDocument, selectElement, optionText, optionValue )
 {
-	return FCKTools.GetDocumentWindow( element.ownerDocument ) ;
-}
-
-FCKTools.GetDocumentWindow = function( doc )
-{
-	// With Safari, there is not way to retrieve the window from the document, so we must fix it.
-	if ( FCKBrowserInfo.IsSafari && !doc.parentWindow )
-		FCKTools.FixDocumentParentWindow( window.top ) ;
-	
-	return doc.parentWindow || doc.defaultView ;
-}
-
-FCKTools.GetElementPosition = function( el, relativeWindow )
-{
-	// Initializes the Coordinates object that will be returned by the function.
-	var c = { X:0, Y:0 } ;
-	
-	var oWindow = relativeWindow || window ;
-
-	// Loop throw the offset chain.
-	while ( el )
-	{
-		c.X += el.offsetLeft - el.scrollLeft ;
-		c.Y += el.offsetTop - el.scrollTop  ;
-
-		if ( el.offsetParent == null )
-		{
-			var oOwnerWindow = FCKTools.GetElementWindow( el ) ;
-			
-			if ( oOwnerWindow != oWindow )
-				el = oOwnerWindow.frameElement ;
-			else
-			{
-				c.X += el.scrollLeft ;
-				c.Y += el.scrollTop  ;
-				break ;
-			}
-		}
-		else
-			el = el.offsetParent ;
-	}
-
-	// Return the Coordinates object
-	return c ;
-}
-
-/*
-	This is a Safari specific function that fix the reference to the parent 
-	window from the document object.
-*/
-FCKTools.FixDocumentParentWindow = function( targetWindow )
-{
-	targetWindow.document.parentWindow = targetWindow ; 
-	
-	for ( var i = 0 ; i < targetWindow.frames.length ; i++ )
-		FCKTools.FixDocumentParentWindow( targetWindow.frames[i] ) ;
-}
-
-FCKTools.GetParentWindow = function( document )
-{
-	return document.contentWindow ? document.contentWindow : document.parentWindow ;
-}
-
-FCKTools.HTMLEncode = function( text )
-{
-	if ( !text )
-		return '' ;
-
-	text = text.replace( /&/g, '&amp;' ) ;
-	text = text.replace( /</g, '&lt;' ) ;
-	text = text.replace( />/g, '&gt;' ) ;
-
-	return text ;
-}
-
-/**
- * Adds an option to a SELECT element.
- */
-FCKTools.AddSelectOption = function( selectElement, optionText, optionValue )
-{
-	var oOption = selectElement.ownerDocument.createElement( "OPTION" ) ;
+	var oOption = targetDocument.createElement("OPTION") ;
 
 	oOption.text	= optionText ;
 	oOption.value	= optionValue ;	
@@ -178,44 +98,90 @@ FCKTools.AddSelectOption = function( selectElement, optionText, optionValue )
 
 	return oOption ;
 }
-
-FCKTools.RunFunction = function( func, thisObject, paramsArray, timerWindow )
+/*
+FCKTools.RemoveAllSelectOptions = function( selectElement )
 {
-	if ( func )
-		this.SetTimeout( func, 0, thisObject, paramsArray, timerWindow ) ;
+	for ( var i = selectElement.options.length - 1 ; i >= 0 ; i-- )
+	{
+		selectElement.options.remove(i) ;
+	}
 }
 
-FCKTools.SetTimeout = function( func, milliseconds, thisObject, paramsArray, timerWindow )
+FCKTools.SelectNoCase = function( selectElement, value, defaultValue )
 {
-	return ( timerWindow || window ).setTimeout( 
-		function()
+	var sNoCaseValue = value.toString().toLowerCase() ;
+	
+	for ( var i = 0 ; i < selectElement.options.length ; i++ )
+	{
+		if ( sNoCaseValue == selectElement.options[i].value.toLowerCase() )
 		{
-			if ( paramsArray )
-				func.apply( thisObject, [].concat( paramsArray ) ) ;
+			selectElement.selectedIndex = i ;
+			return ;
+		}
+	}
+	
+	if ( defaultValue != null ) FCKTools.SelectNoCase( selectElement, defaultValue ) ;
+}
+*/
+FCKTools.HTMLEncode = function( text )
+{
+	if ( !text )
+		return '' ;
+
+	text = text.replace( /&/g, "&amp;" ) ;
+	text = text.replace( /"/g, "&quot;" ) ;
+	text = text.replace( /</g, "&lt;" ) ;
+	text = text.replace( />/g, "&gt;" ) ;
+	text = text.replace( /'/g, "&#39;" ) ;
+
+	return text ;
+}
+/*
+//**
+// FCKTools.GetResultingArray: Gets a array from a string (where the elements 
+// are separated by a character), a fuction (that returns a array) or a array.
+FCKTools.GetResultingArray = function( arraySource, separator )
+{
+	switch ( typeof( arraySource ) )
+	{
+		case "string" :
+			return arraySource.split( separator ) ;
+		case "function" :
+			return separator() ;
+		default :
+			if ( isArray( arraySource ) ) return arraySource ;
+			else return new Array() ;
+	}
+}
+*/
+FCKTools.GetElementPosition = function( el, relativeWindow )
+{
+// Initializes the Coordinates object that will be returned by the function.
+	var c = { X:0, Y:0 } ;
+	
+	var oWindow = relativeWindow || window ;
+
+	// Loop throw the offset chain.
+	while ( el )
+	{
+		c.X += el.offsetLeft ;
+		c.Y += el.offsetTop ;
+
+		if ( el.offsetParent == null )
+		{
+			var oOwnerWindow = FCKTools.GetElementWindow( el ) ;
+			
+			if ( oOwnerWindow != oWindow )
+				el = oOwnerWindow.frameElement ;
 			else
-				func.apply( thisObject ) ;
-		},
-		milliseconds ) ;
-}
+				break ;
+		}
+		else
+			el = el.offsetParent ;
+	}
 
-FCKTools.SetInterval = function( func, milliseconds, thisObject, paramsArray, timerWindow )
-{
-	return ( timerWindow || window ).setInterval( 
-		function()
-		{
-			func.apply( thisObject, paramsArray || [] ) ;
-		},
-		milliseconds ) ;
-}
-
-FCKTools.ConvertStyleSizeToHtml = function( size )
-{
-	return size.endsWith( '%' ) ? size : parseInt( size ) ;
-}
-
-FCKTools.ConvertHtmlSizeToStyle = function( size )
-{
-	return size.endsWith( '%' ) ? size : ( size + 'px' ) ;
+	// Return the Coordinates object
+	return c ;
 }
 
 // START iCM MODIFICATIONS
@@ -238,17 +204,125 @@ FCKTools.GetElementAscensor = function( element, ascensorTagNames )
 }
 // END iCM MODIFICATIONS
 
-FCKTools.CreateEventListener = function( func, params )
+FCKTools.Pause = function( miliseconds )
 {
-	var f = function()
-	{
-		var aAllParams = [] ;
-		
-		for ( var i = 0 ; i < arguments.length ; i++ )
-			aAllParams.push( arguments[i] ) ;
+	var oStart = new Date() ;
 
-		func.apply( this, aAllParams.concat( params ) ) ;
-	} 
-
-	return f ;
+	while (true)
+	{ 
+		var oNow = new Date() ;
+		if ( miliseconds < oNow - oStart ) 
+			return ;
+	}
 }
+
+FCKTools.ConvertStyleSizeToHtml = function( size )
+{
+	return size.endsWith( '%' ) ? size : parseInt( size ) ;
+}
+
+FCKTools.ConvertHtmlSizeToStyle = function( size )
+{
+	return size.endsWith( '%' ) ? size : ( size + 'px' ) ;
+}
+
+// Get the window object where the element is placed in.
+FCKTools.GetElementWindow = function( element )
+{
+	var oDocument = element.ownerDocument || element.document ;
+	
+	// With Safari, there is not way to retrieve the window from the document, so we must fix it.
+	if ( FCKBrowserInfo.IsSafari && !oDocument.parentWindow )
+		FCKTools._FixDocumentParentWindow( window.top ) ;
+	
+	return oDocument.parentWindow || oDocument.defaultView ;
+}
+
+/*
+	This is a Safari specific function that fix the reference to the parent 
+	window from the document object.
+*/
+FCKTools._FixDocumentParentWindow = function( targetWindow )
+{
+	targetWindow.document.parentWindow = targetWindow ; 
+	
+	for ( var i = 0 ; i < targetWindow.frames.length ; i++ )
+		FCKTools._FixDocumentParentWindow( targetWindow.frames[i] ) ;
+}
+
+FCKTools.CancelEvent = function( e )
+{
+	return false ;
+}
+
+// START iCM MODIFICATIONS
+/*
+// Transfers the supplied attributes to the supplied node
+FCKTools.SetElementAttributes = function( oElement, oAttributes ) 
+{
+	for ( var i = 0; i < oAttributes.length; i++ ) 
+	{
+		if ( oAttributes[i].specified ) // Needed for IE which always returns all attributes whether set or not
+			oElement.setAttribute( oAttributes[i].nodeName, oAttributes[i].nodeValue, 0 ) ;
+	}
+}
+
+// Get immediate block node (P, H1, for example) for the supplied node - the supplied node may itself be a block node in which
+// case it will be returned. If no block node found, returns null.
+FCKTools.GetParentBlockNode = function( oNode )
+{
+	if ( oNode.nodeName.toUpperCase() == "BODY" )
+		return null ;
+	else if ( oNode.nodeType == 1 && FCKRegexLib.BlockElements.test(oNode.tagName) )
+		return oNode ;
+	else
+		return FCKTools.GetParentBlockNode( oNode.parentNode ) ;
+}
+
+// Run through any children of the supplied node. If there are none, or they only comprise 
+// empty text nodes and BR nodes, then the node is effectively empty.
+// Sometimes (on Gecko) a seemingly empty node is coming back with several children that are solely
+// empty text nodes and BRs e.g. the first item in an OL list, for example, when 
+// UseBROnCarriageReturn is set to false. 
+// Seems to be due to the use of the <br _moz_editor_bogus_node="TRUE"> (GECKO_BOGUS) as fillers both
+// in fck_gecko_1.js when html is empty and in ENTER key handler ? If normal BR tags are
+// used instead this doesn't seem to happen....
+FCKTools.NodeIsEmpty = function( oNode )
+{
+	var oSibling = oNode.childNodes[0] ;
+	while ( oSibling )
+	{
+		if ( ( oSibling.nodeType != 1 && oSibling.nodeType != 3 ) || ( oSibling.nodeType == 1 && oSibling.nodeName.toUpperCase() != "BR" ) || ( oSibling.nodeType == 3 && oSibling.nodeValue && oSibling.nodeValue.trim() != '' ) )
+			return false ;
+		
+		oSibling = oSibling.nextSibling ;
+	}
+
+	return true ;
+}
+
+// Returns a document fragment that contains a copy of the specified range of nodes
+FCKTools.GetDocumentFragment = function( oParentNode, oFromNode, oToNode, bIncludeFromNode, bIncludeToNode, bClone )
+{	
+	if ( typeof bIncludeFromNode == "undefined" )  bIncludeFromNode = true ;
+	if ( typeof bIncludeToNode == "undefined" )  bIncludeToNode = true ;
+	if ( typeof bClone == "undefined" )  bClone = true ;
+
+	var oFragment = FCK.EditorDocument.createDocumentFragment() ;
+	
+	var oNode = oFromNode ;
+	while ( oNode && oNode != oToNode )
+	{
+		if ( oNode != oFromNode || bIncludeFromNode )
+			oFragment.appendChild( bClone ? oNode.cloneNode( true ) : oNode ) ;
+			
+		oNode = oNode.nextSibling ;
+	}
+
+	if ( oNode && (oFromNode != oToNode && bIncludeToNode) )
+		oFragment.appendChild( bClone ? oNode.cloneNode( true ) : oNode ) ; // Include To Node
+
+	return oFragment ;
+}
+*/
+// END iCM MODIFICATIONS

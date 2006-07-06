@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -83,7 +83,7 @@ BGColor				: "Фонны өнгө",
 Source				: "Код",
 Find				: "Хайх",
 Replace				: "Солих",
-SpellCheck			: "Check Spelling",	//MISSING
+SpellCheck			: "Check Spell",	//MISSING
 UniversalKeyboard	: "Universal Keyboard",	//MISSING
 PageBreakLbl		: "Page Break",	//MISSING
 PageBreak			: "Insert Page Break",	//MISSING
@@ -98,13 +98,8 @@ Button			: "Button",	//MISSING
 SelectionField	: "Selection Field",	//MISSING
 ImageButton		: "Image Button",	//MISSING
 
-FitWindow		: "Maximize the editor size",	//MISSING
-
 // Context Menu
 EditLink			: "Холбоос засварлах",
-CellCM				: "Cell",	//MISSING
-RowCM				: "Row",	//MISSING
-ColumnCM			: "Column",	//MISSING
 InsertRow			: "Мөр оруулах",
 DeleteRows			: "Мөр устгах",
 InsertColumn		: "Багана оруулах",
@@ -141,7 +136,7 @@ UnknownToolbarItem	: "Багажны хэсгийн \"%1\" item мэдэгдэх
 UnknownCommand		: "\"%1\" комманд нэр мэдагдэхгүй байна",
 NotImplemented		: "Зөвшөөрөгдөхгүй комманд",
 UnknownToolbarSet	: "Багажны хэсэгт \"%1\" оноох, үүсээгүй байна",
-NoActiveX			: "Your browser's security settings could limit some features of the editor. You must enable the option \"Run ActiveX controls and plug-ins\". You may experience errors and notice missing features.",	//MISSING
+NoActiveX			: "You browser's security settings could limit some features of the editor. You must enable the option \"Run ActiveX controls and plug-ins\". You may experience errors and notice missing features.",	//MISSING
 BrowseServerBlocked : "The resources browser could not be opened. Make sure that all popup blockers are disabled.",	//MISSING
 DialogBlocked		: "It was not possible to open the dialog window. Make sure all popup blockers are disabled.",	//MISSING
 
@@ -151,12 +146,12 @@ DlgBtnCancel		: "Болих",
 DlgBtnClose			: "Хаах",
 DlgBtnBrowseServer	: "Browse Server",	//MISSING
 DlgAdvancedTag		: "Нэмэлт",
-DlgOpOther			: "<Other>",	//MISSING
+DlgOpOther			: "&lt;Other&gt;",	//MISSING
 DlgInfoTab			: "Info",	//MISSING
 DlgAlertUrl			: "Please insert the URL",	//MISSING
 
 // General Dialogs Labels
-DlgGenNotSet		: "<Оноохгүй>",
+DlgGenNotSet		: "&lt;Оноохгүй&gt;",
 DlgGenId			: "Id",
 DlgGenLangDir		: "Хэлний чиглэл",
 DlgGenLangDirLtr	: "Зүүнээс баруун (LTR)",
@@ -220,12 +215,12 @@ DlgLnkTypeURL		: "URL",
 DlgLnkTypeAnchor	: "Энэ хуудасандах холбоос",
 DlgLnkTypeEMail		: "E-Mail",
 DlgLnkProto			: "Протокол",
-DlgLnkProtoOther	: "<бусад>",
+DlgLnkProtoOther	: "&lt;бусад&gt;",
 DlgLnkURL			: "URL",
 DlgLnkAnchorSel		: "Холбоос сонгох",
 DlgLnkAnchorByName	: "Холбоосын нэрээр",
 DlgLnkAnchorById	: "Элемэнт Id-гаар",
-DlgLnkNoAnchors		: "<Баримт бичиг холбоосгүй байна>",
+DlgLnkNoAnchors		: "&lt;Баримт бичиг холбоосгүй байна&gt;",
 DlgLnkEMail			: "E-Mail Хаяг",
 DlgLnkEMailSubject	: "Message Subject",
 DlgLnkEMailBody		: "Message-ийн агуулга",
@@ -233,8 +228,8 @@ DlgLnkUpload		: "Хуулах",
 DlgLnkBtnUpload		: "Үүнийг серверрүү илгээ",
 
 DlgLnkTarget		: "Байрлал",
-DlgLnkTargetFrame	: "<Агуулах хүрээ>",
-DlgLnkTargetPopup	: "<popup цонх>",
+DlgLnkTargetFrame	: "&lt;Агуулах хүрээ&gt;",
+DlgLnkTargetPopup	: "&lt;popup цонх&gt;",
 DlgLnkTargetBlank	: "Шинэ цонх (_blank)",
 DlgLnkTargetParent	: "Эцэг цонх (_parent)",
 DlgLnkTargetSelf	: "Төстэй цонх (_self)",
@@ -277,7 +272,7 @@ DlgTableRows		: "Мөр",
 DlgTableColumns		: "Багана",
 DlgTableBorder		: "Хүрээний хэмжээ",
 DlgTableAlign		: "Эгнээ",
-DlgTableAlignNotSet	: "<Оноохгүй>",
+DlgTableAlignNotSet	: "&lt;Оноохгүй&gt;",
 DlgTableAlignLeft	: "Зүүн талд",
 DlgTableAlignCenter	: "Төвд",
 DlgTableAlignRight	: "Баруун талд",
@@ -297,16 +292,16 @@ DlgCellWidthPx		: "цэг",
 DlgCellWidthPc		: "хувь",
 DlgCellHeight		: "Өндөр",
 DlgCellWordWrap		: "Үг таслах",
-DlgCellWordWrapNotSet	: "<Оноохгүй>",
+DlgCellWordWrapNotSet	: "&lt;Оноохгүй&gt;",
 DlgCellWordWrapYes	: "Тийм",
 DlgCellWordWrapNo	: "Үгүй",
 DlgCellHorAlign		: "Босоо эгнээ",
-DlgCellHorAlignNotSet	: "<Оноохгүй>",
+DlgCellHorAlignNotSet	: "&lt;Оноохгүй&gt;",
 DlgCellHorAlignLeft	: "Зүүн",
 DlgCellHorAlignCenter	: "Төв",
 DlgCellHorAlignRight: "Баруун",
 DlgCellVerAlign		: "Хөндлөн эгнээ",
-DlgCellVerAlignNotSet	: "<Оноохгүй>",
+DlgCellVerAlignNotSet	: "&lt;Оноохгүй&gt;",
 DlgCellVerAlignTop	: "Дээд тал",
 DlgCellVerAlignMiddle	: "Дунд",
 DlgCellVerAlignBottom	: "Доод тал",
@@ -343,6 +338,7 @@ DlgPasteMsg2	: "Please paste inside the following box using the keyboard (<STRON
 DlgPasteIgnoreFont		: "Ignore Font Face definitions",	//MISSING
 DlgPasteRemoveStyles	: "Remove Styles definitions",	//MISSING
 DlgPasteCleanBox		: "Clean Up Box",	//MISSING
+
 
 // Color Picker
 ColorAutomatic	: "Автоматаар",
@@ -479,7 +475,6 @@ DlgTemplatesNoTpl	: "(No templates defined)",	//MISSING
 // About Dialog
 DlgAboutAboutTab	: "About",	//MISSING
 DlgAboutBrowserInfoTab	: "Browser Info",	//MISSING
-DlgAboutLicenseTab	: "License",	//MISSING
 DlgAboutVersion		: "Хувилбар",
 DlgAboutLicense		: "GNU цөөн ерөнхий нийтийн лицензийн ангилалд багтсан зөвшөөрөлтэй",
 DlgAboutInfo		: "Мэдээллээр туслах"

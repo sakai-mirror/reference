@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -19,7 +19,7 @@
 
 FCKStyleDef.prototype.ApplyToSelection = function()
 {
-	var oSelection = FCK.ToolbarSet.CurrentInstance.EditorDocument.selection ;
+	var oSelection = FCK.EditorDocument.selection ;
 	
 	if ( oSelection.type == 'Text' )
 	{
@@ -40,7 +40,7 @@ FCKStyleDef.prototype.ApplyToSelection = function()
 	}
 	else if ( oSelection.type == 'Control' )
 	{
-		var oControl = FCK.ToolbarSet.CurrentInstance.Selection.GetSelectedElement() ;
+		var oControl = FCKSelection.GetSelectedElement() ;
 		if ( oControl.tagName == this.Element )
 			this._AddAttributes( oControl ) ;
 	}
@@ -55,14 +55,11 @@ FCKStyleDef.prototype._AddAttributes = function( targetElement )
 			case 'style' :
 				targetElement.style.cssText = this.Attributes[a] ;
 				break ;
-
+				
 			case 'class' :
 				targetElement.setAttribute( 'className', this.Attributes[a], 0 ) ;
 				break ;
-
-			case 'src' :
-				targetElement.setAttribute( '_fcksavedurl', this.Attributes[a], 0 ) ;
-
+				
 			default :
 				targetElement.setAttribute( a, this.Attributes[a], 0 ) ;
 		}

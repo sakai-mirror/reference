@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -19,18 +19,12 @@
 
 var FCKConfig = FCK.Config = new Object() ;
 
-/*
-	For the next major version (probably 3.0) we should move all this stuff to
-	another dedicated object and leave FCKConfig as a holder object for settings only).
-*/
-
 // Editor Base Path
 if ( document.location.protocol == 'file:' )
 {
 	FCKConfig.BasePath = unescape( document.location.pathname.substr(1) ) ;
 	FCKConfig.BasePath = FCKConfig.BasePath.replace( /\\/gi, '/' ) ;
 	FCKConfig.BasePath = 'file://' + FCKConfig.BasePath.substring(0,FCKConfig.BasePath.lastIndexOf('/')+1) ;
-	FCKConfig.FullBasePath = FCKConfig.BasePath ;
 }
 else
 {
@@ -93,29 +87,10 @@ FCKConfig.ProcessHiddenField = function()
 	}
 }
 
-function FCKConfig_LoadPageConfig()
+FCKConfig.LoadPageConfig = function()
 {
-	var oPageConfig = FCKConfig.PageConfig ;
-	for ( var sKey in oPageConfig )
-		FCKConfig[ sKey ] = oPageConfig[ sKey ] ;
-}
-
-function FCKConfig_PreProcess()
-{
-	var oConfig = FCKConfig ;
-	
-	// Force debug mode if fckdebug=true in the QueryString (main page).
-	if ( oConfig.AllowQueryStringDebug && (/fckdebug=true/i).test( window.top.location.search ) )
-		oConfig.Debug = true ;
-
-	// Certifies that the "PluginsPath" configuration ends with a slash.
-	if ( !oConfig.PluginsPath.endsWith('/') )
-		oConfig.PluginsPath += '/' ;
-
-	// EditorAreaCSS accepts an array of paths or a single path (as string).
-	// In the last case, transform it in an array.
-	if ( typeof( oConfig.EditorAreaCSS ) == 'string' )
-		oConfig.EditorAreaCSS = [ oConfig.EditorAreaCSS ] ;
+	for ( var sKey in this.PageConfig )
+		FCKConfig[ sKey ] = this.PageConfig[ sKey ] ;
 }
 
 // Define toolbar sets collection.
@@ -127,7 +102,7 @@ FCKConfig.Plugins.Items = new Array() ;
 
 FCKConfig.Plugins.Add = function( name, langs, path )
 {
-	FCKConfig.Plugins.Items.AddItem( [name, langs, path] ) ;
+	FCKConfig.Plugins.Items.addItem( [name, langs, path] ) ;
 }
 
 // FCKConfig.ProtectedSource: object that holds a collection of Regular 
@@ -138,7 +113,7 @@ FCKConfig.ProtectedSource.RegexEntries = new Array() ;
 
 FCKConfig.ProtectedSource.Add = function( regexPattern )
 {
-	this.RegexEntries.AddItem( regexPattern ) ;
+	this.RegexEntries.addItem( regexPattern ) ;
 }
 
 FCKConfig.ProtectedSource.Protect = function( html )

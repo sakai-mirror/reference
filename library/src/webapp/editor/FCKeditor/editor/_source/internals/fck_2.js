@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -75,6 +75,45 @@ FCK.PasteFromWord = function()
 	FCKDialog.OpenDialog( 'FCKDialog_Paste', FCKLang.PasteFromWord, 'dialog/fck_paste.html', 400, 330, 'Word' ) ;
 }
 
+// TODO: Wait Stable and remove this block.
+//FCK.CleanAndPaste = function( html )
+//{
+	// Remove all SPAN tags
+//	html = html.replace(/<\/?SPAN[^>]*>/gi, "" );
+
+//	html = html.replace(/<o:p>&nbsp;<\/o:p>/g, "") ;
+//	html = html.replace(/<o:p><\/o:p>/g, "") ;
+	
+	// Remove mso-xxx styles.
+//	html = html.replace( /mso-.[^:]:.[^;"]/g, "" ) ;
+	
+	// Remove Class attributes
+//	html = html.replace(/<(\w[^>]*) class=([^ |>]*)([^>]*)/gi, "<$1$3") ;
+	
+	// Remove Style attributes
+//	html = html.replace(/<(\w[^>]*) style="([^"]*)"([^>]*)/gi, "<$1$3") ;
+	
+	// Remove Lang attributes
+//	html = html.replace(/<(\w[^>]*) lang=([^ |>]*)([^>]*)/gi, "<$1$3") ;
+	
+	// Remove XML elements and declarations
+//	html = html.replace(/<\\?\?xml[^>]*>/gi, "") ;
+	
+	// Remove Tags with XML namespace declarations: <o:p></o:p>
+//	html = html.replace(/<\/?\w+:[^>]*>/gi, "") ;
+	
+	// Replace the &nbsp;
+//	html = html.replace(/&nbsp;/, " " );
+	// Replace the &nbsp; from the beggining.
+//	html = html.replace(/^&nbsp;[\s\r\n]*/, ""); 
+	
+	// Transform <P> to <DIV>
+//	var re = new RegExp("(<P)([^>]*>.*?)(<\/P>)","gi") ;	// Different because of a IE 5.0 error
+//	html = html.replace( re, "<div$2</div>" ) ;
+	
+//	FCK.InsertHtml( html ) ;
+//}
+
 FCK.Preview = function()
 {
 	var iWidth	= FCKConfig.ScreenWidth * 0.8 ;
@@ -96,10 +135,9 @@ FCK.Preview = function()
 		sHTML = 
 			FCKConfig.DocType +
 			'<html dir="' + FCKConfig.ContentLangDirection + '">' +
-			'<head>' +
+			'<head><title>' + FCKLang.Preview + '</title>' +
+			'<link href="' + FCKConfig.EditorAreaCSS + '" rel="stylesheet" type="text/css" />' +
 			FCK.TempBaseTag +
-			'<title>' + FCKLang.Preview + '</title>' +
-			FCK._GetEditorAreaStyleTags() +
 			'</head><body>' + 
 			FCK.GetXHTML() + 
 			'</body></html>' ;
@@ -109,34 +147,36 @@ FCK.Preview = function()
 	oWindow.document.close();
 }
 
-FCK.SwitchEditMode = function( noUndo )
+FCK.SwitchEditMode = function()
 {
-	var bIsWysiwyg = ( FCK.EditMode == FCK_EDITMODE_WYSIWYG ) ;
-	var sHtml ;
+	// Check if the actual mode is WYSIWYG.
+	var bWYSIWYG = ( FCK.EditMode == FCK_EDITMODE_WYSIWYG ) ;
 	
+	// Display/Hide the TRs.
+	document.getElementById('eWysiwyg').style.display	= bWYSIWYG ? 'none' : '' ;
+	document.getElementById('eSource').style.display	= bWYSIWYG ? '' : 'none' ;
+
 	// Update the HTML in the view output to show.
-	if ( bIsWysiwyg )
+	if ( bWYSIWYG )
 	{
-		if ( !noUndo && FCKBrowserInfo.IsIE )
+		if ( FCKBrowserInfo.IsIE )
 			FCKUndo.SaveUndoStep() ;
 
-		sHtml = FCK.GetXHTML( FCKConfig.FormatSource ) ;
+		// EnableXHTML and EnableSourceXHTML has been deprecated
+//		document.getElementById('eSourceField').value = ( FCKConfig.EnableXHTML && FCKConfig.EnableSourceXHTML ? FCK.GetXHTML( FCKConfig.FormatSource ) : FCK.GetHTML( FCKConfig.FormatSource ) ) ;
+		document.getElementById('eSourceField').value = FCK.GetXHTML( FCKConfig.FormatSource ) ;
 	}
 	else
-		sHtml = this.EditingArea.Textarea.value ;
+		FCK.SetHTML( document.getElementById('eSourceField').value, true ) ;
 
-	FCK.EditMode = bIsWysiwyg ? FCK_EDITMODE_SOURCE : FCK_EDITMODE_WYSIWYG ;
-
-	FCK.SetHTML( sHtml ) ;
-
-	if ( FCKBrowserInfo.IsGecko )
-		window.onresize() ;
+	// Updates the actual mode status.
+	FCK.EditMode = bWYSIWYG ? FCK_EDITMODE_SOURCE : FCK_EDITMODE_WYSIWYG ;
+	
+	// Update the toolbar.
+	FCKToolbarSet.RefreshModeState() ;
 
 	// Set the Focus.
 	FCK.Focus() ;
-
-	// Update the toolbar (Running it directly causes IE to fail).
-	FCKTools.RunFunction( FCK.ToolbarSet.RefreshModeState, FCK.ToolbarSet ) ;
 }
 
 FCK.CreateElement = function( tag )
@@ -147,7 +187,7 @@ FCK.CreateElement = function( tag )
 
 FCK.InsertElementAndGetIt = function( e )
 {
-	e.setAttribute( 'FCKTempLabel', 'true' ) ;
+	e.setAttribute( '__FCKTempLabel', 1 ) ;
 	
 	this.InsertElement( e ) ;
 	
@@ -155,9 +195,9 @@ FCK.InsertElementAndGetIt = function( e )
 	
 	for ( var i = 0 ; i < aEls.length ; i++ )
 	{
-		if ( aEls[i].getAttribute( 'FCKTempLabel' ) )
+		if ( aEls[i].getAttribute( '__FCKTempLabel' ) )
 		{
-			aEls[i].removeAttribute( 'FCKTempLabel' ) ;
+			aEls[i].removeAttribute( '__FCKTempLabel' ) ;
 			return aEls[i] ;
 		}
 	}

@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -87,8 +87,8 @@ Find				: "Hledat",
 Replace				: "Nahradit",
 SpellCheck			: "Zkontrolovat pravopis",
 UniversalKeyboard	: "Univerzální klávesnice",
-PageBreakLbl		: "Konec stránky",
-PageBreak			: "Vložit konec stránky",
+PageBreakLbl		: "Page Break",	//MISSING
+PageBreak			: "Insert Page Break",	//MISSING
 
 Form			: "Formulář",
 Checkbox		: "Zaškrtávací políčko",
@@ -100,13 +100,8 @@ Button			: "Tlačítko",
 SelectionField	: "Seznam",
 ImageButton		: "Obrázkové tlačítko",
 
-FitWindow		: "Maximalizovat velikost editoru",
-
 // Context Menu
 EditLink			: "Změnit odkaz",
-CellCM				: "Buňka",
-RowCM				: "Řádek",
-ColumnCM			: "Sloupec",
 InsertRow			: "Vložit řádek",
 DeleteRows			: "Smazat řádek",
 InsertColumn		: "Vložit sloupec",
@@ -115,7 +110,7 @@ InsertCell			: "Vložit buňku",
 DeleteCells			: "Smazat buňky",
 MergeCells			: "Sloučit buňky",
 SplitCell			: "Rozdělit buňku",
-TableDelete			: "Smazat tabulku",
+TableDelete			: "Delete Table",	//MISSING
 CellProperties		: "Vlastnosti buňky",
 TableProperties		: "Vlastnosti tabulky",
 ImageProperties		: "Vlastnosti obrázku",
@@ -143,9 +138,9 @@ UnknownToolbarItem	: "Neznámá položka panelu nástrojů \"%1\"",
 UnknownCommand		: "Neznámý příkaz \"%1\"",
 NotImplemented		: "Příkaz není implementován",
 UnknownToolbarSet	: "Panel nástrojů \"%1\" neexistuje",
-NoActiveX			: "Nastavení bezpečnosti Vašeho prohlížeče omezuje funkčnost některých jeho možností. Je třeba zapnout volbu \"Spouštět ovládáací prvky ActiveX a moduly plug-in\", jinak nebude možné využívat všechny dosputné schopnosti editoru.",
-BrowseServerBlocked : "Průzkumník zdrojů nelze otevřít. Prověřte, zda nemáte aktivováno blokování popup oken.",
-DialogBlocked		: "Nelze otevřít dialogové okno. Prověřte, zda nemáte aktivováno blokování popup oken.",
+NoActiveX			: "You browser's security settings could limit some features of the editor. You must enable the option \"Run ActiveX controls and plug-ins\". You may experience errors and notice missing features.",
+BrowseServerBlocked : "The resources browser could not be opened. Make sure that all popup blockers are disabled.",	//MISSING
+DialogBlocked		: "It was not possible to open the dialog window. Make sure all popup blockers are disabled.",	//MISSING
 
 // Dialogs
 DlgBtnOK			: "OK",
@@ -153,12 +148,12 @@ DlgBtnCancel		: "Storno",
 DlgBtnClose			: "Zavřít",
 DlgBtnBrowseServer	: "Vybrat na serveru",
 DlgAdvancedTag		: "Rozšířené",
-DlgOpOther			: "<Ostatní>",
+DlgOpOther			: "&lt;Ostatní&gt;",
 DlgInfoTab			: "Info",
 DlgAlertUrl			: "Prosím vložte URL",
 
 // General Dialogs Labels
-DlgGenNotSet		: "<nenastaveno>",
+DlgGenNotSet		: "&lt;nenastaveno&gt;",
 DlgGenId			: "Id",
 DlgGenLangDir		: "Orientace jazyka",
 DlgGenLangDirLtr	: "Zleva do prava (LTR)",
@@ -222,12 +217,12 @@ DlgLnkTypeURL		: "URL",
 DlgLnkTypeAnchor	: "Kotva v této stránce",
 DlgLnkTypeEMail		: "E-Mail",
 DlgLnkProto			: "Protokol",
-DlgLnkProtoOther	: "<jiný>",
+DlgLnkProtoOther	: "&lt;jiný&gt;",
 DlgLnkURL			: "URL",
 DlgLnkAnchorSel		: "Vybrat kotvu",
 DlgLnkAnchorByName	: "Podle jména kotvy",
 DlgLnkAnchorById	: "Podle Id objektu",
-DlgLnkNoAnchors		: "<Ve stránce žádná kotva není definována>",
+DlgLnkNoAnchors		: "&lt;Ve stránce žádná kotva není definována&gt;",
 DlgLnkEMail			: "E-Mailová adresa",
 DlgLnkEMailSubject	: "Předmět zprávy",
 DlgLnkEMailBody		: "Tělo zprávy",
@@ -235,8 +230,8 @@ DlgLnkUpload		: "Odeslat",
 DlgLnkBtnUpload		: "Odeslat na Server",
 
 DlgLnkTarget		: "Cíl",
-DlgLnkTargetFrame	: "<rámec>",
-DlgLnkTargetPopup	: "<vyskakovací okno>",
+DlgLnkTargetFrame	: "&lt;rámec&gt;",
+DlgLnkTargetPopup	: "&lt;vyskakovací okno&gt;",
 DlgLnkTargetBlank	: "Nové okno (_blank)",
 DlgLnkTargetParent	: "Rodičovské okno (_parent)",
 DlgLnkTargetSelf	: "Stejné okno (_self)",
@@ -290,7 +285,7 @@ DlgTableHeight		: "Výška",
 DlgTableCellSpace	: "Vzdálenost buněk",
 DlgTableCellPad		: "Odsazení obsahu",
 DlgTableCaption		: "Popis",
-DlgTableSummary		: "Souhrn",
+DlgTableSummary		: "Summary",	//MISSING
 
 // Table Cell Dialog
 DlgCellTitle		: "Vlastnosti buňky",
@@ -345,6 +340,7 @@ DlgPasteMsg2	: "Do následujícího pole vložte požadovaný obsah pomocí klá
 DlgPasteIgnoreFont		: "Ignorovat písmo",
 DlgPasteRemoveStyles	: "Odstranit styly",
 DlgPasteCleanBox		: "Vyčistit",
+
 
 // Color Picker
 ColorAutomatic	: "Automaticky",
@@ -481,7 +477,6 @@ DlgTemplatesNoTpl	: "(Není definována žádná šablona)",
 // About Dialog
 DlgAboutAboutTab	: "O aplikaci",
 DlgAboutBrowserInfoTab	: "Informace o prohlížeči",
-DlgAboutLicenseTab	: "Licence",
 DlgAboutVersion		: "verze",
 DlgAboutLicense		: "Licencováno pod GNU Lesser General Public License",
 DlgAboutInfo		: "Více informací získáte na"

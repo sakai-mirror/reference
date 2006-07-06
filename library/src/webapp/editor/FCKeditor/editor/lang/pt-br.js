@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -15,7 +15,7 @@
  * 
  * File Authors:
  * 		Carlos Alberto Tomatis Loth (carlos.loth@conectait.com.br)
- * 		GibaPhp (http://www.xoopstotal.com.br)
+ * 		GibaPhp (www.xoopstotal.com.br)
  */
 
 var FCKLang =
@@ -86,8 +86,8 @@ Find				: "Localizar",
 Replace				: "Substituir",
 SpellCheck			: "Verificar Ortografia",
 UniversalKeyboard	: "Teclado Universal",
-PageBreakLbl		: "Quebra de Página",
-PageBreak			: "Inserir Quebra de Página",
+PageBreakLbl		: "Page Break",	//MISSING
+PageBreak			: "Insert Page Break",	//MISSING
 
 Form			: "Formulário",
 Checkbox		: "Caixa de Seleção",
@@ -99,13 +99,8 @@ Button			: "Botão",
 SelectionField	: "Caixa de Listagem",
 ImageButton		: "Botão de Imagem",
 
-FitWindow		: "Maximize the editor size",	//MISSING
-
 // Context Menu
 EditLink			: "Editar Hiperlink",
-CellCM				: "Cell",	//MISSING
-RowCM				: "Row",	//MISSING
-ColumnCM			: "Column",	//MISSING
 InsertRow			: "Inserir Linha",
 DeleteRows			: "Remover Linhas",
 InsertColumn		: "Inserir Coluna",
@@ -114,7 +109,7 @@ InsertCell			: "Inserir Células",
 DeleteCells			: "Remover Células",
 MergeCells			: "Mesclar Células",
 SplitCell			: "Dividir Célular",
-TableDelete			: "Apagar Tabela",
+TableDelete			: "Delete Table",	//MISSING
 CellProperties		: "Formatar Célula",
 TableProperties		: "Formatar Tabela",
 ImageProperties		: "Formatar Figura",
@@ -142,9 +137,9 @@ UnknownToolbarItem	: "O item da barra de ferramentas \"%1\" não é reconhecido"
 UnknownCommand		: "O comando \"%1\" não é reconhecido",
 NotImplemented		: "O comando não foi implementado",
 UnknownToolbarSet	: "A barra de ferramentas \"%1\" não existe",
-NoActiveX			: "As configurações de segurança do seu browser podem limitar algumas características do editor. Você precisa habilitar a opção \"Executar controles e plug-ins ActiveX\". Você pode experimentar erros e alertas de características faltantes.",
-BrowseServerBlocked : "Os recursos do browser não puderam ser abertos. Tenha certeza que todos os bloqueadores de popup estão desabilitados.",
-DialogBlocked		: "Não foi possível abrir a janela de diálogo. Tenha certeza que todos os bloqueadores de popup estão desabilitados.",
+NoActiveX			: "You browser's security settings could limit some features of the editor. You must enable the option \"Run ActiveX controls and plug-ins\". You may experience errors and notice missing features.",	//MISSING
+BrowseServerBlocked : "The resources browser could not be opened. Make sure that all popup blockers are disabled.",	//MISSING
+DialogBlocked		: "It was not possible to open the dialog window. Make sure all popup blockers are disabled.",	//MISSING
 
 // Dialogs
 DlgBtnOK			: "OK",
@@ -152,12 +147,12 @@ DlgBtnCancel		: "Cancelar",
 DlgBtnClose			: "Fechar",
 DlgBtnBrowseServer	: "Localizar no Servidor",
 DlgAdvancedTag		: "Avançado",
-DlgOpOther			: "<Outros>",
+DlgOpOther			: "&lt;Outros&gt;",
 DlgInfoTab			: "Info",
 DlgAlertUrl			: "Inserir a URL",
 
 // General Dialogs Labels
-DlgGenNotSet		: "<não ajustado>",
+DlgGenNotSet		: "&lt;não ajustado&gt;",
 DlgGenId			: "Id",
 DlgGenLangDir		: "Direção do idioma",
 DlgGenLangDirLtr	: "Esquerda para Direita (LTR)",
@@ -221,12 +216,12 @@ DlgLnkTypeURL		: "URL",
 DlgLnkTypeAnchor	: "Âncora nesta página",
 DlgLnkTypeEMail		: "E-Mail",
 DlgLnkProto			: "Protocolo",
-DlgLnkProtoOther	: "<outro>",
+DlgLnkProtoOther	: "&lt;outro&gt;",
 DlgLnkURL			: "URL do hiperlink",
 DlgLnkAnchorSel		: "Selecione uma âncora",
 DlgLnkAnchorByName	: "Pelo Nome da âncora",
 DlgLnkAnchorById	: "Pelo Id do Elemento",
-DlgLnkNoAnchors		: "<Não há âncoras disponíveis neste documento>",
+DlgLnkNoAnchors		: "&lt;Não há âncoras disponíveis neste documento&gt;",
 DlgLnkEMail			: "Endereço E-Mail",
 DlgLnkEMailSubject	: "Assunto da Mensagem",
 DlgLnkEMailBody		: "Corpo da Mensagem",
@@ -234,8 +229,8 @@ DlgLnkUpload		: "Enviar ao Servidor",
 DlgLnkBtnUpload		: "Enviar ao Servidor",
 
 DlgLnkTarget		: "Destino",
-DlgLnkTargetFrame	: "<quadro>",
-DlgLnkTargetPopup	: "<janela popup>",
+DlgLnkTargetFrame	: "&lt;quadro&gt;",
+DlgLnkTargetPopup	: "&lt;janela popup&gt;",
 DlgLnkTargetBlank	: "Nova Janela (_blank)",
 DlgLnkTargetParent	: "Janela Pai (_parent)",
 DlgLnkTargetSelf	: "Mesma Janela (_self)",
@@ -289,7 +284,7 @@ DlgTableHeight		: "Altura",
 DlgTableCellSpace	: "Espaçamento",
 DlgTableCellPad		: "Enchimento",
 DlgTableCaption		: "Legenda",
-DlgTableSummary		: "Resumo",
+DlgTableSummary		: "Summary",	//MISSING
 
 // Table Cell Dialog
 DlgCellTitle		: "Formatar célula",
@@ -333,9 +328,9 @@ DlgReplaceReplAllBtn	: "Substituir Tudo",
 DlgReplaceWordChk		: "Coincidir a palavra inteira",
 
 // Paste Operations / Dialog
-PasteErrorPaste	: "As configurações de segurança do seu navegador não permitem que o editor execute operações de colar automaticamente. Por favor, utilize o teclado para colar (Ctrl+V).",
-PasteErrorCut	: "As configurações de segurança do seu navegador não permitem que o editor execute operações de recortar automaticamente. Por favor, utilize o teclado para recortar (Ctrl+X).",
-PasteErrorCopy	: "As configurações de segurança do seu navegador não permitem que o editor execute operações de copiar automaticamente. Por favor, utilize o teclado para copiar (Ctrl+C).",
+PasteErrorPaste	: "As configurações de segurança do seu navegador não permitem que o editor excute operações de colar automaticamente. Por favor, utilize o teclado para colar (Ctrl+V).",
+PasteErrorCut	: "As configurações de segurança do seu navegador não permitem que o editor excute operações de recortar automaticamente. Por favor, utilize o teclado para recortar (Ctrl+X).",
+PasteErrorCopy	: "As configurações de segurança do seu navegador não permitem que o editor excute operações de copiar automaticamente. Por favor, utilize o teclado para copiar (Ctrl+C).",
 
 PasteAsText		: "Colar como Texto sem Formatação",
 PasteFromWord	: "Colar do Word",
@@ -344,6 +339,7 @@ DlgPasteMsg2	: "Transfira o link usado no box usando o teclado com (<STRONG>Ctrl
 DlgPasteIgnoreFont		: "Ignorar definições de fonte",
 DlgPasteRemoveStyles	: "Remove definições de estilo",
 DlgPasteCleanBox		: "Limpar Box",
+
 
 // Color Picker
 ColorAutomatic	: "Automático",
@@ -427,7 +423,7 @@ BulletedListProp	: "Formatar Marcadores",
 NumberedListProp	: "Formatar Numeração",
 DlgLstType			: "Tipo",
 DlgLstTypeCircle	: "Círculo",
-DlgLstTypeDisc		: "Disco",
+DlgLstTypeDisc		: "Disc",	//MISSING
 DlgLstTypeSquare	: "Quadrado",
 DlgLstTypeNumbers	: "Números (1, 2, 3)",
 DlgLstTypeLCase		: "Letras Minúsculas (a, b, c)",
@@ -480,7 +476,6 @@ DlgTemplatesNoTpl	: "(Não foram definidos modelos de layout)",
 // About Dialog
 DlgAboutAboutTab	: "Sobre",
 DlgAboutBrowserInfoTab	: "Informações do Navegador",
-DlgAboutLicenseTab	: "License",	//MISSING
 DlgAboutVersion		: "versão",
 DlgAboutLicense		: "Licenciado sobre os termos da GNU Lesser General Public License",
 DlgAboutInfo		: "Para maiores informações visite"

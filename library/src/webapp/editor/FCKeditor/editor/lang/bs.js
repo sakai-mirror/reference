@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -83,7 +83,7 @@ BGColor				: "Boja pozadine",
 Source				: "HTML kôd",
 Find				: "Naði",
 Replace				: "Zamjeni",
-SpellCheck			: "Check Spelling",	//MISSING
+SpellCheck			: "Check Spell",	//MISSING
 UniversalKeyboard	: "Universal Keyboard",	//MISSING
 PageBreakLbl		: "Page Break",	//MISSING
 PageBreak			: "Insert Page Break",	//MISSING
@@ -98,13 +98,8 @@ Button			: "Button",	//MISSING
 SelectionField	: "Selection Field",	//MISSING
 ImageButton		: "Image Button",	//MISSING
 
-FitWindow		: "Maximize the editor size",	//MISSING
-
 // Context Menu
 EditLink			: "Izmjeni link",
-CellCM				: "Cell",	//MISSING
-RowCM				: "Row",	//MISSING
-ColumnCM			: "Column",	//MISSING
 InsertRow			: "Ubaci red",
 DeleteRows			: "Briši redove",
 InsertColumn		: "Ubaci kolonu",
@@ -141,7 +136,7 @@ UnknownToolbarItem	: "Nepoznata stavka sa trake sa alatima \"%1\"",
 UnknownCommand		: "Nepoznata komanda \"%1\"",
 NotImplemented		: "Komanda nije implementirana",
 UnknownToolbarSet	: "Traka sa alatima \"%1\" ne postoji",
-NoActiveX			: "Your browser's security settings could limit some features of the editor. You must enable the option \"Run ActiveX controls and plug-ins\". You may experience errors and notice missing features.",	//MISSING
+NoActiveX			: "You browser's security settings could limit some features of the editor. You must enable the option \"Run ActiveX controls and plug-ins\". You may experience errors and notice missing features.",	//MISSING
 BrowseServerBlocked : "The resources browser could not be opened. Make sure that all popup blockers are disabled.",	//MISSING
 DialogBlocked		: "It was not possible to open the dialog window. Make sure all popup blockers are disabled.",	//MISSING
 
@@ -151,12 +146,12 @@ DlgBtnCancel		: "Odustani",
 DlgBtnClose			: "Zatvori",
 DlgBtnBrowseServer	: "Browse Server",	//MISSING
 DlgAdvancedTag		: "Naprednije",
-DlgOpOther			: "<Other>",	//MISSING
+DlgOpOther			: "&lt;Other&gt;",	//MISSING
 DlgInfoTab			: "Info",	//MISSING
 DlgAlertUrl			: "Please insert the URL",	//MISSING
 
 // General Dialogs Labels
-DlgGenNotSet		: "<nije podešeno>",
+DlgGenNotSet		: "&lt;nije podešeno&gt;",
 DlgGenId			: "Id",
 DlgGenLangDir		: "Smjer pisanja",
 DlgGenLangDirLtr	: "S lijeva na desno (LTR)",
@@ -220,12 +215,12 @@ DlgLnkTypeURL		: "URL",
 DlgLnkTypeAnchor	: "Sidro na ovoj stranici",
 DlgLnkTypeEMail		: "E-Mail",
 DlgLnkProto			: "Protokol",
-DlgLnkProtoOther	: "<drugi>",
+DlgLnkProtoOther	: "&lt;drugi&gt;",
 DlgLnkURL			: "URL",
 DlgLnkAnchorSel		: "Izaberi sidro",
 DlgLnkAnchorByName	: "Po nazivu sidra",
 DlgLnkAnchorById	: "Po Id-u elementa",
-DlgLnkNoAnchors		: "<Nema dostupnih sidra na stranici>",
+DlgLnkNoAnchors		: "&lt;Nema dostupnih sidra na stranici&gt;",
 DlgLnkEMail			: "E-Mail Adresa",
 DlgLnkEMailSubject	: "Subjekt poruke",
 DlgLnkEMailBody		: "Poruka",
@@ -233,8 +228,8 @@ DlgLnkUpload		: "Šalji",
 DlgLnkBtnUpload		: "Šalji na server",
 
 DlgLnkTarget		: "Prozor",
-DlgLnkTargetFrame	: "<frejm>",
-DlgLnkTargetPopup	: "<popup prozor>",
+DlgLnkTargetFrame	: "&lt;frejm&gt;",
+DlgLnkTargetPopup	: "&lt;popup prozor&gt;",
 DlgLnkTargetBlank	: "Novi prozor (_blank)",
 DlgLnkTargetParent	: "Glavni prozor (_parent)",
 DlgLnkTargetSelf	: "Isti prozor (_self)",
@@ -343,6 +338,7 @@ DlgPasteMsg2	: "Please paste inside the following box using the keyboard (<STRON
 DlgPasteIgnoreFont		: "Ignore Font Face definitions",	//MISSING
 DlgPasteRemoveStyles	: "Remove Styles definitions",	//MISSING
 DlgPasteCleanBox		: "Clean Up Box",	//MISSING
+
 
 // Color Picker
 ColorAutomatic	: "Automatska",
@@ -479,7 +475,6 @@ DlgTemplatesNoTpl	: "(No templates defined)",	//MISSING
 // About Dialog
 DlgAboutAboutTab	: "About",	//MISSING
 DlgAboutBrowserInfoTab	: "Browser Info",	//MISSING
-DlgAboutLicenseTab	: "License",	//MISSING
 DlgAboutVersion		: "verzija",
 DlgAboutLicense		: "Licencirano pod uslovima GNU Lesser General Public License",
 DlgAboutInfo		: "Za više informacija posjetite"

@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -98,13 +98,8 @@ Button			: "Botão",
 SelectionField	: "Caixa de Combinação",
 ImageButton		: "Botão de Imagem",
 
-FitWindow		: "Maximize the editor size",	//MISSING
-
 // Context Menu
 EditLink			: "Editar Hiperligação",
-CellCM				: "Cell",	//MISSING
-RowCM				: "Row",	//MISSING
-ColumnCM			: "Column",	//MISSING
 InsertRow			: "Inserir Linha",
 DeleteRows			: "Eliminar Linhas",
 InsertColumn		: "Inserir Coluna",
@@ -141,7 +136,7 @@ UnknownToolbarItem	: "Item de barra desconhecido \"%1\"",
 UnknownCommand		: "Nome de comando desconhecido \"%1\"",
 NotImplemented		: "Comando não implementado",
 UnknownToolbarSet	: "Nome de barra \"%1\" não definido",
-NoActiveX			: "Your browser's security settings could limit some features of the editor. You must enable the option \"Run ActiveX controls and plug-ins\". You may experience errors and notice missing features.",	//MISSING
+NoActiveX			: "You browser's security settings could limit some features of the editor. You must enable the option \"Run ActiveX controls and plug-ins\". You may experience errors and notice missing features.",	//MISSING
 BrowseServerBlocked : "The resources browser could not be opened. Make sure that all popup blockers are disabled.",	//MISSING
 DialogBlocked		: "It was not possible to open the dialog window. Make sure all popup blockers are disabled.",	//MISSING
 
@@ -151,12 +146,12 @@ DlgBtnCancel		: "Cancelar",
 DlgBtnClose			: "Fechar",
 DlgBtnBrowseServer	: "Navegar no Servidor",
 DlgAdvancedTag		: "Avançado",
-DlgOpOther			: "<Outro>",
+DlgOpOther			: "&lt;Outro&gt;",
 DlgInfoTab			: "Informação",
 DlgAlertUrl			: "Por favor introduza o URL",
 
 // General Dialogs Labels
-DlgGenNotSet		: "<Não definido>",
+DlgGenNotSet		: "&lt;Não definido&gt;",
 DlgGenId			: "Id",
 DlgGenLangDir		: "Orientação de idioma",
 DlgGenLangDirLtr	: "Esquerda à Direita (LTR)",
@@ -220,12 +215,12 @@ DlgLnkTypeURL		: "URL",
 DlgLnkTypeAnchor	: "Referência a esta página",
 DlgLnkTypeEMail		: "E-Mail",
 DlgLnkProto			: "Protocolo",
-DlgLnkProtoOther	: "<outro>",
+DlgLnkProtoOther	: "&lt;outro&gt;",
 DlgLnkURL			: "URL",
 DlgLnkAnchorSel		: "Seleccionar una referência",
 DlgLnkAnchorByName	: "Por Nome de Referência",
 DlgLnkAnchorById	: "Por ID de elemento",
-DlgLnkNoAnchors		: "<Não há referências disponíveis no documento>",
+DlgLnkNoAnchors		: "&lt;Não há referências disponíveis no documento&gt;",
 DlgLnkEMail			: "Endereço de E-Mail",
 DlgLnkEMailSubject	: "Título de Mensagem",
 DlgLnkEMailBody		: "Corpo da Mensagem",
@@ -233,8 +228,8 @@ DlgLnkUpload		: "Carregar",
 DlgLnkBtnUpload		: "Enviar ao Servidor",
 
 DlgLnkTarget		: "Destino",
-DlgLnkTargetFrame	: "<Frame>",
-DlgLnkTargetPopup	: "<Janela de popup>",
+DlgLnkTargetFrame	: "&lt;Frame&gt;",
+DlgLnkTargetPopup	: "&lt;Janela de popup&gt;",
 DlgLnkTargetBlank	: "Nova Janela(_blank)",
 DlgLnkTargetParent	: "Janela Pai (_parent)",
 DlgLnkTargetSelf	: "Mesma janela (_self)",
@@ -343,6 +338,7 @@ DlgPasteMsg2	: "Por favor, cole dentro da seguinte caixa usando o teclado (<STRO
 DlgPasteIgnoreFont		: "Ignorar da definições do Tipo de Letra ",
 DlgPasteRemoveStyles	: "Remover as definições de Estilos",
 DlgPasteCleanBox		: "Caixa de Limpeza",
+
 
 // Color Picker
 ColorAutomatic	: "Automático",
@@ -479,7 +475,6 @@ DlgTemplatesNoTpl	: "(Sem modelos definidos)",
 // About Dialog
 DlgAboutAboutTab	: "Acerca",
 DlgAboutBrowserInfoTab	: "Informação do Nevegador",
-DlgAboutLicenseTab	: "License",	//MISSING
 DlgAboutVersion		: "versão",
 DlgAboutLicense		: "Licenciado segundo os términos de GNU Lesser General Public License",
 DlgAboutInfo		: "Para mais informações por favor dirija-se a"

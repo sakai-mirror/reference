@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -98,13 +98,8 @@ Button			: "Бутон",
 SelectionField	: "Падащо меню с опции",
 ImageButton		: "Бутон-изображение",
 
-FitWindow		: "Maximize the editor size",	//MISSING
-
 // Context Menu
 EditLink			: "Редактирай връзка",
-CellCM				: "Cell",	//MISSING
-RowCM				: "Row",	//MISSING
-ColumnCM			: "Column",	//MISSING
 InsertRow			: "Добави ред",
 DeleteRows			: "Изтрий редовете",
 InsertColumn		: "Добави колона",
@@ -141,7 +136,7 @@ UnknownToolbarItem	: "Непознат инструмент \"%1\"",
 UnknownCommand		: "Непозната команда \"%1\"",
 NotImplemented		: "Командата не е имплементирана",
 UnknownToolbarSet	: "Панелът \"%1\" не съществува",
-NoActiveX			: "Your browser's security settings could limit some features of the editor. You must enable the option \"Run ActiveX controls and plug-ins\". You may experience errors and notice missing features.",	//MISSING
+NoActiveX			: "You browser's security settings could limit some features of the editor. You must enable the option \"Run ActiveX controls and plug-ins\". You may experience errors and notice missing features.",	//MISSING
 BrowseServerBlocked : "The resources browser could not be opened. Make sure that all popup blockers are disabled.",	//MISSING
 DialogBlocked		: "It was not possible to open the dialog window. Make sure all popup blockers are disabled.",	//MISSING
 
@@ -151,12 +146,12 @@ DlgBtnCancel		: "Отказ",
 DlgBtnClose			: "Затвори",
 DlgBtnBrowseServer	: "Разгледай сървъра",
 DlgAdvancedTag		: "Подробности...",
-DlgOpOther			: "<Друго>",
+DlgOpOther			: "&lt;Друго&gt;",
 DlgInfoTab			: "Информация",
 DlgAlertUrl			: "Моля, въведете пълния път (URL)",
 
 // General Dialogs Labels
-DlgGenNotSet		: "<не е настроен>",
+DlgGenNotSet		: "&lt;не е настроен&gt;",
 DlgGenId			: "Идентификатор",
 DlgGenLangDir		: "посока на речта",
 DlgGenLangDirLtr	: "От ляво на дясно",
@@ -220,12 +215,12 @@ DlgLnkTypeURL		: "Пълен път (URL)",
 DlgLnkTypeAnchor	: "Котва в текущата страница",
 DlgLnkTypeEMail		: "Е-поща",
 DlgLnkProto			: "Протокол",
-DlgLnkProtoOther	: "<друго>",
+DlgLnkProtoOther	: "&lt;друго&gt;",
 DlgLnkURL			: "Пълен път (URL)",
 DlgLnkAnchorSel		: "Изберете котва",
 DlgLnkAnchorByName	: "По име на котвата",
 DlgLnkAnchorById	: "По идентификатор на елемент",
-DlgLnkNoAnchors		: "<Няма котви в текущия документ>",
+DlgLnkNoAnchors		: "&lt;Няма котви в текущия документ&gt;",
 DlgLnkEMail			: "Адрес за е-поща",
 DlgLnkEMailSubject	: "Тема на писмото",
 DlgLnkEMailBody		: "Текст на писмото",
@@ -233,8 +228,8 @@ DlgLnkUpload		: "Качи",
 DlgLnkBtnUpload		: "Прати на сървъра",
 
 DlgLnkTarget		: "Цел",
-DlgLnkTargetFrame	: "<рамка>",
-DlgLnkTargetPopup	: "<дъщерен прозорец>",
+DlgLnkTargetFrame	: "&lt;рамка&gt;",
+DlgLnkTargetPopup	: "&lt;дъщерен прозорец&gt;",
 DlgLnkTargetBlank	: "Нов прозорец (_blank)",
 DlgLnkTargetParent	: "Родителски прозорец (_parent)",
 DlgLnkTargetSelf	: "Активния прозорец (_self)",
@@ -297,16 +292,16 @@ DlgCellWidthPx		: "пиксели",
 DlgCellWidthPc		: "проценти",
 DlgCellHeight		: "Височина",
 DlgCellWordWrap		: "пренасяне на нов ред",
-DlgCellWordWrapNotSet	: "<Не е настроено>",
+DlgCellWordWrapNotSet	: "&lt;Не е настроено&gt;",
 DlgCellWordWrapYes	: "Да",
 DlgCellWordWrapNo	: "не",
 DlgCellHorAlign		: "Хоризонтално подравняване",
-DlgCellHorAlignNotSet	: "<Не е настроено>",
+DlgCellHorAlignNotSet	: "&lt;Не е настроено&gt;",
 DlgCellHorAlignLeft	: "Ляво",
 DlgCellHorAlignCenter	: "Център",
 DlgCellHorAlignRight: "Дясно",
 DlgCellVerAlign		: "Вертикално подравняване",
-DlgCellVerAlignNotSet	: "<Не е настроено>",
+DlgCellVerAlignNotSet	: "&lt;Не е настроено&gt;",
 DlgCellVerAlignTop	: "Горе",
 DlgCellVerAlignMiddle	: "По средата",
 DlgCellVerAlignBottom	: "Долу",
@@ -343,6 +338,7 @@ DlgPasteMsg2	: "Вмъкнете тук съдъжанието с клавиат
 DlgPasteIgnoreFont		: "Игнорирай шрифтовите дефиниции",
 DlgPasteRemoveStyles	: "Изтрий стиловите дефиниции",
 DlgPasteCleanBox		: "Изчисти",
+
 
 // Color Picker
 ColorAutomatic	: "По подразбиране",
@@ -479,7 +475,6 @@ DlgTemplatesNoTpl	: "(Няма дефинирани шаблони)",
 // About Dialog
 DlgAboutAboutTab	: "За",
 DlgAboutBrowserInfoTab	: "Информация за браузъра",
-DlgAboutLicenseTab	: "License",	//MISSING
 DlgAboutVersion		: "версия",
 DlgAboutLicense		: "Лиценз по условията на GNU Lesser General Public License",
 DlgAboutInfo		: "За повече информация посетете"

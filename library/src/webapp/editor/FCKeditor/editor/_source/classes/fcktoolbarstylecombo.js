@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -19,7 +19,7 @@
 
 var FCKToolbarStyleCombo = function( tooltip, style )
 {
-	this.CommandName = 'Style' ;
+	this.Command	= FCKCommands.GetCommand( 'Style' ) ;
 	this.Label		= this.GetLabel() ;
 	this.Tooltip	= tooltip ? tooltip : this.Label ;
 	this.Style		= style ? style : FCK_TOOLBARITEM_ICONTEXT ;
@@ -28,7 +28,6 @@ var FCKToolbarStyleCombo = function( tooltip, style )
 // Inherit from FCKToolbarSpecialCombo.
 FCKToolbarStyleCombo.prototype = new FCKToolbarSpecialCombo ;
 
-
 FCKToolbarStyleCombo.prototype.GetLabel = function()
 {
 	return FCKLang.Style ;
@@ -36,24 +35,19 @@ FCKToolbarStyleCombo.prototype.GetLabel = function()
 
 FCKToolbarStyleCombo.prototype.CreateItems = function( targetSpecialCombo )
 {
-	var oTargetDoc = targetSpecialCombo._Panel.Document ;
-	
 	// Add the Editor Area CSS to the Styles panel so the style classes are previewed correctly.
-	var aCSSs = FCKConfig.EditorAreaCSS ;
-	for ( var i = 0 ; i < aCSSs.length ; i++ )
-		FCKTools.AppendStyleSheet( oTargetDoc, aCSSs[i] ) ;
+	FCKTools.AppendStyleSheet( targetSpecialCombo._Panel.Document, FCKConfig.EditorAreaCSS ) ;
 	
-	oTargetDoc.body.className += ' ForceBaseFont' ;
+	targetSpecialCombo._Panel.Document.body.className += ' ForceBaseFont' ;
 
 	// For some reason Gecko is blocking inside the "RefreshVisibleItems" function.
 	if ( ! FCKBrowserInfo.IsGecko )
 		targetSpecialCombo.OnBeforeClick = this.RefreshVisibleItems ;
 
 	// Add the styles to the special combo.
-	var aCommandStyles = FCK.ToolbarSet.CurrentInstance.Commands.GetCommand( this.CommandName ).Styles ;
-	for ( var s in aCommandStyles )
+	for ( var s in this.Command.Styles )
 	{
-		var oStyle = aCommandStyles[s] ;
+		var oStyle = this.Command.Styles[s] ;
 		var oItem ;
 		
 		if ( oStyle.IsObjectElement )
@@ -71,7 +65,7 @@ FCKToolbarStyleCombo.prototype.RefreshActiveItems = function( targetSpecialCombo
 	targetSpecialCombo.DeselectAll() ;
 	
 	// Get the active styles.
-	var aStyles = FCK.ToolbarSet.CurrentInstance.Commands.GetCommand( this.CommandName ).GetActiveStyles() ;
+	var aStyles = this.Command.GetActiveStyles() ;
 	
 	if ( aStyles.length > 0 )
 	{

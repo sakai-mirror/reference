@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -19,33 +19,32 @@
 
 var FCKEvents ;
 
-FCKEvents = function( eventsOwner )
+if ( !( FCKEvents = NS.FCKEvents ) )
 {
-	this.Owner = eventsOwner ;
-	this.RegisteredEvents = new Object() ;
-}
-
-FCKEvents.prototype.AttachEvent = function( eventName, functionPointer )
-{
-	var aTargets ;
-
-	if ( !( aTargets = this.RegisteredEvents[ eventName ] ) ) 
-		this.RegisteredEvents[ eventName ] = [ functionPointer ] ;
-	else
-		aTargets.push( functionPointer ) ;
-}
-
-FCKEvents.prototype.FireEvent = function( eventName, params )
-{
-	var bReturnValue = true ;
-
-	var oCalls = this.RegisteredEvents[ eventName ] ;
-
-	if ( oCalls )
+	FCKEvents = NS.FCKEvents = function( eventsOwner )
 	{
-		for ( var i = 0 ; i < oCalls.length ; i++ )
-			bReturnValue = ( oCalls[ i ]( this.Owner, params ) && bReturnValue ) ;
+		this.Owner = eventsOwner ;
+		this.RegisteredEvents = new Object() ;
 	}
 
-	return bReturnValue ;
+	FCKEvents.prototype.AttachEvent = function( eventName, functionPointer )
+	{
+		if ( ! this.RegisteredEvents[ eventName ] ) this.RegisteredEvents[ eventName ] = new Array() ;
+
+		this.RegisteredEvents[ eventName ][ this.RegisteredEvents[ eventName ].length ] = functionPointer ;
+	}
+
+	FCKEvents.prototype.FireEvent = function( eventName, params )
+	{
+		var bReturnValue = true ;
+
+		var oCalls = this.RegisteredEvents[ eventName ] ;
+		if ( oCalls )
+		{
+			for ( var i = 0 ; i < oCalls.length ; i++ )
+				bReturnValue = ( oCalls[ i ]( this.Owner, params ) && bReturnValue ) ;
+		}
+
+		return bReturnValue ;
+	}
 }

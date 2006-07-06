@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -34,7 +34,7 @@ Cut					: "גזירה",
 Copy				: "העתקה",
 Paste				: "הדבקה",
 PasteText			: "הדבקה כטקסט פשוט",
-PasteWord			: "הדבקה מ-וורד",
+PasteWord			: "הדבקה מ-Word",
 Print				: "הדפסה",
 SelectAll			: "בחירת הכל",
 RemoveFormat		: "הסרת העיצוב",
@@ -86,8 +86,8 @@ Find				: "חיפוש",
 Replace				: "החלפה",
 SpellCheck			: "בדיקת איות",
 UniversalKeyboard	: "מקלדת אוניברסלית",
-PageBreakLbl		: "שבירת דף",
-PageBreak			: "הוסף שבירת דף",
+PageBreakLbl		: "Page Break",	//MISSING
+PageBreak			: "Insert Page Break",	//MISSING
 
 Form			: "טופס",
 Checkbox		: "תיבת סימון",
@@ -99,13 +99,8 @@ Button			: "כפתור",
 SelectionField	: "שדה בחירה",
 ImageButton		: "כפתור תמונה",
 
-FitWindow		: "הגדל את גודל העורך",
-
 // Context Menu
 EditLink			: "עריכת קישור",
-CellCM				: "תא",
-RowCM				: "שורה",
-ColumnCM			: "עמודה",
 InsertRow			: "הוספת שורה",
 DeleteRows			: "מחיקת שורות",
 InsertColumn		: "הוספת עמודה",
@@ -114,7 +109,7 @@ InsertCell			: "הוספת תא",
 DeleteCells			: "מחיקת תאים",
 MergeCells			: "מיזוג תאים",
 SplitCell			: "פיצול תאים",
-TableDelete			: "מחק טבלה",
+TableDelete			: "Delete Table",	//MISSING
 CellProperties		: "תכונות התא",
 TableProperties		: "תכונות הטבלה",
 ImageProperties		: "תכונות התמונה",
@@ -136,15 +131,15 @@ FontFormats			: "נורמלי;קוד;כתובת;כותרת;כותרת 2;כותר
 // Alerts and Messages
 ProcessingXHTML		: "מעבד XHTML, נא להמתין...",
 Done				: "המשימה הושלמה",
-PasteWordConfirm	: "נראה הטקסט שבכוונתך להדביק מקורו בקובץ וורד. האם ברצונך לנקות אותו טרם ההדבקה?",
-NotCompatiblePaste	: "פעולה זו זמינה לדפדפן אינטרנט אקספלורר מגירסא 5.5 ומעלה. האם להמשיך בהדבקה ללא הניקוי?",
+PasteWordConfirm	: "נראה הטקסט שבכוונתך להדביק מקורו בקובץ Word. האם ברצונך לנקות אותו טרם ההדבקה?",
+NotCompatiblePaste	: "פעולה זו זמינה לדפדפן Internet Explorer מגירסא 5.5 ומעלה. האם להמשיך בהדבקה ללא הניקוי?",
 UnknownToolbarItem	: "פריט לא ידוע בסרגל הכלים \"%1\"",
 UnknownCommand		: "שם פעולה לא ידוע \"%1\"",
 NotImplemented		: "הפקודה לא מיושמת",
 UnknownToolbarSet	: "ערכת סרגל הכלים \"%1\" לא קיימת",
-NoActiveX			: "הגדרות אבטחה של הדפדפן עלולות לגביל את אפשרויות העריכה.יש לאפשר את האופציה \"הרץ פקדים פעילים ותוספות\". תוכל לחוות טעויות וחיווים של אפשרויות שחסרים.",
-BrowseServerBlocked : "לא ניתן לגשת לדפדפן משאבים.אנא וודא שחוסם חלונות הקופצים לא פעיל.",
-DialogBlocked		: "לא היה ניתן לפתוח חלון דיאלוג. אנא וודא שחוסם חלונות קופצים לא פעיל.",
+NoActiveX			: "You browser's security settings could limit some features of the editor. You must enable the option \"Run ActiveX controls and plug-ins\". You may experience errors and notice missing features.",	//MISSING
+BrowseServerBlocked : "The resources browser could not be opened. Make sure that all popup blockers are disabled.",	//MISSING
+DialogBlocked		: "It was not possible to open the dialog window. Make sure all popup blockers are disabled.",	//MISSING
 
 // Dialogs
 DlgBtnOK			: "אישור",
@@ -152,12 +147,12 @@ DlgBtnCancel		: "ביטול",
 DlgBtnClose			: "סגירה",
 DlgBtnBrowseServer	: "סייר השרת",
 DlgAdvancedTag		: "אפשרויות מתקדמות",
-DlgOpOther			: "<אחר>",
+DlgOpOther			: "&lt;אחר&gt;",
 DlgInfoTab			: "מידע",
 DlgAlertUrl			: "אנה הזן URL",
 
 // General Dialogs Labels
-DlgGenNotSet		: "<לא נקבע>",
+DlgGenNotSet		: "&lt;לא נקבע&gt;",
 DlgGenId			: "זיהוי (Id)",
 DlgGenLangDir		: "כיוון שפה",
 DlgGenLangDirLtr	: "שמאל לימין (LTR)",
@@ -221,12 +216,12 @@ DlgLnkTypeURL		: "כתובת (URL)",
 DlgLnkTypeAnchor	: "עוגן בעמוד זה",
 DlgLnkTypeEMail		: "דוא''ל",
 DlgLnkProto			: "פרוטוקול",
-DlgLnkProtoOther	: "<אחר>",
+DlgLnkProtoOther	: "&lt;אחר&gt;",
 DlgLnkURL			: "כתובת (URL)",
 DlgLnkAnchorSel		: "בחירת עוגן",
 DlgLnkAnchorByName	: "עפ''י שם העוגן",
 DlgLnkAnchorById	: "עפ''י זיהוי (Id) הרכיב",
-DlgLnkNoAnchors		: "<אין עוגנים זמינים בדף>",
+DlgLnkNoAnchors		: "&lt;אין עוגנים זמינים בדף&gt;",
 DlgLnkEMail			: "כתובת הדוא''ל",
 DlgLnkEMailSubject	: "נושא ההודעה",
 DlgLnkEMailBody		: "גוף ההודעה",
@@ -234,13 +229,13 @@ DlgLnkUpload		: "העלאה",
 DlgLnkBtnUpload		: "שליחה לשרת",
 
 DlgLnkTarget		: "מטרה",
-DlgLnkTargetFrame	: "<מסגרת>",
-DlgLnkTargetPopup	: "<חלון קופץ>",
+DlgLnkTargetFrame	: "&lt;frame&gt;",
+DlgLnkTargetPopup	: "&lt;חלון קופץ&gt;",
 DlgLnkTargetBlank	: "חלון חדש (_blank)",
 DlgLnkTargetParent	: "חלון האב (_parent)",
 DlgLnkTargetSelf	: "באותו החלון (_self)",
 DlgLnkTargetTop		: "חלון ראשי (_top)",
-DlgLnkTargetFrameName	: "שם מסגרת היעד",
+DlgLnkTargetFrameName	: "שם frame היעד",
 DlgLnkPopWinName	: "שם החלון הקופץ",
 DlgLnkPopWinFeat	: "תכונות החלון הקופץ",
 DlgLnkPopResize		: "בעל גודל ניתן לשינוי",
@@ -289,7 +284,7 @@ DlgTableHeight		: "גובה",
 DlgTableCellSpace	: "מרווח תא",
 DlgTableCellPad		: "ריפוד תא",
 DlgTableCaption		: "כיתוב",
-DlgTableSummary		: "סיכום",
+DlgTableSummary		: "Summary",	//MISSING
 
 // Table Cell Dialog
 DlgCellTitle		: "תכונות תא",
@@ -338,12 +333,13 @@ PasteErrorCut	: "הגדרות האבטחה בדפדפן שלך לא מאפשרו
 PasteErrorCopy	: "הגדרות האבטחה בדפדפן שלך לא מאפשרות לעורך לבצע פעולות העתקה אוטומטיות. יש להשתמש במקלדת לשם כך (Ctrl+C).",
 
 PasteAsText		: "הדבקה כטקסט פשוט",
-PasteFromWord	: "הדבקה מ-וורד",
+PasteFromWord	: "הדבקה מ-Word",
 
-DlgPasteMsg2	: "אנא הדבק בתוך הקופסה באמצעות  (<STRONG>Ctrl+V</STRONG>) ולחץ על  <STRONG>אישור</STRONG>.",
+DlgPasteMsg2	: "Please paste inside the following box using the keyboard (<STRONG>Ctrl+V</STRONG>) and hit <STRONG>OK</STRONG>.",
 DlgPasteIgnoreFont		: "התעלם מהגדרות סוג פונט",
 DlgPasteRemoveStyles	: "הסר הגדרות סגנון",
-DlgPasteCleanBox		: "ניקוי קופסה",
+DlgPasteCleanBox		: "קופסת ניקוי",
+
 
 // Color Picker
 ColorAutomatic	: "אוטומטי",
@@ -364,7 +360,7 @@ DlgSpellBtnIgnore		: "התעלם",
 DlgSpellBtnIgnoreAll	: "התעלם מהכל",
 DlgSpellBtnReplace		: "החלף",
 DlgSpellBtnReplaceAll	: "החלף הכל",
-DlgSpellBtnUndo			: "החזר",
+DlgSpellBtnUndo			: "Undo",
 DlgSpellNoSuggestions	: "- אין הצעות -",
 DlgSpellProgress		: "בדיקות איות בתהליך ....",
 DlgSpellNoMispell		: "בדיקות איות הסתיימה: לא נמצאו שגיעות כתיב",
@@ -427,7 +423,7 @@ BulletedListProp	: "מאפייני רשימה",
 NumberedListProp	: "מאפייני רשימה ממוספרת",
 DlgLstType			: "סוג",
 DlgLstTypeCircle	: "עיגול",
-DlgLstTypeDisc		: "דיסק",
+DlgLstTypeDisc		: "Disc",	//MISSING
 DlgLstTypeSquare	: "מרובע",
 DlgLstTypeNumbers	: "מספרים (1, 2, 3)",
 DlgLstTypeLCase		: "אותיות קטנות (a, b, c)",
@@ -480,7 +476,6 @@ DlgTemplatesNoTpl	: "(לא הוגדרו תבניות)",
 // About Dialog
 DlgAboutAboutTab	: "אודות",
 DlgAboutBrowserInfoTab	: "גירסת דפדפן",
-DlgAboutLicenseTab	: "רשיון",
 DlgAboutVersion		: "גירסא",
 DlgAboutLicense		: "ברשיון תחת תנאי GNU Lesser General Public License",
 DlgAboutInfo		: "מידע נוסף ניתן למצוא כאן:"

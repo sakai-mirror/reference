@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -98,13 +98,8 @@ Button			: "Knapp",
 SelectionField	: "Dropdown meny",
 ImageButton		: "Bildeknapp",
 
-FitWindow		: "Maksimer størrelsen på redigeringsverktøyet",
-
 // Context Menu
 EditLink			: "Rediger lenke",
-CellCM				: "Celle",
-RowCM				: "Rader",
-ColumnCM			: "Kolonne",
 InsertRow			: "Sett inn rad",
 DeleteRows			: "Slett rader",
 InsertColumn		: "Sett inn kolonne",
@@ -151,12 +146,12 @@ DlgBtnCancel		: "Avbryt",
 DlgBtnClose			: "Lukk",
 DlgBtnBrowseServer	: "Bla igjennom server",
 DlgAdvancedTag		: "Avansert",
-DlgOpOther			: "<Annet>",
+DlgOpOther			: "&lt;Annet&gt;",
 DlgInfoTab			: "Info",
 DlgAlertUrl			: "Vennligst skriv inn URL'en",
 
 // General Dialogs Labels
-DlgGenNotSet		: "<ikke satt>",
+DlgGenNotSet		: "&lt;ikke satt&gt;",
 DlgGenId			: "Id",
 DlgGenLangDir		: "Språkretning",
 DlgGenLangDirLtr	: "Venstre til høyre (VTH)",
@@ -220,12 +215,12 @@ DlgLnkTypeURL		: "URL",
 DlgLnkTypeAnchor	: "Bokmerk denne siden",
 DlgLnkTypeEMail		: "E-Post",
 DlgLnkProto			: "Protokoll",
-DlgLnkProtoOther	: "<annet>",
+DlgLnkProtoOther	: "&lt;annet&gt;",
 DlgLnkURL			: "URL",
 DlgLnkAnchorSel		: "Velg ett anker",
 DlgLnkAnchorByName	: "Anker etter navn",
 DlgLnkAnchorById	: "Element etter ID",
-DlgLnkNoAnchors		: "<Ingen anker i dokumentet>",
+DlgLnkNoAnchors		: "&lt;Ingen anker i dokumentet&gt;",
 DlgLnkEMail			: "E-Post Addresse",
 DlgLnkEMailSubject	: "Meldingsemne",
 DlgLnkEMailBody		: "Melding",
@@ -233,8 +228,8 @@ DlgLnkUpload		: "Last opp",
 DlgLnkBtnUpload		: "Send til server",
 
 DlgLnkTarget		: "Mål",
-DlgLnkTargetFrame	: "<ramme>",
-DlgLnkTargetPopup	: "<popup vindu>",
+DlgLnkTargetFrame	: "&lt;ramme&gt;",
+DlgLnkTargetPopup	: "&lt;popup vindu&gt;",
 DlgLnkTargetBlank	: "Nytt vindu (_blank)",
 DlgLnkTargetParent	: "Foreldre vindu (_parent)",
 DlgLnkTargetSelf	: "Samme vindu (_self)",
@@ -343,6 +338,7 @@ DlgPasteMsg2	: "Vennligst lim inn i den følgende boksen med tastaturet (<STRONG
 DlgPasteIgnoreFont		: "Ignorer fonter",
 DlgPasteRemoveStyles	: "Fjern stildefinisjoner",
 DlgPasteCleanBox		: "Tøm boksen",
+
 
 // Color Picker
 ColorAutomatic	: "Automatisk",
@@ -479,8 +475,7 @@ DlgTemplatesNoTpl	: "(Ingen maler definert)",
 // About Dialog
 DlgAboutAboutTab	: "Om",
 DlgAboutBrowserInfoTab	: "Nettleserinfo",
-DlgAboutLicenseTab	: "Lisens",
 DlgAboutVersion		: "versjon",
 DlgAboutLicense		: "Lisensiert under GNU Lesser General Public License",
-DlgAboutInfo		: "Oversatt av Siteman AS<br /><a target=\"_blank\" href=\"http://www.siteman.no\">www.siteman.no</a><br /><br />For mer informasjon gå til"
+DlgAboutInfo		: "Oversatt av Siteman DA<br /><a target=\"_blank\" href=\"http://www.siteman.no\">www.siteman.no</a><br /><br />For mer informasjon gå til"
 }

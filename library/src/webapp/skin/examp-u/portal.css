@@ -40,9 +40,11 @@ body{
 	color: #CBCC03;
 	text-align: right;
 	padding:0 .5em 0 0;
-	border-right:1px solid #004D73
+	border-right:2px solid #fff
 }
-
+#toolMenuWrap:hover{
+	border-right:2px solid #cbcc03
+}
 /*wrapper for site content (portlets) -  children can be #col1 or #col1of2 and #col2of2 depending in the number of columns*/
 #content{
 	padding: 0;
@@ -96,7 +98,7 @@ body{
 /*outer wrapper for contents of site navigation document that is displayed inside of the site navigation iframe
 TODO:get it and its children onto main document. Children are #mastHead,#tabNavWrap*/
 #siteNavWrapper{
-	margin: 0; /*float:right*/
+	margin: 0;
 }
 
 /*wrapper for mast head elements - children are 3 blocks - #mastLogo,#mastBanner,#mastLogin*/
@@ -165,20 +167,20 @@ that can be used or hidden,can also use a background:url(images/<image name>.<ex
 #eid{
 	border: 1px solid #aaa;
 	padding: 3px;
-	margin-left: .5em;
 	width: 7em;
 }
 
 #pw{
 	border: 1px solid #aaa;
 	padding: 3px;
-	margin-left: .5em;
 	width: 7em;
 }
-
+#eid:focus,#pw:focus{
+	border: 1px solid #069;
+}
 #loginForm label{
 	color: #000;
-	padding-right:1em
+	padding-right:.5em;
 }
 
 #submit{
@@ -228,8 +230,6 @@ so for example <div class="tabHolder workspace"> so that different site types ca
 /*wrapper for the site link list   - the #siteLinkList child)*/
 #linkNav{
 	padding: 0;
-}
-* html body  #linkNav{
 }
 /*wrapper for the site <select> that is displayed when more than x sites are in the link list*/
 #selectNav{
@@ -312,9 +312,6 @@ so for example <div class="tabHolder workspace"> so that different site types ca
 	margin: 1em 0 0 0;
 	font-size: 80%;
 	color: #000;
-/*	clear: both;*/
-	background: inherit;
-
 }
 
 #toolMenu ul{
@@ -334,12 +331,8 @@ so for example <div class="tabHolder workspace"> so that different site types ca
 }
 
 /*span shim for fine grained manipulation of link display (decorative)
-also hide if are going to be using icon links (as background of <a> nad <li>
 */
-
 #toolMenu li span{
-/*comment this line for a return to sanity
-display:none*/
 }
 
 

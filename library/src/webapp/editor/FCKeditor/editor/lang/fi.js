@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -98,13 +98,8 @@ Button			: "Painike",
 SelectionField	: "Valintakenttä",
 ImageButton		: "Kuvapainike",
 
-FitWindow		: "Suurenna editori koko ikkunaan",
-
 // Context Menu
 EditLink			: "Muokkaa linkkiä",
-CellCM				: "Solu",
-RowCM				: "Rivi",
-ColumnCM			: "Sarake",
 InsertRow			: "Lisää rivi",
 DeleteRows			: "Poista rivit",
 InsertColumn		: "Lisää sarake",
@@ -156,7 +151,7 @@ DlgInfoTab			: "Info",
 DlgAlertUrl			: "Lisää URL",
 
 // General Dialogs Labels
-DlgGenNotSet		: "<ei asetettu>",
+DlgGenNotSet		: "&lt;ei asetettu&gt;",
 DlgGenId			: "Tunniste",
 DlgGenLangDir		: "Kielen suunta",
 DlgGenLangDirLtr	: "Vasemmalta oikealle (LTR)",
@@ -220,12 +215,12 @@ DlgLnkTypeURL		: "Osoite",
 DlgLnkTypeAnchor	: "Ankkuri tässä sivussa",
 DlgLnkTypeEMail		: "Sähköposti",
 DlgLnkProto			: "Protokolla",
-DlgLnkProtoOther	: "<muu>",
+DlgLnkProtoOther	: "&lt;muu&gt;",
 DlgLnkURL			: "Osoite",
 DlgLnkAnchorSel		: "Valitse ankkuri",
 DlgLnkAnchorByName	: "Ankkurin nimen mukaan",
 DlgLnkAnchorById	: "Ankkurin ID:n mukaan",
-DlgLnkNoAnchors		: "<Ei ankkureita tässä dokumentissa>",
+DlgLnkNoAnchors		: "&lt;Ei ankkureita tässä dokumentissa&gt;",
 DlgLnkEMail			: "Sähköpostiosoite",
 DlgLnkEMailSubject	: "Aihe",
 DlgLnkEMailBody		: "Viesti",
@@ -233,8 +228,8 @@ DlgLnkUpload		: "Lisää tiedosto",
 DlgLnkBtnUpload		: "Lähetä palvelimelle",
 
 DlgLnkTarget		: "Kohde",
-DlgLnkTargetFrame	: "<kehys>",
-DlgLnkTargetPopup	: "<popup ikkuna>",
+DlgLnkTargetFrame	: "&lt;kehys&gt;",
+DlgLnkTargetPopup	: "&lt;popup ikkuna&gt;",
 DlgLnkTargetBlank	: "Uusi ikkuna (_blank)",
 DlgLnkTargetParent	: "Emoikkuna (_parent)",
 DlgLnkTargetSelf	: "Sama ikkuna (_self)",
@@ -343,6 +338,7 @@ DlgPasteMsg2	: "Liitä painamalla (<STRONG>Ctrl+V</STRONG>) ja painamalla <STRON
 DlgPasteIgnoreFont		: "Jätä huomioimatta fonttimääritykset",
 DlgPasteRemoveStyles	: "Poista tyylimääritykset",
 DlgPasteCleanBox		: "Tyhjennä",
+
 
 // Color Picker
 ColorAutomatic	: "Automaattinen",
@@ -479,7 +475,6 @@ DlgTemplatesNoTpl	: "(Ei määriteltyjä pohjia)",
 // About Dialog
 DlgAboutAboutTab	: "Editorista",
 DlgAboutBrowserInfoTab	: "Selaimen tiedot",
-DlgAboutLicenseTab	: "Lisenssi",
 DlgAboutVersion		: "versio",
 DlgAboutLicense		: "Lisenssi: GNU Lesser General Public License",
 DlgAboutInfo		: "Lisää tietoa osoitteesta"

@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -98,13 +98,8 @@ Button			: "Butang",
 SelectionField	: "Field Pilihan",
 ImageButton		: "Butang Bergambar",
 
-FitWindow		: "Maximize the editor size",	//MISSING
-
 // Context Menu
 EditLink			: "Sunting Sambungan",
-CellCM				: "Cell",	//MISSING
-RowCM				: "Row",	//MISSING
-ColumnCM			: "Column",	//MISSING
 InsertRow			: "Masukkan Baris",
 DeleteRows			: "Buangkan Baris",
 InsertColumn		: "Masukkan Lajur",
@@ -141,7 +136,7 @@ UnknownToolbarItem	: "Toolbar item tidak diketahui\"%1\"",
 UnknownCommand		: "Arahan tidak diketahui \"%1\"",
 NotImplemented		: "Arahan tidak terdapat didalam sistem",
 UnknownToolbarSet	: "Set toolbar \"%1\" tidak wujud",
-NoActiveX			: "Your browser's security settings could limit some features of the editor. You must enable the option \"Run ActiveX controls and plug-ins\". You may experience errors and notice missing features.",	//MISSING
+NoActiveX			: "You browser's security settings could limit some features of the editor. You must enable the option \"Run ActiveX controls and plug-ins\". You may experience errors and notice missing features.",	//MISSING
 BrowseServerBlocked : "The resources browser could not be opened. Make sure that all popup blockers are disabled.",	//MISSING
 DialogBlocked		: "It was not possible to open the dialog window. Make sure all popup blockers are disabled.",	//MISSING
 
@@ -151,12 +146,12 @@ DlgBtnCancel		: "Batal",
 DlgBtnClose			: "Tutup",
 DlgBtnBrowseServer	: "Browse Server",
 DlgAdvancedTag		: "Advanced",
-DlgOpOther			: "<Lain-lain>",
+DlgOpOther			: "&lt;Lain-lain&gt;",
 DlgInfoTab			: "Info",	//MISSING
 DlgAlertUrl			: "Please insert the URL",	//MISSING
 
 // General Dialogs Labels
-DlgGenNotSet		: "<tidak di set>",
+DlgGenNotSet		: "&lt;tidak di set&gt;",
 DlgGenId			: "Id",
 DlgGenLangDir		: "Arah Tulisan",
 DlgGenLangDirLtr	: "Kiri ke Kanan (LTR)",
@@ -220,12 +215,12 @@ DlgLnkTypeURL		: "URL",
 DlgLnkTypeAnchor	: "Pautan dalam muka surat ini",
 DlgLnkTypeEMail		: "E-Mail",
 DlgLnkProto			: "Protokol",
-DlgLnkProtoOther	: "<lain-lain>",
+DlgLnkProtoOther	: "&lt;lain-lain&gt;",
 DlgLnkURL			: "URL",
 DlgLnkAnchorSel		: "Sila pilih pautan",
 DlgLnkAnchorByName	: "dengan menggunakan nama pautan",
 DlgLnkAnchorById	: "dengan menggunakan ID elemen",
-DlgLnkNoAnchors		: "<Tiada pautan terdapat dalam dokumen ini>",
+DlgLnkNoAnchors		: "&lt;Tiada pautan terdapat dalam dokumen ini&gt;",
 DlgLnkEMail			: "Alamat E-Mail",
 DlgLnkEMailSubject	: "Subjek Mesej",
 DlgLnkEMailBody		: "Isi Kandungan Mesej",
@@ -233,8 +228,8 @@ DlgLnkUpload		: "Muat Naik",
 DlgLnkBtnUpload		: "Hantar ke Server",
 
 DlgLnkTarget		: "Sasaran",
-DlgLnkTargetFrame	: "<bingkai>",
-DlgLnkTargetPopup	: "<tetingkap popup>",
+DlgLnkTargetFrame	: "&lt;bingkai&gt;",
+DlgLnkTargetPopup	: "&lt;tetingkap popup&gt;",
 DlgLnkTargetBlank	: "Tetingkap Baru (_blank)",
 DlgLnkTargetParent	: "Tetingkap Parent (_parent)",
 DlgLnkTargetSelf	: "Tetingkap yang Sama (_self)",
@@ -297,16 +292,16 @@ DlgCellWidthPx		: "piksel-piksel",
 DlgCellWidthPc		: "peratus",
 DlgCellHeight		: "Tinggi",
 DlgCellWordWrap		: "Mengulung Perkataan",
-DlgCellWordWrapNotSet	: "<Tidak diset>",
+DlgCellWordWrapNotSet	: "&lt;Tidak diset&gt;",
 DlgCellWordWrapYes	: "Ya",
 DlgCellWordWrapNo	: "Tidak",
 DlgCellHorAlign		: "Jajaran Membujur",
-DlgCellHorAlignNotSet	: "<Tidak diset>",
+DlgCellHorAlignNotSet	: "&lt;Tidak diset&gt;",
 DlgCellHorAlignLeft	: "Kiri",
 DlgCellHorAlignCenter	: "Tengah",
 DlgCellHorAlignRight: "Kanan",
 DlgCellVerAlign		: "Jajaran Menegak",
-DlgCellVerAlignNotSet	: "<Tidak diset>",
+DlgCellVerAlignNotSet	: "&lt;Tidak diset&gt;",
 DlgCellVerAlignTop	: "Atas",
 DlgCellVerAlignMiddle	: "Tengah",
 DlgCellVerAlignBottom	: "Bawah",
@@ -343,6 +338,7 @@ DlgPasteMsg2	: "Please paste inside the following box using the keyboard (<STRON
 DlgPasteIgnoreFont		: "Ignore Font Face definitions",	//MISSING
 DlgPasteRemoveStyles	: "Remove Styles definitions",	//MISSING
 DlgPasteCleanBox		: "Clean Up Box",	//MISSING
+
 
 // Color Picker
 ColorAutomatic	: "Otomatik",
@@ -479,7 +475,6 @@ DlgTemplatesNoTpl	: "(Tiada Templat Disimpan)",
 // About Dialog
 DlgAboutAboutTab	: "Tentang",
 DlgAboutBrowserInfoTab	: "Maklumat Perisian Browser",
-DlgAboutLicenseTab	: "License",	//MISSING
 DlgAboutVersion		: "versi",
 DlgAboutLicense		: "Perlesenan dibawah terma GNU Lesser General Public License",
 DlgAboutInfo		: "Untuk maklumat lanjut sila pergi ke"

@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -85,8 +85,8 @@ Find				: "Найти",
 Replace				: "Заменить",
 SpellCheck			: "Проверить орфографию",
 UniversalKeyboard	: "Универсальная клавиатура",
-PageBreakLbl		: "Разрыв страницы",
-PageBreak			: "Вставить разрыв страницы",
+PageBreakLbl		: "Page Break",	//MISSING
+PageBreak			: "Insert Page Break",	//MISSING
 
 Form			: "Форма",
 Checkbox		: "Флаговая кнопка",
@@ -98,13 +98,8 @@ Button			: "Кнопка",
 SelectionField	: "Список",
 ImageButton		: "Кнопка с изображением",
 
-FitWindow		: "Maximize the editor size",	//MISSING
-
 // Context Menu
 EditLink			: "Вставить ссылку",
-CellCM				: "Cell",	//MISSING
-RowCM				: "Row",	//MISSING
-ColumnCM			: "Column",	//MISSING
 InsertRow			: "Вставить строку",
 DeleteRows			: "Удалить строки",
 InsertColumn		: "Вставить колонку",
@@ -113,7 +108,7 @@ InsertCell			: "Вставить ячейку",
 DeleteCells			: "Удалить ячейки",
 MergeCells			: "Соединить ячейки",
 SplitCell			: "Разбить ячейку",
-TableDelete			: "Удалить таблицу",
+TableDelete			: "Delete Table",	//MISSING
 CellProperties		: "Свойства ячейки",
 TableProperties		: "Свойства таблицы",
 ImageProperties		: "Свойства изображения",
@@ -130,7 +125,7 @@ SelectionFieldProp	: "Свойства списка",
 TextareaProp		: "Свойства текстовой области",
 FormProp			: "Свойства формы",
 
-FontFormats			: "Нормальный;Форматированный;Адрес;Заголовок 1;Заголовок 2;Заголовок 3;Заголовок 4;Заголовок 5;Заголовок 6;Нормальный (DIV)",
+FontFormats			: "Нормальный;Форматированный;Адрес;Заголовок 1;Заголовок 2;Заголовок 3;Заголовок 4;Заголовок 5;Заголовок 6",
 
 // Alerts and Messages
 ProcessingXHTML		: "Обработка XHTML. Пожалуйста подождите...",
@@ -141,9 +136,9 @@ UnknownToolbarItem	: "Не известный элемент панели инс
 UnknownCommand		: "Не известное имя команды \"%1\"",
 NotImplemented		: "Команда не реализована",
 UnknownToolbarSet	: "Панель инструментов \"%1\" не существует",
-NoActiveX			: "Настройки безопасности вашего браузера могут ограничивать некоторые свойства редактора. Вы должны включить опцию \"Запускать элементы управления ActiveX и плугины\". Вы можете видеть ошибки и замечать отсутствие возможностей.",
-BrowseServerBlocked : "Ресурсы браузера не могут быть открыты. Проверьте что блокировки всплывающих окон выключены.",
-DialogBlocked		: "Не возможно открыть окно диалога. Проверьте что блокировки всплывающих окон выключены.",
+NoActiveX			: "You browser's security settings could limit some features of the editor. You must enable the option \"Run ActiveX controls and plug-ins\". You may experience errors and notice missing features.",	//MISSING
+BrowseServerBlocked : "The resources browser could not be opened. Make sure that all popup blockers are disabled.",	//MISSING
+DialogBlocked		: "It was not possible to open the dialog window. Make sure all popup blockers are disabled.",	//MISSING
 
 // Dialogs
 DlgBtnOK			: "ОК",
@@ -151,12 +146,12 @@ DlgBtnCancel		: "Отмена",
 DlgBtnClose			: "Закрыть",
 DlgBtnBrowseServer	: "Просмотреть на сервере",
 DlgAdvancedTag		: "Расширенный",
-DlgOpOther			: "<Другое>",
+DlgOpOther			: "&lt;Другое&gt;",
 DlgInfoTab			: "Информация",
 DlgAlertUrl			: "Пожалуйста вставьте URL",
 
 // General Dialogs Labels
-DlgGenNotSet		: "<не определено>",
+DlgGenNotSet		: "&lt;не определено&gt;",
 DlgGenId			: "Идентификатор",
 DlgGenLangDir		: "Направление языка",
 DlgGenLangDirLtr	: "Слева на право (LTR)",
@@ -220,12 +215,12 @@ DlgLnkTypeURL		: "URL",
 DlgLnkTypeAnchor	: "Якорь на эту страницу",
 DlgLnkTypeEMail		: "Эл. почта",
 DlgLnkProto			: "Протокол",
-DlgLnkProtoOther	: "<другое>",
+DlgLnkProtoOther	: "&lt;другое&gt;",
 DlgLnkURL			: "URL",
 DlgLnkAnchorSel		: "Выберите якорь",
 DlgLnkAnchorByName	: "По имени якоря",
 DlgLnkAnchorById	: "По идентификатору элемента",
-DlgLnkNoAnchors		: "<Нет якорей доступных в этом документе>",
+DlgLnkNoAnchors		: "&lt;Нет якорей доступных в этом документе&gt;",
 DlgLnkEMail			: "Адрес эл. почты",
 DlgLnkEMailSubject	: "Заголовок сообщения",
 DlgLnkEMailBody		: "Тело сообщения",
@@ -233,8 +228,8 @@ DlgLnkUpload		: "Закачать",
 DlgLnkBtnUpload		: "Послать на сервер",
 
 DlgLnkTarget		: "Цель",
-DlgLnkTargetFrame	: "<фрейм>",
-DlgLnkTargetPopup	: "<всплывающее окно>",
+DlgLnkTargetFrame	: "&lt;фрейм&gt;",
+DlgLnkTargetPopup	: "&lt;всплывающее окно&gt;",
 DlgLnkTargetBlank	: "Новое окно (_blank)",
 DlgLnkTargetParent	: "Родительское окно (_parent)",
 DlgLnkTargetSelf	: "Тоже окно (_self)",
@@ -288,7 +283,7 @@ DlgTableHeight		: "Высота",
 DlgTableCellSpace	: "Промежуток (spacing)",
 DlgTableCellPad		: "Отступ (padding)",
 DlgTableCaption		: "Заголовок",
-DlgTableSummary		: "Резюме",
+DlgTableSummary		: "Summary",	//MISSING
 
 // Table Cell Dialog
 DlgCellTitle		: "Свойства ячейки",
@@ -343,6 +338,7 @@ DlgPasteMsg2	: "Пожалуйста вставьте текст в прямоу
 DlgPasteIgnoreFont		: "Игнорировать определения гарнитуры",
 DlgPasteRemoveStyles	: "Убрать определения стилей",
 DlgPasteCleanBox		: "Очистить",
+
 
 // Color Picker
 ColorAutomatic	: "Автоматический",
@@ -426,7 +422,7 @@ BulletedListProp	: "Свойства маркированного списка",
 NumberedListProp	: "Свойства нумерованного списка",
 DlgLstType			: "Тип",
 DlgLstTypeCircle	: "Круг",
-DlgLstTypeDisc		: "Диск",
+DlgLstTypeDisc		: "Disc",	//MISSING
 DlgLstTypeSquare	: "Квадрат",
 DlgLstTypeNumbers	: "Номера (1, 2, 3)",
 DlgLstTypeLCase		: "Буквы нижнего регистра (a, b, c)",
@@ -479,7 +475,6 @@ DlgTemplatesNoTpl	: "(Ни одного шаблона не определено
 // About Dialog
 DlgAboutAboutTab	: "О программе",
 DlgAboutBrowserInfoTab	: "Информация браузера",
-DlgAboutLicenseTab	: "License",	//MISSING
 DlgAboutVersion		: "Версия",
 DlgAboutLicense		: "Лицензировано в соответствии с условиями GNU Lesser General Public License",
 DlgAboutInfo		: "Для большей информации, посетите"

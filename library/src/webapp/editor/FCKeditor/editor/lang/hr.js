@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -80,13 +80,13 @@ Font				: "Font",
 FontSize			: "Veličina",
 TextColor			: "Boja teksta",
 BGColor				: "Boja pozadine",
-Source				: "Kôd",
+Source				: "K&ocirc;d",
 Find				: "Pronađi",
 Replace				: "Zamijeni",
 SpellCheck			: "Provjeri pravopis",
 UniversalKeyboard	: "Univerzalna tipkovnica",
-PageBreakLbl		: "Prijelom stranice",
-PageBreak			: "Ubaci prijelom stranice",
+PageBreakLbl		: "Page Break",	//MISSING
+PageBreak			: "Insert Page Break",	//MISSING
 
 Form			: "Form",
 Checkbox		: "Checkbox",
@@ -98,13 +98,8 @@ Button			: "Button",
 SelectionField	: "Selection Field",
 ImageButton		: "Image Button",
 
-FitWindow		: "Maximize the editor size",	//MISSING
-
 // Context Menu
 EditLink			: "Promijeni link",
-CellCM				: "Cell",	//MISSING
-RowCM				: "Row",	//MISSING
-ColumnCM			: "Column",	//MISSING
 InsertRow			: "Ubaci red",
 DeleteRows			: "Izbriši redove",
 InsertColumn		: "Ubaci kolonu",
@@ -113,7 +108,7 @@ InsertCell			: "Ubaci ćelije",
 DeleteCells			: "Izbriši ćelije",
 MergeCells			: "Spoji ćelije",
 SplitCell			: "Razdvoji ćelije",
-TableDelete			: "Izbriši tablicu",
+TableDelete			: "Delete Table",	//MISSING
 CellProperties		: "Svojstva ćelije",
 TableProperties		: "Svojstva tablice",
 ImageProperties		: "Svojstva slike",
@@ -141,9 +136,9 @@ UnknownToolbarItem	: "Nepoznati član trake s alatima \"%1\"",
 UnknownCommand		: "Nepoznata naredba \"%1\"",
 NotImplemented		: "Naredba nije implementirana",
 UnknownToolbarSet	: "Traka s alatima \"%1\" ne postoji",
-NoActiveX			: "Vaše postavke pretraživača mogle bi ograničiti neke od mogućnosti editora. Morate uključiti opciju \"Run ActiveX controls and plug-ins\" u postavkama. Ukoliko to ne učinite, moguće su razliite greške tijekom rada.",
-BrowseServerBlocked : "Pretraivač nije moguće otvoriti. Provjerite da li je uključeno blokiranje pop-up prozora.",
-DialogBlocked		: "Nije moguće otvoriti novi prozor. Provjerite da li je uključeno blokiranje pop-up prozora.",
+NoActiveX			: "You browser's security settings could limit some features of the editor. You must enable the option \"Run ActiveX controls and plug-ins\". You may experience errors and notice missing features.",	//MISSING
+BrowseServerBlocked : "The resources browser could not be opened. Make sure that all popup blockers are disabled.",	//MISSING
+DialogBlocked		: "It was not possible to open the dialog window. Make sure all popup blockers are disabled.",	//MISSING
 
 // Dialogs
 DlgBtnOK			: "OK",
@@ -151,17 +146,17 @@ DlgBtnCancel		: "Poništi",
 DlgBtnClose			: "Zatvori",
 DlgBtnBrowseServer	: "Pretraži server",
 DlgAdvancedTag		: "Napredno",
-DlgOpOther			: "<Drugo>",
+DlgOpOther			: "&lt;Drugo&gt;",
 DlgInfoTab			: "Info",
 DlgAlertUrl			: "Molimo unesite URL",
 
 // General Dialogs Labels
-DlgGenNotSet		: "<nije postavljeno>",
+DlgGenNotSet		: "&lt;nije postavljeno&gt;",
 DlgGenId			: "Id",
 DlgGenLangDir		: "Smjer jezika",
 DlgGenLangDirLtr	: "S lijeva na desno (LTR)",
 DlgGenLangDirRtl	: "S desna na lijevo (RTL)",
-DlgGenLangCode		: "Kôd jezika",
+DlgGenLangCode		: "K&ocirc;d jezika",
 DlgGenAccessKey		: "Pristupna tipka",
 DlgGenName			: "Naziv",
 DlgGenTabIndex		: "Tab Indeks",
@@ -220,12 +215,12 @@ DlgLnkTypeURL		: "URL",
 DlgLnkTypeAnchor	: "Sidro na ovoj stranici",
 DlgLnkTypeEMail		: "E-Mail",
 DlgLnkProto			: "Protokol",
-DlgLnkProtoOther	: "<drugo>",
+DlgLnkProtoOther	: "&lt;drugo&gt;",
 DlgLnkURL			: "URL",
 DlgLnkAnchorSel		: "Odaberi sidro",
 DlgLnkAnchorByName	: "Po nazivu sidra",
 DlgLnkAnchorById	: "Po Id elementa",
-DlgLnkNoAnchors		: "<Nema dostupnih sidra>",
+DlgLnkNoAnchors		: "&lt;Nema dostupnih sidra&gt;",
 DlgLnkEMail			: "E-Mail adresa",
 DlgLnkEMailSubject	: "Naslov",
 DlgLnkEMailBody		: "Sadržaj poruke",
@@ -233,8 +228,8 @@ DlgLnkUpload		: "Pošalji",
 DlgLnkBtnUpload		: "Pošalji na server",
 
 DlgLnkTarget		: "Meta",
-DlgLnkTargetFrame	: "<okvir>",
-DlgLnkTargetPopup	: "<popup prozor>",
+DlgLnkTargetFrame	: "&lt;okvir&gt;",
+DlgLnkTargetPopup	: "&lt;popup prozor&gt;",
 DlgLnkTargetBlank	: "Novi prozor (_blank)",
 DlgLnkTargetParent	: "Roditeljski prozor (_parent)",
 DlgLnkTargetSelf	: "Isti prozor (_self)",
@@ -277,7 +272,7 @@ DlgTableRows		: "Redova",
 DlgTableColumns		: "Kolona",
 DlgTableBorder		: "Veličina okvira",
 DlgTableAlign		: "Poravnanje",
-DlgTableAlignNotSet	: "<nije postavljeno>",
+DlgTableAlignNotSet	: "&lt;nije postavljeno&gt;",
 DlgTableAlignLeft	: "Lijevo",
 DlgTableAlignCenter	: "Središnje",
 DlgTableAlignRight	: "Desno",
@@ -288,7 +283,7 @@ DlgTableHeight		: "Visina",
 DlgTableCellSpace	: "Prostornost ćelija",
 DlgTableCellPad		: "Razmak ćelija",
 DlgTableCaption		: "Naslov",
-DlgTableSummary		: "Sažetak",
+DlgTableSummary		: "Summary",	//MISSING
 
 // Table Cell Dialog
 DlgCellTitle		: "Svojstva ćelije",
@@ -297,16 +292,16 @@ DlgCellWidthPx		: "piksela",
 DlgCellWidthPc		: "postotaka",
 DlgCellHeight		: "Visina",
 DlgCellWordWrap		: "Word Wrap",
-DlgCellWordWrapNotSet	: "<nije postavljeno>",
+DlgCellWordWrapNotSet	: "&lt;nije postavljeno&gt;",
 DlgCellWordWrapYes	: "Da",
 DlgCellWordWrapNo	: "Ne",
 DlgCellHorAlign		: "Vodoravno poravnanje",
-DlgCellHorAlignNotSet	: "<nije postavljeno>",
+DlgCellHorAlignNotSet	: "&lt;nije postavljeno&gt;",
 DlgCellHorAlignLeft	: "Lijevo",
 DlgCellHorAlignCenter	: "Središnje",
 DlgCellHorAlignRight: "Desno",
 DlgCellVerAlign		: "Okomito poravnanje",
-DlgCellVerAlignNotSet	: "<nije postavljeno>",
+DlgCellVerAlignNotSet	: "&lt;nije postavljeno&gt;",
 DlgCellVerAlignTop	: "Gornje",
 DlgCellVerAlignMiddle	: "Srednišnje",
 DlgCellVerAlignBottom	: "Donje",
@@ -343,6 +338,7 @@ DlgPasteMsg2	: "Molimo zaljepite unutar doljnjeg okvira koristeći tipkovnicu (<
 DlgPasteIgnoreFont		: "Zanemari definiciju vrste fonta",
 DlgPasteRemoveStyles	: "Ukloni definicije stilova",
 DlgPasteCleanBox		: "Očisti okvir",
+
 
 // Color Picker
 ColorAutomatic	: "Automatski",
@@ -426,7 +422,7 @@ BulletedListProp	: "Svojstva liste",
 NumberedListProp	: "Svojstva brojčane liste",
 DlgLstType			: "Vrsta",
 DlgLstTypeCircle	: "Krug",
-DlgLstTypeDisc		: "Disk",
+DlgLstTypeDisc		: "Disc",	//MISSING
 DlgLstTypeSquare	: "Kvadrat",
 DlgLstTypeNumbers	: "Brojevi (1, 2, 3)",
 DlgLstTypeLCase		: "Mala slova (a, b, c)",
@@ -444,7 +440,7 @@ DlgDocPageTitle		: "Naslov stranice",
 DlgDocLangDir		: "Smjer jezika",
 DlgDocLangDirLTR	: "S lijeva na desno",
 DlgDocLangDirRTL	: "S desna na lijevo",
-DlgDocLangCode		: "Kôd jezika",
+DlgDocLangCode		: "K&ocirc;d jezika",
 DlgDocCharSet		: "Enkodiranje znakova",
 DlgDocCharSetOther	: "Ostalo enkodiranje znakova",
 
@@ -479,7 +475,6 @@ DlgTemplatesNoTpl	: "(Nema definiranih predložaka)",
 // About Dialog
 DlgAboutAboutTab	: "O FCKEditoru",
 DlgAboutBrowserInfoTab	: "Podaci o pretraživaču",
-DlgAboutLicenseTab	: "License",	//MISSING
 DlgAboutVersion		: "inačica",
 DlgAboutLicense		: "Licencirano pod uvjetima GNU Lesser General Public License",
 DlgAboutInfo		: "Za više informacija posjetite"

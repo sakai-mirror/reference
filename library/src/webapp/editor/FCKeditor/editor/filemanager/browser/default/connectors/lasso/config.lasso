@@ -1,7 +1,7 @@
 [//lasso
 /*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -37,14 +37,7 @@
     Set which file extensions are allowed and/or denied for each file type.                                                                           
     */                                                                          
 	var('config') = map(
-	    'Enabled' = true,
 		'UserFilesPath' = '/UserFiles/',
-		'Subdirectories' = map(
-			'File' = 'File/',
-			'Image' = 'Image/',
-			'Flash' = 'Flash/',
-			'Media' = 'Media/'
-		),
 		'AllowedExtensions' = map(
 			'File' = array(),
 			'Image' = array('jpg','gif','jpeg','png'),
@@ -52,7 +45,7 @@
 			'Media' = array('swf','fla','jpg','gif','jpeg','png','avi','mpg','mpeg')
 		),
 		'DeniedExtensions' = map(
-			'File' = array('php','php2','php3','php4','php5','phtml','pwml','inc','asp','aspx','ascx','jsp','cfm','cfc','pl','bat','exe','com','dll','vbs','js','reg','cgi','lasso','lassoapp'),
+			'File' = array('php','asp','aspx','ascx','jsp','cfm','cfc','pl','bat','exe','dll','reg','inc','lasso','lassoapp','cgi'),
 			'Image' = array(),
 			'Flash' = array(),
 			'Media' = array()

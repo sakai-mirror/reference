@@ -1,6 +1,6 @@
 ﻿/*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2006 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
  * Licensed under the terms of the GNU Lesser General Public License:
  * 		http://www.opensource.org/licenses/lgpl-license.php
@@ -14,7 +14,7 @@
  * 	Chinese Simplified language file.
  * 
  * File Authors:
- * 		NetRube (NetRube@gmail.com)
+ * 		NetRube (NetRube@126.com)
  */
 
 var FCKLang =
@@ -85,8 +85,8 @@ Find				: "查找",
 Replace				: "替换",
 SpellCheck			: "拼写检查",
 UniversalKeyboard	: "软键盘",
-PageBreakLbl		: "分页符",
-PageBreak			: "插入分页符",
+PageBreakLbl		: "Page Break",	//MISSING
+PageBreak			: "Insert Page Break",	//MISSING
 
 Form			: "表单",
 Checkbox		: "复选框",
@@ -98,13 +98,8 @@ Button			: "按钮",
 SelectionField	: "列表/菜单",
 ImageButton		: "图像域",
 
-FitWindow		: "全屏编辑",
-
 // Context Menu
 EditLink			: "编辑超链接",
-CellCM				: "单元格",
-RowCM				: "行",
-ColumnCM			: "列",
 InsertRow			: "插入行",
 DeleteRows			: "删除行",
 InsertColumn		: "插入列",
@@ -113,7 +108,7 @@ InsertCell			: "插入单元格",
 DeleteCells			: "删除单元格",
 MergeCells			: "合并单元格",
 SplitCell			: "拆分单元格",
-TableDelete			: "删除表格",
+TableDelete			: "Delete Table",	//MISSING
 CellProperties		: "单元格属性",
 TableProperties		: "表格属性",
 ImageProperties		: "图象属性",
@@ -130,7 +125,7 @@ SelectionFieldProp	: "菜单/列表属性",
 TextareaProp		: "多行文本属性",
 FormProp			: "表单属性",
 
-FontFormats			: "普通;已编排格式;地址;标题 1;标题 2;标题 3;标题 4;标题 5;标题 6;段落(DIV)",
+FontFormats			: "普通;带格式的;地址;标题 1;标题 2;标题 3;标题 4;标题 5;标题 6;段落(DIV)",
 
 // Alerts and Messages
 ProcessingXHTML		: "正在处理 XHTML，请稍等...",
@@ -141,9 +136,9 @@ UnknownToolbarItem	: "未知工具栏项目 \"%1\"",
 UnknownCommand		: "未知命令名称 \"%1\"",
 NotImplemented		: "命令无法执行",
 UnknownToolbarSet	: "工具栏设置 \"%1\" 不存在",
-NoActiveX			: "浏览器安全设置限制了本编辑器的某些功能。您必须启用安全设置中的“运行 ActiveX 控件和插件”，否则将出现某些错误并缺少功能。",
-BrowseServerBlocked : "无法打开资源浏览器，请确认是否启用了禁止弹出窗口。",
-DialogBlocked		: "无法打开对话框窗口，请确认是否启用了禁止弹出窗口或网页对话框（IE）。",
+NoActiveX			: "You browser's security settings could limit some features of the editor. You must enable the option \"Run ActiveX controls and plug-ins\". You may experience errors and notice missing features.",	//MISSING
+BrowseServerBlocked : "The resources browser could not be opened. Make sure that all popup blockers are disabled.",	//MISSING
+DialogBlocked		: "It was not possible to open the dialog window. Make sure all popup blockers are disabled.",	//MISSING
 
 // Dialogs
 DlgBtnOK			: "确定",
@@ -151,12 +146,12 @@ DlgBtnCancel		: "取消",
 DlgBtnClose			: "关闭",
 DlgBtnBrowseServer	: "浏览服务器",
 DlgAdvancedTag		: "高级",
-DlgOpOther			: "<其它>",
+DlgOpOther			: "&lt;其它&gt;",
 DlgInfoTab			: "信息",
 DlgAlertUrl			: "请插入 URL",
 
 // General Dialogs Labels
-DlgGenNotSet		: "<没有设置>",
+DlgGenNotSet		: "&lt;没有设置&gt;",
 DlgGenId			: "ID",
 DlgGenLangDir		: "语言方向",
 DlgGenLangDirLtr	: "从左到右 (LTR)",
@@ -220,12 +215,12 @@ DlgLnkTypeURL		: "超链接",
 DlgLnkTypeAnchor	: "页内锚点链接",
 DlgLnkTypeEMail		: "电子邮件",
 DlgLnkProto			: "协议",
-DlgLnkProtoOther	: "<其它>",
+DlgLnkProtoOther	: "&lt;其它&gt;",
 DlgLnkURL			: "地址",
 DlgLnkAnchorSel		: "选择一个锚点",
 DlgLnkAnchorByName	: "按锚点名称",
 DlgLnkAnchorById	: "按锚点 ID",
-DlgLnkNoAnchors		: "<此文档没有可用的锚点>",
+DlgLnkNoAnchors		: "&lt;此文档没有可用的锚点&gt;",
 DlgLnkEMail			: "地址",
 DlgLnkEMailSubject	: "主题",
 DlgLnkEMailBody		: "内容",
@@ -233,8 +228,8 @@ DlgLnkUpload		: "上传",
 DlgLnkBtnUpload		: "发送到服务器上",
 
 DlgLnkTarget		: "目标",
-DlgLnkTargetFrame	: "<框架>",
-DlgLnkTargetPopup	: "<弹出窗口>",
+DlgLnkTargetFrame	: "&lt;框架&gt;",
+DlgLnkTargetPopup	: "&lt;弹出窗口&gt;",
 DlgLnkTargetBlank	: "新窗口 (_blank)",
 DlgLnkTargetParent	: "父窗口 (_parent)",
 DlgLnkTargetSelf	: "本窗口 (_self)",
@@ -277,7 +272,7 @@ DlgTableRows		: "行数",
 DlgTableColumns		: "列数",
 DlgTableBorder		: "边框",
 DlgTableAlign		: "对齐",
-DlgTableAlignNotSet	: "<没有设置>",
+DlgTableAlignNotSet	: "&lt;没有设置&gt;",
 DlgTableAlignLeft	: "左对齐",
 DlgTableAlignCenter	: "居中",
 DlgTableAlignRight	: "右对齐",
@@ -288,7 +283,7 @@ DlgTableHeight		: "高度",
 DlgTableCellSpace	: "间距",
 DlgTableCellPad		: "边距",
 DlgTableCaption		: "标题",
-DlgTableSummary		: "摘要",
+DlgTableSummary		: "Summary",	//MISSING
 
 // Table Cell Dialog
 DlgCellTitle		: "单元格属性",
@@ -297,16 +292,16 @@ DlgCellWidthPx		: "像素",
 DlgCellWidthPc		: "百分比",
 DlgCellHeight		: "高度",
 DlgCellWordWrap		: "自动换行",
-DlgCellWordWrapNotSet	: "<没有设置>",
+DlgCellWordWrapNotSet	: "&lt;没有设置&gt;",
 DlgCellWordWrapYes	: "是",
 DlgCellWordWrapNo	: "否",
 DlgCellHorAlign		: "水平对齐",
-DlgCellHorAlignNotSet	: "<没有设置>",
+DlgCellHorAlignNotSet	: "&lt;没有设置&gt;",
 DlgCellHorAlignLeft	: "左对齐",
 DlgCellHorAlignCenter	: "居中",
 DlgCellHorAlignRight: "右对齐",
 DlgCellVerAlign		: "垂直对齐",
-DlgCellVerAlignNotSet	: "<没有设置>",
+DlgCellVerAlignNotSet	: "&lt;没有设置&gt;",
 DlgCellVerAlignTop	: "顶端",
 DlgCellVerAlignMiddle	: "居中",
 DlgCellVerAlignBottom	: "底部",
@@ -343,6 +338,7 @@ DlgPasteMsg2	: "请使用键盘快捷键(<STRONG>Ctrl+V</STRONG>)把内容粘贴
 DlgPasteIgnoreFont		: "忽略 Font 标签",
 DlgPasteRemoveStyles	: "清理 CSS 样式",
 DlgPasteCleanBox		: "清空上面内容",
+
 
 // Color Picker
 ColorAutomatic	: "自动",
@@ -426,7 +422,7 @@ BulletedListProp	: "项目列表属性",
 NumberedListProp	: "编号列表属性",
 DlgLstType			: "列表类型",
 DlgLstTypeCircle	: "圆圈",
-DlgLstTypeDisc		: "圆点",
+DlgLstTypeDisc		: "Disc",	//MISSING
 DlgLstTypeSquare	: "方块",
 DlgLstTypeNumbers	: "数字 (1, 2, 3)",
 DlgLstTypeLCase		: "小写字母 (a, b, c)",
@@ -479,7 +475,6 @@ DlgTemplatesNoTpl	: "(没有模板)",
 // About Dialog
 DlgAboutAboutTab	: "关于",
 DlgAboutBrowserInfoTab	: "浏览器信息",
-DlgAboutLicenseTab	: "许可证",
 DlgAboutVersion		: "版本",
 DlgAboutLicense		: "基于 GNU 通用公共许可证授权发布 ",
 DlgAboutInfo		: "要获得更多信息请访问 "
