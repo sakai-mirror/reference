@@ -48,7 +48,7 @@
 
                 <p>Alternatively, you may check out the source code from subversion with the
                     command:</p>
-                <pre class="screen">svn co https://source.sakaiproject.org/svn/tags/sakai_2-2-0</pre>
+                <pre class="screen">svn export https://source.sakaiproject.org/svn/tags/sakai_2-2-0</pre>
                 <p>In which case you could skip the unpacking step below, and your root directory
                     would be sakai_2-2-0 instead of sakai-src.</p>
             </div>
@@ -92,7 +92,7 @@
                     <span><strong class="command">MAVEN_OPTS</strong></span>. The value in the sample Unix command below should
                     be more than enough:</p>
                 <pre class="screen">
-export MAVEN_OPTS="-Xmx512m -XX:PermSize=64m -XX:MaxPermSize=128m"</pre>
+export MAVEN_OPTS="-Xmx384m -XX:PermSize=48m"</pre>
             </div>
             <p>You will probably be able to start up Tomcat and run Sakai with the default
                 configuration at this point, but it would be better to take care of some basic
