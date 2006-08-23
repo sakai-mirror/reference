@@ -1,3 +1,4 @@
 Skipped:
 
 12747	SAK-5686	Make this sample skin JSR-168 capable
+13481	SAK-5856	add a rendering "inactive" class
