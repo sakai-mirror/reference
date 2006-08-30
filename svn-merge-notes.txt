@@ -2,3 +2,4 @@ Skipped:
 
 12747	SAK-5686	Make this sample skin JSR-168 capable
 13481	SAK-5856	add a rendering "inactive" class
+14065	SAK-6114	Update documentation to reflect the sakai.state.reset capability to page and tool URLs.
