@@ -75,6 +75,7 @@ function openWindow(url, title, height)
 { 
 	var params = "scrollbars=no,menubar=no,height=" + height + ",width=800,toolbar=no,location=no,status=no";
 	popup = window.open(url,title,params);
+	popup.focus();
 	return false;
 }
 function setPopupHeight(id)
@@ -115,7 +116,10 @@ function setPopupHeight(id)
 
 		// here we fudge to get a little bigger
 		var newHeight = height + 100;
-		
+		if(newHeight > 1000)
+		{
+			newHeight = 1000;
+		}
 		frame.resizeTo(800, newHeight);
 	}
 
