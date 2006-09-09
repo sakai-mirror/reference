@@ -119,7 +119,7 @@ function removeCitation(citationId)
 }
 function sendMessage(msg)
 {
-	if(addIds.length > 0)
+	if(addIds.length > 0 || removeIds.length > 0)
 	{
 		var scratch = window.opener.parent.locks.pop();
 		if(scratch)
@@ -135,7 +135,7 @@ function sendMessage(msg)
 		}
 		else
 		{
-			window.setTimeout('sendMessage("' + msg + '");', 500);
+			window.setTimeout('sendMessage("' + msg + '");', 250);
 		}
 	}
 }
@@ -177,74 +177,3 @@ function removeCitations(scratch)
 	scratch.innerHTML = form_str;
 	window.opener.submitform("removeForm");	
 }
-
-
-
-function buildForm(form_str)
-{
-	var scratch_div = document.getElementById("scratch_space");
-	scratch_div.innerHTML = form_str;
-}
-function closePopupAndSubmitFormFromParent(form_id)
-{
-	var form_obj = document.getElementById(form_id);
-	var form_str = "<form name=\"" + form_id + "\" id=\"" + form_id + "\" method=\"post\" action=\"" + form_obj.action + "\">\n";
-	for(var i = 0; i < form_obj.elements.length; i++)
-	{
-		if(form_obj.elements[i].value && form_obj.elements[i].type != "button" && form_obj.elements[i].type != "cancel" && form_obj.elements[i].type != "submit")
-		{
-			form_str += "<input type=\"hidden\" name=\"" + form_obj.elements[i].name + "\" value=\"" + form_obj.elements[i].value + "\" />\n";
-		}
-	}
-	form_str += "</form>\n";
-
-	window.opener.buildForm(form_str);
-	window.opener.submitFormAndClosePopup(form_id, window);
-}
-function closeWindow(name)
-{
-	if(popups && popups[name])
-	{
-		popups[name].close();
-	}
-}
-function createCitation(form_id)
-{
-	var form_obj = document.getElementById(form_id);
-	var form_str = "<form name=\"" + form_id + "\" id=\"" + form_id + "\" method=\"post\" action=\"" + form_obj.action + "\">\n";
-	for(var i = 0; i < form_obj.elements.length; i++)
-	{
-		if(form_obj.elements[i].value && form_obj.elements[i].type != "button" && form_obj.elements[i].type != "cancel" && form_obj.elements[i].type != "submit")
-		{
-			form_str += "<input type=\"hidden\" name=\"" + form_obj.elements[i].name + "\" value=\"" + form_obj.elements[i].value + "\" />\n";
-		}
-	}
-	form_str += "</form>\n";
-	window.opener.buildForm(form_str);
-	window.opener.submitFormAndClosePopup(form_id, window);
-}
-
-
-
-function submitFormAndClosePopup(form_id, popup)
-{
-	popup.close();
-	var form_obj = document.getElementById(form_id);
-	form_obj.submit();
-}
-
-
-//	function old_removeCitation(citationId)
-//	{
-//		var form_str = "<form name=\"removeForm\" id=\"removeForm\" method=\"post\" action=\"#contentLink("$mainFrameId")&sakai_action=doRemove\">\n";
-//		form_str += "<input type=\"hidden\" name=\"citationId\" id=\"citationId\" value=\"" + citationId + "\" />\n";
-//		form_str += "<input type=\"hidden\" name=\"collectionId\" id=\"collectionId\" value=\"$!{collectionId}\" />\n";
-//		form_str += "</form>\n";
-//		window.opener.buildForm(form_str);
-//		window.opener.submitform("removeForm");
-//		
-//		var span = document.getElementById("save_" + citationId);
-//		var span_str = "<a href=\"#\" onclick=\"addCitation('" + citationId + "');\">\n$tlang.getString("add.results")\n</a>\n";
-//		span.innerHTML = span_str;
-//	}
-
