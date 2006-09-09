@@ -19,69 +19,30 @@
  *
  **********************************************************************************/
 
-var popup = null;
+var popups = new Array();
+var locks = new Array();
+var addIds = new Array();
+var removeIds = new Array();
 
-function buildForm(form_str)
-{
-	var scratch_div = document.getElementById("scratch_space");
-	scratch_div.innerHTML = form_str;
-}
-function closePopup()
-{
-	if(window.opener)
-	{
-		window.opener.closeWindow();
-	}
-}
-function closePopupAndSubmitFormFromParent(form_id)
-{
-	var form_obj = document.getElementById(form_id);
-	var form_str = "<form name=\"" + form_id + "\" id=\"" + form_id + "\" method=\"post\" action=\"" + form_obj.action + "\">\n";
-	for(var i = 0; i < form_obj.elements.length; i++)
-	{
-		if(form_obj.elements[i].value && form_obj.elements[i].type != "button" && form_obj.elements[i].type != "cancel" && form_obj.elements[i].type != "submit")
-		{
-			form_str += "<input type=\"hidden\" name=\"" + form_obj.elements[i].name + "\" value=\"" + form_obj.elements[i].value + "\" />\n";
-		}
-	}
-	form_str += "</form>\n";
-	alert("form_str = " + form_str);
-	window.opener.buildForm(form_str);
-	window.opener.submitFormAndClosePopup(form_id, window);
-}
-function closeWindow()
-{
-	if(popup)
-	{
-		popup.close();
-	}
-}
-function createCitation(form_id)
-{
-	var form_obj = document.getElementById(form_id);
-	var form_str = "<form name=\"" + form_id + "\" id=\"" + form_id + "\" method=\"post\" action=\"" + form_obj.action + "\">\n";
-	for(var i = 0; i < form_obj.elements.length; i++)
-	{
-		if(form_obj.elements[i].value && form_obj.elements[i].type != "button" && form_obj.elements[i].type != "cancel" && form_obj.elements[i].type != "submit")
-		{
-			form_str += "<input type=\"hidden\" name=\"" + form_obj.elements[i].name + "\" value=\"" + form_obj.elements[i].value + "\" />\n";
-		}
-	}
-	form_str += "</form>\n";
-	window.opener.buildForm(form_str);
-	window.opener.submitFormAndClosePopup(form_id, window);
-}
-function openWindow(url, title, height) 
+
+function openPopup(name, url, title, height) 
 { 
-	var params = "scrollbars=no,menubar=no,height=" + height + ",width=800,toolbar=no,location=no,status=no";
-	popup = window.open(url,title,params);
-	popup.focus();
+	var params = "height=" + height + ",width=800,scrollbars=yes,menubar=no,toolbar=no,location=no,status=no";
+	parent.popups[name] = window.open(url,title,params);
+	popups[name].focus();
 	return false;
 }
-function setPopupHeight(id)
+function closePopup(name)
 {
-	var frame = window.opener.popup;
-	
+	if(window.opener && window.opener.parent)
+	{
+		window.opener.parent.closeWindow(name);
+	}
+}
+function setPopupHeight(name)
+{
+	var frame = window.opener.parent.popups[name];
+
 	if (frame)
 	{
 		// reset the scroll
@@ -136,9 +97,154 @@ function submitform(id)
 		theForm.submit();
 	}
 }
+function addCitation(citationId)
+{
+	addIds.push(citationId);
+	sendMessage('add');
+	
+	var removeLabel = document.getElementById('removeLabel').value;
+	var span = document.getElementById("save_" + citationId);
+	var span_str = "<a href=\"#\" onclick=\"removeCitation('" + citationId + "');\">" + removeLabel + "\n</a>\n";
+	span.innerHTML = span_str;
+}
+function removeCitation(citationId)
+{
+	removeIds.push(citationId);
+	sendMessage('remove');
+	
+	var addLabel = document.getElementById('addLabel').value;
+	var span = document.getElementById("save_" + citationId);
+	var span_str = "<a href=\"#\" onclick=\"addCitation('" + citationId + "');\">" + addLabel + "\n</a>\n";
+	span.innerHTML = span_str;
+}
+function sendMessage(msg)
+{
+	if(addIds.length > 0)
+	{
+		var scratch = window.opener.parent.locks.pop();
+		if(scratch)
+		{
+			if(msg == 'add')
+			{
+				addCitations(scratch);
+			}
+			else if(msg == 'remove')
+			{
+				removeCitations(scratch);
+			}
+		}
+		else
+		{
+			window.setTimeout('sendMessage("' + msg + '");', 500);
+		}
+	}
+}
+function addCitations(scratch)
+{
+	var collectionId = document.getElementById('collectionId').value;
+	var actionUrl = document.getElementById('actionUrl').value;
+	
+	var form_str = "<form name=\"addForm\" id=\"addForm\" method=\"post\" action=\"" + actionUrl + "&sakai_action=doAdd\">\n";
+	
+	var citationId = addIds.pop();
+	while(citationId)
+	{
+		form_str += "<input type=\"hidden\" name=\"citationId\" id=\"citationId\" value=\"" + citationId + "\" />\n";
+		citationId = addIds.pop();
+	}
+	
+	form_str += "<input type=\"hidden\" name=\"collectionId\" id=\"collectionId\" value=\"" + collectionId + "\" />\n";
+	form_str += "</form>\n";
+	scratch.innerHTML = form_str;
+	window.opener.submitform("addForm");	
+}
+function removeCitations(scratch)
+{
+	var collectionId = document.getElementById('collectionId').value;
+	var actionUrl = document.getElementById('actionUrl').value;
+	
+	var form_str = "<form name=\"removeForm\" id=\"removeForm\" method=\"post\" action=\"" + actionUrl + "&sakai_action=doRemove\">\n";
+	
+	var citationId = removeIds.pop();
+	while(citationId)
+	{
+		form_str += "<input type=\"hidden\" name=\"citationId\" id=\"citationId\" value=\"" + citationId + "\" />\n";
+		citationId = removeIds.pop();
+	}
+	
+	form_str += "<input type=\"hidden\" name=\"collectionId\" id=\"collectionId\" value=\"" + collectionId + "\" />\n";
+	form_str += "</form>\n";
+	scratch.innerHTML = form_str;
+	window.opener.submitform("removeForm");	
+}
+
+
+
+function buildForm(form_str)
+{
+	var scratch_div = document.getElementById("scratch_space");
+	scratch_div.innerHTML = form_str;
+}
+function closePopupAndSubmitFormFromParent(form_id)
+{
+	var form_obj = document.getElementById(form_id);
+	var form_str = "<form name=\"" + form_id + "\" id=\"" + form_id + "\" method=\"post\" action=\"" + form_obj.action + "\">\n";
+	for(var i = 0; i < form_obj.elements.length; i++)
+	{
+		if(form_obj.elements[i].value && form_obj.elements[i].type != "button" && form_obj.elements[i].type != "cancel" && form_obj.elements[i].type != "submit")
+		{
+			form_str += "<input type=\"hidden\" name=\"" + form_obj.elements[i].name + "\" value=\"" + form_obj.elements[i].value + "\" />\n";
+		}
+	}
+	form_str += "</form>\n";
+
+	window.opener.buildForm(form_str);
+	window.opener.submitFormAndClosePopup(form_id, window);
+}
+function closeWindow(name)
+{
+	if(popups && popups[name])
+	{
+		popups[name].close();
+	}
+}
+function createCitation(form_id)
+{
+	var form_obj = document.getElementById(form_id);
+	var form_str = "<form name=\"" + form_id + "\" id=\"" + form_id + "\" method=\"post\" action=\"" + form_obj.action + "\">\n";
+	for(var i = 0; i < form_obj.elements.length; i++)
+	{
+		if(form_obj.elements[i].value && form_obj.elements[i].type != "button" && form_obj.elements[i].type != "cancel" && form_obj.elements[i].type != "submit")
+		{
+			form_str += "<input type=\"hidden\" name=\"" + form_obj.elements[i].name + "\" value=\"" + form_obj.elements[i].value + "\" />\n";
+		}
+	}
+	form_str += "</form>\n";
+	window.opener.buildForm(form_str);
+	window.opener.submitFormAndClosePopup(form_id, window);
+}
+
+
+
 function submitFormAndClosePopup(form_id, popup)
 {
 	popup.close();
 	var form_obj = document.getElementById(form_id);
 	form_obj.submit();
 }
+
+
+//	function old_removeCitation(citationId)
+//	{
+//		var form_str = "<form name=\"removeForm\" id=\"removeForm\" method=\"post\" action=\"#contentLink("$mainFrameId")&sakai_action=doRemove\">\n";
+//		form_str += "<input type=\"hidden\" name=\"citationId\" id=\"citationId\" value=\"" + citationId + "\" />\n";
+//		form_str += "<input type=\"hidden\" name=\"collectionId\" id=\"collectionId\" value=\"$!{collectionId}\" />\n";
+//		form_str += "</form>\n";
+//		window.opener.buildForm(form_str);
+//		window.opener.submitform("removeForm");
+//		
+//		var span = document.getElementById("save_" + citationId);
+//		var span_str = "<a href=\"#\" onclick=\"addCitation('" + citationId + "');\">\n$tlang.getString("add.results")\n</a>\n";
+//		span.innerHTML = span_str;
+//	}
+
