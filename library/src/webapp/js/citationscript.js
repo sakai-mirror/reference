@@ -177,3 +177,6 @@ function removeCitations(scratch)
 	scratch.innerHTML = form_str;
 	window.opener.submitform("removeForm");	
 }
+function closePopupAndSubmitFormFromParent(formId)
+{
+}
