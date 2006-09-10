@@ -177,6 +177,28 @@ function removeCitations(scratch)
 	scratch.innerHTML = form_str;
 	window.opener.submitform("removeForm");	
 }
-function closePopupAndSubmitFormFromParent(formId)
+function closePopupAndSubmitFormFromOpener(form_id)
 {
+	var form_obj = document.getElementById(form_id);
+	var form_str = "<form name=\"" + form_id + "\" id=\"" + form_id + "\" method=\"post\" action=\"" + form_obj.action + "\">\n";
+	for(var i = 0; i < form_obj.elements.length; i++)
+	{
+		if(form_obj.elements[i].value && form_obj.elements[i].type != "button" && form_obj.elements[i].type != "cancel" && form_obj.elements[i].type != "submit")
+		{
+			form_str += "<input type=\"hidden\" name=\"" + form_obj.elements[i].name + "\" value=\"" + form_obj.elements[i].value + "\" />\n";
+		}
+	}
+	form_str += "</form>\n";
+
+	window.opener.submitFormAndClosePopup(form_str, form_id, window);
 }
+function submitFormAndClosePopup(form_str, form_id, popup)
+{
+	var scratch_div = document.getElementById("scratch_space");
+	scratch_div.innerHTML = form_str;
+	popup.close();
+	var form_obj = document.getElementById(form_id);
+	form_obj.submit();
+}
+
+
