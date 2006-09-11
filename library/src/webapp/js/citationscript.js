@@ -200,5 +200,18 @@ function submitFormAndClosePopup(form_str, form_id, popup)
 	var form_obj = document.getElementById(form_id);
 	form_obj.submit();
 }
+function checkinWithOpener(name)
+{
+	if(window.opener && window.opener.parent && window.opener.parent.popups && window.opener.parent.popups)
+	{
+		setTimeout("checkinWithOpener(\"" + name + "\");", 60000); 
+	}
+	else
+	{
+		window.close();
+		//window.focus();
+		//document.getElementById("hiddenMessage").style.display = "block";
+	}
+}
 
 
