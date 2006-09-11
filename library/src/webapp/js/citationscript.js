@@ -1,6 +1,6 @@
 /**********************************************************************************
- * $URL: https://source.sakaiproject.org/svn/access/trunk/access-impl/impl/src/java/org/sakaiproject/access/tool/AccessServlet.java $
- * $Id: AccessServlet.java 7534 2006-04-09 17:09:10Z ggolden@umich.edu $
+ * $URL:  $
+ * $Id:  $
  ***********************************************************************************
  *
  * Copyright (c) 2003, 2004, 2005, 2006 The Sakai Foundation.
@@ -29,14 +29,14 @@ function openPopup(name, url, title, height)
 { 
 	var params = "height=" + height + ",width=800,scrollbars=yes,menubar=no,toolbar=no,location=no,status=no";
 	parent.popups[name] = window.open(url,title,params);
-	popups[name].focus();
+	parent.popups[name].focus();
 	return false;
 }
 function closePopup(name)
 {
-	if(window.opener && window.opener.parent)
+	if(window.opener && window.opener.parent && window.opener.parent.popups && window.opener.parent.popups[name])
 	{
-		window.opener.parent.closeWindow(name);
+		window.opener.parent.popups[name].close();
 	}
 }
 function setPopupHeight(name)
