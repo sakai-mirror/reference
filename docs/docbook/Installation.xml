@@ -12,8 +12,7 @@
         <title>Overview</title>
         <sect2 xml:id="install-overview-choose">
             <title>Choose an Install Type</title>
-            <para>Sakai 2.2.1 downloads are available for three different installation methods: 
-            <variablelist>
+            <para>Sakai 2.2.2 downloads are available for three different installation methods: <variablelist>
                     <varlistentry>
                         <term>Demo:</term>
                         <listitem>
@@ -65,7 +64,7 @@
                             <listitem>
                                 <para>
                                     <link
-                                        xl:href="http://source.sakaiproject.org/release/2.2.1/sakai_2-2-1/sakai-demo_2-2-1.zip"
+                                        xl:href="http://source.sakaiproject.org/release/2.2.2/sakai_2-2-2/sakai-demo_2-2-2.zip"
                                         >demo archive</link>
                                 </para>
                             </listitem>
@@ -75,7 +74,7 @@
                             <listitem>
                                 <para>
                                     <link
-                                        xl:href="http://source.sakaiproject.org/release/2.2.1/sakai_2-2-1/sakai-demo_2-2-1.tar.gz"
+                                        xl:href="http://source.sakaiproject.org/release/2.2.2/sakai_2-2-2/sakai-demo_2-2-2.tar.gz"
                                         >demo archive</link>
                                 </para>
                             </listitem>
@@ -194,10 +193,11 @@
         </sect2>
         <sect2 xml:id="install-overview-migrating">
             <title>Migrating from a Previous Release</title>
-            <para>2.2.1 adds only bug fixes to 2.2.0, and so a transition between the two should be
-                straightforward. If you have been running 2.2.0 already, you should be able
-                to deploy 2.2.1 with confidence: it will not break your skins, providers, or other
-                2.2 code.</para>
+            <para>2.2.2 adds only a security fix to 2.2.1 - the mere removal of a few test files
+                included with the Apache Axis distribution - and otherwise represents no changes to
+                Sakai code or the database. If you are running 2.2.1 already you can perform the fix
+                by simply removing these test files. See the <link xl:href="release-notes.html"
+                    >release notes</link> for more details.</para>
             <para>If you are moving from an earlier 2.1 or 2.0 codebase, however, 2.2 involves some
                 significant changes: in tools, DB schema, and APIs. Migrating to 2.2 from a previous
                 release therefore requires close attention to detail. Be sure to go over the <link
@@ -219,12 +219,14 @@
                 <varlistentry>
                     <term>DB conversion scripts:</term>
                     <listitem>
-                        <para>Every release has DB conversion scripts, and 2.2.1 is no exception. Be
-                            sure, however, to read these scripts over carefully before executing
-                            them on your production data. They do not take into account any special
-                            customizations you may have done, and you may need to alter them for
-                            your situation. See the <link linkend="install-dbconfig">Database
-                                Configuration</link> section for more details.</para>
+                        <para>A database conversion is required for a migration from 2.2.0 to 2.2.1,
+                            but not for a migration from 2.2.1 to 2.2.2. If you are migrating from
+                            the 2.2.0 release or earlier, however, be sure to read these scripts
+                            over carefully before executing them on your production data. They do
+                            not take into account any special customizations you may have done, and
+                            you may need to alter them for your situation. See the <link
+                                linkend="install-dbconfig">Database Configuration</link> section for
+                            more details.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -549,8 +551,8 @@ maven.tomcat.home=/usr/local/tomcat/</screen>
                 documentation, look for <filename>sakai_maven.doc</filename> in
                     <filename>reference/docs/architecture</filename> of the source archive or on
                 subversion at: <link
-                    xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/architecture/sakai_maven.doc"
-                    >https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/architecture/sakai_maven.doc</link></para>
+                    xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/architecture/sakai_maven.doc"
+                    >https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/architecture/sakai_maven.doc</link></para>
         </note>
         <sect2 xml:id="install-build-download">
             <title>Download Source</title>
@@ -582,7 +584,7 @@ maven.tomcat.home=/usr/local/tomcat/</screen>
                 <para>Subsequent builds would be advised to add the "clean" phase by using the
                     command <command>maven cln bld dpl</command>, or the equivalent shortcut:
                         <command>maven sakai</command>. See the <link
-                        xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/architecture/sakai_maven.doc"
+                        xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/architecture/sakai_maven.doc"
                         >sakai_maven.doc</link> for more details.</para>
             </note>
             <para>This will run for quite a few minutes with fairly verbose output, particularly
@@ -652,7 +654,7 @@ export MAVEN_OPTS="-Xmx384m -XX:PermSize=48m"</screen>
                     settings for installation are covered here, but to find the most detailed
                     documentation on the full variety of possible
                     <filename>sakai.properties</filename> settings, look in <link
-                        xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/architecture/sakai_properties.doc"
+                        xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/architecture/sakai_properties.doc"
                         >sakai_properties.doc</link> in subversion or
                         <filename>reference/docs/architecture/sakai_properties.doc</filename> of the
                     source archive.</para>
@@ -828,8 +830,8 @@ JAVA_OPTS="-server -Xms1500m -Xmx1500m -XX:NewSize=400m -XX:MaxNewSize=400m -XX:
         <title>Database Configuration</title>
         <sect2 xml:id="install-dbconfig-migrating">
             <title>Migrating from an Earlier Version</title>
-            <para>There are database schema changes between 2.2.0 and 2.2.1, and the conversion
-                scripts to be applied - in distinct versions for MySQL and Oracle, respectively -
+            <para>A database conversion is required for a migration from 2.2.0 to 2.2.1,
+                but not for a migration from 2.2.1 to 2.2.2. Database conversion scripts - in distinct versions for MySQL and Oracle, respectively -
                 are found in the <filename>reference/docs/updating</filename> folder of the release
                 or on subversion:</para>
             <variablelist>
@@ -838,8 +840,8 @@ JAVA_OPTS="-server -Xms1500m -Xmx1500m -XX:NewSize=400m -XX:MaxNewSize=400m -XX:
                     <listitem>
                         <para>
                             <link
-                                xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/conversion/sakai_2_2_0-2_2_1_mysql_conversion.sql"
-                                >https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/conversion/sakai_2_2_0-2_2_1_mysql_conversion.sql</link>
+                                xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion/sakai_2_2_0-2_2_1_mysql_conversion.sql"
+                                >https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion/sakai_2_2_0-2_2_1_mysql_conversion.sql</link>
                         </para>
                     </listitem>
                 </varlistentry>
@@ -848,8 +850,8 @@ JAVA_OPTS="-server -Xms1500m -Xmx1500m -XX:NewSize=400m -XX:MaxNewSize=400m -XX:
                     <listitem>
                         <para>
                             <link
-                                xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/conversion/sakai_2_2_0-2_2_1_oracle_conversion.sql"
-                                >https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/conversion/sakai_2_2_0-2_2_1_oracle_conversion.sql</link>
+                                xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion/sakai_2_2_0-2_2_1_oracle_conversion.sql"
+                                >https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion/sakai_2_2_0-2_2_1_oracle_conversion.sql</link>
                         </para>
                     </listitem>
                 </varlistentry>

@@ -25,7 +25,7 @@
 <div class="article" lang="en">
 <div class="titlepage">
 <div><div><h1 class="title">
-<a name="id2416742"></a>Installation Guide</h1></div></div>
+<a name="id2465532"></a>Installation Guide</h1></div></div>
 <hr>
 </div>
 <div class="toc">
@@ -72,9 +72,9 @@
 <dt><span class="sect1"><a href="install-software.html">6. Getting Started with the Software</a></span></dt>
 <dd><dl>
 <dt><span class="sect2"><a href="install-software.html#install-software-gateway">6.1. The Gateway Page</a></span></dt>
-<dt><span class="sect2"><a href="install-software.html#id2540441">6.2. My Workspace</a></span></dt>
-<dt><span class="sect2"><a href="install-software.html#id2540477">6.3. Other Sites</a></span></dt>
-<dt><span class="sect2"><a href="install-software.html#id2540536">6.4. Admin Tools</a></span></dt>
+<dt><span class="sect2"><a href="install-software.html#id2592209">6.2. My Workspace</a></span></dt>
+<dt><span class="sect2"><a href="install-software.html#id2592244">6.3. Other Sites</a></span></dt>
+<dt><span class="sect2"><a href="install-software.html#id2592304">6.4. Admin Tools</a></span></dt>
 <dt><span class="sect2"><a href="install-software.html#install-software-tools">6.5. Experimenting with Tools</a></span></dt>
 <dt><span class="sect2"><a href="install-software.html#install-software-learn">6.6. Where to Learn More</a></span></dt>
 </dl></dd>
@@ -96,8 +96,7 @@
 <div class="titlepage"><div><div><h3 class="title">
 <a name="install-overview-choose"></a>1.1. Choose an Install Type</h3></div></div></div>
 
-            <p>Sakai 2.2.1 downloads are available for three different installation methods:
-            </p>
+            <p>Sakai 2.2.2 downloads are available for three different installation methods: </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
@@ -161,7 +160,7 @@
 <span class="term">Windows:</span></td>
 <td>
                                 <p>
-                                    <a href="http://source.sakaiproject.org/release/2.2.1/sakai_2-2-1/sakai-demo_2-2-1.zip" target="_top">demo archive</a>
+                                    <a href="http://source.sakaiproject.org/release/2.2.2/sakai_2-2-2/sakai-demo_2-2-2.zip" target="_top">demo archive</a>
                                 </p>
                             </td>
 </tr>
@@ -170,7 +169,7 @@
 <span class="term">Mac/*nix:</span></td>
 <td>
                                 <p>
-                                    <a href="http://source.sakaiproject.org/release/2.2.1/sakai_2-2-1/sakai-demo_2-2-1.tar.gz" target="_top">demo archive</a>
+                                    <a href="http://source.sakaiproject.org/release/2.2.2/sakai_2-2-2/sakai-demo_2-2-2.tar.gz" target="_top">demo archive</a>
                                 </p>
                             </td>
 </tr>
@@ -309,10 +308,10 @@
 <div class="titlepage"><div><div><h3 class="title">
 <a name="install-overview-migrating"></a>1.5. Migrating from a Previous Release</h3></div></div></div>
 
-            <p>2.2.1 adds only bug fixes to 2.2.0, and so a transition between the two should be
-                straightforward. If you have been running 2.2.0 already, you should be able
-                to deploy 2.2.1 with confidence: it will not break your skins, providers, or other
-                2.2 code.</p>
+            <p>2.2.2 adds only a security fix to 2.2.1 - the mere removal of a few test files
+                included with the Apache Axis distribution - and otherwise represents no changes to
+                Sakai code or the database. If you are running 2.2.1 already you can perform the fix
+                by simply removing these test files. See the <a href="release-notes.html" target="_top">release notes</a> for more details.</p>
             <p>If you are moving from an earlier 2.1 or 2.0 codebase, however, 2.2 involves some
                 significant changes: in tools, DB schema, and APIs. Migrating to 2.2 from a previous
                 release therefore requires close attention to detail. Be sure to go over the <a href="release-notes.html" target="_top">release notes</a> carefully, and a few key
@@ -337,12 +336,13 @@
 <td>
 <span class="term">DB conversion scripts:</span></td>
 <td>
-                        <p>Every release has DB conversion scripts, and 2.2.1 is no exception. Be
-                            sure, however, to read these scripts over carefully before executing
-                            them on your production data. They do not take into account any special
-                            customizations you may have done, and you may need to alter them for
-                            your situation. See the <a href="install-dbconfig.html" title="5. Database Configuration">Database
-                                Configuration</a> section for more details.</p>
+                        <p>A database conversion is required for a migration from 2.2.0 to 2.2.1,
+                            but not for a migration from 2.2.1 to 2.2.2. If you are migrating from
+                            the 2.2.0 release or earlier, however, be sure to read these scripts
+                            over carefully before executing them on your production data. They do
+                            not take into account any special customizations you may have done, and
+                            you may need to alter them for your situation. See the <a href="install-dbconfig.html" title="5. Database Configuration">Database Configuration</a> section for
+                            more details.</p>
                     </td>
 </tr>
 <tr>

@@ -5,6 +5,7 @@
    Table of Contents
 
    1. Overview
+
                 1.1. Choose an Install Type
                 1.2. Demo Installation
                 1.3. Binary Installation
@@ -12,6 +13,7 @@
                 1.5. Migrating from a Previous Release
 
    2. Set up Environment
+
                 2.1. Verify Java Installation
                 2.2. Verify Java Environment Variables
                 2.3. Install Tomcat
@@ -20,11 +22,13 @@
                 2.6. Configure Maven
 
    3. Build and Deploy
+
                 3.1. Download Source
                 3.2. Unpack Source
                 3.3. Run Maven
 
    4. Post-Installation Configuration
+
                 4.1. Create folder for properties file
                 4.2. The sakai.properties file
                 4.3. Email configuration
@@ -32,12 +36,14 @@
                 4.5. Test Sakai
 
    5. Database Configuration
+
                 5.1. Migrating from an Earlier Version
                 5.2. Deploy Drivers
                 5.3. Create Database and User
                 5.4. Database Properties
 
    6. Getting Started with the Software
+
                 6.1. The Gateway Page
                 6.2. My Workspace
                 6.3. Other Sites
@@ -46,6 +52,7 @@
                 6.6. Where to Learn More
 
    7. Troubleshooting
+
                 7.1. Build Issues
                 7.2. Tomcat Startup Issues
 
@@ -53,7 +60,7 @@
 
   1.1. Choose an Install Type
 
-   Sakai 2.2.1 downloads are available for three different installation
+   Sakai 2.2.2 downloads are available for three different installation
    methods:
 
    Demo:   This archive includes the Tomcat container and pre-built webapps,
@@ -81,9 +88,12 @@
    environment is squared away in advance. The steps are as follows:
 
     1. Verify Java Installation and Environment Variables (see the first two
-       sections of Set up Environment).
+       sections of [39]Set up Environment).
 
     2. Download and unpack the Demo archive
+
+       Windows:  [40]demo archive
+       Mac/*nix: [41]demo archive
 
     3. Start Tomcat with the following commands from the root Tomcat
        directory:
@@ -92,7 +102,7 @@
        Mac/*nix: start-sakai.sh
 
    Once Tomcat is started up, you can point your browser to
-   http://localhost:8080/portal. This will bring you to the Sakai gateway
+   [42]http://localhost:8080/portal. This will bring you to the Sakai gateway
    site, from which you can create new accounts and log in to the syste. For
    more orienting tips on how to begin using Sakai, skip ahead to [43]Getting
    Started with the Software.
@@ -115,7 +125,7 @@
   1.3. Binary Installation
 
    The Binary installation of Sakai provides a shortcut for those that
-   already have Tomcat in place and configured as needed (see Set up
+   already have Tomcat in place and configured as needed (see [44]Set up
    Environment for details on Tomcat configuration), and it does so by
    providing a pre-built Sakai that can simply be dropped into place. All you
    need to do is unpack the binary archive at the root Tomcat directory, and
@@ -124,7 +134,7 @@
 
    If you wish to configure a binary installation you'll need to manually
    create a sakai directory in $CATALINA_HOME to hold your sakai.properties
-   file, as described in Post-Installation Configuration.
+   file, as described in [45]Post-Installation Configuration.
 
   1.4. Source Installation
 
@@ -136,27 +146,28 @@
    sophisticated uses of the demo and binary installs. The full set of steps
    for a Source installation may be organized into the following phases:
 
-    1. Set up Environment, including Java, Tomcat, and Maven.
+    1. [46]Set up Environment, including Java, Tomcat, and Maven.
 
-    2. Build and Deploy Sakai by running Maven.
+    2. [47]Build and Deploy Sakai by running Maven.
 
-    3. Perform appropriate Post-installation Configuration of the
+    3. Perform appropriate [48]Post-installation Configuration of the
        application.
 
     4. If you want to configure Sakai for either MySQL or Oracle, perform the
-       requisite Database Configuration.
+       requisite [49]Database Configuration.
 
   1.5. Migrating from a Previous Release
 
-   2.2.1 adds only bug fixes to 2.2.0, and so a transition between the two
-   should be straightforward. If you have been running 2.2.0 already, you
-   should be able to deploy 2.2.1 with confidence: it will not break your
-   skins, providers, or other 2.2 code.
+   2.2.2 adds only a security fix to 2.2.1 - the mere removal of a few test
+   files included with the Apache Axis distribution - and otherwise
+   represents no changes to Sakai code or the database. If you are running
+   2.2.1 already you can perform the fix by simply removing these test files.
+   See the [50]release notes for more details.
 
    If you are moving from an earlier 2.1 or 2.0 codebase, however, 2.2
    involves some significant changes: in tools, DB schema, and APIs.
    Migrating to 2.2 from a previous release therefore requires close
-   attention to detail. Be sure to go over the release notes carefully,
+   attention to detail. Be sure to go over the [51]release notes carefully,
    and a few key hurdles are identified below:
 
    sakai.properties:      The 2.2 framework refactoring means that many
@@ -167,13 +178,15 @@
                           release, and instead start with the sample in
                           reference/docs/sakai.properties.
                           
-   DB conversion scripts: Every release has DB conversion scripts, and 2.2.1
-                          is no exception. Be sure, however, to read these
+   DB conversion scripts: A database conversion is required for a migration
+                          from 2.2.0 to 2.2.1, but not for a migration from
+                          2.2.1 to 2.2.2. If you are migrating from the 2.2.0
+                          release or earlier, however, be sure to read these
                           scripts over carefully before executing them on
                           your production data. They do not take into account
                           any special customizations you may have done, and
                           you may need to alter them for your situation. See
-                          the Database Configuration section for more
+                          the [52]Database Configuration section for more
                           details.
                           
    Provisional tools:     A few contrib tools that schools may have already
@@ -186,7 +199,7 @@
                           Calendar on a production system, you'll want to be
                           sure to avoid running the portions of the
                           conversion scripts that pertain to them. Again, see
-                          the Database Configuration section for more
+                          the [53]Database Configuration section for more
                           details.
                           
    Providers:             Among the changes that 2.2 introduces is a
@@ -195,7 +208,7 @@
                           UserDirectoryProvider will need some alteration to
                           account for this, along with changes to its import
                           statements and declarations that stem from API
-                          changes. See the release notes for more
+                          changes. See the [54]release notes for more
                           details.
 
 2. Set up Environment
@@ -241,7 +254,7 @@
    There are three Java environment variables you'll want to set for
    everything to function as it should, and though some of them may have
    already been set by your Java installation (depending on your platform),
-   you'll want to double-check them all. You can also look at the [54]Sun
+   you'll want to double-check them all. You can also look at the [55]Sun
    Java Installation Instructions page at the Java web site for further
    details.
 
@@ -283,7 +296,7 @@
    Sakai 2.2.1 was QA'ed with Tomcat 5.5.17, and so that's the version we
    recommend, although the latest stable version will most likely not present
    problems. Tomcat can be downloaded as a binary from
-   http://tomcat.apache.org/download-55.cgi. The distribution you want is
+   [56]http://tomcat.apache.org/download-55.cgi. The distribution you want is
    the one labeled Core, along with the JDK 1.4 Compatibility Package (even
    if you're using Java 1.5, some portions of the Sakai code will require the
    compatibility package, and Sakai won't start up without it). The Tomcat
@@ -313,8 +326,8 @@
    You'll want to set the service to startup automatically ("Startup Type"
    under the General tab).
 
-   Also be sure to read the Windows note in the JVM Tuning section of
-   Post-Installation Configuration.
+   Also be sure to read the Windows note in the [57]JVM Tuning section of
+   [58]Post-Installation Configuration.
 
    Unpack the Tomcat archive at your desired location, and unpack the
    compatibility package directly on top of it. From this point forward these
@@ -339,7 +352,7 @@
 
    If you want to run Tomcat on different ports than the defaults, this would
    also be a good time to make those changes in the server.xml file. See
-   Tomcat configuration documentation for more details.
+   [59]Tomcat configuration documentation for more details.
 
    If you're going to run Tomcat as a standalone web server (i.e. if you're
    not going to connect it to the Apache web server) then you'll want to make
@@ -367,7 +380,7 @@
 
    Maven is the build tool used by Sakai, and the latest stable release
    (currently 1.0.2) can be downloaded from
-   http://maven.apache.org/start/download.html
+   [60]http://maven.apache.org/start/download.html
 
   Newer versions of Maven
 
@@ -439,12 +452,12 @@
    feel the need to learn more about how Sakai uses Maven. To find the most
    detailed such documentation, look for sakai_maven.doc in
    reference/docs/architecture of the source archive or on subversion at:
-   https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/architecture/sakai_maven.doc
+   [61]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/architecture/sakai_maven.doc
 
   3.1. Download Source
 
    If you haven't yet, download the Source archive from
-   http://www.sakaiproject.org/release
+   [62]http://www.sakaiproject.org/release
 
   Getting the Code from Subversion
 
@@ -471,7 +484,7 @@
 
    Subsequent builds would be advised to add the "clean" phase by using the
    command maven cln bld dpl, or the equivalent shortcut: maven sakai. See
-   the sakai_maven.doc for more details.
+   the [63]sakai_maven.doc for more details.
 
    This will run for quite a few minutes with fairly verbose output,
    particularly when it's your first build. Maven will download any
@@ -480,7 +493,7 @@
    $CATALINA_HOME/webapps directory. If Maven completes with the message
    BUILD SUCCESSFUL, you should be able to move on to the next step. If you
    are greeted with the report BUILD FAILED read the accompanying error
-   message carefully to troubleshoot (see the [63]Troubleshooting section).
+   message carefully to troubleshoot (see the [64]Troubleshooting section).
 
   Maven and Memory
 
@@ -542,7 +555,7 @@
    institution name to configuring your database. The essential settings for
    installation are covered here, but to find the most detailed documentation
    on the full variety of possible sakai.properties settings, look in
-   sakai_properties.doc in subversion or
+   [65]sakai_properties.doc in subversion or
    reference/docs/architecture/sakai_properties.doc of the source archive.
 
   4.3. Email configuration
@@ -599,7 +612,7 @@
    for further experimentation and testing, but the following details are
    however offered only as samples or suggestions, and we recommend that you
    consult a systems administrator or local Java guru before making any such
-   changes to a production system. See the [65]Programmer's Cafe on our
+   changes to a production system. See the [66]Programmer's Cafe on our
    Confluence wiki for more discussion of the details.
 
    The standard way to control the JVM options when Tomcat starts up is to
@@ -675,7 +688,7 @@
    problems exist before you try to connect it to another database. Tomcat
    will take a minute or so to start up, depending on the speed of your
    machine, and it's a good idea to watch the Tomcat log as it comes up to
-   catch any errors (see [66]Troubleshooting).
+   catch any errors (see [67]Troubleshooting).
 
    From $CATALINA_HOME you can start up Tomcat with the command:
 
@@ -683,9 +696,9 @@
    Mac/*nix: bin/startup.sh
 
    Once Tomcat has loaded the Sakai application (again, this can take a
-   minute or so) point your browser to http://localhost:8080/portal. If
+   minute or so) point your browser to [68]http://localhost:8080/portal. If
    the gateway page does not come up, check the Tomcat logs (see the
-   Troubleshooting section) for any errors and stack traces. If the
+   [69]Troubleshooting section) for any errors and stack traces. If the
    gateway page does come up, log in with the default admin account (the
    username and password are both 'admin'). If you can log in without errors
    you should be able to stop Tomcat and proceed with Database configuration,
@@ -698,13 +711,13 @@
 
   5.1. Migrating from an Earlier Version
 
-   There are database schema changes between 2.2.0 and 2.2.1, and the
-   conversion scripts to be applied - in distinct versions for MySQL and
-   Oracle, respectively - are found in the reference/docs/updating folder of
-   the release or on subversion:
+   A database conversion is required for a migration from 2.2.0 to 2.2.1, but
+   not for a migration from 2.2.1 to 2.2.2. Database conversion scripts - in
+   distinct versions for MySQL and Oracle, respectively - are found in the
+   reference/docs/updating folder of the release or on subversion:
 
-MySQL:  https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/conversion/sakai_2_2_0-2_2_1_mysql_conversion.sql
-Oracle: https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/conversion/sakai_2_2_0-2_2_1_oracle_conversion.sql
+MySQL:  [70]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion/sakai_2_2_0-2_2_1_mysql_conversion.sql
+Oracle: [71]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion/sakai_2_2_0-2_2_1_oracle_conversion.sql
 
    In the same directory you'll also find conversion scripts for earlier
    Sakai versions. Migration from an earlier version will require the
@@ -748,8 +761,8 @@ Oracle: https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/conv
    These drivers should be copied into your $CATALINA_HOME/common/lib
    directory, and they are available from the official sites:
 
-MySQL:  http://dev.mysql.com/downloads/connector/j/3.1.html
-Oracle: http://www.oracle.com/technology/software/tech/java/sqlj_jdbc/index.html
+MySQL:  [72]http://dev.mysql.com/downloads/connector/j/3.1.html
+Oracle: [73]http://www.oracle.com/technology/software/tech/java/sqlj_jdbc/index.html
 
   Driver Versions
 
@@ -855,7 +868,7 @@ Oracle: hibernate.dialect=org.hibernate.dialect.Oracle9Dialect
 
    Once you've configured the database appropriately, you need only stop and
    restart Tomcat. As Tomcat is coming up you can watch its log to see if
-   there are any database connection errors (see the [73]Troubleshooting
+   there are any database connection errors (see the [74]Troubleshooting
    section).
 
   Oracle and Tests&Quizzes
@@ -909,7 +922,6 @@ Oracle: hibernate.dialect=org.hibernate.dialect.Oracle9Dialect
 
  Commit complete.
 
-
 6. Getting Started with the Software
 
    You should at this point have a working Sakai installation. Now it's time
@@ -921,7 +933,7 @@ Oracle: hibernate.dialect=org.hibernate.dialect.Oracle9Dialect
   6.1. The Gateway Page
 
    When Tomcat has come up successfully, you should be able to direct your
-   browser to its gateway page at http://localhost:8080/portal (or
+   browser to its gateway page at [75]http://localhost:8080/portal (or
    replace 'localhost' with the name of the server where it's installed).
    From the gateway page you can create new accounts or browse for public
    site content. You could start by creating a new account, but that can also
@@ -1032,7 +1044,7 @@ Oracle: hibernate.dialect=org.hibernate.dialect.Oracle9Dialect
    ones do not. These extra tools require additional steps to enable, so that
    system users will not stumble across them inadvertently if that's not
    desired, but you are encouraged to evaluate them for your own deployment.
-   See http://source.sakaiproject.org/release/2.2.1/provisional.html for
+   See [76]http://source.sakaiproject.org/release/2.2.1/provisional.html for
    more details.
 
   6.6. Where to Learn More
@@ -1044,11 +1056,11 @@ Oracle: hibernate.dialect=org.hibernate.dialect.Oracle9Dialect
 
     6.6.1. About the Project
 
-   The sakaiproject.org site offers the best background and orientation
+   The [77]sakaiproject.org site offers the best background and orientation
    to the project and its goals, but chances are you've already seen it. For
    more particular information on the progress and roadmaps of certain tools
    or other initiatives, see the Confluence space named
-   Management/Project Coordination. That coordinating page will also link
+   [78]Management/Project Coordination. That coordinating page will also link
    you out to Confluence spaces for particular tools, and documentation about
    them.
 
@@ -1058,7 +1070,7 @@ Oracle: hibernate.dialect=org.hibernate.dialect.Oracle9Dialect
    collaboration sites for its various sub-groups, and for direct interaction
    with community members you should join sites there that may be of
    interest. You can create an account there by visiting
-   http://collab.sakaiproject.org and clicking on the New Account button.
+   [79]http://collab.sakaiproject.org and clicking on the New Account button.
    Once your account is created you can log in, and with the Membership tool
    you may join any worksites that may seem appropriate. Joining a site
    automatically adds you to its email list, and unjoining a worksite
@@ -1069,20 +1081,20 @@ Oracle: hibernate.dialect=org.hibernate.dialect.Oracle9Dialect
 
    Reference materials for various technical issues are best found in Sakai's
    subversion repository (where these installation documents are also stored)
-   or in the project's Confluence wiki. The docs in subversion can be
+   or in the project's [80]Confluence wiki. The docs in subversion can be
    found in the reference module, e.g.
-   https://source.sakaiproject.org/svn/reference. See in particular the
+   [81]https://source.sakaiproject.org/svn/reference. See in particular the
    docs/architecture folder contained there, which contains a wide-ranging
    collection of technical white papers.
 
    The Confluence wiki is a more informal source of information, but also
    valuable and broader in scope. New developers in particular should visit
-   the Programmer's Cafe, while the Sakaipedia provides nuggets of
+   the [82]Programmer's Cafe, while the [83]Sakaipedia provides nuggets of
    insight on a wide array of issues. You're encouraged to create an account
    there and participate.
 
    But often the most incisive information comes from direct interaction with
-   your peers. As mentioned above, the Collab Server is the place to go
+   your peers. As mentioned above, the [84]Collab Server is the place to go
    for this. For technical questions the best (and most active) such group is
    DG: Development, also commonly referred to by its alias, "sakai-dev."
 
@@ -1113,7 +1125,7 @@ Oracle: hibernate.dialect=org.hibernate.dialect.Oracle9Dialect
    code.
 
    If this does not account for the download failures you're seeing, then you
-   may want to double-check your maven.remote.repo setting. See the [84]Maven
+   may want to double-check your maven.remote.repo setting. See the [85]Maven
    Configuration section, and follow it precisely.
 
     7.1.2. Out of Memory errors
@@ -1240,7 +1252,7 @@ Oracle: hibernate.dialect=org.hibernate.dialect.Oracle9Dialect
 
    If this message appears in catalina.out during startup, it means that
    you've built Sakai for Java 1.5, but your JRE is 1.4. Go back to the
-   [85]Set up Build Environment section and double-check your Java version
+   [86]Set up Build Environment section and double-check your Java version
    and environment variables.
 
     7.2.3. "java.net.BindException: Address already in use"
