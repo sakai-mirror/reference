@@ -1,16 +1,17 @@
-                              2.2.1 Release Notes
+                              2.2.2 Release Notes
 
    --------------------------------------------------------------------------
 
    Table of Contents
 
    1. Overview
-
+   
    2. Migrating from 2.2.0
 
    3. Migrating from 2.1.x
-                3.1. What's New
-                3.2. Migration Issues
+
+        3.1. What's New
+        3.2. Migration Issues
 
    4. Maintenance Branch
 
@@ -18,38 +19,47 @@
 
    6. Open Issues
 
+
 1. Overview
 
-   2.2.1 is a maintenance release, meaning that its purpose is to distribute
-   a further set of fixes to issues that were present in 2.2.0, while
-   deliberately avoiding any new features which may introduce novel bugs. In
-   short, 2.2.1 is currently the latest and best release of the 2.2 codebase,
-   and if you have already been running 2.2.0 you should be able to move to
-   2.2.1 with confidence: there have been no API changes, so that all 2.2
-   code should run without modification.
+   2.2.2 adds a security fix to the 2.2.1 maintenance release, which amounts
+   to the simple removal of test files included in the Apache Axis
+   distribution - 2.2.2 is otherwise indistinguishable from 2.2.1 (i.e. no
+   Sakai code has been altered, nor are there any DB changes), and should
+   therefore be taken to simply supercede 2.2.1. Put another way, 2.2.1 is
+   just 2.2.2 with some extra files that expose a security hole.
+
+   The Axis test files in question reside in the web services
+   webapps/sakai-axis directory, and they are: fingerprint.jsp,
+   happyaxis.jsp, i18nLib.jsp, index.html, index.jsp
+
+   These files could be used to change the locale within Tomcat. Your system
+   might, for example, appear in Japanese as a result of their presence. To
+   our knowledge, no data or information has been compromised by this bug.
+   This issue is in our JIRA issue-tracking system as [9]SAK-6147.
 
 2. Migrating from 2.2.0
 
-   Since 2.2.1 involves no API changes, a migration from 2.2.0 is very simple
-   and straightforward: skins, providers, and other code written for the 2.2
-   codebase should be fine.
+   Since all 2.2 minor releases involve no API changes, a migration from
+   2.2.0 is very simple and straightforward: skins, providers, and other code
+   written for the 2.2 codebase should be fine.
 
    Some of the 2.2.1 fixes, however, are applied to the DB schema, and so a
-   DB conversion script is still necessary. The conversion scripts to be
-   applied - in distinct versions for MySQL and Oracle, respectively - are
-   found in the reference/docs/conversion folder of the release or on
-   subversion:
+   DB conversion script is still necessary for that upgrade. The conversion
+   scripts to be applied - in distinct versions for MySQL and Oracle,
+   respectively - are found in the reference/docs/conversion folder of the
+   release or on subversion:
 
-MySQL: https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/conversion/sakai_2_2_0-2_2_1_mysql_conversion.sql
-Oracle: https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/conversion/sakai_2_2_0-2_2_1_oracle_conversion.sql
+MySQL:  [10]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion/sakai_2_2_0-2_2_1_mysql_conversion.sql
+Oracle: [11]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion/sakai_2_2_0-2_2_1_oracle_conversion.sql
 
    That's it for a migration from 2.2.0. You can freely skip past most of the
    rest of this page, though you'll probably want to jump down and skim the
-   fixed issues and open issues sections.
+   [12]fixed issues and [13]open issues sections.
 
 3. Migrating from 2.1.x
 
-   If you're moving to 2.2.1 from a 2.1 version (or earlier) the changes are
+   If you're moving to 2.2.2 from a 2.1 version (or earlier), the changes are
    more significant, and since the 2.2 code is still fairly recent, it's
    worth spending a little more time here to describe what you can look
    forward to.
@@ -89,7 +99,7 @@ Oracle: https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/conv
    their sites and materials in Sakai. For a thorough discussion of these
    changes, see the doc reference/docs/architecture/sakai_id_eid.doc (or in
    subversion at:
-   https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/architecture/sakai_id_eid.doc)
+   [14]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/architecture/sakai_id_eid.doc)
 
       3.1.1.4. FCKeditor
 
@@ -121,7 +131,7 @@ Oracle: https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/conv
    improvements. To see the ongoing work of the Help project, visit their
    space in Confluence:
 
-   http://bugs.sakaiproject.org/confluence/display/HELP/Home
+   [15]http://bugs.sakaiproject.org/confluence/display/HELP/Home
 
       3.1.1.7. New translations
 
@@ -135,7 +145,7 @@ Oracle: https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/conv
 
    2.2 involves closer integration with the Open Source Portfolio, an
    existing suite of tools supporting portfolio activities, and which are
-   available in this release as [15]provisional tools. Using OSP, individuals
+   available in this release as [16]provisional tools. Using OSP, individuals
    can collect items, reflect, design portfolios, and publish them to
    designated audiences. Instructors and program administrators are able to
    provide structure and guidance to an individual's work that include
@@ -163,14 +173,14 @@ Oracle: https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/conv
        spreadsheet application of their choice.
 
    You can find more details about these and all other provisional tools on
-   the provisional tools page.
+   the [17]provisional tools page.
 
   3.2. Migration Issues
 
     3.2.1. Database Conversion
 
-   A database conversion is required for migration between each Sakai
-   release, and 2.2.1 is no exception. Since DB conversions require the
+   A database conversion is required for a migration from 2.2.0 to 2.2.1, but
+   not for a migration from 2.2.1 to 2.2.2. Since DB conversions require the
    successive application of all intermediate scripts, a migration from a
    2.1.x or earlier version will require at least two conversions (e.g. one
    from 2.1.2 to 2.2.0, and then one from 2.2.0 to 2.2.1). The conversion
@@ -178,7 +188,7 @@ Oracle: https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/conv
    respectively - are found in the reference/docs/conversion folder of the
    release or on subversion:
 
-   https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/conversion
+   [18]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion
 
   Examine before using
 
@@ -244,7 +254,7 @@ Oracle: https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/conv
    Be sure to review the SampleUserDirectoryProvider, and compare it against
    the sample for previous releases:
 
-   https://source.sakaiproject.org/svn/providers/tags/sakai_2-2-1/sample/src/java/org/sakaiproject/provider/user/SampleUserDirectoryProvider.java
+   [19]https://source.sakaiproject.org/svn/providers/tags/sakai_2-2-2/sample/src/java/org/sakaiproject/provider/user/SampleUserDirectoryProvider.java
 
     3.2.4. Skin Changes
 
@@ -252,7 +262,7 @@ Oracle: https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/conv
    adapt them to 2.2 versions. These changes - including conversion steps -
    are thoroughly documented in the appendices of the skin document available
    in reference/docs/architecture/sakai_skin.doc, or in subversion at:
-   https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/architecture/sakai_skin.doc
+   [20]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/architecture/sakai_skin.doc
 
 4. Maintenance Branch
 
@@ -274,16 +284,14 @@ Oracle: https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-1/docs/conv
 
 5. Fixes Included in this Release
 
-   Sakai 2.2.1 fixes the following issues from 2.2.0:
+   Sakai 2.2.2 fixes the following issue from 2.2.1:
 
-   http://source.sakaiproject.org/release/2.2.1/fixed-issues.html
+   [21]http://source.sakaiproject.org/release/2.2.2/fixed-issues.html
 
 6. Open Issues
 
-   The list of known issues with Sakai 2.2.1 at the time of release is found
-   at:
+   The list of known issues with Sakai 2.2.2 is found at:
 
-   http://source.sakaiproject.org/release/2.2.1/open-issues.html
+   [22]http://source.sakaiproject.org/release/2.2.2/open-issues.html
 
    See in particular the "Important Issues" noted at the top of the list.
-
