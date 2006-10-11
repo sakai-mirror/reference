@@ -121,6 +121,8 @@ DELETE FROM SAKAI_REALM_FUNCTION WHERE FUNCTION_NAME IN ('calendar.revise','cale
 UPDATE osp_guidance SET securityViewFunction='osp.wizard.operate' WHERE
 securityViewFunction='osp.wizard.view';
 
+alter table osp_style add style_hash varchar2(255);
+
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------------------------------------
@@ -234,3 +236,29 @@ create table SAKAI_PRIVACY_RECORD (id number(19,0) not null, lockId number(10,0)
 create sequence PrivacyRecordImpl_SEQ;
 
 ----------------------------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------------------------------------
+-- events
+
+ALTER TABLE SAKAI_EVENT MODIFY SESSION_ID VARCHAR2 (163);
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------------------------------------
+-- rwiki (SAK-5674)
+ 
+ UPDATE rwikiobject r , sakai_site s
+     SET r.name = replace(r.name, concat('/site/',lower(s.site_id)), concat('/site/', s.site_id)),
+     r.referenced = replace(r.referenced, concat('/site/',lower(s.site_id)), concat('/site/', s.site_id)),
+     r.realm = replace(r.realm,  concat('/site/',lower(s.site_id)), concat('/site/', s.site_id))
+     WHERE r.name LIKE concat('/site/',concat(s.site_id, '/%'));
+ 
+ UPDATE rwikihistory r , sakai_site s
+     SET r.name = replace(r.name, concat('/site/',lower(s.site_id)), concat('/site/', s.site_id)),
+     r.referenced = replace(r.referenced, concat('/site/',lower(s.site_id)), concat('/site/', s.site_id)),
+     r.realm = replace(r.realm,  concat('/site/',lower(s.site_id)), concat('/site/', s.site_id))
+     WHERE r.name LIKE concat('/site/',concat(s.site_id, '/%'));
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
