@@ -129,7 +129,7 @@ small pilot implementations on single servers)
 
 <a name="overview"></a><br>
 <h3>System Requirements</h3>
-Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbsp;The platforms against which Sakai 2.3.0 has been specifically tested, however, are:<br />
+Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbsp;The platforms against which Sakai 2.3.0 has been specifically QA'ed, however, are:<br />
 
 <table class="dec">
 <tr>
@@ -140,39 +140,32 @@ Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbs
 	<th>Win 2003</th>
 </tr>
 <tr>
-	<th>HSQLDB&nbsp;</th>
-	<td class="topw">DT</td>
-	<td class="topw">DT</td>
-	<td class="topw">DT</td>
-	<td class="topw">DT</td>
-</tr>
-<tr>
 	<th>MySQL 4.1</th>
-	<td class="topbl">DT</td>
-	<td class="topbl">FT</td>
-	<td class="topw">DT</td>
+	<td class="topbl">*</td>
+	<td class="topbl">*</td>
 	<td class="topw">&nbsp;</td>
+	<td class="topbl">&nbsp;</td>
 </tr>
 <tr>
 	<th>MySQL 5.0</th>
 	<td class="topw">&nbsp;</td>
 	<td class="topw">&nbsp;</td>
-	<td class="topw">DT</td>
+	<td class="topw">&nbsp;</td>
 	<td class="topw">&nbsp;</td>
 </tr>
 <tr>
 	<th>Oracle 9i</th>
-	<td class="topbl">FT</td>
+	<td class="topbl">*</td>
 	<td class="topw">&nbsp;</td>
 	<td class="topw">&nbsp;</td>
 	<td class="topw">&nbsp;</td>
 </tr>
 <tr>
 	<th>Oracle&nbsp;10g&nbsp;</th>
-	<td class="topbl">DT</td>
-	<td class="topbl">FT</td>
+	<td class="topbl">*</td>
+	<td class="topbl">*</td>
 	<td class="topw">&nbsp;</td>
-	<td class="topw">FT</td>
+	<td class="topw">*</td>
 </tr>
 
 </table>
@@ -181,10 +174,8 @@ Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbs
 <tr>
 	<td>&nbsp;</td>
 	<td colspan="4" align="right">
-<strong>DT:</strong> Deployment Test  (Installation and Configuration)
+<strong>*</strong> Sakai QA Server
 <br/>
-<strong>FT:</strong> Functional Test (Tool Functionality + DT)
-<br />
 <strong>Dark cell:</strong> In production at a Sakai partner institution
 </td>
 
@@ -253,7 +244,7 @@ Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbs
 		(see the <a href="install-overview.html">Installation Guide</a>).</p>
 
 		<p>Sakai requires transaction support, and so the InnoDB storage engine will be needed for MySQL deployments.</p>
-		<p><em class="note">** NOTE: Sakai has not yet been tested adequately against MySQL 5.0, and it is therefore not yet recommended for production, although it has been used successfully in development.</em></p>
+		<p><em class="note">** NOTE: MySQL 5.0 is not currently recommended for Sakai in production.  The query caching configuration for MySQL 4 does not work for MySQL 5, and until we can resolve this issue MySQL 5 deployments will see poorer performance.  It's worth noting, however, that MySQL 5 is being used successfully in Sakai development.</em></p>
 		<p>It's important to note that Oracle requires the 10g driver even if Oracle 9i is used for the database.  The recommended driver for MySQL is 3.1.12, since there is a greater weight of production success behind it; although early testing has revealed no significant problems with the 3.1.13 driver, it should be used advisedly.</p>
 		</td>
       </tr>
@@ -283,7 +274,7 @@ Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbs
         <td>
          <ul>
           <li><a href="install-overview.html">Installation Guide</a></li>
-          <li><a href="provisional.html">Provisional Tools</a></li>
+          <li><a href="provisional.html">Tool Guide</a></li>
          </ul>
          </td>
        </tr>
