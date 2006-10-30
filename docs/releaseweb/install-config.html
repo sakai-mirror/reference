@@ -75,7 +75,7 @@
                     setting your institution name to configuring your database. The essential
                     settings for installation are covered here, but to find the most detailed
                     documentation on the full variety of possible
-                    <code class="filename">sakai.properties</code> settings, look in <a href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-0/docs/architecture/sakai_properties.doc" target="_top">sakai_properties.doc</a> in subversion or
+                    <code class="filename">sakai.properties</code> settings, look in <a href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/architecture/sakai_properties.doc" target="_top">sakai_properties.doc</a> in subversion or
                         <code class="filename">reference/docs/architecture/sakai_properties.doc</code> of the
                     source archive.</p>
             </div>
@@ -171,16 +171,27 @@ JAVA_OPTS="-server -Xms1500m -Xmx1500m -XX:NewSize=400m -XX:MaxNewSize=400m -XX:
                 variable upon startup and use it. Instead of putting this in an environment variable
                 you might create your own startup script to do so.</p>
             <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
-<h3 class="title">JVM Tuning in Windows XP</h3>
+<h3 class="title">JVM Tuning of Tomcat as a Windows Service</h3>
 
-                <p>Windows users that have installed Tomcat as a service may set Java options in
-                    a <span class="emphasis"><em>Tomcat Properties</em></span> dialog. But you may find that the
-                    permanent generation settings mentioned above will not work appropriately if set
-                    in the "Java Options:" field of the dialog window. That's because these settings
-                    have their own fields in the properties GUI, under the headings
-                        <span class="emphasis"><em>Initial Memory Pool</em></span> and <span class="emphasis"><em>Maximum Memory
-                    Pool</em></span>, respectively. Windows will ignore attempts to alter these
-                    values through the Java Options field.</p>
+                <p>Windows users that have installed Tomcat as a service may set most Java
+                    options through the Tomcat service manager GUI, but not all of them are as
+                    straightforward as inclusion in a single environment variable.</p>
+                <p>To achieve the equivalent of the "-server" option, for example, you'll need to
+                    change the Java Virtual Machine path from
+                    <code class="filename">[..]\bin\client\jvm.dll</code> to
+                        <code class="filename">[..]\bin\server\jvm.dll</code>. Then be sure to put the
+                    remaining JAVA_OPTS on separate lines in the Java Options field of the GUI.
+                    e.g.:</p>
+                <pre class="screen">
+-Xmx512m
+-Xms512m
+-XX:PermSize=128m
+-XX:MaxPermSize=128m</pre>
+                <p>Finally, clear out the <span class="emphasis"><em>Initial Memory Pool</em></span> and
+                        <span class="emphasis"><em>Maximum Memory Pool</em></span> values, as those might conflict
+                    with the options you're putting in the Java Options field. Then click
+                        <span class="emphasis"><em>Apply</em></span>, restart the service, and double-check the
+                    service manager to verify that the values have changed.</p>
             </div>
         </div>
         <div class="sect2" lang="en">
