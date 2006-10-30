@@ -12,7 +12,7 @@
         <title>Overview</title>
         <sect2 xml:id="install-overview-choose">
             <title>Choose an Install Type</title>
-            <para>Sakai 2.2.2 downloads are available for three different installation methods: <variablelist>
+            <para>Sakai 2.2.2 downloads are available for three different installation methods on <link xl:href="http://sakaiproject.org/release/2.3.0">http://sakaiproject.org/release</link>: <variablelist>
                     <varlistentry>
                         <term>Demo:</term>
                         <listitem>
@@ -27,7 +27,7 @@
                         <term>Binary:</term>
                         <listitem>
                             <para>This archive is a kind of Tomcat overlay. If you have a working
-                                Tomcat appropriately configured, the binary installation provides a
+                                Tomcat appropriately configured - including the database connection - the binary installation provides a
                                 quick way to drop the Sakai application bundle into place without
                                 requiring a maven build. This may be a good choice if you know you
                                 don't need to make any code-level changes.</para>
@@ -37,9 +37,9 @@
                         <term>Source:</term>
                         <listitem>
                             <para>This archive includes only the source code to build Sakai, and
-                                therefore calls for separate, preparatory installations of Tomcat
+                                therefore calls for preparatory installations of Tomcat
                                 and the Maven build tool, along with (most likely) a preferred
-                                database. The installation and configuration of these components
+                                database. The installation and configuration of these various components
                                 comprises the bulk of this installation guide.</para>
                         </listitem>
                     </varlistentry>
@@ -107,7 +107,7 @@
                     xl:href="http://localhost:8080/portal">http://localhost:8080/portal</link>. This
                 will bring you to the Sakai gateway site, from which you can create new accounts and
                 log in to the syste. For more orienting tips on how to begin using Sakai, skip ahead
-                to <link linkend="install-software">Getting Started with the Software</link>.</para>
+                to <link linkend="install-software">Getting Started</link>.</para>
             <para>To stop the demo:</para>
             <variablelist>
                 <varlistentry>
@@ -152,11 +152,11 @@
         <sect2 xml:id="install-overview-binary">
             <title>Binary Installation</title>
             <para>The Binary installation of Sakai provides a shortcut for those that already have
-                Tomcat in place and configured as needed (see <link linkend="install-env">Set up
-                    Environment</link> for details on Tomcat configuration), and it does so by
+                Tomcat in place and configured as needed (including the database connection: see <link linkend="install-env">Set up
+                    Environment</link> for details on Tomcat configuration, and <link linkend="install-dbconfig">Database Configuration</link> for database details), and it does so by
                 providing a pre-built Sakai that can simply be dropped into place. All you need to
                 do is unpack the binary archive at the root Tomcat directory, and the appropriate
-                wars, jars, etc., will be deposited in the correct locations.</para>
+                wars, jars, etc., for the Sakai application will be deposited in the correct locations.</para>
             <para>If you wish to configure a binary installation you'll need to manually create a
                     <filename>sakai</filename> directory in <command>$CATALINA_HOME</command> to
                 hold your <filename>sakai.properties</filename> file, as described in <link
@@ -193,70 +193,9 @@
         </sect2>
         <sect2 xml:id="install-overview-migrating">
             <title>Migrating from a Previous Release</title>
-            <para>2.2.2 adds only a security fix to 2.2.1 - the mere removal of a few test files
-                included with the Apache Axis distribution - and otherwise represents no changes to
-                Sakai code or the database. If you are running 2.2.1 already you can perform the fix
-                by simply removing these test files. See the <link xl:href="release-notes.html"
-                    >release notes</link> for more details.</para>
-            <para>If you are moving from an earlier 2.1 or 2.0 codebase, however, 2.2 involves some
-                significant changes: in tools, DB schema, and APIs. Migrating to 2.2 from a previous
-                release therefore requires close attention to detail. Be sure to go over the <link
-                    xl:href="release-notes.html">release notes</link> carefully, and a few key
-                hurdles are identified below:</para>
-            <variablelist>
-                <varlistentry>
-                    <term>sakai.properties:</term>
-                    <listitem>
-                        <para>The 2.2 framework refactoring means that many package names have
-                            changed, and these differences will mainly be encountered in
-                                <filename>sakai.properties</filename> settings which reference
-                            beans. It's best to not try to use a
-                            <filename>sakai.properties</filename> from a previous release, and
-                            instead start with the sample in
-                                <filename>reference/docs/sakai.properties</filename>.</para>
-                    </listitem>
-                </varlistentry>
-                <varlistentry>
-                    <term>DB conversion scripts:</term>
-                    <listitem>
-                        <para>A database conversion is required for a migration from 2.2.0 to 2.2.1,
-                            but not for a migration from 2.2.1 to 2.2.2. If you are migrating from
-                            the 2.2.0 release or earlier, however, be sure to read these scripts
-                            over carefully before executing them on your production data. They do
-                            not take into account any special customizations you may have done, and
-                            you may need to alter them for your situation. See the <link
-                                linkend="install-dbconfig">Database Configuration</link> section for
-                            more details.</para>
-                    </listitem>
-                </varlistentry>
-                <varlistentry>
-                    <term>Provisional tools:</term>
-                    <listitem>
-                        <para>A few contrib tools that schools may have already put into production
-                            are now provisional with 2.2 releases. The DB conversion scripts in
-                            particular assume that these new provisional tools are not represented
-                            in your schema, and attempt to introduce them. If you have already
-                            deployed <emphasis>Message Center</emphasis>, <emphasis>Post
-                            'Em</emphasis>, <emphasis>Search</emphasis>, or <emphasis>Summary
-                                Calendar</emphasis> on a production system, you'll want to be sure
-                            to avoid running the portions of the conversion scripts that pertain to
-                            them. Again, see the <link linkend="install-dbconfig">Database
-                                Configuration</link> section for more details.</para>
-                    </listitem>
-                </varlistentry>
-                <varlistentry>
-                    <term>Providers:</term>
-                    <listitem>
-                        <para>Among the changes that 2.2 introduces is a separation of external user
-                            identifiers from Sakai's internal user ids. Any custom
-                                <filename>UserDirectoryProvider</filename> will need some alteration
-                            to account for this, along with changes to its import statements and
-                            declarations that stem from API changes. See the <link
-                                xl:href="release-notes.html">release notes</link> for more
-                        details.</para>
-                    </listitem>
-                </varlistentry>
-            </variablelist>
+            <para>Migration from an earlier version of Sakai typically involves a database conversion (for which scripts are supplied with the release), an update to any custom skins, and possibly changes to any custom code (see the <link xl:href="release-notes.html">Release Notes</link> to learn if this is the case).</para>
+                
+            <para>For links to the conversion scripts, see the <link xl:href="install-dbconfig.html">Database Configuration</link> section of this guide.</para>
         </sect2>
     </sect1>
     <sect1 xml:id="install-env">
@@ -544,6 +483,7 @@ maven.tomcat.home=/usr/local/tomcat/</screen>
     </sect1>
     <sect1 xml:id="install-build">
         <title>Build and Deploy</title>
+        <para>Sakai uses Apache's <emphasis>Maven</emphasis> build tool to compile and deploy its modules.</para>
         <note>
             <title>How Sakai uses Maven</title>
             <para>The steps below are limited to what you need to get started, but you may feel the
@@ -551,8 +491,8 @@ maven.tomcat.home=/usr/local/tomcat/</screen>
                 documentation, look for <filename>sakai_maven.doc</filename> in
                     <filename>reference/docs/architecture</filename> of the source archive or on
                 subversion at: <link
-                    xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/architecture/sakai_maven.doc"
-                    >https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/architecture/sakai_maven.doc</link></para>
+                    xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/architecture/sakai_maven.doc"
+                    >https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/architecture/sakai_maven.doc</link></para>
         </note>
         <sect2 xml:id="install-build-download">
             <title>Download Source</title>
@@ -564,9 +504,9 @@ maven.tomcat.home=/usr/local/tomcat/</screen>
                     wish to do this, for example, in order to grab the <emphasis>maintenance
                     branch</emphasis>, which will include the latest set of bug fixes. To check out
                     the maintenance branch, you can use the following command:</para>
-                <screen>svn export https://source.sakaiproject.org/svn/sakai/branches/sakai_2-2-x/</screen>
+                <screen>svn export https://source.sakaiproject.org/svn/sakai/branches/sakai_2-3-x/</screen>
                 <para>In which case you could skip the unpacking step below, and your root directory
-                    would be sakai_2-2-x instead of sakai-src.</para>
+                    would be sakai_2-3-x instead of sakai-src.</para>
             </note>
         </sect2>
         <sect2 xml:id="install-build-unpack">
@@ -830,18 +770,15 @@ JAVA_OPTS="-server -Xms1500m -Xmx1500m -XX:NewSize=400m -XX:MaxNewSize=400m -XX:
         <title>Database Configuration</title>
         <sect2 xml:id="install-dbconfig-migrating">
             <title>Migrating from an Earlier Version</title>
-            <para>A database conversion is required for a migration from 2.2.0 to 2.2.1,
-                but not for a migration from 2.2.1 to 2.2.2. Database conversion scripts - in distinct versions for MySQL and Oracle, respectively -
-                are found in the <filename>reference/docs/updating</filename> folder of the release
-                or on subversion:</para>
+            <para>A database conversion is typically required between Sakai versions. Database conversion scripts - in distinct versions for MySQL and Oracle, respectively - are found in the <filename>reference/docs/conversion</filename> folder of the release or on subversion:</para>
             <variablelist>
                 <varlistentry>
                     <term>MySQL:</term>
                     <listitem>
                         <para>
                             <link
-                                xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion/sakai_2_2_0-2_2_1_mysql_conversion.sql"
-                                >https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion/sakai_2_2_0-2_2_1_mysql_conversion.sql</link>
+                                xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conversion/sakai_2_2_2-2_3_0_mysql_conversion.sql"
+                                >https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conversion/sakai_2_2_2-2_3_0_mysql_conversion.sql</link>
                         </para>
                     </listitem>
                 </varlistentry>
@@ -850,59 +787,23 @@ JAVA_OPTS="-server -Xms1500m -Xmx1500m -XX:NewSize=400m -XX:MaxNewSize=400m -XX:
                     <listitem>
                         <para>
                             <link
-                                xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion/sakai_2_2_0-2_2_1_oracle_conversion.sql"
-                                >https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion/sakai_2_2_0-2_2_1_oracle_conversion.sql</link>
+                                xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conversion/sakai_2_2_2-2_3_0_oracle_conversion.sql"
+                                >https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conversion/sakai_2_2_2-2_3_0_oracle_conversion.sql</link>
                         </para>
                     </listitem>
                 </varlistentry>
             </variablelist>
             <para>In the same directory you'll also find conversion scripts for earlier Sakai
                 versions. Migration from an earlier version will require the successive application
-                of all intermediate scripts. You cannot, for example, move from 2.1.2 to 2.2.1 by
-                applying a single script. You will need to move first from 2.1.2 to 2.2.0, and then
-                to 2.2.1.</para>
+                of all intermediate scripts. You cannot, for example, move from 2.2.0 to 2.3.0 by applying a single script. You will need to move first from 2.2.0 to 2.2.1, and then from 2.2.2 to 2.3.0 (there was no database conversion between 2.2.1 and 2.2.2).</para>
             <note>
                 <title>Examine before using</title>
-                <para>As a general rule, be sure to read through these conversion scripts before
-                    applying them. They do not take into account any special customizations you may
-                    have made - such as new roles, or the deployment of additional tools - and they
-                    may complicate your migration with unintended consequences if you execute them
-                    blindly.</para>
-                <para>The <emphasis>Message Center</emphasis> tool offers one such particular
-                    example in 2.2. A number of schools deployed <emphasis>Message Center</emphasis>
-                    in 2.1.x production, before it was yet a provisional tool. Now that it is a
-                    provisional tool, the conversion scripts were written to introduce its tables,
-                    and thus assume that <emphasis>Message Center</emphasis> is a new tool for your
-                    deployment. If it isn't, you'll want to comment out the portions of the
-                    conversion script that treat it, and instead perform the following conversions:</para>
-                <variablelist>
-                    <varlistentry>
-                        <term>MySQL:</term>
-                        <listitem>
-                            <screen>
-ALTER TABLE MFR_TOPIC_T ADD DEFAULTASSIGNNAME VARCHAR(255);
-ALTER TABLE MFR_OPEN_FORUM_T ADD DEFAULTASSIGNNAME VARCHAR(255);
-ALTER TABLE MFR_MESSAGE_T ADD GRADEASSIGNMENTNAME VARCHAR(255);
-ALTER TABLE MFR_MESSAGE_T ADD GRADECOMMENT VARCHAR(255);</screen>
-                        </listitem>
-                    </varlistentry>
-                    <varlistentry>
-                        <term>Oracle:</term>
-                        <listitem>
-                            <screen>
-ALTER TABLE MFR_TOPIC_T ADD DEFAULTASSIGNNAME VARCHAR2(255) NULL;
-ALTER TABLE MFR_OPEN_FORUM_T ADD DEFAULTASSIGNNAME VARCHAR2(255) NULL;
-ALTER TABLE MFR_MESSAGE_T ADD GRADEASSIGNMENTNAME VARCHAR2(255) NULL;
-ALTER TABLE MFR_MESSAGE_T ADD GRADECOMMENT VARCHAR2(255) NULL;</screen>
-                        </listitem>
-                    </varlistentry>
-                </variablelist>
+                <para>As a general rule, be sure to read through these conversion scripts before applying them. They do not take into account any special customizations you may have made - such as new roles, or the deployment of additional tools - and they may complicate your migration with unintended consequences if you execute them blindly.</para>
             </note>
         </sect2>
         <sect2 xml:id="install-dbconfig-drivers">
             <title>Deploy Drivers</title>
-            <para>The supported production-grade databases include MySQL 4.1.12+ (but MySQL 5.0 has
-                not yet been adequately tested for it to be recommended for production) and Oracle
+            <para>The supported production-grade databases include MySQL 4.1.12+ (but MySQL 5.0 is not yet recommended for production - see the <link>Configuration for Performance</link> section below) and Oracle
                 9i+. The version of the JDBC driver (or connector) is also important: for MySQL a
                 3.1.12+ connector should be used, while for Oracle the 10g driver must be used, even
                 if the database is Oracle 9i. These drivers should be copied into your
@@ -1023,8 +924,14 @@ defaultTransactionIsolationString@javax.sql.BaseDataSource=TRANSACTION_READ_COMM
                     </listitem>
                 </varlistentry>
             </variablelist>
-            <note>
-                <title>Oracle Performance</title>
+            </sect2>
+            <sect2 xml:id="install-dbconfig-performance">
+                <title>Configuring for Performance</title>
+                <para>Larger institutions have found the database to be the bottleneck when it comes to Sakai performance. Some additional DB configuration settings may be worth considering.</para>
+                <sect3 xml:id="install-dbconfig-performance-oracle">
+                    <title>Oracle Performance</title>
+                
+          
                 <para>Oracle may have performance problems with some of the SQL settings that work
                     for HSQL and MySQL. Sakai installations using Oracle should strongly consider
                     the following settings in <filename>sakai.properties</filename> to avoid these
@@ -1038,7 +945,46 @@ testOnBorrow@javax.sql.BaseDataSource=false</screen>
                     automatically; setting them with each use may affect performace. In addition,
                     validating the connection on each transaction caused problems in at least one
                     large production environment (University of Michigan).</para>
-            </note>
+                </sect3>
+                <sect3 xml:id="install-dbconfig-performance-mysql">
+                    <title>MySQL Performance</title>
+                    <para>MySQL performance can be considerably improved by caching queries (Oracle does this already, without any extra configuration). You can set this in sakai.properties by altering the connection string (i.e. this will replace the simpler value indicated above) as below, all on one line.</para>
+                    <screen>
+                        url@javax.sql.BaseDataSource=jdbc:mysql://localhost:3306/sakai?useUnicode=true&amp;characterEncoding=UTF-8&amp;useServerPrepStmts=false&amp;cachePrepStmts=true&amp;prepStmtCacheSize=4096&amp;prepStmtCacheSqlLimit=4096</screen>
+                        <para>The parameter that enables use of the query cache is 'useServerPrepStmts=false', while the others (cachePrepStmts=true, prepStmtCacheSize=4096, and prepStmtCacheSqlLimit=4096) are for caching the parsing of prepared statements on the server side. Based on production experience, we'd recommend a query cache size of 64M, configurable in /etc/my.cnf like this:</para>
+                        <screen>
+[mysqld]
+query_cache_size = 64M</screen>
+                        <para>There are some other settable properties for the query cache, but there doesn't seem to be a need to change the defaults. To learn more, you can visit:</para>
+                    <itemizedlist>
+                        <listitem><para><link xl:href="http://dev.mysql.com/doc/refman/4.1/en/query-cache-configuration.html">http://dev.mysql.com/doc/refman/4.1/en/query-cache-configuration.html</link></para></listitem>
+                        <listitem><para><link xl:href="http://dev.mysql.com/doc/refman/4.1/en/connector-j-reference-configuration-properties.html">http://dev.mysql.com/doc/refman/4.1/en/connector-j-reference-configuration-properties.html</link></para></listitem>
+                    </itemizedlist>
+                    <note>
+                        <title>MySQL 5</title>
+                        <para>The above configuration properties work for MySQL 4.1 only. The connection parameters that allow MySQL caching on MySQL 4 cause problems with bit types on MySQL 5. We will likely have a better answer for the next Sakai release, but the issue was not resolved in time for Sakai 2.3.  In the interim the basic, non-caching string must be used for MySQL 5, and since this means poorer performance, MySQL 5 is currently not recommended for production.</para>
+                    </note>
+                </sect3>
+                <sect3 xml:id="install-dbconfig-performance-linuxio">
+                    <title>Disk I/O on Linux (SLES9/RHEL4)</title>
+                    <para>A Linux database server may see big disk-hanging delays (especially if the DB and the web server are on the same machine) under load. This appears to be a side effect of the default SLES9 I/O scheduler, CFQ. The Deadline scheduler, which has a maximum latency for serving requests, is therefore a better choice for database operations - although pages may still render slowly under load, performance will degrade more gracefully, avoiding hangs, and provide some feedback.</para>
+                    <para>To switch to the Deadline scheduler, the boot parameter elevator=deadline must be passed to the kernel that's being used. You can do so by editing the <filename>/etc/grub.conf</filename> file and adding the parameter to the kernel that's being used:</para>
+                    <screen>
+title Red Hat Enterprise Linux AS (2.4.21-32.0.1.ELhugemem)
+    root (hd0,0) 
+    kernel /vmlinuz-2.4.21-32.0.1.ELhugemem ro root=/dev/sda2 elevator=deadline reboot=warm 
+    initrd /initrd-2.4.21-32.0.1.ELhugemem.img</screen>
+                    <para>Make sure to reboot the system to activate the new scheduler.  You can also see these links for more information:</para>
+                    <itemizedlist>
+                        <listitem><para><link xl:href="http://www.puschitz.com/TuningLinuxForOracle.shtml">http://www.puschitz.com/TuningLinuxForOracle.shtml</link></para></listitem>
+                        <listitem><para><link xl:href="http://nextre.it/oracledocs/ioscheduler_01.html">http://nextre.it/oracledocs/ioscheduler_01.html</link></para></listitem>
+                        <listitem><para><link xl:href="http://www.open-mag.com/features/Vol_104/SLES9/SLES9.htm">http://www.open-mag.com/features/Vol_104/SLES9/SLES9.htm</link></para></listitem>
+                    </itemizedlist>
+                </sect3>
+                </sect2>
+                <sect2 xml:id="install-dbconfig-startup">
+                    <title>Startup</title>
+                 
             <para>Once you've configured the database appropriately, you need only stop and restart
                 Tomcat. As Tomcat is coming up you can watch its log to see if there are any
                 database connection errors (see the <link linkend="install-tshoot-startup"
