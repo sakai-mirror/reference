@@ -96,7 +96,7 @@ hiddenTools@org.sakaiproject.tool.api.ActiveToolManager=</screen>
                                <listitem><para>filtered views for grading ( <link xl:href="http://bugs.sakaiproject.org/jira/browse/SAK-4573">http://bugs.sakaiproject.org/jira/browse/SAK-4573</link>)</para></listitem>
                                <listitem><para>a pager/search box for grading ( <link xl:href="http://bugs.sakaiproject.org/jira/browse/SAK-4402">http://bugs.sakaiproject.org/jira/browse/SAK-4402</link>)</para></listitem>
                                <listitem><para>a new question type: numeric response ( <link xl:href="http://bugs.sakaiproject.org/jira/browse/SAK-6325">http://bugs.sakaiproject.org/jira/browse/SAK-6325</link>)</para></listitem>
-                               <listitem><para>allowing instructors to attach any file to a question</para></listitem>
+                               <listitem><para>java.policy requirement for audio recording questions removed</para></listitem>
                            </itemizedlist></listitem>
                    </itemizedlist>
                    </sect2>
