@@ -236,7 +236,8 @@ testOnBorrow@javax.sql.BaseDataSource=false</pre>
 
                     <p>MySQL performance can be considerably improved by caching queries (Oracle does this already, without any extra configuration). You can set this in sakai.properties by altering the connection string (i.e. this will replace the simpler value indicated above) as below, all on one line.</p>
                     <pre class="screen">
-                        url@javax.sql.BaseDataSource=jdbc:mysql://localhost:3306/sakai?useUnicode=true&amp;characterEncoding=UTF-8&amp;useServerPrepStmts=false&amp;cachePrepStmts=true&amp;prepStmtCacheSize=4096&amp;prepStmtCacheSqlLimit=4096</pre>
+url@javax.sql.BaseDataSource=jdbc:mysql://localhost:3306/sakai?useUnicode=true&amp;characterEncoding=UTF-8
+&amp;useServerPrepStmts=false&amp;cachePrepStmts=true&amp;prepStmtCacheSize=4096&amp;prepStmtCacheSqlLimit=4096</pre> (all one line)
                         <p>The parameter that enables use of the query cache is 'useServerPrepStmts=false', while the others (cachePrepStmts=true, prepStmtCacheSize=4096, and prepStmtCacheSqlLimit=4096) are for caching the parsing of prepared statements on the server side. Based on production experience, we'd recommend a query cache size of 64M, configurable in /etc/my.cnf like this:</p>
                         <pre class="screen">
 [mysqld]
