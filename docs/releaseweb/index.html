@@ -81,14 +81,14 @@ small pilot implementations on single servers)
 	<td>
 				  <a href="sakai_2-3-0/sakai-demo_2-3-0.zip">
 				  sakai-demo_2-3-0.zip</a><br />
-				(??M)<br/>
+				(141.2M)<br/>
 				<a href="sakai_2-3-0/sakai-demo_2-3-0_zip.MD5">MD5</a>
 	</td>
 	<td>
 				  <a href="sakai_2-3-0/sakai-demo_2-3-0.tar.gz">
 				  sakai-demo_2-3-0.tar.gz</a>
 				  <br />
-					(??M) <br/>
+					(140.1M) <br/>
 					<a href="sakai_2-3-0/sakai-demo_2-3-0_tar_gz.MD5">MD5</a>
 	</td>
 </tr>
@@ -101,12 +101,12 @@ small pilot implementations on single servers)
 	</td>
 	<td><a href="sakai_2-3-0/sakai-bin_2-3-0.zip">
 				  sakai-bin_2-3-0.zip</a><br />
-				(??M) <br/>
+				(133.1M) <br/>
 				<a href="sakai_2-3-0/sakai-bin_2-3-0_zip.MD5">MD5</a>
 	</td>
 	<td><a href="sakai_2-3-0/sakai-bin_2-3-0.tar.gz">
 				  sakai-bin_2-3-0.tar.gz</a><br />
-				(??M) <br/>
+				(132.8M) <br/>
 				<a href="sakai_2-3-0/sakai-bin_2-3-0_tar_gz.MD5">MD5</a>
 	</td>
 </tr>
@@ -120,7 +120,7 @@ small pilot implementations on single servers)
 				<a href="sakai_2-3-0/sakai-src_2-3-0_zip.MD5">MD5</a>
 	</td>
 	<td><a href="sakai_2-3-0/sakai-src_2-3-0.tar.gz">sakai-src_2-3-0.tar.gz
-				  </a><br />(??M) <br/>
+				  </a><br />(21.8M) <br/>
 				  <a href="sakai_2-3-0/sakai-src_2-3-0_tar_gz.MD5">MD5</a>
 	</td>
 </tr>
@@ -147,7 +147,7 @@ Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbs
 <tr>
 	<th>MySQL 5.0</th>
 	<td class="topw">&nbsp;</td>
-	<td class="topw">&nbsp;</td>
+	<td class="topw">*</td>
 	<td class="topw">&nbsp;</td>
 </tr>
 <tr>
@@ -176,6 +176,8 @@ Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbs
 
 </tr>
 </table>
+
+<p><em class="note">** NOTE: MySQL 5.0 is not currently recommended for Sakai in production.  During QA testing it was discovered that the query caching configuration for MySQL 4 causes problems for MySQL 5, and until we can resolve this issue MySQL 5 deployments will see poorer performance.  It's worth noting, however, that MySQL 5 is being used successfully in Sakai development.</em></p>
 
 
 
@@ -239,7 +241,7 @@ Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbs
 		(see the <a href="install-overview.html">Installation Guide</a>).</p>
 
 		<p>Sakai requires transaction support, and so the InnoDB storage engine will be needed for MySQL deployments.</p>
-		<p><em class="note">** NOTE: MySQL 5.0 is not currently recommended for Sakai in production.  The query caching configuration for MySQL 4 does not work for MySQL 5, and until we can resolve this issue MySQL 5 deployments will see poorer performance.  It's worth noting, however, that MySQL 5 is being used successfully in Sakai development.</em></p>
+
 		<p>It's important to note that Oracle requires the 10g driver even if Oracle 9i is used for the database.  The recommended driver for MySQL is 3.1.12, since there is a greater weight of production success behind it; although early testing has revealed no significant problems with the 3.1.13 driver, it should be used advisedly.</p>
 		</td>
       </tr>
