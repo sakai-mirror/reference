@@ -160,7 +160,7 @@ hiddenTools@org.sakaiproject.tool.api.ActiveToolManager=</screen>
                             >http://bugs.sakaiproject.org/jira/browse/SAK-4295</link>) </para>
                 </listitem>
                 <listitem>
-                    <para><emphasis>Tests&amp;Quizzes (Samigo)</emphasis>: now includes</para>
+                    <para><emphasis>Tests &amp; Quizzes (Samigo)</emphasis>: (see the <link xl:href="http://bugs.sakaiproject.org/confluence/display/SAM/2.3+Release+Notes">Samigo release notes</link> for more complete details)</para>
                     <itemizedlist>
                         <listitem>
                             <para>allowing instructors to attach any file to a question ( <link
@@ -260,7 +260,7 @@ hiddenTools@org.sakaiproject.tool.api.ActiveToolManager=</screen>
             </itemizedlist>
         </sect2>
     </sect1>
-    
+
     <sect1 xml:id="resolved">
         <title>Fixes Included in this Release</title>
         <para>Sakai 2.3.0 fixes the following issues:</para>
@@ -288,8 +288,8 @@ hiddenTools@org.sakaiproject.tool.api.ActiveToolManager=</screen>
             with an 'x' replacing their minor version number, e.g. '2-3-x'. You can check out the
             2.3 maintenance branch with the following command: </para>
         <para>
-            <command>svn export
-                https://source.sakaiproject.org/svn/sakai/branches/sakai_2-3-x/</command>
+            <command>svn co
+            https://source.sakaiproject.org/svn/sakai/branches/sakai_2-3-x/</command>
         </para>
         <para>If you come upon an important fix that you believe should be included in the branch
             (and perhaps isn't yet), feel free to bring it to the attention of the branch manager,
