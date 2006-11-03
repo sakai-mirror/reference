@@ -43,14 +43,14 @@
 
   2.1. Database Conversion
 
-   A DB conversion script is required for a database migration from 2.2.2 to
-   2.3.0.
+   A DB conversion script is required for a database migration from 2.2.1 to
+   2.3.0 (there was no DB conversion between 2.2.1 and 2.2.2).
 
   Note
 
    DB conversions require the successive application of all intermediate
    scripts, e.g., a migration from 2.1.2 will require three conversions: one
-   from 2.1.2 to 2.2.0, one from 2.2.0 to 2.2.1, and then one from 2.2.2 to
+   from 2.1.2 to 2.2.0, one from 2.2.0 to 2.2.1, and then one from 2.2.1 to
    2.3.0 (there was no DB conversion between 2.2.1 and 2.2.2).
 
    The conversion scripts to be applied - in distinct versions for MySQL and

@@ -670,14 +670,14 @@
    respectively - are found in the reference/docs/conversion folder of the
    release or on subversion:
 
-MySQL:  https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conversion/sakai_2_2_2-2_3_0_mysql_conversion.sql
-Oracle: https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conversion/sakai_2_2_2-2_3_0_oracle_conversion.sql
+MySQL:  https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conversion/sakai_2_2_1-2_3_0_mysql_conversion.sql
+Oracle: https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conversion/sakai_2_2_1-2_3_0_oracle_conversion.sql
 
    In the same directory you'll also find conversion scripts for earlier
    Sakai versions. Migration from an earlier version will require the
    successive application of all intermediate scripts. You cannot, for
    example, move from 2.2.0 to 2.3.0 by applying a single script. You will
-   need to move first from 2.2.0 to 2.2.1, and then from 2.2.2 to 2.3.0
+   need to move first from 2.2.0 to 2.2.1, and then from 2.2.1 to 2.3.0
    (there was no database conversion between 2.2.1 and 2.2.2).
 
   Examine before using
