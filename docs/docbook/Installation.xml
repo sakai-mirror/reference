@@ -12,7 +12,7 @@
         <title>Overview</title>
         <sect2 xml:id="install-overview-choose">
             <title>Choose an Install Type</title>
-            <para>Sakai 2.3 downloads are available for three different installation methods on
+            <para>Sakai downloads are available for three different installation methods on
                     <link xl:href="http://sakaiproject.org/release/2.3.0"
                     >http://sakaiproject.org/release</link>: <variablelist>
                     <varlistentry>
@@ -810,7 +810,7 @@ JAVA_OPTS="-server -Xms1500m -Xmx1500m -XX:NewSize=400m -XX:MaxNewSize=400m -XX:
                 versions. Migration from an earlier version will require the successive application
                 of all intermediate scripts. You cannot, for example, move from 2.2.0 to 2.3.0 by
                 applying a single script. You will need to move first from 2.2.0 to 2.2.1, and then
-                from 2.2.2 to 2.3.0 (there was no database conversion between 2.2.1 and 2.2.2).</para>
+                from 2.2.1 to 2.3.0 (there was no database conversion between 2.2.1 and 2.2.2).</para>
             <note>
                 <title>Examine before using</title>
                 <para>As a general rule, be sure to read through these conversion scripts before
