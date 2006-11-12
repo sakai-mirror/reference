@@ -12,9 +12,9 @@
         <title>Overview</title>
         <sect2 xml:id="install-overview-choose">
             <title>Choose an Install Type</title>
-            <para>Sakai downloads are available for three different installation methods on
-                    <link xl:href="http://sakaiproject.org/release/2.3.0"
-                    >http://sakaiproject.org/release</link>: <variablelist>
+            <para>Sakai downloads are available for three different installation methods on <link
+                    xl:href="../2.3.0"
+                >http://sakaiproject.org/release</link>: <variablelist>
                     <varlistentry>
                         <term>Demo:</term>
                         <listitem>
@@ -67,7 +67,7 @@
                             <listitem>
                                 <para>
                                     <link
-                                        xl:href="http://source.sakaiproject.org/release/2.3.0/sakai_2-3-0/sakai-demo_2-3-0.zip"
+                                        xl:href="../2.3.0/sakai_2-3-0/sakai-demo_2-3-0.zip"
                                         >demo archive</link>
                                 </para>
                             </listitem>
@@ -77,7 +77,7 @@
                             <listitem>
                                 <para>
                                     <link
-                                        xl:href="http://source.sakaiproject.org/release/2.3.0/sakai_2-3-0/sakai-demo_2-3-0.tar.gz"
+                                        xl:href="../2.3.0/sakai_2-3-0/sakai-demo_2-3-0.tar.gz"
                                         >demo archive</link>
                                 </para>
                             </listitem>
