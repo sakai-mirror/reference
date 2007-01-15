@@ -54,8 +54,8 @@
 <!-- BEGIN CONTENT -->
 <div class="pad">
 <h1>Sakai 2.3.1 Release<br/>
- <span style="font:	12px/1.4 Arial, Helvetica, sans-serif;">(November 3, 2006)</span></h1>
-<p>Welcome to the Sakai release page for version 2.3.1!  Sakai 2.3 offers more in the way of enhancements and less in the way of API changes than the 2.2 series.  2.3.1 is the first release to promote successful provisional tools to the enterprise bundle (<b>Rwiki</b> and <b>Calendar Summary</b>, respectively), and it also includes three new provisional tools.  Sakai 2.3 introduces a significant number of feature enhancements to existing tools as well, along with over 450 fixes.  See the <a href="release-notes.html">release notes</a> for more details.</p>
+ <span style="font:	12px/1.4 Arial, Helvetica, sans-serif;">(January 15, 2007)</span></h1>
+<p>Welcome to the Sakai release page for version 2.3.1!  Sakai 2.3.1 offers a handful of critical fixes to the 2.3.0 release, for both performance and security.  See the <a href="release-notes.html">release notes</a> for more details.</p>
 
 <p>On this page you'll find further details concerning what the release includes, along with system requirements, an installation guide, and links to other relevant community spaces for the Sakai project.</p>
 <br clear="all" />
@@ -95,7 +95,7 @@ small pilot implementations on single servers)
 <tr>
 	<th>Binary
 	</th>
-	<td>The Sakai Binary is a pre-built Sakai without the Tomcat or extra configuration files.
+	<td>The Sakai Binary is a pre-built Sakai without Tomcat, jar dependencies, or extra configuration files.
 				Download the Binary release if you want to just drop the Sakai bundle into a
 				pre-existing Tomcat environment.
 	</td>
@@ -140,25 +140,25 @@ Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbs
 </tr>
 <tr>
 	<th>MySQL 4.1</th>
-	<td class="topbl">&nbsp;</td>
+	<td class="topw">&nbsp;</td>
 	<td class="topbl">*</td>
-	<td class="topbl">&nbsp;</td>
+	<td class="topw">&nbsp;</td>
 </tr>
 <tr>
 	<th>MySQL 5.0</th>
 	<td class="topw">&nbsp;</td>
-	<td class="topw">*</td>
+	<td class="topw">&nbsp;</td>
 	<td class="topw">&nbsp;</td>
 </tr>
 <tr>
 	<th>Oracle 9i</th>
-	<td class="topbl">*</td>
+	<td class="topbl">&nbsp;</td>
 	<td class="topw">&nbsp;</td>
 	<td class="topw">&nbsp;</td>
 </tr>
 <tr>
 	<th>Oracle&nbsp;10g&nbsp;</th>
-	<td class="topbl">&nbsp;</td>
+	<td class="topw">&nbsp;</td>
 	<td class="topbl">*</td>
 	<td class="topw">&nbsp;</td>
 </tr>
@@ -209,7 +209,7 @@ Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbs
              <td><p>Although Tomcat is not the only available web container, it is highly recommended, and the documentation assumes Tomcat use.  Sakai QA was conducted on Tomcat 5.5.17, so this is the recommended version, but the latest stable release of 5.5 will likely not present problems.</p>
              <p><em class="note">** NOTE: Problems with CAS integration were discovered with Tomcat 5.5.16, so this version is not recommended.</em></p>
 			  <p>
-			Tomcat 5.5 requires a compatibility package in order to run with Java 1.4, and some Sakai dependencies will also require this package, even though Java 1.5 is used to build and run Sakai. This compatibility package is also available from the <a href="http://tomcat.apache.org/download-55.cgi">Tomcat download page</a>.</p>
+			Tomcat 5.5 requires a compatibility package in order to run with Java 1.4 code, and some Sakai dependencies will also require this package, even though Java 1.5 is used to build and run Sakai. This compatibility package is also available from the <a href="http://tomcat.apache.org/download-55.cgi">Tomcat download page</a>.</p>
 			</td>
          </tr>
 		 <tr><td colspan="4" class="line">&nbsp;</td></tr>
@@ -242,7 +242,7 @@ Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbs
 
 		<p>Sakai requires transaction support, and so the InnoDB storage engine will be needed for MySQL deployments.</p>
 
-		<p>It's important to note that Oracle requires the 10g driver even if Oracle 9i is used for the database.  The recommended driver for MySQL is 3.1.12, since there is a greater weight of production success behind it; although early testing has revealed no significant problems with the 3.1.13 driver, it should be used advisedly.</p>
+		<p>It's important to note that Oracle requires the 10g driver even if Oracle 9i is used for the database.  The recommended driver for MySQL is 3.1.14.</p>
 		</td>
       </tr>
 	  <tr><td colspan="4" class="line">&nbsp;</td></tr>
