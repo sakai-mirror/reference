@@ -5,7 +5,7 @@
 
     <info>
         <title>Installation Guide</title>
-        <edition>15 August 2006 - Document version 2.3</edition>
+        <edition>15 January 2007 - Document version 2.3</edition>
     </info>
 
     <sect1 xml:id="install-overview">
@@ -13,8 +13,7 @@
         <sect2 xml:id="install-overview-choose">
             <title>Choose an Install Type</title>
             <para>Sakai downloads are available for three different installation methods on <link
-                    xl:href="../2.3.0"
-                >http://sakaiproject.org/release</link>: <variablelist>
+                    xl:href="../2.3.0">http://sakaiproject.org/release</link>: <variablelist>
                     <varlistentry>
                         <term>Demo:</term>
                         <listitem>
@@ -66,9 +65,8 @@
                             <term>Windows:</term>
                             <listitem>
                                 <para>
-                                    <link
-                                        xl:href="../2.3.0/sakai_2-3-0/sakai-demo_2-3-0.zip"
-                                        >demo archive</link>
+                                    <link xl:href="../2.3.0/sakai_2-3-1/sakai-demo_2-3-1.zip">demo
+                                        archive</link>
                                 </para>
                             </listitem>
                         </varlistentry>
@@ -76,8 +74,7 @@
                             <term>Mac/*nix:</term>
                             <listitem>
                                 <para>
-                                    <link
-                                        xl:href="../2.3.0/sakai_2-3-0/sakai-demo_2-3-0.tar.gz"
+                                    <link xl:href="../2.3.0/sakai_2-3-1/sakai-demo_2-3-1.tar.gz"
                                         >demo archive</link>
                                 </para>
                             </listitem>
@@ -501,8 +498,8 @@ maven.tomcat.home=/usr/local/tomcat/</screen>
                 documentation, look for <filename>sakai_maven.doc</filename> in
                     <filename>reference/docs/architecture</filename> of the source archive or on
                 subversion at: <link
-                    xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/architecture/sakai_maven.doc"
-                    >https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/architecture/sakai_maven.doc</link></para>
+                    xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/architecture/sakai_maven.doc"
+                    >https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/architecture/sakai_maven.doc</link></para>
         </note>
         <sect2 xml:id="install-build-download">
             <title>Download Source</title>
@@ -534,7 +531,7 @@ maven.tomcat.home=/usr/local/tomcat/</screen>
                 <para>Subsequent builds would be advised to add the "clean" phase by using the
                     command <command>maven cln bld dpl</command>, or the equivalent shortcut:
                         <command>maven sakai</command>. See the <link
-                        xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/architecture/sakai_maven.doc"
+                        xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/architecture/sakai_maven.doc"
                         >sakai_maven.doc</link> for more details.</para>
             </note>
             <para>This will run for quite a few minutes with fairly verbose output, particularly
@@ -604,7 +601,7 @@ export MAVEN_OPTS="-Xmx384m -XX:PermSize=48m"</screen>
                     settings for installation are covered here, but to find the most detailed
                     documentation on the full variety of possible
                     <filename>sakai.properties</filename> settings, look in <link
-                        xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/architecture/sakai_properties.doc"
+                        xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/architecture/sakai_properties.doc"
                         >sakai_properties.doc</link> in subversion or
                         <filename>reference/docs/architecture/sakai_properties.doc</filename> of the
                     source archive.</para>
@@ -790,8 +787,8 @@ JAVA_OPTS="-server -Xms1500m -Xmx1500m -XX:NewSize=400m -XX:MaxNewSize=400m -XX:
                     <listitem>
                         <para>
                             <link
-                                xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conversion/sakai_2_2_2-2_3_0_mysql_conversion.sql"
-                                >https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conversion/sakai_2_2_2-2_3_0_mysql_conversion.sql</link>
+                                xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/conversion/sakai_2_2_2-2_3_0_mysql_conversion.sql"
+                                >https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/conversion/sakai_2_2_2-2_3_0_mysql_conversion.sql</link>
                         </para>
                     </listitem>
                 </varlistentry>
@@ -800,17 +797,17 @@ JAVA_OPTS="-server -Xms1500m -Xmx1500m -XX:NewSize=400m -XX:MaxNewSize=400m -XX:
                     <listitem>
                         <para>
                             <link
-                                xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conversion/sakai_2_2_2-2_3_0_oracle_conversion.sql"
-                                >https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conversion/sakai_2_2_2-2_3_0_oracle_conversion.sql</link>
+                                xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/conversion/sakai_2_2_2-2_3_0_oracle_conversion.sql"
+                                >https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/conversion/sakai_2_2_2-2_3_0_oracle_conversion.sql</link>
                         </para>
                     </listitem>
                 </varlistentry>
             </variablelist>
             <para>In the same directory you'll also find conversion scripts for earlier Sakai
                 versions. Migration from an earlier version will require the successive application
-                of all intermediate scripts. You cannot, for example, move from 2.2.0 to 2.3.0 by
+                of all intermediate scripts. You cannot, for example, move from 2.2.0 to 2.3.1 by
                 applying a single script. You will need to move first from 2.2.0 to 2.2.1, and then
-                from 2.2.1 to 2.3.0 (there was no database conversion between 2.2.1 and 2.2.2).</para>
+                from 2.2.1 to 2.3.1 (there was no database conversion between 2.2.1 and 2.2.2).</para>
             <note>
                 <title>Examine before using</title>
                 <para>As a general rule, be sure to read through these conversion scripts before
@@ -858,9 +855,7 @@ JAVA_OPTS="-server -Xms1500m -Xmx1500m -XX:NewSize=400m -XX:MaxNewSize=400m -XX:
                     installations running against Oracle, even when the database is Oracle 9i.</para>
 
                 <para>Problems have been reported for both the 3.1.10 and 3.1.11 MySQL drivers.
-                    3.1.12 is the recommended version since it has the greatest weight of production
-                    experience behind hit, however early testing of 3.1.13 has not yet revealed any
-                    significant issues.</para>
+                    3.1.12+ will be adequate, but 3.1.14 is the recommended version.</para>
             </note>
         </sect2>
         <sect2 xml:id="install-dbconfig-create">
