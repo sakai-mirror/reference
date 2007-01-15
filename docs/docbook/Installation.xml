@@ -18,8 +18,7 @@
                         <term>Demo:</term>
                         <listitem>
                             <para>This archive includes the Tomcat container and pre-built webapps,
-                                so that the only prerequisite for getting started is Java (v. 1.4.2
-                                or higher). While not intended for large-scale implementations, it
+                                so that the only prerequisite for getting started is Java (v. 1.5). While not intended for large-scale implementations, it
                                 is suitable for evaluating the software and small-scale pilot
                                 implementations on single servers.</para>
                         </listitem>
@@ -208,7 +207,7 @@
         <title>Set up Environment</title>
         <sect2 xml:id="install-env-jinstall">
             <title>Verify Java Installation</title>
-            <para>Check to see if you have Java (version 1.4.2 or higher) installed on your system
+            <para>Check to see if you have Java (version 1.5) installed on your system
                 by running the following command (sample output from a *nix system):</para>
             <screen>
 $ java -version
@@ -315,10 +314,8 @@ Java HotSpot(TM) Server VM (build 1.5.0_06-b05, mixed mode)</screen>
                     xl:href="http://tomcat.apache.org/download-55.cgi"
                     >http://tomcat.apache.org/download-55.cgi</link>. The distribution you want is
                 the one labeled <emphasis>Core</emphasis>, along with the <emphasis>JDK 1.4
-                    Compatibility Package</emphasis> (even if you're using Java 1.5, some portions
-                of the Sakai code will require the compatibility package, and Sakai won't start up
-                without it). The Tomcat 5.5 instructions will tell you that Java 1.5 is required,
-                but it's not, so long as you have the 1.4 Compatibility package.</para>
+                    Compatibility Package</emphasis> (even though you're using Java 1.5, some Sakai dependencies will require the compatibility package, and Sakai won't start up
+                without it).</para>
             <note>
                 <title>Tomcat on Windows</title>
                 <para>Windows users have the option of either downloading an .exe Tomcat installer
