@@ -5,24 +5,23 @@
 
     <info>
         <title>Installation Guide</title>
-        <edition>15 August 2006 - Document version 2.3</edition>
+        <edition>21 January 2007 - Document version 2.3</edition>
     </info>
 
     <sect1 xml:id="install-overview">
         <title>Overview</title>
         <sect2 xml:id="install-overview-choose">
             <title>Choose an Install Type</title>
-            <para>Sakai 2.3 downloads are available for three different installation methods on
-                    <link xl:href="http://sakaiproject.org/release/2.3.0"
-                    >http://sakaiproject.org/release</link>: <variablelist>
+            <para>Sakai downloads are available for three different installation methods on <link
+                    xl:href="../">http://sakaiproject.org/release</link>: <variablelist>
                     <varlistentry>
                         <term>Demo:</term>
                         <listitem>
                             <para>This archive includes the Tomcat container and pre-built webapps,
-                                so that the only prerequisite for getting started is Java (v. 1.4.2
-                                or higher). While not intended for large-scale implementations, it
-                                is suitable for evaluating the software and small-scale pilot
-                                implementations on single servers.</para>
+                                so that the only prerequisite for getting started is Java (v. 1.5).
+                                While not intended for large-scale implementations, it is suitable
+                                for evaluating the software and small-scale pilot implementations on
+                                single servers.</para>
                         </listitem>
                     </varlistentry>
                     <varlistentry>
@@ -66,9 +65,8 @@
                             <term>Windows:</term>
                             <listitem>
                                 <para>
-                                    <link
-                                        xl:href="http://source.sakaiproject.org/release/2.3.0/sakai_2-3-0/sakai-demo_2-3-0.zip"
-                                        >demo archive</link>
+                                    <link xl:href="../2.3.1/sakai_2-3-1/sakai-demo_2-3-1.zip">demo
+                                        archive</link>
                                 </para>
                             </listitem>
                         </varlistentry>
@@ -76,8 +74,7 @@
                             <term>Mac/*nix:</term>
                             <listitem>
                                 <para>
-                                    <link
-                                        xl:href="http://source.sakaiproject.org/release/2.3.0/sakai_2-3-0/sakai-demo_2-3-0.tar.gz"
+                                    <link xl:href="../2.3.1/sakai_2-3-1/sakai-demo_2-3-1.tar.gz"
                                         >demo archive</link>
                                 </para>
                             </listitem>
@@ -211,8 +208,8 @@
         <title>Set up Environment</title>
         <sect2 xml:id="install-env-jinstall">
             <title>Verify Java Installation</title>
-            <para>Check to see if you have Java (version 1.4.2 or higher) installed on your system
-                by running the following command (sample output from a *nix system):</para>
+            <para>Check to see if you have Java (version 1.5) installed on your system by running
+                the following command (sample output from a *nix system):</para>
             <screen>
 $ java -version
 java version "1.5.0_06"
@@ -312,16 +309,15 @@ Java HotSpot(TM) Server VM (build 1.5.0_06-b05, mixed mode)</screen>
         </sect2>
         <sect2 xml:id="install-env-tinstall">
             <title>Install Tomcat</title>
-            <para>Sakai 2.2.1 was QA'ed with Tomcat 5.5.17, and so that's the version we recommend,
+            <para>Sakai 2.3.1 was QA'ed with Tomcat 5.5.17, and so that's the version we recommend,
                 although the latest stable version will most likely not present problems. Tomcat can
                 be downloaded as a binary from <link
                     xl:href="http://tomcat.apache.org/download-55.cgi"
                     >http://tomcat.apache.org/download-55.cgi</link>. The distribution you want is
                 the one labeled <emphasis>Core</emphasis>, along with the <emphasis>JDK 1.4
-                    Compatibility Package</emphasis> (even if you're using Java 1.5, some portions
-                of the Sakai code will require the compatibility package, and Sakai won't start up
-                without it). The Tomcat 5.5 instructions will tell you that Java 1.5 is required,
-                but it's not, so long as you have the 1.4 Compatibility package.</para>
+                    Compatibility Package</emphasis> (even though you're using Java 1.5, some Sakai
+                dependencies will require the compatibility package, and Sakai won't start up
+                without it).</para>
             <note>
                 <title>Tomcat on Windows</title>
                 <para>Windows users have the option of either downloading an .exe Tomcat installer
@@ -397,8 +393,8 @@ connectionTimeout="20000" disableUploadTimeout="true" URIEncoding="UTF-8"/&gt;</
             <title>Install Maven</title>
             <para>Maven is the build tool used by Sakai, and the latest stable release (currently
                 1.0.2) can be downloaded from <link
-                    xl:href="http://maven.apache.org/start/download.html">
-                    http://maven.apache.org/start/download.html</link></para>
+                    xl:href="http://maven.apache.org/maven-1.x/start/download.html">
+                    http://maven.apache.org/maven-1.x/start/download.html</link></para>
             <note>
                 <title>Newer versions of Maven</title>
                 <para>It's important that Maven 1.0.2 be used. There are betas for Maven 1.1 and
@@ -501,8 +497,8 @@ maven.tomcat.home=/usr/local/tomcat/</screen>
                 documentation, look for <filename>sakai_maven.doc</filename> in
                     <filename>reference/docs/architecture</filename> of the source archive or on
                 subversion at: <link
-                    xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/architecture/sakai_maven.doc"
-                    >https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/architecture/sakai_maven.doc</link></para>
+                    xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/architecture/sakai_maven.doc"
+                    >https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/architecture/sakai_maven.doc</link></para>
         </note>
         <sect2 xml:id="install-build-download">
             <title>Download Source</title>
@@ -534,7 +530,7 @@ maven.tomcat.home=/usr/local/tomcat/</screen>
                 <para>Subsequent builds would be advised to add the "clean" phase by using the
                     command <command>maven cln bld dpl</command>, or the equivalent shortcut:
                         <command>maven sakai</command>. See the <link
-                        xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/architecture/sakai_maven.doc"
+                        xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/architecture/sakai_maven.doc"
                         >sakai_maven.doc</link> for more details.</para>
             </note>
             <para>This will run for quite a few minutes with fairly verbose output, particularly
@@ -604,7 +600,7 @@ export MAVEN_OPTS="-Xmx384m -XX:PermSize=48m"</screen>
                     settings for installation are covered here, but to find the most detailed
                     documentation on the full variety of possible
                     <filename>sakai.properties</filename> settings, look in <link
-                        xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/architecture/sakai_properties.doc"
+                        xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/architecture/sakai_properties.doc"
                         >sakai_properties.doc</link> in subversion or
                         <filename>reference/docs/architecture/sakai_properties.doc</filename> of the
                     source archive.</para>
@@ -790,8 +786,8 @@ JAVA_OPTS="-server -Xms1500m -Xmx1500m -XX:NewSize=400m -XX:MaxNewSize=400m -XX:
                     <listitem>
                         <para>
                             <link
-                                xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conversion/sakai_2_2_2-2_3_0_mysql_conversion.sql"
-                                >https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conversion/sakai_2_2_2-2_3_0_mysql_conversion.sql</link>
+                                xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/conversion/sakai_2_2_2-2_3_0_mysql_conversion.sql"
+                                >https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/conversion/sakai_2_2_2-2_3_0_mysql_conversion.sql</link>
                         </para>
                     </listitem>
                 </varlistentry>
@@ -800,17 +796,17 @@ JAVA_OPTS="-server -Xms1500m -Xmx1500m -XX:NewSize=400m -XX:MaxNewSize=400m -XX:
                     <listitem>
                         <para>
                             <link
-                                xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conversion/sakai_2_2_2-2_3_0_oracle_conversion.sql"
-                                >https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conversion/sakai_2_2_2-2_3_0_oracle_conversion.sql</link>
+                                xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/conversion/sakai_2_2_2-2_3_0_oracle_conversion.sql"
+                                >https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/conversion/sakai_2_2_2-2_3_0_oracle_conversion.sql</link>
                         </para>
                     </listitem>
                 </varlistentry>
             </variablelist>
             <para>In the same directory you'll also find conversion scripts for earlier Sakai
                 versions. Migration from an earlier version will require the successive application
-                of all intermediate scripts. You cannot, for example, move from 2.2.0 to 2.3.0 by
+                of all intermediate scripts. You cannot, for example, move from 2.2.0 to 2.3.1 by
                 applying a single script. You will need to move first from 2.2.0 to 2.2.1, and then
-                from 2.2.2 to 2.3.0 (there was no database conversion between 2.2.1 and 2.2.2).</para>
+                from 2.2.1 to 2.3.1 (there was no database conversion between 2.2.1 and 2.2.2).</para>
             <note>
                 <title>Examine before using</title>
                 <para>As a general rule, be sure to read through these conversion scripts before
@@ -858,9 +854,7 @@ JAVA_OPTS="-server -Xms1500m -Xmx1500m -XX:NewSize=400m -XX:MaxNewSize=400m -XX:
                     installations running against Oracle, even when the database is Oracle 9i.</para>
 
                 <para>Problems have been reported for both the 3.1.10 and 3.1.11 MySQL drivers.
-                    3.1.12 is the recommended version since it has the greatest weight of production
-                    experience behind hit, however early testing of 3.1.13 has not yet revealed any
-                    significant issues.</para>
+                    3.1.12+ will be adequate, but 3.1.14 is the recommended version.</para>
             </note>
         </sect2>
         <sect2 xml:id="install-dbconfig-create">
@@ -1024,7 +1018,7 @@ query_cache_size = 64M</screen>
                     which has a maximum latency for serving requests, is therefore a better choice
                     for database operations - although pages may still render slowly under load,
                     performance will degrade more gracefully, avoiding hangs, and provide some
-                    feedback.</para>
+                    feedback to users.</para>
                 <para>To switch to the Deadline scheduler, the boot parameter elevator=deadline must
                     be passed to the kernel that's being used. You can do so by editing the
                         <filename>/etc/grub.conf</filename> file and adding the parameter to the
