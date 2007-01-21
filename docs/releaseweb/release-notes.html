@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>2.2.2 Release Notes</title>
+<title>2.2.3 Release Notes</title>
 <link rel="stylesheet" href="styles/pos.css" type="text/css">
 <link rel="stylesheet" href="styles/styles.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.70.0">
@@ -11,7 +11,7 @@
 <div class="article" lang="en">
 <div class="titlepage">
 <div><div><h1 class="title">
-<a name="id1761488"></a>2.2.2 Release Notes</h1></div></div>
+<a name="id2009877"></a>2.2.3 Release Notes</h1></div></div>
 <hr>
 </div>
 <div class="toc">
@@ -35,17 +35,7 @@
 <div class="titlepage"><div><div><h2 class="title">
 <a name="overview"></a>1.&nbsp;Overview</h2></div></div></div>
 
-        <p>2.2.2 adds a security fix to the 2.2.1 maintenance release, which amounts to the
-            simple removal of test files included in the Apache Axis distribution - 2.2.2 is
-            otherwise indistinguishable from 2.2.1 (i.e. no Sakai code has been altered, nor are
-            there any DB changes), and should therefore be taken to simply supercede 2.2.1.  Put another way, 2.2.1 is just 2.2.2 with some extra files that expose a security hole.</p>
-        <p>The Axis test files in question reside in the web services
-                <code class="filename">webapps/sakai-axis</code> directory, and they are: <code class="filename">fingerprint.jsp, happyaxis.jsp, i18nLib.jsp, index.html, index.jsp</code></p>
-
-        <p>These files could be used to change the locale within Tomcat. Your system might, for
-            example, appear in Japanese as a result of their presence. To our knowledge, no data or
-            information has been compromised by this bug. This issue is in our JIRA issue-tracking
-            system as <a href="http://bugs.sakaiproject.org/jira/browse/SAK-6147" target="_top">SAK-6147</a>.</p>
+        <p>2.2.3 adds a critical security fix to the 2.2.2 maintenance release and should therefore be taken to simply supersede 2.2.2.  Anyone running unpatched versions of 2.2.1 or 2.2.2 should upgrade to 2.2.3 immediately.  The security hole patched would allow a user of the system to view all attachments on the system through the browser (JIRA issue <a href="http://bugs.sakaiproject.org/jira/browse/SAK-7288" target="_top">SAK-7288</a>).  A related issue would also allow attachments to be altered or deleted through a WebDAV client (<a href="http://bugs.sakaiproject.org/jira/browse/SAK-7672" target="_top">SAK-7672</a>).</p>
     </div>
     <div class="sect1" lang="en">
 <div class="titlepage"><div><div><h2 class="title">
@@ -54,8 +44,8 @@
         <p>Since all 2.2 minor releases involve no API changes, a migration from 2.2.0 is very
             simple and straightforward: skins, providers, and other code written for the 2.2
             codebase should be fine.</p>
-        <p>Some of the 2.2.1 fixes, however, are applied to the DB schema, and so a DB conversion
-            script is still necessary for that upgrade. The conversion scripts to be applied - in
+        <p>Some of the 2.2.1 fixes, however, were applied to the DB schema, and so a DB conversion
+            script is still necessary for that upgrade, although neither 2.2.2 nor 2.2.3 introduced any schema changes. The conversion scripts to be applied - in
             distinct versions for MySQL and Oracle, respectively - are found in the
                 <code class="filename">reference/docs/conversion</code> folder of the release or on
             subversion:</p>
@@ -67,7 +57,7 @@
 <span class="term">MySQL:</span></td>
 <td>
                     <p>
-                        <a href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion/sakai_2_2_0-2_2_1_mysql_conversion.sql" target="_top">https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion/sakai_2_2_0-2_2_1_mysql_conversion.sql</a>
+                        <a href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-3/docs/conversion/sakai_2_2_0-2_2_1_mysql_conversion.sql" target="_top">https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-3/docs/conversion/sakai_2_2_0-2_2_1_mysql_conversion.sql</a>
                     </p>
                 </td>
 </tr>
@@ -76,7 +66,7 @@
 <span class="term">Oracle:</span></td>
 <td>
                     <p>
-                        <a href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion/sakai_2_2_0-2_2_1_oracle_conversion.sql" target="_top">https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion/sakai_2_2_0-2_2_1_oracle_conversion.sql</a>
+                        <a href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-3/docs/conversion/sakai_2_2_0-2_2_1_oracle_conversion.sql" target="_top">https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-3/docs/conversion/sakai_2_2_0-2_2_1_oracle_conversion.sql</a>
                     </p>
                 </td>
 </tr>
@@ -90,7 +80,7 @@
 <div class="titlepage"><div><div><h2 class="title">
 <a name="migration-21x"></a>3.&nbsp;Migrating from 2.1.x</h2></div></div></div>
 
-        <p>If you're moving to 2.2.2 from a 2.1 version (or earlier), the changes are more
+        <p>If you're moving to 2.2.3 from a 2.1 version (or earlier), the changes are more
             significant, and since the 2.2 code is still fairly recent, it's worth spending a little
             more time here to describe what you can look forward to.</p>
         <div class="sect2" lang="en">
@@ -137,7 +127,7 @@
                         alter the enterprise IDs of their users without losing access to their sites
                         and materials in Sakai. For a thorough discussion of these changes, see the
                         doc <code class="filename">reference/docs/architecture/sakai_id_eid.doc</code> (or in
-                        subversion at: <a href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/architecture/sakai_id_eid.doc" target="_top">https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/architecture/sakai_id_eid.doc</a>)</p>
+                        subversion at: <a href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-3/docs/architecture/sakai_id_eid.doc" target="_top">https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-3/docs/architecture/sakai_id_eid.doc</a>)</p>
                 </div>
                 <div class="sect4" lang="en">
 <div class="titlepage"><div><div><h5 class="title">
@@ -249,7 +239,7 @@ skin.default=default</pre>
 <a name="migration-conversion"></a>3.2.1.&nbsp;Database Conversion</h4></div></div></div>
 
                 <p>A database conversion is required for a migration from 2.2.0 to 2.2.1, but not
-                    for a migration from 2.2.1 to 2.2.2. Since DB conversions require the successive
+                    for a migration from 2.2.1 to 2.2.3. Since DB conversions require the successive
                     application of all intermediate scripts, a migration from a 2.1.x or earlier
                     version will require at least two conversions (e.g. one from 2.1.2 to 2.2.0, and
                     then one from 2.2.0 to 2.2.1). The conversion scripts to be applied - in
@@ -257,8 +247,8 @@ skin.default=default</pre>
                         <code class="filename">reference/docs/conversion</code> folder of the release or on
                     subversion:</p>
                 <p>
-                    <a href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion" target="_top">
-                        https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion</a>
+                    <a href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-3/docs/conversion" target="_top">
+                        https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-3/docs/conversion</a>
                 </p>
                 <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
 <h3 class="title">Examine before using</h3>
@@ -354,7 +344,7 @@ ALTER TABLE MFR_MESSAGE_T ADD GRADECOMMENT VARCHAR2(255) NULL;</pre>
                 <p>Be sure to review the <code class="filename">SampleUserDirectoryProvider</code>, and
                     compare it against the sample for previous releases:</p>
                 <p>
-                    <a href="https://source.sakaiproject.org/svn/providers/tags/sakai_2-2-2/sample/src/java/org/sakaiproject/provider/user/SampleUserDirectoryProvider.java" target="_top">https://source.sakaiproject.org/svn/providers/tags/sakai_2-2-2/sample/src/java/org/sakaiproject/provider/user/SampleUserDirectoryProvider.java</a>
+                    <a href="https://source.sakaiproject.org/svn/providers/tags/sakai_2-2-3/sample/src/java/org/sakaiproject/provider/user/SampleUserDirectoryProvider.java" target="_top">https://source.sakaiproject.org/svn/providers/tags/sakai_2-2-3/sample/src/java/org/sakaiproject/provider/user/SampleUserDirectoryProvider.java</a>
                 </p>
             </div>
             <div class="sect3" lang="en">
@@ -365,7 +355,7 @@ ALTER TABLE MFR_MESSAGE_T ADD GRADECOMMENT VARCHAR2(255) NULL;</pre>
                     adapt them to 2.2 versions. These changes - including conversion steps - are
                     thoroughly documented in the appendices of the skin document available in
                         <code class="filename">reference/docs/architecture/sakai_skin.doc</code>, or in
-                    subversion at: <a href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/architecture/sakai_skin.doc" target="_top">https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/architecture/sakai_skin.doc</a></p>
+                    subversion at: <a href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-3/docs/architecture/sakai_skin.doc" target="_top">https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-3/docs/architecture/sakai_skin.doc</a></p>
             </div>
         </div>
     </div>
@@ -392,25 +382,25 @@ ALTER TABLE MFR_MESSAGE_T ADD GRADECOMMENT VARCHAR2(255) NULL;</pre>
 <div class="titlepage"><div><div><h2 class="title">
 <a name="resolved"></a>5.&nbsp;Fixes Included in this Release</h2></div></div></div>
 
-        <p>Sakai 2.2.2 fixes the following issue from 2.2.1:</p>
+        <p>Sakai 2.2.3 fixes the following issue from 2.2.2:</p>
         <p>
             <a href="fixed-issues.html" target="_top">
-                http://source.sakaiproject.org/release/2.2.2/fixed-issues.html</a>
+                http://source.sakaiproject.org/release/2.2.3/fixed-issues.html</a>
         </p>
     </div>
     <div class="sect1" lang="en">
 <div class="titlepage"><div><div><h2 class="title">
 <a name="open-issues"></a>6.&nbsp;Open Issues</h2></div></div></div>
 
-        <p>The list of known issues with Sakai 2.2.2 is found at:</p>
+        <p>The list of known issues with Sakai 2.2.3 is found at:</p>
         <p>
             <a href="open-issues.html" target="_top">
-                http://source.sakaiproject.org/release/2.2.2/open-issues.html</a>
+                http://source.sakaiproject.org/release/2.2.3/open-issues.html</a>
         </p>
         <p>See in particular the "Important Issues" noted at the top of the list.</p>
     </div>
 </div>
-<br clear="all"/></div>
+<br clear="all"></div>
 </body>
 </html>
 
