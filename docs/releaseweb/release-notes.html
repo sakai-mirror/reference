@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>2.3.0 Release Notes</title>
+<title>2.3.1 Release Notes</title>
 <link rel="stylesheet" href="styles/pos.css" type="text/css">
 <link rel="stylesheet" href="styles/styles.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.70.0">
@@ -11,7 +11,7 @@
 <div class="article" lang="en">
 <div class="titlepage">
 <div><div><h1 class="title">
-<a name="id1728712"></a>2.3.0 Release Notes</h1></div></div>
+<a name="id2008990"></a>2.3.1 Release Notes</h1></div></div>
 <hr>
 </div>
 <div class="toc">
@@ -40,38 +40,46 @@
 <div class="titlepage"><div><div><h2 class="title">
 <a name="overview"></a>1.&nbsp;Overview</h2></div></div></div>
 
-        <p>2.3 presents more in the way of feature enhancements and less in the way of API
-            changes than the 2.2 release. 3 new provisional tools have been added, while two very
-            successful provisional tools have been promoted to the enterprise bundle (for details
-            see below). Several existing tools have seen significant enhancements, along with
-            general improvements for the portal and configuration options in sakai.properties. All
-            told, the release includes over 500 bug fixes and enhancements.</p>
-        <p>The bulk of these release notes is meant to indicate highlights, but a complete list
-            of all fixed and open issues can be found at the bottom.</p>
+        <p>The 2.3.1 release brings a handful of critical fixes to performance and security
+            issues discovered in post-release testing of 2.3.0, critical enough that institutions
+            running an unpatched 2.3.0 should upgrade as soon as it is feasible, and the 2.3.0
+            release is now obviated. For a complete list and description of these
+            fixes see <a href="#resolved" title="4.&nbsp;Fixes Included in this Release">Fixes Included in this Release</a> below.</p>
+        <p>The 2.3 series presents more in the way of feature enhancements and less in the way of
+            API changes than 2.2. 3 new provisional tools have been added,
+            while two very successful provisional tools have been promoted to the enterprise bundle
+            (for details see below). Several existing tools have seen significant enhancements,
+            along with general improvements for the portal and configuration options in
+                <code class="filename">sakai.properties</code>.</p>
+        <p>These release notes are meant to underscore salient aspects of the 2.3 series as a
+            whole, while links to complete lists of fixed and open issues specific to 2.3.1 are
+            available below.</p>
     </div>
     <div class="sect1" lang="en">
 <div class="titlepage"><div><div><h2 class="title">
 <a name="migration"></a>2.&nbsp;Migrating from earlier versions</h2></div></div></div>
 
-        <p>A migration from 2.2 to 2.3 is a smaller step than from 2.1 to 2.2, but what
-            conversions and alterations do need to be performed are identified below.</p>
         <div class="sect2" lang="en">
 <div class="titlepage"><div><div><h3 class="title">
 <a name="migration-db"></a>2.1.&nbsp;Database Conversion</h3></div></div></div>
 
-            <p>A DB conversion script is required for a database migration from 2.2.2 to 2.3.0.</p>
+            <p>A DB conversion script is required for a database migration from 2.2.1 to 2.3.1
+                (there were no DB schema changes introduced in 2.2.2 or 2.2.3). There is also a
+                conversion script for a move from 2.3.0 to 2.3.1, for those who may be already running 2.3.0,
+                but the 2.3.0 release should be bypassed altogether by those who are upgrading from a 2.2 release.</p>
+
             <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
 <h3 class="title">Note</h3>
 
                 <p>DB conversions require the successive application of all intermediate scripts,
-                    e.g., a migration from 2.1.2 will require three conversions: one from 2.1.2 to
-                    2.2.0, one from 2.2.0 to 2.2.1, and then one from 2.2.2 to 2.3.0 (there was no
-                    DB conversion between 2.2.1 and 2.2.2).</p>
+                    e.g., a migration from 2.2.0 will require two conversions: one from 2.2.0 to
+                    2.2.1, and one from 2.2.1 to 2.3.1 (again, there were no DB schema changes
+                    introduced in 2.2.2 and 2.2.3).</p>
             </div>
 
             <p>The conversion scripts to be applied - in distinct versions for MySQL and Oracle,
                 respectively - are found in the <code class="filename">reference/docs/conversion</code>
-                folder of the release or on subversion: <a href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conversion" target="_top">https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conversion</a></p>
+                folder of the release or on subversion: <a href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/conversion" target="_top">https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/conversion</a></p>
         </div>
         <div class="sect2" lang="en">
 <div class="titlepage"><div><div><h3 class="title">
@@ -79,7 +87,7 @@
 
             <p>Portal changes (see below) have reduced the number of frames that Sakai uses, and
                 2.2 skins will need to be adapted as a result. The changes are however few in
-                number, and they are described in Appendix I of: <a href="https://source.sakaiproject.org/svn/reference/trunk/docs/architecture/sakai_skin.doc" target="_top">https://source.sakaiproject.org/svn/reference/trunk/docs/architecture/sakai_skin.doc</a></p>
+                number, and they are described in Appendix I of: <a href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/architecture/sakai_skin.doc" target="_top">https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/architecture/sakai_skin.doc</a></p>
         </div>
         <div class="sect2" lang="en">
 <div class="titlepage"><div><div><h3 class="title">
@@ -201,7 +209,7 @@ hiddenTools@org.sakaiproject.tool.api.ActiveToolManager=</pre>
                             (<a href="http://bugs.sakaiproject.org/jira/browse/SAK-4295" target="_top">http://bugs.sakaiproject.org/jira/browse/SAK-4295</a>) </p>
                 </li>
 <li>
-                    <p><span class="emphasis"><em>Tests &amp; Quizzes (Samigo)</em></span>: (see the <a href="http://bugs.sakaiproject.org/confluence/display/SAM/2.3+Release+Notes">Samigo release notes</a> for more complete details)</p>
+                    <p><span class="emphasis"><em>Tests &amp; Quizzes (Samigo)</em></span>: (see the <a href="http://bugs.sakaiproject.org/confluence/display/SAM/2.3+Release+Notes" target="_top">Samigo release notes</a> for more complete details)</p>
                     <div class="itemizedlist"><ul>
 <li>
                             <p>allowing instructors to attach any file to a question ( <a href="http://bugs.sakaiproject.org/jira/browse/SAK-4396" target="_top">http://bugs.sakaiproject.org/jira/browse/SAK-4396</a>)</p>
@@ -296,20 +304,20 @@ hiddenTools@org.sakaiproject.tool.api.ActiveToolManager=</pre>
 <div class="titlepage"><div><div><h2 class="title">
 <a name="resolved"></a>4.&nbsp;Fixes Included in this Release</h2></div></div></div>
 
-        <p>Sakai 2.3.0 fixes the following issues:</p>
+        <p>Sakai 2.3.1 fixes the following issues:</p>
         <p>
             <a href="fixed-issues.html" target="_top">
-                http://source.sakaiproject.org/release/2.3.0/fixed-issues.html</a>
+                http://source.sakaiproject.org/release/2.3.1/fixed-issues.html</a>
         </p>
     </div>
     <div class="sect1" lang="en">
 <div class="titlepage"><div><div><h2 class="title">
 <a name="open-issues"></a>5.&nbsp;Open Issues</h2></div></div></div>
 
-        <p>The list of known issues with Sakai 2.3.0 is found at:</p>
+        <p>The list of known issues with Sakai 2.3.1 is found at:</p>
         <p>
             <a href="open-issues.html" target="_top">
-                http://source.sakaiproject.org/release/2.3.0/open-issues.html</a>
+                http://source.sakaiproject.org/release/2.3.1/open-issues.html</a>
         </p>
         <p>See in particular the "Important Issues" noted at the top of the list.</p>
     </div>
@@ -326,14 +334,14 @@ hiddenTools@org.sakaiproject.tool.api.ActiveToolManager=</pre>
             2.3 maintenance branch with the following command: </p>
         <p>
             <span><strong class="command">svn co
-                https://source.sakaiproject.org/svn/sakai/branches/sakai_2-3-x/</strong></span>
+            https://source.sakaiproject.org/svn/sakai/branches/sakai_2-3-x/</strong></span>
         </p>
         <p>If you come upon an important fix that you believe should be included in the branch
             (and perhaps isn't yet), feel free to bring it to the attention of the branch manager,
             Lance Speelmon (lance@indiana.edu).</p>
     </div>
 </div>
-<br clear="all"/></div>
+<br clear="all"></div>
 </body>
 </html>
 

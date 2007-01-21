@@ -8,25 +8,36 @@
     </info>
     <sect1 xml:id="overview">
         <title>Overview</title>
-        <para>The 2.3.1 release brings a handful of critical fixes to performance and security issues discovered in post-release testing of 2.3.0, critical enough that institutions running an unpatched 2.3.0 should upgrade as soon as it is feasible, and the 2.3.0 release will no longer be recommended.  For a complete list and description of these fixes see <link linkend="resolved">Fixes Included in this Release</link> below.</para>
-        <para>The 2.3 series presents more in the way of feature enhancements and less in the way of API
-            changes than the 2.2 series of releases. 3 new provisional tools have been added, while two very
-            successful provisional tools have been promoted to the enterprise bundle (for details
-            see below). Several existing tools have seen significant enhancements, along with
-            general improvements for the portal and configuration options in <filename>sakai.properties</filename>.</para>
-        <para>These release notes are meant to underscore salient aspects of the 2.3 series as a whole, while links to complete lists of fixed and open issues specific to 2.3.1 are available below.</para>
+        <para>The 2.3.1 release brings a handful of critical fixes to performance and security
+            issues discovered in post-release testing of 2.3.0, critical enough that institutions
+            running an unpatched 2.3.0 should upgrade as soon as it is feasible, and the 2.3.0
+            release is now obviated. For a complete list and description of these
+            fixes see <link linkend="resolved">Fixes Included in this Release</link> below.</para>
+        <para>The 2.3 series presents more in the way of feature enhancements and less in the way of
+            API changes than 2.2. 3 new provisional tools have been added,
+            while two very successful provisional tools have been promoted to the enterprise bundle
+            (for details see below). Several existing tools have seen significant enhancements,
+            along with general improvements for the portal and configuration options in
+                <filename>sakai.properties</filename>.</para>
+        <para>These release notes are meant to underscore salient aspects of the 2.3 series as a
+            whole, while links to complete lists of fixed and open issues specific to 2.3.1 are
+            available below.</para>
     </sect1>
     <sect1 xml:id="migration">
         <title>Migrating from earlier versions</title>
         <sect2 xml:id="migration-db">
             <title>Database Conversion</title>
-            <para>A DB conversion script is required for a database migration from 2.2.1 to 2.3.1 (there were no DB schema changes introduced in 2.2.2 or 2.2.3).  There is also a conversion script from 2.3.0 to 2.3.1 for those who may be already running 2.3.0, but the 2.3.0 release should be bypassed altogether by those who have yet to upgrade from 2.2 or earlier.</para>
-            
+            <para>A DB conversion script is required for a database migration from 2.2.1 to 2.3.1
+                (there were no DB schema changes introduced in 2.2.2 or 2.2.3). There is also a
+                conversion script for a move from 2.3.0 to 2.3.1, for those who may be already running 2.3.0,
+                but the 2.3.0 release should be bypassed altogether by those who are upgrading from a 2.2 release.</para>
+
             <note>
                 <title>Note</title>
                 <para>DB conversions require the successive application of all intermediate scripts,
                     e.g., a migration from 2.2.0 will require two conversions: one from 2.2.0 to
-                    2.2.1, and one from 2.2.1 to 2.3.1 (again, there were no DB schema changes introduced in 2.2.2 and 2.2.3).</para>
+                    2.2.1, and one from 2.2.1 to 2.3.1 (again, there were no DB schema changes
+                    introduced in 2.2.2 and 2.2.3).</para>
             </note>
 
             <para>The conversion scripts to be applied - in distinct versions for MySQL and Oracle,
@@ -40,8 +51,8 @@
             <para>Portal changes (see below) have reduced the number of frames that Sakai uses, and
                 2.2 skins will need to be adapted as a result. The changes are however few in
                 number, and they are described in Appendix I of: <link
-                    xl:href="https://source.sakaiproject.org/svn/reference/trunk/docs/architecture/sakai_skin.doc"
-                    >https://source.sakaiproject.org/svn/reference/trunk/docs/architecture/sakai_skin.doc</link></para>
+                    xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/architecture/sakai_skin.doc"
+                    >https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/architecture/sakai_skin.doc</link></para>
         </sect2>
         <sect2 xml:id="migration-config">
             <title>Configuration changes (sakai.properties)</title>
