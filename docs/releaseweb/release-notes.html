@@ -11,18 +11,18 @@
 <div class="article" lang="en">
 <div class="titlepage">
 <div><div><h1 class="title">
-<a name="id2008990"></a>2.3.1 Release Notes</h1></div></div>
+<a name="id1967504"></a>2.3.1 Release Notes</h1></div></div>
 <hr>
 </div>
 <div class="toc">
 <p><b>Table of Contents</b></p>
 <dl>
 <dt><span class="sect1"><a href="#overview">1. Overview</a></span></dt>
-<dt><span class="sect1"><a href="#migration">2. Migrating from earlier versions</a></span></dt>
+<dt><span class="sect1"><a href="#migration">2. Migration</a></span></dt>
 <dd><dl>
 <dt><span class="sect2"><a href="#migration-db">2.1. Database Conversion</a></span></dt>
 <dt><span class="sect2"><a href="#migration-skin">2.2. Skin Update</a></span></dt>
-<dt><span class="sect2"><a href="#migration-config">2.3. Configuration changes (sakai.properties)</a></span></dt>
+<dt><span class="sect2"><a href="#migration-config">2.3. Configuration changes</a></span></dt>
 </dl></dd>
 <dt><span class="sect1"><a href="#new">3. What's New</a></span></dt>
 <dd><dl>
@@ -40,24 +40,30 @@
 <div class="titlepage"><div><div><h2 class="title">
 <a name="overview"></a>1.&nbsp;Overview</h2></div></div></div>
 
-        <p>The 2.3.1 release brings a handful of critical fixes to performance and security
-            issues discovered in post-release testing of 2.3.0, critical enough that institutions
-            running an unpatched 2.3.0 should upgrade as soon as it is feasible, and the 2.3.0
-            release is now obviated. For a complete list and description of these
-            fixes see <a href="#resolved" title="4.&nbsp;Fixes Included in this Release">Fixes Included in this Release</a> below.</p>
-        <p>The 2.3 series presents more in the way of feature enhancements and less in the way of
-            API changes than 2.2. 3 new provisional tools have been added,
-            while two very successful provisional tools have been promoted to the enterprise bundle
-            (for details see below). Several existing tools have seen significant enhancements,
-            along with general improvements for the portal and configuration options in
-                <code class="filename">sakai.properties</code>.</p>
-        <p>These release notes are meant to underscore salient aspects of the 2.3 series as a
-            whole, while links to complete lists of fixed and open issues specific to 2.3.1 are
-            available below.</p>
+        <div class="informaltable">
+            <table border="1">
+<colgroup><col></colgroup>
+<tbody><tr><td>
+                            <p><span class="emphasis"><em>Security Update:</em></span> 2.3.1 adds critical
+                                security and performance fixes to the 2.3.0 release, and should therefore
+                                be taken to simply supersede 2.3.0. Anyone running an unpatched 2.3.0
+                                should upgrade to 2.3.1 immediately. Unpatched systems could
+                                allow a user to view all attachments on the system
+                                through the browser (<a href="http://bugs.sakaiproject.org/jira/browse/SAK-7288" target="_top">SAK-7288</a>) as well as alter or delete them through a WebDAV client (<a href="http://bugs.sakaiproject.org/jira/browse/SAK-7672" target="_top">SAK-7672</a>).</p>
+                        </td></tr></tbody>
+</table>
+        </div>
+        <p>The Sakai 2.3 series as a whole presents more in the way of feature enhancements and less in the way of
+            API changes than 2.2. Three new provisional tools have been added, while two very successful
+            provisional tools have been promoted to the enterprise bundle (for details see below).
+            Several existing tools have seen significant enhancements, along with general
+            improvements for the portal and configuration options in
+            <code class="filename">sakai.properties</code>.</p>
+        <p>These release notes highlight salient enhancements and required migration steps, while links to complete lists of fixed and open issues specific to 2.3.1 are available below.</p>
     </div>
     <div class="sect1" lang="en">
 <div class="titlepage"><div><div><h2 class="title">
-<a name="migration"></a>2.&nbsp;Migrating from earlier versions</h2></div></div></div>
+<a name="migration"></a>2.&nbsp;Migration</h2></div></div></div>
 
         <div class="sect2" lang="en">
 <div class="titlepage"><div><div><h3 class="title">
@@ -65,8 +71,9 @@
 
             <p>A DB conversion script is required for a database migration from 2.2.1 to 2.3.1
                 (there were no DB schema changes introduced in 2.2.2 or 2.2.3). There is also a
-                conversion script for a move from 2.3.0 to 2.3.1, for those who may be already running 2.3.0,
-                but the 2.3.0 release should be bypassed altogether by those who are upgrading from a 2.2 release.</p>
+                conversion script for a move from 2.3.0 to 2.3.1, for those who may be already
+                running 2.3.0, but the 2.3.0 release should be bypassed altogether by those who are
+                upgrading from a 2.2 release.</p>
 
             <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
 <h3 class="title">Note</h3>
@@ -91,9 +98,9 @@
         </div>
         <div class="sect2" lang="en">
 <div class="titlepage"><div><div><h3 class="title">
-<a name="migration-config"></a>2.3.&nbsp;Configuration changes (sakai.properties)</h3></div></div></div>
+<a name="migration-config"></a>2.3.&nbsp;Configuration changes</h3></div></div></div>
 
-            <p>Among the enhancements of 2.3 are improved configuration options. The settings
+            <p>Among the enhancements of 2.3 are improved configuration options. The <code class="filename">sakai.properties</code> settings
                 below are new and optional.</p>
             <div class="itemizedlist"><ul>
 <li>
@@ -341,7 +348,7 @@ hiddenTools@org.sakaiproject.tool.api.ActiveToolManager=</pre>
             Lance Speelmon (lance@indiana.edu).</p>
     </div>
 </div>
-<br clear="all"></div>
+<br clear="all"/></div>
 </body>
 </html>
 
