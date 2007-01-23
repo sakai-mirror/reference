@@ -5,21 +5,49 @@
 
     <info>
         <title>2.2.3 Release Notes</title>
-        <edition>21 January 2007 - version 2.2.3</edition>
+        <edition>23 January 2007 - version 2.2.3</edition>
     </info>
     <sect1 xml:id="overview">
         <title>Overview</title>
-        <para>2.2.3 adds a critical security fix to the 2.2.2 maintenance release and should therefore be taken to simply supersede 2.2.2.  Anyone running unpatched versions of 2.2.1 or 2.2.2 should upgrade to 2.2.3 immediately.  The security hole patched would allow a user of the system to view all attachments on the system through the browser (JIRA issue <link xl:href="http://bugs.sakaiproject.org/jira/browse/SAK-7288"
-                >SAK-7288</link>).  A related issue would also allow attachments to be altered or deleted through a WebDAV client (<link xl:href="http://bugs.sakaiproject.org/jira/browse/SAK-7672">SAK-7672</link>).</para>
+        <informaltable>
+            <tgroup cols="1">
+                <tbody>
+                    <row>
+                        <entry>
+                            <para><emphasis>Security Update:</emphasis> 2.2.3 adds a critical
+                                security fix to the 2.2.2 maintenance release and should therefore
+                                be taken to simply supersede 2.2.2 and all 2.2.x releases which came
+                                before it. Anyone running unpatched versions of earlier 2.2 releases
+                                should upgrade to 2.2.3 immediately. Unpatched systems could
+                                allow a user to view all attachments on the system
+                                through the browser ( <link
+                                    xl:href="http://bugs.sakaiproject.org/jira/browse/SAK-7288"
+                                    >SAK-7288</link>) as well as alter or delete them through a WebDAV client (<link
+                                        xl:href="http://bugs.sakaiproject.org/jira/browse/SAK-7672"
+                                        >SAK-7672</link>).</para>
+                        </entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </informaltable>
+        <para>The Sakai 2.2 series as a whole marks the culmination of a significant effort to
+            restructure the framework into more logical functional/architectural units, paving the
+            way for multiple focused teams to work in parallel on moving the framework and legacy
+            code forward. This release also incorporates the Open Source Portfolio suite of tools,
+            available in this first merged effort as provisional tools. Additional functional
+            improvements include group awareness for each of the Resources, Assignments, and
+            Schedule tools, the inclusion of French and Catalan translations, updated help content,
+            and the addition of four innovative provisional tools.</para>
     </sect1>
     <sect1 xml:id="migration-220">
         <title>Migrating from 2.2.0</title>
         <para>Since all 2.2 minor releases involve no API changes, a migration from 2.2.0 is very
             simple and straightforward: skins, providers, and other code written for the 2.2
             codebase should be fine.</para>
-        <para>Some of the 2.2.1 fixes, however, were applied to the DB schema, and so a DB conversion
-            script is still necessary for that upgrade, although neither 2.2.2 nor 2.2.3 introduced any schema changes. The conversion scripts to be applied - in
-            distinct versions for MySQL and Oracle, respectively - are found in the
+        <para>Some of the 2.2.1 fixes, however, were applied to the DB schema, and so a DB
+            conversion script is still necessary for that upgrade, although neither 2.2.2 nor 2.2.3
+            introduced any schema changes. The conversion scripts to be applied - in distinct
+            versions for MySQL and Oracle, respectively - are found in the
                 <filename>reference/docs/conversion</filename> folder of the release or on
             subversion:</para>
         <variablelist>

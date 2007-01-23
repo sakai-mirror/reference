@@ -11,7 +11,7 @@
 <div class="article" lang="en">
 <div class="titlepage">
 <div><div><h1 class="title">
-<a name="id2009877"></a>2.2.3 Release Notes</h1></div></div>
+<a name="id2255655"></a>2.2.3 Release Notes</h1></div></div>
 <hr>
 </div>
 <div class="toc">
@@ -35,7 +35,28 @@
 <div class="titlepage"><div><div><h2 class="title">
 <a name="overview"></a>1.&nbsp;Overview</h2></div></div></div>
 
-        <p>2.2.3 adds a critical security fix to the 2.2.2 maintenance release and should therefore be taken to simply supersede 2.2.2.  Anyone running unpatched versions of 2.2.1 or 2.2.2 should upgrade to 2.2.3 immediately.  The security hole patched would allow a user of the system to view all attachments on the system through the browser (JIRA issue <a href="http://bugs.sakaiproject.org/jira/browse/SAK-7288" target="_top">SAK-7288</a>).  A related issue would also allow attachments to be altered or deleted through a WebDAV client (<a href="http://bugs.sakaiproject.org/jira/browse/SAK-7672" target="_top">SAK-7672</a>).</p>
+        <div class="informaltable">
+            <table border="1">
+<colgroup><col></colgroup>
+<tbody><tr><td>
+                            <p><span class="emphasis"><em>Security Update:</em></span> 2.2.3 adds a critical
+                                security fix to the 2.2.2 maintenance release and should therefore
+                                be taken to simply supersede 2.2.2 and all 2.2.x releases which came
+                                before it. Anyone running unpatched versions of earlier 2.2 releases
+                                should upgrade to 2.2.3 immediately. Unpatched systems could
+                                allow a user to view all attachments on the system
+                                through the browser ( <a href="http://bugs.sakaiproject.org/jira/browse/SAK-7288" target="_top">SAK-7288</a>) as well as alter or delete them through a WebDAV client (<a href="http://bugs.sakaiproject.org/jira/browse/SAK-7672" target="_top">SAK-7672</a>).</p>
+                        </td></tr></tbody>
+</table>
+        </div>
+        <p>The Sakai 2.2 series as a whole marks the culmination of a significant effort to
+            restructure the framework into more logical functional/architectural units, paving the
+            way for multiple focused teams to work in parallel on moving the framework and legacy
+            code forward. This release also incorporates the Open Source Portfolio suite of tools,
+            available in this first merged effort as provisional tools. Additional functional
+            improvements include group awareness for each of the Resources, Assignments, and
+            Schedule tools, the inclusion of French and Catalan translations, updated help content,
+            and the addition of four innovative provisional tools.</p>
     </div>
     <div class="sect1" lang="en">
 <div class="titlepage"><div><div><h2 class="title">
@@ -44,9 +65,10 @@
         <p>Since all 2.2 minor releases involve no API changes, a migration from 2.2.0 is very
             simple and straightforward: skins, providers, and other code written for the 2.2
             codebase should be fine.</p>
-        <p>Some of the 2.2.1 fixes, however, were applied to the DB schema, and so a DB conversion
-            script is still necessary for that upgrade, although neither 2.2.2 nor 2.2.3 introduced any schema changes. The conversion scripts to be applied - in
-            distinct versions for MySQL and Oracle, respectively - are found in the
+        <p>Some of the 2.2.1 fixes, however, were applied to the DB schema, and so a DB
+            conversion script is still necessary for that upgrade, although neither 2.2.2 nor 2.2.3
+            introduced any schema changes. The conversion scripts to be applied - in distinct
+            versions for MySQL and Oracle, respectively - are found in the
                 <code class="filename">reference/docs/conversion</code> folder of the release or on
             subversion:</p>
         <div class="variablelist"><table border="0">
@@ -400,7 +422,7 @@ ALTER TABLE MFR_MESSAGE_T ADD GRADECOMMENT VARCHAR2(255) NULL;</pre>
         <p>See in particular the "Important Issues" noted at the top of the list.</p>
     </div>
 </div>
-<br clear="all"></div>
+<br clear="all"/></div>
 </body>
 </html>
 
