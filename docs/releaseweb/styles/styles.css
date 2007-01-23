@@ -173,11 +173,18 @@ div.informaltable table  {
 	border-style: solid solid solid solid;
 	border-color: red red red red;
 	background:#ffd8c0;
+	padding:0px;
 	}
 	
 div.informaltable table tr  {
 	border-width: 0px;
 	border-style: none;
+}
+
+div.informaltable table tr td  {
+	border-width: 0px;
+	border-style: none;
+	padding:5px;
 }
 		
 h4 	{
