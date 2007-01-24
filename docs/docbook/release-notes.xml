@@ -13,24 +13,31 @@
                 <tbody>
                     <row>
                         <entry>
-                            <para><emphasis>Security Update:</emphasis> 2.3.1 adds critical
-                                security and performance fixes to the 2.3.0 release, and should therefore
-                                be taken to simply supersede 2.3.0. Anyone running an unpatched 2.3.0
-                                should upgrade to 2.3.1 immediately. Unpatched systems could
-                                allow a user to view all attachments on the system
-                                through the browser (<link xl:href="http://bugs.sakaiproject.org/jira/browse/SAK-7288">SAK-7288</link>) as well as alter or delete them through a WebDAV client (<link xl:href="http://bugs.sakaiproject.org/jira/browse/SAK-7672">SAK-7672</link>).</para>
+                            <para><emphasis>Security Update:</emphasis> 2.3.1 adds critical security
+                                and performance fixes to the 2.3.0 release, and should therefore be
+                                taken to simply supersede 2.3.0. Anyone running an unpatched 2.3.0
+                                should upgrade to 2.3.1 immediately. Unpatched systems could allow a
+                                user to view all attachments on the system through the browser
+                                    (<link
+                                    xl:href="http://bugs.sakaiproject.org/jira/browse/SAK-7288"
+                                    >SAK-7288</link>) as well as alter or delete them through a
+                                WebDAV client (<link
+                                    xl:href="http://bugs.sakaiproject.org/jira/browse/SAK-7672"
+                                    >SAK-7672</link>).</para>
                         </entry>
                     </row>
                 </tbody>
             </tgroup>
         </informaltable>
-        <para>The Sakai 2.3 series as a whole presents more in the way of feature enhancements and less in the way of
-            API changes than 2.2. Three new provisional tools have been added, while two very successful
-            provisional tools have been promoted to the enterprise bundle (for details see below).
-            Several existing tools have seen significant enhancements, along with general
-            improvements for the portal and configuration options in
-            <filename>sakai.properties</filename>.</para>
-        <para>These release notes highlight salient enhancements and required migration steps, while links to complete lists of fixed and open issues specific to 2.3.1 are available below.</para>
+        <para>The Sakai 2.3 series as a whole presents more in the way of feature enhancements and
+            less in the way of API changes than 2.2. Three new provisional tools have been added,
+            while two very successful provisional tools have been promoted to the enterprise bundle
+            (for details see below). Several existing tools have seen significant enhancements,
+            along with general improvements for the portal and configuration options in
+                <filename>sakai.properties</filename>.</para>
+        <para>These release notes highlight salient enhancements and required migration steps, while
+            links to complete lists of fixed and open issues specific to 2.3.1 are available
+        below.</para>
     </sect1>
     <sect1 xml:id="migration">
         <title>Migration</title>
@@ -47,7 +54,7 @@
                 <para>DB conversions require the successive application of all intermediate scripts,
                     e.g., a migration from 2.2.0 will require two conversions: one from 2.2.0 to
                     2.2.1, and one from 2.2.1 to 2.3.1 (again, there were no DB schema changes
-                    introduced in 2.2.2 and 2.2.3).</para>
+                    introduced in 2.2.2 and 2.2.3, and while there is a conversion script for a 2.3.0 to 2.3.1 conversion for those who may have already migrated to 2.3.0, the 2.2.1-2.3.0 conversion had a significant gradebook error, and is no longer made available).  Again, the 2.3.0 release has been superseded, and is no longer even a waystation in the database conversion process.</para>
             </note>
 
             <para>The conversion scripts to be applied - in distinct versions for MySQL and Oracle,
@@ -66,8 +73,8 @@
         </sect2>
         <sect2 xml:id="migration-config">
             <title>Configuration changes</title>
-            <para>Among the enhancements of 2.3 are improved configuration options. The <filename>sakai.properties</filename> settings
-                below are new and optional.</para>
+            <para>Among the enhancements of 2.3 are improved configuration options. The
+                    <filename>sakai.properties</filename> settings below are new and optional.</para>
             <itemizedlist>
                 <listitem>
                     <para>For disabling new Resources features

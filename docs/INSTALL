@@ -5,14 +5,16 @@
    Table of Contents
 
    1. Overview
-		1.1. Choose an Install Type
+
+                1.1. Choose an Install Type
                 1.2. Demo Installation
                 1.3. Binary Installation
                 1.4. Source Installation
                 1.5. Migrating from a Previous Release
 
    2. Set up Environment
-		2.1. Verify Java Installation
+
+                2.1. Verify Java Installation
                 2.2. Verify Java Environment Variables
                 2.3. Install Tomcat
                 2.4. Configure Tomcat
@@ -20,11 +22,13 @@
                 2.6. Configure Maven
 
    3. Build and Deploy
+
                 3.1. Download Source
                 3.2. Unpack Source
                 3.3. Run Maven
 
    4. Post-Installation Configuration
+
                 4.1. Create folder for properties file
                 4.2. The sakai.properties file
                 4.3. Email configuration
@@ -32,6 +36,7 @@
                 4.5. Test Sakai
 
    5. Database Configuration
+
                 5.1. Migrating from an Earlier Version
                 5.2. Deploy Drivers
                 5.3. Create Database and User
@@ -40,6 +45,7 @@
                 5.6. Startup
 
    6. Getting Started with the Software
+
                 6.1. The Gateway Page
                 6.2. My Workspace
                 6.3. Other Sites
@@ -48,6 +54,7 @@
                 6.6. Where to Learn More
 
    7. Troubleshooting
+
                 7.1. Build Issues
                 7.2. Tomcat Startup Issues
 
@@ -55,14 +62,14 @@
 
   1.1. Choose an Install Type
 
-   Sakai 2.3 downloads are available for three different installation methods
-   on http://sakaiproject.org/release:
+   Sakai downloads are available for three different installation methods on
+   http://sakaiproject.org/release:
 
    Demo:   This archive includes the Tomcat container and pre-built webapps,
            so that the only prerequisite for getting started is Java (v.
-           1.4.2 or higher). While not intended for large-scale
-           implementations, it is suitable for evaluating the software and
-           small-scale pilot implementations on single servers.
+           1.5). While not intended for large-scale implementations, it is
+           suitable for evaluating the software and small-scale pilot
+           implementations on single servers.
            
    Binary: This archive is a kind of Tomcat overlay. If you have a working
            Tomcat appropriately configured - including the database
@@ -97,7 +104,7 @@
    Once Tomcat is started up, you can point your browser to
    http://localhost:8080/portal. This will bring you to the Sakai gateway
    site, from which you can create new accounts and log in to the syste. For
-   more orienting tips on how to begin using Sakai, skip ahead to [46]Getting
+   more orienting tips on how to begin using Sakai, skip ahead to Getting
    Started.
 
    To stop the demo:
@@ -111,7 +118,6 @@
                  HypersonicSQL database (HSQLDB) which is stored in memory
                  and then written out to files when Tomcat is shut down.
                  These files are located at sakai-demo/sakai/db/sakai.db.*.
-                 
    Email not     The Sakai demo is configured to neither send nor receive
    configured:   email.
 
@@ -164,9 +170,8 @@
 
   2.1. Verify Java Installation
 
-   Check to see if you have Java (version 1.4.2 or higher) installed on your
-   system by running the following command (sample output from a *nix
-   system):
+   Check to see if you have Java (version 1.5) installed on your system by
+   running the following command (sample output from a *nix system):
 
  $ java -version
  java version "1.5.0_06"
@@ -203,7 +208,7 @@
    There are three Java environment variables you'll want to set for
    everything to function as it should, and though some of them may have
    already been set by your Java installation (depending on your platform),
-   you'll want to double-check them all. You can also look at the [56]Sun
+   you'll want to double-check them all. You can also look at the Sun
    Java Installation Instructions page at the Java web site for further
    details.
 
@@ -217,7 +222,6 @@
 
    Windows:  Set the (or create a new) environment variable JAVA_HOME to
              C:\jdk1.5.0_06.
-             
    Mac/*nix: export JAVA_HOME=/usr/java/java-current
 
   JRE_HOME
@@ -243,15 +247,13 @@
 
   2.3. Install Tomcat
 
-   Sakai 2.2.1 was QA'ed with Tomcat 5.5.17, and so that's the version we
+   Sakai 2.3.1 was QA'ed with Tomcat 5.5.17, and so that's the version we
    recommend, although the latest stable version will most likely not present
    problems. Tomcat can be downloaded as a binary from
    http://tomcat.apache.org/download-55.cgi. The distribution you want is
    the one labeled Core, along with the JDK 1.4 Compatibility Package (even
-   if you're using Java 1.5, some portions of the Sakai code will require the
-   compatibility package, and Sakai won't start up without it). The Tomcat
-   5.5 instructions will tell you that Java 1.5 is required, but it's not, so
-   long as you have the 1.4 Compatibility package.
+   though you're using Java 1.5, some Sakai dependencies will require the
+   compatibility package, and Sakai won't start up without it).
 
   Tomcat on Windows
 
@@ -276,7 +278,7 @@
    You'll want to set the service to startup automatically ("Startup Type"
    under the General tab).
 
-   Also be sure to read the Windows note in the [58]JVM Tuning section of
+   Also be sure to read the Windows note in the JVM Tuning section of
    Post-Installation Configuration.
 
    Unpack the Tomcat archive at your desired location, and unpack the
@@ -330,7 +332,7 @@
 
    Maven is the build tool used by Sakai, and the latest stable release
    (currently 1.0.2) can be downloaded from
-   http://maven.apache.org/start/download.html
+   http://maven.apache.org/maven-1.x/start/download.html
 
   Newer versions of Maven
 
@@ -350,7 +352,6 @@
 
    Windows:  Create a new MAVEN_HOME environment variable to C:\maven-1.0.2.
              Then append to the PATH variable ;C:\maven-1.0.2\bin
-       
    Mac/*nix: export MAVEN_HOME=/usr/local/maven; export
              PATH=$PATH:$MAVEN_HOME/bin
 
@@ -405,8 +406,7 @@
    feel the need to learn more about how Sakai uses Maven. To find the most
    detailed such documentation, look for sakai_maven.doc in
    reference/docs/architecture of the source archive or on subversion at:
-   
-   https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/architecture/sakai_maven.doc
+   https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/architecture/sakai_maven.doc
 
   3.1. Download Source
 
@@ -566,7 +566,7 @@
    for further experimentation and testing, but the following details are
    however offered only as samples or suggestions, and we recommend that you
    consult a systems administrator or local Java guru before making any such
-   changes to a production system. See the [67]Programmer's Cafe on our
+   changes to a production system. See the Programmer's Cafe on our
    Confluence wiki for more discussion of the details.
 
    The standard way to control the JVM options when Tomcat starts up is to
@@ -670,15 +670,18 @@
    respectively - are found in the reference/docs/conversion folder of the
    release or on subversion:
 
-MySQL:  https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conversion/sakai_2_2_2-2_3_0_mysql_conversion.sql
-Oracle: https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conversion/sakai_2_2_2-2_3_0_oracle_conversion.sql
+MySQL:  https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/conversion/sakai_2_2_1-2_3_1_mysql_conversion.sql
+Oracle: https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/conversion/sakai_2_2_1-2_3_1_oracle_conversion.sql
 
    In the same directory you'll also find conversion scripts for earlier
    Sakai versions. Migration from an earlier version will require the
    successive application of all intermediate scripts. You cannot, for
-   example, move from 2.2.0 to 2.3.0 by applying a single script. You will
-   need to move first from 2.2.0 to 2.2.1, and then from 2.2.2 to 2.3.0
-   (there was no database conversion between 2.2.1 and 2.2.2).
+   example, move from 2.2.0 to 2.3.1 by applying a single script. You will
+   need to move first from 2.2.0 to 2.2.1, and then from 2.2.1 to 2.3.1
+   (there was no database conversion between 2.2.1 and 2.2.2, and while there
+   is a conversion script from 2.3.0 to 2.3.1 for those who may have already
+   migrated to 2.3.0, the 2.2.1-2.3.0 conversion had a significant gradebook
+   error, and is no longer made available).
 
   Examine before using
 
@@ -691,7 +694,7 @@ Oracle: https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-0/docs/conv
   5.2. Deploy Drivers
 
    The supported production-grade databases include MySQL 4.1.12+ (but MySQL
-   5.0 is not yet recommended for production - see the [73]Configuration for
+   5.0 is not yet recommended for production - see the Configuration for
    Performance section below) and Oracle 9i+. The version of the JDBC driver
    (or connector) is also important: for MySQL a 3.1.12+ connector should be
    used, while for Oracle the 10g driver must be used, even if the database
@@ -709,9 +712,7 @@ Oracle: http://www.oracle.com/technology/software/tech/java/sqlj_jdbc/index.html
    installations running against Oracle, even when the database is Oracle 9i.
 
    Problems have been reported for both the 3.1.10 and 3.1.11 MySQL drivers.
-   3.1.12 is the recommended version since it has the greatest weight of
-   production experience behind hit, however early testing of 3.1.13 has not
-   yet revealed any significant issues.
+   3.1.12+ will be adequate, but 3.1.14 is the latest recommended version.
 
   5.3. Create Database and User
 
@@ -777,7 +778,6 @@ MySQL:  hibernate.dialect=org.hibernate.dialect.MySQLDialect
         password@javax.sql.BaseDataSource=PASSWORD
         validationQuery@javax.sql.BaseDataSource=select 1 from DUAL
         defaultTransactionIsolationString@javax.sql.BaseDataSource=TRANSACTION_READ_COMMITTED
-        
 Oracle: hibernate.dialect=org.hibernate.dialect.Oracle9Dialect
         vendor@org.sakaiproject.db.api.SqlService=oracle
         driverClassName@javax.sql.BaseDataSource=oracle.jdbc.driver.OracleDriver
@@ -857,7 +857,7 @@ Oracle: hibernate.dialect=org.hibernate.dialect.Oracle9Dialect
    scheduler, which has a maximum latency for serving requests, is therefore
    a better choice for database operations - although pages may still render
    slowly under load, performance will degrade more gracefully, avoiding
-   hangs, and provide some feedback.
+   hangs, and provide some feedback to users.
 
    To switch to the Deadline scheduler, the boot parameter elevator=deadline
    must be passed to the kernel that's being used. You can do so by editing
@@ -880,7 +880,7 @@ Oracle: hibernate.dialect=org.hibernate.dialect.Oracle9Dialect
 
    Once you've configured the database appropriately, you need only stop and
    restart Tomcat. As Tomcat is coming up you can watch its log to see if
-   there are any database connection errors (see the [81]Troubleshooting
+   there are any database connection errors (see the Troubleshooting
    section).
 
   Oracle and Tests & Quizzes
@@ -1138,7 +1138,7 @@ Oracle: hibernate.dialect=org.hibernate.dialect.Oracle9Dialect
    code.
 
    If this does not account for the download failures you're seeing, then you
-   may want to double-check your maven.remote.repo setting. See the [92]Maven
+   may want to double-check your maven.remote.repo setting. See the Maven
    Configuration section, and follow it precisely.
 
     7.1.2. Out of Memory errors
@@ -1265,7 +1265,7 @@ Oracle: hibernate.dialect=org.hibernate.dialect.Oracle9Dialect
 
    If this message appears in catalina.out during startup, it means that
    you've built Sakai for Java 1.5, but your JRE is 1.4. Go back to the
-   [93]Set up Build Environment section and double-check your Java version
+   Set up Build Environment section and double-check your Java version
    and environment variables.
 
     7.2.3. "java.net.BindException: Address already in use"
@@ -1279,3 +1279,5 @@ Oracle: hibernate.dialect=org.hibernate.dialect.Oracle9Dialect
    If you need to run more than one Tomcat on the same machine, see Tomcat
    documentation for instructions on how to configure to run Tomcat on a
    different port.
+
+

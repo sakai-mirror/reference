@@ -786,8 +786,8 @@ JAVA_OPTS="-server -Xms1500m -Xmx1500m -XX:NewSize=400m -XX:MaxNewSize=400m -XX:
                     <listitem>
                         <para>
                             <link
-                                xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/conversion/sakai_2_2_2-2_3_0_mysql_conversion.sql"
-                                >https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/conversion/sakai_2_2_2-2_3_0_mysql_conversion.sql</link>
+                                xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/conversion/sakai_2_2_1-2_3_1_mysql_conversion.sql"
+                                >https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/conversion/sakai_2_2_1-2_3_1_mysql_conversion.sql</link>
                         </para>
                     </listitem>
                 </varlistentry>
@@ -796,8 +796,8 @@ JAVA_OPTS="-server -Xms1500m -Xmx1500m -XX:NewSize=400m -XX:MaxNewSize=400m -XX:
                     <listitem>
                         <para>
                             <link
-                                xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/conversion/sakai_2_2_2-2_3_0_oracle_conversion.sql"
-                                >https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/conversion/sakai_2_2_2-2_3_0_oracle_conversion.sql</link>
+                                xl:href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/conversion/sakai_2_2_1-2_3_1_oracle_conversion.sql"
+                                >https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/conversion/sakai_2_2_1-2_3_1_oracle_conversion.sql</link>
                         </para>
                     </listitem>
                 </varlistentry>
@@ -806,7 +806,7 @@ JAVA_OPTS="-server -Xms1500m -Xmx1500m -XX:NewSize=400m -XX:MaxNewSize=400m -XX:
                 versions. Migration from an earlier version will require the successive application
                 of all intermediate scripts. You cannot, for example, move from 2.2.0 to 2.3.1 by
                 applying a single script. You will need to move first from 2.2.0 to 2.2.1, and then
-                from 2.2.1 to 2.3.1 (there was no database conversion between 2.2.1 and 2.2.2).</para>
+                from 2.2.1 to 2.3.1 (there was no database conversion between 2.2.1 and 2.2.2, and while there is a conversion script from 2.3.0 to 2.3.1 for those who may have already migrated to 2.3.0, the 2.2.1-2.3.0 conversion had a significant gradebook error, and is no longer made available).</para>
             <note>
                 <title>Examine before using</title>
                 <para>As a general rule, be sure to read through these conversion scripts before
@@ -854,7 +854,7 @@ JAVA_OPTS="-server -Xms1500m -Xmx1500m -XX:NewSize=400m -XX:MaxNewSize=400m -XX:
                     installations running against Oracle, even when the database is Oracle 9i.</para>
 
                 <para>Problems have been reported for both the 3.1.10 and 3.1.11 MySQL drivers.
-                    3.1.12+ will be adequate, but 3.1.14 is the recommended version.</para>
+                    3.1.12+ will be adequate, but 3.1.14 is the latest recommended version.</para>
             </note>
         </sect2>
         <sect2 xml:id="install-dbconfig-create">
