@@ -55,8 +55,23 @@
 <!-- BEGIN CONTENT -->
 <div class="pad">
 <h1>Sakai 2.2.3 Release<br/>
- <span style="font:	12px/1.4 Arial, Helvetica, sans-serif;">(January 21, 2007)</span></h1>
-<p>2.2.3 offers a <em class="note">critical security fix</em> to the 2.2.2 maintenance release, and thus simply supersedes 2.2.2.  Those who are running an unpatched version of Sakai 2.2.1 or 2.2.2 should upgrade immediately to 2.2.3.  For more details see the <a href="release-notes.html">release notes</a> below.</p>
+ <span style="font:	12px/1.4 Arial, Helvetica, sans-serif;">(January 24, 2007)</span></h1>
+<div class="informaltable">
+            <table border="1">
+<colgroup><col></colgroup>
+<tbody><tr><td>
+                            <span class="emphasis"><em>Security Update:</em></span> 2.2.3 adds a critical
+                                security fix to the 2.2.2 maintenance release and should therefore
+                                be taken to simply supersede 2.2.2 and all 2.2.x releases which came
+                                before it. Anyone running unpatched versions of earlier 2.2 releases
+                                should upgrade to 2.2.3 immediately. Unpatched systems could
+                                allow a user to view all attachments on the system
+                                through the browser ( <a href="http://bugs.sakaiproject.org/jira/browse/SAK-7288" target="_top">SAK-7288</a>) as well as alter or delete them through a WebDAV client (<a href="http://bugs.sakaiproject.org/jira/browse/SAK-7672" target="_top">SAK-7672</a>).
+                        </td></tr></tbody>
+</table>
+        </div>
+
+<p>For more details see the <a href="release-notes.html">release notes</a> below.</p>
 
 <p>The 2.2 codebase as a whole marks the culmination of a significant effort to restructure the framework into more logical
 functional/architectural units, paving the way for multiple focused teams to work in parallel on driving the framework and legacy code forward.  This release also incorporates the <em>Open Source Portfolio</em> suite of tools, available in this first merged effort as <a href="provisional.html">provisional tools</a>.  Additional functional improvements include group awareness for each of the Resources, Assignments, and Schedule tools, the inclusion of French and Catalan translations, updated help content, and the addition of four innovative <a href="provisional.html">provisional tools</a>.</p>
