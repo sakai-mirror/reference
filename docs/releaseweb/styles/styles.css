@@ -184,7 +184,8 @@ div.informaltable table tr  {
 div.informaltable table tr td  {
 	border-width: 0px;
 	border-style: none;
-	padding:5px;
+	padding-left:5px;
+	padding-right:5px;
 }
 		
 h4 	{
