@@ -327,4 +327,45 @@ update GB_GRADABLE_OBJECT_T set RELEASED=1 where RELEASED is NULL;
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 
+----------------------------------------------------------------------------------------------------------------------------------------
+-- backfill new content.hidden permission into existing realms
+----------------------------------------------------------------------------------------------------------------------------------------
 
+-- for each realm that has a role matching something in this table, we will add to that role the function from this table
+CREATE TABLE PERMISSIONS_SRC_TEMP (ROLE_NAME VARCHAR(99), FUNCTION_NAME VARCHAR(99));
+
+-- These are for the site templates
+
+INSERT INTO PERMISSIONS_SRC_TEMP values ('maintain','content.hidden');
+INSERT INTO PERMISSIONS_SRC_TEMP values ('Instructor','content.hidden');
+INSERT INTO PERMISSIONS_SRC_TEMP values ('Teaching Assistant','content.hidden');
+INSERT INTO PERMISSIONS_SRC_TEMP values ('CIG Coordinator','content.hidden');
+INSERT INTO PERMISSIONS_SRC_TEMP values ('Program Coordinator','content.hidden');
+INSERT INTO PERMISSIONS_SRC_TEMP values ('Program Admin','content.hidden');
+
+-- lookup the role and function numbers
+create table PERMISSIONS_TEMP (ROLE_KEY INTEGER, FUNCTION_KEY INTEGER);
+insert into PERMISSIONS_TEMP (ROLE_KEY, FUNCTION_KEY)
+select SRR.ROLE_KEY, SRF.FUNCTION_KEY
+from PERMISSIONS_SRC_TEMP TMPSRC
+join SAKAI_REALM_ROLE SRR on (TMPSRC.ROLE_NAME = SRR.ROLE_NAME)
+join SAKAI_REALM_FUNCTION SRF on (TMPSRC.FUNCTION_NAME = SRF.FUNCTION_NAME);
+
+-- insert the new functions into the roles of any existing realm that has the role (don't convert the "!site.helper")
+insert into SAKAI_REALM_RL_FN (REALM_KEY, ROLE_KEY, FUNCTION_KEY)
+select
+    SRRFD.REALM_KEY, SRRFD.ROLE_KEY, TMP.FUNCTION_KEY
+from
+    (select distinct SRRF.REALM_KEY, SRRF.ROLE_KEY from SAKAI_REALM_RL_FN SRRF) SRRFD
+    join PERMISSIONS_TEMP TMP on (SRRFD.ROLE_KEY = TMP.ROLE_KEY)
+    join SAKAI_REALM SR on (SRRFD.REALM_KEY = SR.REALM_KEY)
+    where SR.REALM_ID != '!site.helper'
+    and not exists (
+        select 1
+            from SAKAI_REALM_RL_FN SRRFI
+            where SRRFI.REALM_KEY=SRRFD.REALM_KEY and SRRFI.ROLE_KEY=SRRFD.ROLE_KEY and  SRRFI.FUNCTION_KEY=TMP.FUNCTION_KEY
+    );
+
+-- clean up the temp tables
+drop table PERMISSIONS_TEMP;
+drop table PERMISSIONS_SRC_TEMP;
