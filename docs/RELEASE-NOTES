@@ -1,42 +1,47 @@
-                              2.2.2 Release Notes
+                              2.2.3 Release Notes
 
    --------------------------------------------------------------------------
 
    Table of Contents
 
-   1. Overview
-   
-   2. Migrating from 2.2.0
+   [1]1. Overview
 
-   3. Migrating from 2.1.x
+   [2]2. Migrating from 2.2.0
 
-        3.1. What's New
-        3.2. Migration Issues
+   [3]3. Migrating from 2.1.x
 
-   4. Maintenance Branch
+                [4]3.1. What's New
 
-   5. Fixes Included in this Release
+                [5]3.2. Migration Issues
 
-   6. Open Issues
+   [6]4. Maintenance Branch
 
+   [7]5. Fixes Included in this Release
+
+   [8]6. Open Issues
 
 1. Overview
 
-   2.2.2 adds a security fix to the 2.2.1 maintenance release, which amounts
-   to the simple removal of test files included in the Apache Axis
-   distribution - 2.2.2 is otherwise indistinguishable from 2.2.1 (i.e. no
-   Sakai code has been altered, nor are there any DB changes), and should
-   therefore be taken to simply supercede 2.2.1. Put another way, 2.2.1 is
-   just 2.2.2 with some extra files that expose a security hole.
+   +------------------------------------------------------------------------+
+   | Security Update: 2.2.3 adds a critical security fix to the 2.2.2       |
+   | maintenance release and should therefore be taken to simply supersede  |
+   | 2.2.2 and all 2.2.x releases which came before it. Anyone running      |
+   | unpatched versions of earlier 2.2 releases should upgrade to 2.2.3     |
+   | immediately. Unpatched systems could allow a user to view all          |
+   | attachments on the system through the browser ( [9]SAK-7288) as well   |
+   | as alter or delete them through a WebDAV client ([10]SAK-7672).        |
+   +------------------------------------------------------------------------+
 
-   The Axis test files in question reside in the web services
-   webapps/sakai-axis directory, and they are: fingerprint.jsp,
-   happyaxis.jsp, i18nLib.jsp, index.html, index.jsp
-
-   These files could be used to change the locale within Tomcat. Your system
-   might, for example, appear in Japanese as a result of their presence. To
-   our knowledge, no data or information has been compromised by this bug.
-   This issue is in our JIRA issue-tracking system as [9]SAK-6147.
+   The Sakai 2.2 series as a whole marks the culmination of a significant
+   effort to restructure the framework into more logical
+   functional/architectural units, paving the way for multiple focused teams
+   to work in parallel on moving the framework and legacy code forward. This
+   release also incorporates the Open Source Portfolio suite of tools,
+   available in this first merged effort as provisional tools. Additional
+   functional improvements include group awareness for each of the Resources,
+   Assignments, and Schedule tools, the inclusion of French and Catalan
+   translations, updated help content, and the addition of four innovative
+   provisional tools.
 
 2. Migrating from 2.2.0
 
@@ -44,22 +49,23 @@
    2.2.0 is very simple and straightforward: skins, providers, and other code
    written for the 2.2 codebase should be fine.
 
-   Some of the 2.2.1 fixes, however, are applied to the DB schema, and so a
-   DB conversion script is still necessary for that upgrade. The conversion
-   scripts to be applied - in distinct versions for MySQL and Oracle,
-   respectively - are found in the reference/docs/conversion folder of the
-   release or on subversion:
+   Some of the 2.2.1 fixes, however, were applied to the DB schema, and so a
+   DB conversion script is still necessary for that upgrade, although neither
+   2.2.2 nor 2.2.3 introduced any schema changes. The conversion scripts to
+   be applied - in distinct versions for MySQL and Oracle, respectively - are
+   found in the reference/docs/conversion folder of the release or on
+   subversion:
 
-MySQL:  [10]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion/sakai_2_2_0-2_2_1_mysql_conversion.sql
-Oracle: [11]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion/sakai_2_2_0-2_2_1_oracle_conversion.sql
+MySQL:  [11]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-3/docs/conversion/sakai_2_2_0-2_2_1_mysql_conversion.sql
+Oracle: [12]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-3/docs/conversion/sakai_2_2_0-2_2_1_oracle_conversion.sql
 
    That's it for a migration from 2.2.0. You can freely skip past most of the
    rest of this page, though you'll probably want to jump down and skim the
-   [12]fixed issues and [13]open issues sections.
+   [13]fixed issues and [14]open issues sections.
 
 3. Migrating from 2.1.x
 
-   If you're moving to 2.2.2 from a 2.1 version (or earlier), the changes are
+   If you're moving to 2.2.3 from a 2.1 version (or earlier), the changes are
    more significant, and since the 2.2 code is still fairly recent, it's
    worth spending a little more time here to describe what you can look
    forward to.
@@ -99,7 +105,7 @@ Oracle: [11]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/
    their sites and materials in Sakai. For a thorough discussion of these
    changes, see the doc reference/docs/architecture/sakai_id_eid.doc (or in
    subversion at:
-   [14]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/architecture/sakai_id_eid.doc)
+   [15]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-3/docs/architecture/sakai_id_eid.doc)
 
       3.1.1.4. FCKeditor
 
@@ -131,7 +137,7 @@ Oracle: [11]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/
    improvements. To see the ongoing work of the Help project, visit their
    space in Confluence:
 
-   [15]http://bugs.sakaiproject.org/confluence/display/HELP/Home
+   [16]http://bugs.sakaiproject.org/confluence/display/HELP/Home
 
       3.1.1.7. New translations
 
@@ -145,7 +151,7 @@ Oracle: [11]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/
 
    2.2 involves closer integration with the Open Source Portfolio, an
    existing suite of tools supporting portfolio activities, and which are
-   available in this release as [16]provisional tools. Using OSP, individuals
+   available in this release as [17]provisional tools. Using OSP, individuals
    can collect items, reflect, design portfolios, and publish them to
    designated audiences. Instructors and program administrators are able to
    provide structure and guidance to an individual's work that include
@@ -173,14 +179,14 @@ Oracle: [11]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/
        spreadsheet application of their choice.
 
    You can find more details about these and all other provisional tools on
-   the [17]provisional tools page.
+   the [18]provisional tools page.
 
   3.2. Migration Issues
 
     3.2.1. Database Conversion
 
    A database conversion is required for a migration from 2.2.0 to 2.2.1, but
-   not for a migration from 2.2.1 to 2.2.2. Since DB conversions require the
+   not for a migration from 2.2.1 to 2.2.3. Since DB conversions require the
    successive application of all intermediate scripts, a migration from a
    2.1.x or earlier version will require at least two conversions (e.g. one
    from 2.1.2 to 2.2.0, and then one from 2.2.0 to 2.2.1). The conversion
@@ -188,7 +194,7 @@ Oracle: [11]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/
    respectively - are found in the reference/docs/conversion folder of the
    release or on subversion:
 
-   [18]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/conversion
+   [19]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-3/docs/conversion
 
   Examine before using
 
@@ -210,7 +216,6 @@ Oracle: [11]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/
           ALTER TABLE MFR_OPEN_FORUM_T ADD DEFAULTASSIGNNAME VARCHAR(255);
           ALTER TABLE MFR_MESSAGE_T ADD GRADEASSIGNMENTNAME VARCHAR(255);
           ALTER TABLE MFR_MESSAGE_T ADD GRADECOMMENT VARCHAR(255);
-          
   Oracle: ALTER TABLE MFR_TOPIC_T ADD DEFAULTASSIGNNAME VARCHAR2(255) NULL;
           ALTER TABLE MFR_OPEN_FORUM_T ADD DEFAULTASSIGNNAME VARCHAR2(255) NULL;
           ALTER TABLE MFR_MESSAGE_T ADD GRADEASSIGNMENTNAME VARCHAR2(255) NULL;
@@ -254,7 +259,7 @@ Oracle: [11]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/
    Be sure to review the SampleUserDirectoryProvider, and compare it against
    the sample for previous releases:
 
-   [19]https://source.sakaiproject.org/svn/providers/tags/sakai_2-2-2/sample/src/java/org/sakaiproject/provider/user/SampleUserDirectoryProvider.java
+   [20]https://source.sakaiproject.org/svn/providers/tags/sakai_2-2-3/sample/src/java/org/sakaiproject/provider/user/SampleUserDirectoryProvider.java
 
     3.2.4. Skin Changes
 
@@ -262,7 +267,7 @@ Oracle: [11]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/
    adapt them to 2.2 versions. These changes - including conversion steps -
    are thoroughly documented in the appendices of the skin document available
    in reference/docs/architecture/sakai_skin.doc, or in subversion at:
-   [20]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/architecture/sakai_skin.doc
+   [21]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-3/docs/architecture/sakai_skin.doc
 
 4. Maintenance Branch
 
@@ -284,14 +289,43 @@ Oracle: [11]https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-2/docs/
 
 5. Fixes Included in this Release
 
-   Sakai 2.2.2 fixes the following issue from 2.2.1:
+   Sakai 2.2.3 fixes the following issue from 2.2.2:
 
-   [21]http://source.sakaiproject.org/release/2.2.2/fixed-issues.html
+   [22]http://source.sakaiproject.org/release/2.2.3/fixed-issues.html
 
 6. Open Issues
 
-   The list of known issues with Sakai 2.2.2 is found at:
+   The list of known issues with Sakai 2.2.3 is found at:
 
-   [22]http://source.sakaiproject.org/release/2.2.2/open-issues.html
+   [23]http://source.sakaiproject.org/release/2.2.3/open-issues.html
 
    See in particular the "Important Issues" noted at the top of the list.
+
+References
+
+   Visible links
+   1. file:///cygdrive/c/Documents%20and%20Settings/clayf/Desktop/2.2.3%20docs/releaseweb/release-notes.html#overview
+   2. file:///cygdrive/c/Documents%20and%20Settings/clayf/Desktop/2.2.3%20docs/releaseweb/release-notes.html#migration-220
+   3. file:///cygdrive/c/Documents%20and%20Settings/clayf/Desktop/2.2.3%20docs/releaseweb/release-notes.html#migration-21x
+   4. file:///cygdrive/c/Documents%20and%20Settings/clayf/Desktop/2.2.3%20docs/releaseweb/release-notes.html#new
+   5. file:///cygdrive/c/Documents%20and%20Settings/clayf/Desktop/2.2.3%20docs/releaseweb/release-notes.html#migration
+   6. file:///cygdrive/c/Documents%20and%20Settings/clayf/Desktop/2.2.3%20docs/releaseweb/release-notes.html#maintenance
+   7. file:///cygdrive/c/Documents%20and%20Settings/clayf/Desktop/2.2.3%20docs/releaseweb/release-notes.html#resolved
+   8. file:///cygdrive/c/Documents%20and%20Settings/clayf/Desktop/2.2.3%20docs/releaseweb/release-notes.html#open-issues
+   9. http://bugs.sakaiproject.org/jira/browse/SAK-7288
+  10. http://bugs.sakaiproject.org/jira/browse/SAK-7672
+  11. https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-3/docs/conversion/sakai_2_2_0-2_2_1_mysql_conversion.sql
+  12. https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-3/docs/conversion/sakai_2_2_0-2_2_1_oracle_conversion.sql
+  13. 5.Fixes Included in this Release
+	file:///cygdrive/c/Documents%20and%20Settings/clayf/Desktop/2.2.3%20docs/releaseweb/release-notes.html#resolved
+  14. 6.Open Issues
+	file:///cygdrive/c/Documents%20and%20Settings/clayf/Desktop/2.2.3%20docs/releaseweb/release-notes.html#open-issues
+  15. https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-3/docs/architecture/sakai_id_eid.doc
+  16. http://bugs.sakaiproject.org/confluence/display/HELP/Home
+  17. file:///cygdrive/c/Documents%20and%20Settings/clayf/Desktop/2.2.3%20docs/releaseweb/provisional.html
+  18. file:///cygdrive/c/Documents%20and%20Settings/clayf/Desktop/2.2.3%20docs/releaseweb/provisional.html
+  19. https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-3/docs/conversion
+  20. https://source.sakaiproject.org/svn/providers/tags/sakai_2-2-3/sample/src/java/org/sakaiproject/provider/user/SampleUserDirectoryProvider.java
+  21. https://source.sakaiproject.org/svn/reference/tags/sakai_2-2-3/docs/architecture/sakai_skin.doc
+  22. file:///cygdrive/c/Documents%20and%20Settings/clayf/Desktop/2.2.3%20docs/releaseweb/fixed-issues.html
+  23. file:///cygdrive/c/Documents%20and%20Settings/clayf/Desktop/2.2.3%20docs/releaseweb/open-issues.html
