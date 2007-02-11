@@ -127,27 +127,33 @@
                     </listitem>
                 </varlistentry>
             </variablelist>
-            <note>
-                <title>Special notes about the Demo installation</title>
-                <variablelist>
-                    <varlistentry>
-                        <term>Data storage:</term>
-                        <listitem>
-                            <para>The data for a demo installation is stored in a HypersonicSQL
-                                database (HSQLDB) which is stored in memory and then written out to
-                                files when Tomcat is shut down. These files are located at
+            <informaltable>
+                <tgroup cols="2">
+                    <tbody>
+                        <row>
+                            <entry>
+                                <para>Data storage:</para>
+                            </entry>
+                            <entry>
+                                <para>The data for a demo installation is stored in a HypersonicSQL
+                                    database (HSQLDB) which is stored in memory and then written out to
+                                    files when Tomcat is shut down. These files are located at
                                     <filename>sakai-demo/sakai/db/sakai.db.*</filename>.</para>
-                        </listitem>
-                    </varlistentry>
-                    <varlistentry>
-                        <term>Email not configured:</term>
-                        <listitem>
-                            <para>The Sakai demo is configured to neither send nor receive
-                            email.</para>
-                        </listitem>
-                    </varlistentry>
-                </variablelist>
-            </note>
+                            </entry>
+                        </row>
+                        <row>
+                            <entry>
+                                <para>Email not configured:</para>
+                            </entry>
+                            <entry>
+                                <para>The Sakai demo is configured to neither send nor receive
+                                    email.</para>
+                            </entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </informaltable>
+           
         </sect2>
         <sect2 xml:id="install-overview-binary">
             <title>Binary Installation</title>
@@ -216,7 +222,7 @@ java version "1.5.0_06"
 Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_06-b05)
 Java HotSpot(TM) Server VM (build 1.5.0_06-b05, mixed mode)</screen>
             <para>You'll want to make sure that you have also installed the full J2SE, and not just
-                the JRE (JSP pages, among other things, will require some Java compilation).</para>
+                the JRE (Sakai includes .jsp and .jws files which require some compilation).</para>
             <note>
                 <title>JRE vs. JDK vs. J2SE vs. J2EE</title>
                 <para>If you're unfamiliar with the Java world, you may find the acronyms for
@@ -225,10 +231,11 @@ Java HotSpot(TM) Server VM (build 1.5.0_06-b05, mixed mode)</screen>
                     platforms this is all you usually get by default - for the very good reason that
                     the average user just wants to run programs, and doesn't need to be building
                     code.</para>
-                <para> To run Sakai, however, you'll need the JDK (Sakai includes some .jws and .jsp files which are not pre-compiled), which stands for
-                    "Java Developer's Kit." To both build and run Sakai you'll therefore need a
-                    combination of both the JDK and the JRE, and, happily, Sun makes this available
-                    as a unit: the J2SE (the "Java 2 Standard Edition").</para>
+                <para> To run Sakai, however, you'll also need the JDK (Sakai includes some .jws and .jsp
+                    files which are not pre-compiled), which stands for "Java Developer's Kit." To
+                    both build and run Sakai you'll therefore need a combination of both the JDK and
+                    the JRE, and, happily, Sun makes this available as a unit: the J2SE (the "Java 2
+                    Standard Edition").</para>
                 <para>If you go to the Sun site for a download, you may also run across the J2EE
                     (the "Enterprise Edition"), or even the J2ME (the "Micro Edition"). Don't
                     trouble yourself with these, unless you know of a particular reason why you may
@@ -604,17 +611,23 @@ export MAVEN_OPTS="-Xmx384m -XX:PermSize=48m"</screen>
                     source archive.</para>
             </note>
         </sect2>
-        
+
         <sect2 xml:id="install-config-proxy">
             <title>HTTP proxy</title>
-            <para>In environments where local network policy or firewalls require use of an upstream http proxy / cache, Sakai needs to be configured to use this.  Otherwise, components or services which use http requests, such as BasicNewsService for RSS feeds in the News tool, cannot retrieve data from the target URLs. RSS feeds then do not display in the news tool, and it is not possible to add new news channels.</para>
-                
-                <para>This can be fixed by adding the following <emphasis>JAVA_OPTS</emphasis> arguments to the Sakai local startup script (e.g. <filename>/etc/rc.d/sakai</filename>), or to a Sakai startup script such as <filename>startup.sh</filename> or <filename>catalina.sh</filename>:
-                
-<screen>
+            <para>In environments where local network policy or firewalls require use of an upstream
+                http proxy / cache, Sakai needs to be configured to use this. Otherwise, components
+                or services which use http requests, such as BasicNewsService for RSS feeds in the
+                News tool, cannot retrieve data from the target URLs. RSS feeds then do not display
+                in the news tool, and it is not possible to add new news channels.</para>
+
+            <para>This can be fixed by adding the following <emphasis>JAVA_OPTS</emphasis> arguments
+                to the Sakai local startup script (e.g. <filename>/etc/rc.d/sakai</filename>), or to
+                a Sakai startup script such as <filename>startup.sh</filename> or
+                    <filename>catalina.sh</filename>:<screen>
 export JAVA_OPTS="-DproxySet=true -DproxyHost=cache.some.domain -DproxyPort=8080"</screen>
-                </para>
-                <para>You'll need to set additional JAVA_OPTS for memory tuning (see below), and the appropriate ones can simply be appended.</para>
+            </para>
+            <para>You'll need to set additional JAVA_OPTS for memory tuning (see below), and the
+                appropriate ones can simply be appended.</para>
         </sect2>
 
         <sect2 xml:id="install-config-email">
