@@ -299,6 +299,10 @@ create table GB_COMMENT_T (
 	primary key (ID),
 	unique (STUDENT_ID, GRADABLE_OBJECT_ID));
 
+alter table GB_COMMENT_T 
+	add constraint FK7977DFF06F98CFF foreign key (GRADABLE_OBJECT_ID) references GB_GRADABLE_OBJECT_T;
+create sequence GB_COMMENT_S;
+
 -- Remove database-caching of calculated course grades.
 alter table GB_GRADE_RECORD_T drop column SORT_GRADE;
 
