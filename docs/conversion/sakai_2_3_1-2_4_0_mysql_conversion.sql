@@ -19,7 +19,13 @@ update osp_list_config set selected_columns = replace(selected_columns, 'name', 
 update osp_list_config set selected_columns = replace(selected_columns, 'siteName', 'site.title') where binary selected_columns like '%siteName%';
 
 --Updating for a change to the synoptic view for portfolio worksites
-update sakai_site_tool_property set name='siteTypeList', value='portfolio,PortfolioAdmin' where value='portfolioWorksites';
+update SAKAI_SITE_TOOL_PROPERTY set name='siteTypeList', value='portfolio,PortfolioAdmin' where value='portfolioWorksites';
+
+--making sure these fields allow nulls
+ALTER TABLE osp_scaffolding MODIFY readyColor VARCHAR(7) NULL;
+ALTER TABLE osp_scaffolding MODIFY pendingColor VARCHAR(7) NULL;
+ALTER TABLE osp_scaffolding MODIFY completedColor VARCHAR(7) NULL;
+ALTER TABLE osp_scaffolding MODIFY lockedColor VARCHAR(7) NULL;
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -216,7 +222,7 @@ alter table MFR_TOPIC_T modify column MODERATED bit not null;
 ----------------------------------------------------------------------------------------------------------------------------------------
 --create new tables
 CREATE TABLE CHAT2_CHANNEL ( 
-    CHANNEL_ID           	varchar(36) NOT NULL,
+    CHANNEL_ID           	varchar(99) NOT NULL,
     CONTEXT              	varchar(36) NOT NULL,
     CREATION_DATE        	datetime NULL,
     title                	varchar(64) NULL,
@@ -228,8 +234,8 @@ CREATE TABLE CHAT2_CHANNEL (
 );
 
 CREATE TABLE CHAT2_MESSAGE ( 
-    MESSAGE_ID  	varchar(36) NOT NULL,
-    CHANNEL_ID  	varchar(36) NULL,
+    MESSAGE_ID  	varchar(99) NOT NULL,
+    CHANNEL_ID  	varchar(99) NULL,
     OWNER       	varchar(96) NOT NULL,
     MESSAGE_DATE	datetime NULL,
     BODY        	text NOT NULL,
@@ -258,6 +264,10 @@ INSERT INTO SAKAI_REALM_RL_FN VALUES((select REALM_KEY from SAKAI_REALM where RE
 INSERT INTO SAKAI_REALM_RL_FN VALUES((select REALM_KEY from SAKAI_REALM where REALM_ID = '/site/mercury'), (select ROLE_KEY from SAKAI_REALM_ROLE where ROLE_NAME = 'maintain'), (select FUNCTION_KEY from SAKAI_REALM_FUNCTION where FUNCTION_NAME = 'chat.delete.channel'));
 INSERT INTO SAKAI_REALM_RL_FN VALUES((select REALM_KEY from SAKAI_REALM where REALM_ID = '/site/mercury'), (select ROLE_KEY from SAKAI_REALM_ROLE where ROLE_NAME = 'maintain'), (select FUNCTION_KEY from SAKAI_REALM_FUNCTION where FUNCTION_NAME = 'chat.new.channel'));
 INSERT INTO SAKAI_REALM_RL_FN VALUES((select REALM_KEY from SAKAI_REALM where REALM_ID = '/site/mercury'), (select ROLE_KEY from SAKAI_REALM_ROLE where ROLE_NAME = 'maintain'), (select FUNCTION_KEY from SAKAI_REALM_FUNCTION where FUNCTION_NAME = 'chat.revise.channel'));
+
+-- chat conversion prep
+alter table CHAT2_CHANNEL add column migratedChannelId varchar(99);
+alter table CHAT2_MESSAGE add column migratedMessageId varchar(99);
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 -- New private folder (SAK-8759)
@@ -346,7 +356,7 @@ alter table CM_OFFICIAL_INSTRUCTORS_T add unique (ENROLLMENT_SET_ID, INSTRUCTOR_
 --Add grade comments that were previously stored in Message Center table to the new gradebook table
 ----------------------------------------------------------------------------------------------------------------------------------------
 INSERT INTO GB_COMMENT_T (VERSION, GRADER_ID, STUDENT_ID, COMMENT_TEXT, DATE_RECORDED, GRADABLE_OBJECT_ID)
-(select gb_grade_record_t.VERSION, gb_grade_record_t.GRADER_ID, gb_grade_record_t.STUDENT_ID, MFR_MESSAGE_T.GRADECOMMENT, gb_grade_record_t.DATE_RECORDED, GB_GRADABLE_OBJECT_T.ID
+(select GB_GRADE_RECORD_T.VERSION, GB_GRADE_RECORD_T.GRADER_ID, GB_GRADE_RECORD_T.STUDENT_ID, MFR_MESSAGE_T.GRADECOMMENT, GB_GRADE_RECORD_T.DATE_RECORDED, GB_GRADABLE_OBJECT_T.ID
     from (select MAX(MFR_MESSAGE_T.MODIFIED) as MSG_MOD, MFR_MESSAGE_T.GRADEASSIGNMENTNAME as ASSGN_NAME, MFR_MESSAGE_T.CREATED_BY as CREATED_BY_STUDENT, MFR_AREA_T.CONTEXT_ID as CONTEXT from MFR_MESSAGE_T 
     	join MFR_TOPIC_T on MFR_MESSAGE_T.surrogateKey = MFR_TOPIC_T.ID
     	join MFR_OPEN_FORUM_T on MFR_TOPIC_T.of_surrogateKey = MFR_OPEN_FORUM_T.ID
@@ -387,7 +397,7 @@ CREATE INDEX SCHEDULER_DI_TIME_INDEX ON SCHEDULER_DELAYED_INVOCATION (INVOCATION
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE osp_report_def_xml (
-  reportDefId varchar(36) NOT NULL default ,
+  reportDefId varchar(36) NOT NULL,
   xmlFile longblob NOT NULL,
   PRIMARY KEY  (reportDefId)
 );

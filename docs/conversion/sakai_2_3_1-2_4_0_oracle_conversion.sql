@@ -21,6 +21,12 @@ update osp_list_config set selected_columns = replace(selected_columns, 'siteNam
 --Updating for a change to the synoptic view for portfolio worksites
 update sakai_site_tool_property set name='siteTypeList', value='portfolio,PortfolioAdmin' where value like 'portfolioWorksites';
 
+--making sure these fields allow nulls
+ALTER TABLE osp_scaffolding MODIFY ( readyColor VARCHAR2(7) NULL );
+ALTER TABLE osp_scaffolding MODIFY ( pendingColor VARCHAR2(7) NULL );
+ALTER TABLE osp_scaffolding MODIFY ( completedColor VARCHAR2(7) NULL );
+ALTER TABLE osp_scaffolding MODIFY ( lockedColor VARCHAR2(7) NULL );
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -220,7 +226,7 @@ alter table MFR_TOPIC_T modify (MODERATED NUMBER(1,0) not null);
 --This is coming soon as soon as I can generate the ddl for Oracle...
 
 CREATE TABLE CHAT2_CHANNEL ( 
-    CHANNEL_ID           	VARCHAR2(36) NOT NULL,
+    CHANNEL_ID           	VARCHAR2(99) NOT NULL,
     CONTEXT              	VARCHAR2(36) NOT NULL,
     CREATION_DATE        	TIMESTAMP(6) NULL,
     TITLE                	VARCHAR2(64) NULL,
@@ -232,8 +238,8 @@ CREATE TABLE CHAT2_CHANNEL (
 );
 
 CREATE TABLE CHAT2_MESSAGE ( 
-    MESSAGE_ID  	VARCHAR2(36) NOT NULL,
-    CHANNEL_ID  	VARCHAR2(36) NULL,
+    MESSAGE_ID  	VARCHAR2(99) NOT NULL,
+    CHANNEL_ID  	VARCHAR2(99) NULL,
     OWNER       	VARCHAR2(96) NOT NULL,
     MESSAGE_DATE	TIMESTAMP(6) NULL,
     BODY        	CLOB NOT NULL,
@@ -265,6 +271,10 @@ INSERT INTO SAKAI_REALM_RL_FN VALUES((select REALM_KEY from SAKAI_REALM where RE
 INSERT INTO SAKAI_REALM_RL_FN VALUES((select REALM_KEY from SAKAI_REALM where REALM_ID = '/site/mercury'), (select ROLE_KEY from SAKAI_REALM_ROLE where ROLE_NAME = 'maintain'), (select FUNCTION_KEY from SAKAI_REALM_FUNCTION where FUNCTION_NAME = 'chat.delete.channel'));
 INSERT INTO SAKAI_REALM_RL_FN VALUES((select REALM_KEY from SAKAI_REALM where REALM_ID = '/site/mercury'), (select ROLE_KEY from SAKAI_REALM_ROLE where ROLE_NAME = 'maintain'), (select FUNCTION_KEY from SAKAI_REALM_FUNCTION where FUNCTION_NAME = 'chat.new.channel'));
 INSERT INTO SAKAI_REALM_RL_FN VALUES((select REALM_KEY from SAKAI_REALM where REALM_ID = '/site/mercury'), (select ROLE_KEY from SAKAI_REALM_ROLE where ROLE_NAME = 'maintain'), (select FUNCTION_KEY from SAKAI_REALM_FUNCTION where FUNCTION_NAME = 'chat.revise.channel'));
+
+--chat conversion prep
+alter table CHAT2_CHANNEL add migratedChannelId varchar2(99);
+alter table CHAT2_MESSAGE add migratedMessageId varchar2(99);
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 -- New private folder (SAK-8759)
@@ -298,7 +308,6 @@ create table GB_COMMENT_T (
 	GRADABLE_OBJECT_ID number(19,0) not null,
 	primary key (ID),
 	unique (STUDENT_ID, GRADABLE_OBJECT_ID));
-
 alter table GB_COMMENT_T 
 	add constraint FK7977DFF06F98CFF foreign key (GRADABLE_OBJECT_ID) references GB_GRADABLE_OBJECT_T;
 create sequence GB_COMMENT_S;
@@ -1009,4 +1018,116 @@ from
 -- clean up the temp tables
 drop table PERMISSIONS_TEMP;
 drop table PERMISSIONS_SRC_TEMP;
+
+-----------------------------------------------------------------------------
+-- CITATION_COLLECTION
+-----------------------------------------------------------------------------
+
+CREATE TABLE CITATION_COLLECTION
+(
+   COLLECTION_ID VARCHAR2 (36) NOT NULL,
+		PROPERTY_NAME VARCHAR2 (255),
+		PROPERTY_VALUE LONG
+---    CONSTRAINT CITATION_COLLECTION_INDEX (COLLECTION_ID)
+);
+
+-----------------------------------------------------------------------------
+-- CITATION_CITATION
+-----------------------------------------------------------------------------
+
+CREATE TABLE CITATION_CITATION
+(
+   CITATION_ID VARCHAR2 (36) NOT NULL,
+		PROPERTY_NAME VARCHAR2 (255),
+		PROPERTY_VALUE LONG
+---    CONSTRAINT CITATION_CITATION_INDEX (CITATION_ID)
+);
+
+-----------------------------------------------------------------------------
+-- CITATION_SCHEMA
+-----------------------------------------------------------------------------
+
+CREATE TABLE CITATION_SCHEMA
+(
+   SCHEMA_ID VARCHAR2 (36) NOT NULL,
+		PROPERTY_NAME VARCHAR2 (255),
+		PROPERTY_VALUE LONG
+---    CONSTRAINT CITATION_SCHEMA_INDEX (SCHEMA_ID)
+);
+
+-----------------------------------------------------------------------------
+-- CITATION_SCHEMA_FIELD
+-----------------------------------------------------------------------------
+
+CREATE TABLE CITATION_SCHEMA_FIELD
+(
+   SCHEMA_ID VARCHAR2 (36) NOT NULL,
+   FIELD_ID VARCHAR2 (36) NOT NULL,
+		PROPERTY_NAME VARCHAR2 (255),
+		PROPERTY_VALUE LONG
+---    CONSTRAINT CITATION_SCHEMA_INDEX (SCHEMA_ID, FIELD_ID)
+);
+
+
+------------------------------------------------------------------------
+--- SAK-9436 Missing indexes in rwiki 
+------------------------------------------------------------------------
+--- its ok to ignore the drop errors, 
+drop index rwikiproperties_name;
+drop index  irwikicurrentcontent_rwi;
+drop index  irwikihistorycontent_rwi;
+drop index  irwikipagepresence_sid;
+drop index  irwikihistory_name;
+drop index  irwikihistory_realm;
+drop index  irwikihistory_ref;
+drop index  irwikihistoryobj_rwid;
+drop index  irwikiobject_name;
+drop index  irwikiobject_realm;
+drop index  irwikiobject_ref;
+
+drop index  irwikipr_userid;
+drop index  irwikipm_sessionid;
+drop index  irwikipm_user;
+drop index  irwikipm_pagespace;
+drop index  irwikipm_pagename;
+drop index  irwikipt_user;
+drop index  irwikipt_pagespace;
+drop index  irwikipt_pavename;
+
+create index irwikiproperties_name on rwikiproperties (name);
+create index irwikicurrentcontent_rwi on  rwikicurrentcontent (rwikiid);
+create index irwikihistorycontent_rwi on  rwikihistorycontent (rwikiid); 
+create index irwikipagepresence_sid on  rwikipagepresence (sessionid);
+create index irwikihistory_name on  rwikihistory (name);
+create index irwikihistory_realm on  rwikihistory (realm);
+create index irwikihistory_ref on  rwikihistory (referenced(1024));
+create index irwikihistoryobj_rwid on  rwikihistory (rwikiobjectid);
+create index irwikiobject_name on  rwikiobject (name);
+create index irwikiobject_realm on  rwikiobject (realm);
+create index irwikiobject_ref on  rwikiobject (referenced(1024));
+
+create index irwikipr_userid on  rwikipreference (userid);
+create index irwikipm_sessionid on  rwikipagemessage (sessionid);
+create index irwikipm_user on  rwikipagemessage (userid);
+create index irwikipm_pagespace on  rwikipagemessage (pagespace);
+create index irwikipm_pagename on  rwikipagemessage (pagename);
+create index irwikipt_user on  rwikipagetrigger (userid);
+create index irwikipt_pagespace on  rwikipagetrigger (pagespace);
+create index irwikipt_pavename on  rwikipagetrigger (pagename);
+
+------------------------------------------------------------------------
+-- SAK-9439 Missing indexes in search
+------------------------------------------------------------------------
+drop index   isearchbuilderitem_name;
+drop index   isearchbuilderitem_ctx;
+drop index   isearchbuilderitem_act;
+drop index   isearchbuilderitem_sta;
+drop index   isearchwriterlock_lk;
+
+
+create index isearchbuilderitem_name on  searchbuilderitem (name);
+create index isearchbuilderitem_ctx on  searchbuilderitem (context);
+create index isearchbuilderitem_act on  searchbuilderitem (searchaction);
+create index isearchbuilderitem_sta on  searchbuilderitem (searchstate);
+create index isearchwriterlock_lk on  searchwriterlock (lockkey);
 
