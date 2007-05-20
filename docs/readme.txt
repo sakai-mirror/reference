@@ -3,32 +3,22 @@ SAKAI - a community source Collaboration and Learning Environment
 
 The official website for Sakai is:
 
-	http://www.sakaiproject.org
+	http://sakaiproject.org
 	
 The latest release of Sakai can always be found at:
 
 	http://www.sakaiproject.org/release
 	
-To see the institutions involved in the Sakai collaboration and
-their implementation status, see:
-
-	http://bugs.sakaiproject.org/confluence/display/PROD/Implementations
-	
 	
 THE reference/docs DIRECTORY
 
-This directory and its subdirectories contains the bulk of the
+This directory and its subdirectories contains the general
 reference material distributed with a release.
 
 architecture/	technical documentation and white papers
 
 conversion/	contains the DB conversion scripts to alter
 		the schema from one version to the next
-	
-	
-docbook/	docbook XML source for the Installation guide, 
-		among other things.  This directory is a WIP, and 
-		growing.
 		
 loadtesting/	sample scripts used for loadtesting Sakai 
 		using the Apache JMeter loadtesting engine.
@@ -42,7 +32,9 @@ webservices/	contains documentation for using Web Service
 	
 readme.txt	this file
 
-INSTALL		A plain text version of the Install Guide
+INSTALL		Information about the Install Guide
+
+RELEASE-NOTES	Information about the release notes for this release
 
 readme_i18n.txt		internationalization info for Sakai
 
@@ -51,11 +43,15 @@ sakai.properties	a reference configuration file for Sakai
 
 DOCUMENTATION
 
+A set of release documentation - including the Install Guide, Release Notes, tool descriptions, and a Sys Admin  guide can be found at:
+
+	http://confluence.sakaiproject.org/confluence/x/TpU
+
 A good start for developers interested in working with Sakai is the wiki
 space named "Programmer's Cafe," where many tutorials and tips have
 been collected by community developers.
 
-	http://bugs.sakaiproject.org/confluence/display/BOOT/Home
+	http://confluence.sakaiproject.org/confluence/display/BOOT/Home
 
 Technical documentation and white papers can be found in the architecture/
 directory.
@@ -63,21 +59,21 @@ directory.
 The Sakaipedia is also a good place to search for nuggets of 
 insight into particular questions.
 	
-	http://bugs.sakaiproject.org/confluence/display/ENC/Home
+	http://confluence.sakaiproject.org/confluence/display/ENC/Home
 	
 	
 ISSUE TRACKING
 
 Bugs and other issues can be reported and tracked at:
 
-	http://bugs.sakaiproject.org
+	http://issues.sakaiproject.org
 	
 
 COMMUNITY
 
 Most Sakai collaboration happens in one (or both) of two arenas: the
 collab server, and the Confluence wiki already linked to here a
-number of times (bugs.sakaiproject.org/confluence).
+number of times (confluence.sakaiproject.org).
 
 The collab server is a fully functional Sakai deployment, with sites
 set up for community sub-groups, but in day-to-day activity it is
@@ -86,8 +82,7 @@ account on the collab server and join any groups you like at:
 
 	http://collab.sakaiproject.org
 	
-The most active site there is the "DG: Development" site, otherwise known as "sakai-dev".
-
+The most active site for technical information there is the "DG: Development" site, otherwise known as "sakai-dev".
 
 
 PROJECT STATUS
@@ -95,7 +90,7 @@ PROJECT STATUS
 The best central location for information on sub-project status and
 the variety of tools - standard or not - available for Sakai is:
 
-	http://bugs.sakaiproject.org/confluence/display/MGT
+	http://confluence.sakaiproject.org/confluence/display/MGT
 	
 	
 LICENSE
