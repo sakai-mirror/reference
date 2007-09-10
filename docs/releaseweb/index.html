@@ -61,7 +61,7 @@
             <table border="1">
 <colgroup><col></colgroup>
 <tbody><tr><td>
-                            <span class="emphasis"><em>Security Update: </em></span> 2.4.1 brings a critical security fix to the 2.4.0 codebase.  Specifically, Apache MyFaces Tomahawk version 1.1.5 had a cross-site scripting vulnerability that was corrected in version 1.1.6, and those Sakai tools which use JSF thus needed to upgrade to use the latest version.  For more details see:
+                            <span class="emphasis"><em>Security Update: </em></span> 2.4.1 brings a critical security fix to the 2.4 codebase.  Specifically, a cross-site scripting vulnerability was discovered in Apache MyFaces Tomahawk (v. 1.1.5), which has been corrected in v. 1.1.6.  Those Sakai tools which use MyFaces thus needed to upgrade to use the latest Tomahawk version.  For more details see:
                             <ul>
                             <li><a href="http://labs.idefense.com/intelligence/vulnerabilities/display.php?id=544">http://labs.idefense.com/intelligence/vulnerabilities/display.php?id=544</a></li>
                             <li><a href="http://bugs.sakaiproject.org/jira/browse/SAK-10734">http://bugs.sakaiproject.org/jira/browse/SAK-10734</a></li>
@@ -99,14 +99,14 @@
 	<td>
 				  <a href="sakai_2-4-1/sakai-demo_2-4-1.zip">
 				  sakai-demo_2-4-1.zip</a><br />
-				(??M)<br/>
+				(170M)<br/>
 				<a href="sakai_2-4-1/sakai-demo_2-4-1_zip.MD5">MD5</a>
 	</td>
 	<td>
 				  <a href="sakai_2-4-1/sakai-demo_2-4-1.tar.gz">
 				  sakai-demo_2-4-1.tar.gz</a>
 				  <br />
-					(??M) <br/>
+					(169M) <br/>
 					<a href="sakai_2-4-1/sakai-demo_2-4-1_tar_gz.MD5">MD5</a>
 	</td>
 </tr>
@@ -117,12 +117,12 @@
 	</td>
 	<td><a href="sakai_2-4-1/sakai-bin_2-4-1.zip">
 				  sakai-bin_2-4-1.zip</a><br />
-				(??M) <br/>
+				(163M) <br/>
 				<a href="sakai_2-4-1/sakai-bin_2-4-1_zip.MD5">MD5</a>
 	</td>
 	<td><a href="sakai_2-4-1/sakai-bin_2-4-1.tar.gz">
 				  sakai-bin_2-4-1.tar.gz</a><br />
-				(??M) <br/>
+				(163M) <br/>
 				<a href="sakai_2-4-1/sakai-bin_2-4-1_tar_gz.MD5">MD5</a>
 	</td>
 </tr>
@@ -132,11 +132,11 @@
 				   Start from Source if you expect to make any code-level changes to your Sakai system.
 	</td>
 	<td><a href="sakai_2-4-1/sakai-src_2-4-1.zip">sakai-src_2-4-1.zip</a><br />
-				(??M) <br/>
+				(34M) <br/>
 				<a href="sakai_2-4-1/sakai-src_2-4-1_zip.MD5">MD5</a>
 	</td>
 	<td><a href="sakai_2-4-1/sakai-src_2-4-1.tar.gz">sakai-src_2-4-1.tar.gz
-				  </a><br />(??M) <br/>
+				  </a><br />(25M) <br/>
 				  <a href="sakai_2-4-1/sakai-src_2-4-1_tar_gz.MD5">MD5</a>
 	</td>
 </tr>
@@ -341,13 +341,6 @@ Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbs
 If you don't wish to track and merge changes with subversion you can use 'svn export' instead.  The Sakai development trunk can be checked out from here:
 </p>
 <p><b>svn co https://source.sakaiproject.org/svn/sakai/trunk</b></p>
-
-<p>A minimal source tree designed for developers is also made available, called "Sakai Mini," which is meant to build and start up relatively quickly. It includes the Sakai Framework Technologies, the developer's Sakai
-Mercury portal, and a few of the basic applications.  You can check it out of subversion, then just add your application
-code and any further dependencies that your application needs.  You can grab it here, e.g.: </p>
-<p><b>svn export https://source.sakaiproject.org/svn/mini/tags/sakai_2-4-1/</b></p>
-<p>(Since the mini is mainly just a convenient support for other development, it's likely that 'svn export' will be the preferred, cleaner way to get this codebase)
-<p>&nbsp;</p>
 
 <a name="issues"></a>
 <h3>
