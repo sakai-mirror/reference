@@ -2,7 +2,7 @@
 <html>
 <head>
 
-<title>Sakai 2.4.0 Release Page</title>
+<title>Sakai 2.4.1 Release Page</title>
  <link href="styles/posr.css" rel="stylesheet" type="text/css" />
  <link href="styles/stylesr.css" rel="stylesheet" type="text/css" />
 </head>
@@ -28,7 +28,7 @@
 	  <img src="http://www.sakaiproject.org/images/M_images/arrow.png" height="9"width="9" />
 	  Release
       <img src="http://www.sakaiproject.org/images/M_images/arrow.png" height="9" width="9" />
-	  2.4.0
+	  2.4.1
 	  <br />&nbsp;
 	  <!--END BAR-->
 	</div>
@@ -53,19 +53,23 @@
 
 <!-- BEGIN CONTENT -->
 <div class="pad">
-<h1>Sakai 2.4.0 Release<br/>
- <span style="font:	12px/1.4 Arial, Helvetica, sans-serif;">(May 21, 2007)</span></h1>
+<h1>Sakai 2.4.1 Release<br/>
+ <span style="font:	12px/1.4 Arial, Helvetica, sans-serif;">(Sept. 10, 2007)</span></h1>
 
-<!-- BLOCK FOR SECURITY ALERT, WHEN NEEDED
+<!-- BLOCK FOR SECURITY ALERT, WHEN NEEDED -->
 <div class="informaltable">
             <table border="1">
 <colgroup><col></colgroup>
 <tbody><tr><td>
-                            <span class="emphasis"><em>Security Update:</em></span> SECURITY CONTENT.
+                            <span class="emphasis"><em>Security Update: </em></span> 2.4.1 brings a critical security fix to the 2.4.0 codebase.  Specifically, Apache MyFaces Tomahawk version 1.1.5 had a cross-site scripting vulnerability that was corrected in version 1.1.6, and those Sakai tools which use JSF thus needed to upgrade to use the latest version.  For more details see:
+                            <ul>
+                            <li><a href="http://labs.idefense.com/intelligence/vulnerabilities/display.php?id=544">http://labs.idefense.com/intelligence/vulnerabilities/display.php?id=544</a></li>
+                            <li><a href="http://bugs.sakaiproject.org/jira/browse/SAK-10734">http://bugs.sakaiproject.org/jira/browse/SAK-10734</a></li>
+                            </ul>
                         </td></tr></tbody>
 </table>
         </div>
-END SECURITY CONTENT -->
+<!-- END SECURITY CONTENT -->
 
 <p>Welcome to the Sakai 2.4 release!  The Sakai 2.4 series as a whole incorporates a large number of refinements and refactoring touches at the tool layer, with relatively few changes at the framework level.  Four new provisional tools have been added, while three very successful provisional tools have been promoted to the enterprise bundle. See the <a href="http://confluence.sakaiproject.org/confluence/x/bqU">release notes</a> for more details.</p>
 
@@ -93,17 +97,17 @@ END SECURITY CONTENT -->
 	<td>The Sakai Demo is a pre-built Sakai with Tomcat and a simple configuration, perfect for a quick and easy demo of Sakai. (<i>NOTE:</i> The demo version is not intended for large scale implementations.  It is suitable for evaluating the software and small pilot implementations on single servers)
 	</td>
 	<td>
-				  <a href="sakai_2-4-0/sakai-demo_2-4-0.zip">
-				  sakai-demo_2-4-0.zip</a><br />
+				  <a href="sakai_2-4-1/sakai-demo_2-4-1.zip">
+				  sakai-demo_2-4-1.zip</a><br />
 				(??M)<br/>
-				<a href="sakai_2-4-0/sakai-demo_2-4-0_zip.MD5">MD5</a>
+				<a href="sakai_2-4-1/sakai-demo_2-4-1_zip.MD5">MD5</a>
 	</td>
 	<td>
-				  <a href="sakai_2-4-0/sakai-demo_2-4-0.tar.gz">
-				  sakai-demo_2-4-0.tar.gz</a>
+				  <a href="sakai_2-4-1/sakai-demo_2-4-1.tar.gz">
+				  sakai-demo_2-4-1.tar.gz</a>
 				  <br />
 					(??M) <br/>
-					<a href="sakai_2-4-0/sakai-demo_2-4-0_tar_gz.MD5">MD5</a>
+					<a href="sakai_2-4-1/sakai-demo_2-4-1_tar_gz.MD5">MD5</a>
 	</td>
 </tr>
 <tr>
@@ -111,15 +115,15 @@ END SECURITY CONTENT -->
 	</th>
 	<td>The Sakai Binary is a pre-built Sakai without Tomcat or extra configuration files. Download the Binary release if you want to just drop the Sakai bundle into a pre-existing Tomcat environment. (NOTE: post-release patches are not made available as jar files, so the binary is not so easily updated with security patches, etc., between releases)
 	</td>
-	<td><a href="sakai_2-4-0/sakai-bin_2-4-0.zip">
-				  sakai-bin_2-4-0.zip</a><br />
+	<td><a href="sakai_2-4-1/sakai-bin_2-4-1.zip">
+				  sakai-bin_2-4-1.zip</a><br />
 				(??M) <br/>
-				<a href="sakai_2-4-0/sakai-bin_2-4-0_zip.MD5">MD5</a>
+				<a href="sakai_2-4-1/sakai-bin_2-4-1_zip.MD5">MD5</a>
 	</td>
-	<td><a href="sakai_2-4-0/sakai-bin_2-4-0.tar.gz">
-				  sakai-bin_2-4-0.tar.gz</a><br />
+	<td><a href="sakai_2-4-1/sakai-bin_2-4-1.tar.gz">
+				  sakai-bin_2-4-1.tar.gz</a><br />
 				(??M) <br/>
-				<a href="sakai_2-4-0/sakai-bin_2-4-0_tar_gz.MD5">MD5</a>
+				<a href="sakai_2-4-1/sakai-bin_2-4-1_tar_gz.MD5">MD5</a>
 	</td>
 </tr>
 <tr>
@@ -127,13 +131,13 @@ END SECURITY CONTENT -->
 	<td>The Sakai Source is all the Sakai source code from this release.&nbsp;
 				   Start from Source if you expect to make any code-level changes to your Sakai system.
 	</td>
-	<td><a href="sakai_2-4-0/sakai-src_2-4-0.zip">sakai-src_2-4-0.zip</a><br />
+	<td><a href="sakai_2-4-1/sakai-src_2-4-1.zip">sakai-src_2-4-1.zip</a><br />
 				(??M) <br/>
-				<a href="sakai_2-4-0/sakai-src_2-4-0_zip.MD5">MD5</a>
+				<a href="sakai_2-4-1/sakai-src_2-4-1_zip.MD5">MD5</a>
 	</td>
-	<td><a href="sakai_2-4-0/sakai-src_2-4-0.tar.gz">sakai-src_2-4-0.tar.gz
+	<td><a href="sakai_2-4-1/sakai-src_2-4-1.tar.gz">sakai-src_2-4-1.tar.gz
 				  </a><br />(??M) <br/>
-				  <a href="sakai_2-4-0/sakai-src_2-4-0_tar_gz.MD5">MD5</a>
+				  <a href="sakai_2-4-1/sakai-src_2-4-1_tar_gz.MD5">MD5</a>
 	</td>
 </tr>
 </table>
@@ -141,7 +145,7 @@ END SECURITY CONTENT -->
 
 <a name="overview"></a><br>
 <h3>System Requirements</h3>
-Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbsp;The platforms against which Sakai 2.4.0 has been specifically QA'ed, however, are indicated in the chart below:<br />
+Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbsp;The platforms against which Sakai 2.4.1 has been specifically QA'ed, however, are indicated in the chart below:<br />
 
 <table border="1" cellpadding="5" cellspacing="0">
 <tr cellpadding="5">
@@ -195,7 +199,7 @@ Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbs
 
   <p>&nbsp;</p>
   The basic underlying requirements for a successful
-	deployment of Sakai 2.4.0 are:
+	deployment of Sakai 2.4.1 are:
        <table border="0" cellpadding="0" cellspacing="10">
          <tbody>
             <tr>
@@ -267,9 +271,10 @@ Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbs
           <th><p>Release Documentation</p></th>
            <td><p>
             <ul>
-             <li><a href="http://confluence.sakaiproject.org/confluence/x/bqU">2.4.0 Release Notes</a></li>
-             <li><a href="http://confluence.sakaiproject.org/confluence/x/NKo">2.4.0 Fixed Issues</a></li>
-             <li><a class="red" href="http://confluence.sakaiproject.org/confluence/x/Q6o">2.4.0 Open Issues</span></a></li>
+             <li><a href="http://confluence.sakaiproject.org/confluence/x/bqU">2.4.1 Release Notes</a></li>
+             <li><a href="http://confluence.sakaiproject.org/confluence/x/NKo">2.4.1 Fixed Issues</a></li>
+             <li><a class="red" href="http://confluence.sakaiproject.org/confluence/x/Q6o">2.4.1 Open Issues</span></a></li>
+             <li><a class="red" href="http://confluence.sakaiproject.org/confluence/x/s7M">Maintenance Branch</span></a> (see more information on the Maintenance Branch below)</li>
             </ul></p>
             </td>
        </tr>
@@ -287,8 +292,8 @@ Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbs
 		<tr><td colspan="2" class="line">&nbsp;</td></tr>
        <tr>
          <th><p>Reference Articles</p></th>
-         <td><p>Some of the most authoritative technical documentation on Sakai code and services is found in the form of .doc files in the <b>reference</b> module of Sakai, which can be directly reached through subversion (and is also included in release archives).  The articles for the 2.4.0 release can be found at: <br/>
-           <a href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-4-0/docs/architecture/">https://source.sakaiproject.org/svn/reference/tags/sakai_2-4-0/docs/architecture/</a></p><br/>
+         <td><p>Some of the most authoritative technical documentation on Sakai code and services is found in the form of .doc files in the <b>reference</b> module of Sakai, which can be directly reached through subversion (and is also included in release archives).  The articles for the 2.4.1 release can be found at: <br/>
+           <a href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-4-1/docs/architecture/">https://source.sakaiproject.org/svn/reference/tags/sakai_2-4-1/docs/architecture/</a></p><br/>
         </td>
       </tr>
 	  <tr><td colspan="2" class="line">&nbsp;</td></tr>
@@ -328,8 +333,8 @@ Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbs
 <p>&nbsp;</p>
 
 <a name="latest"></a>
-<h3>Getting the Latest Source Code</h3>
-<p>Sakai uses Subversion for its source control, and has maintenance branches - which include the latest bug fixes - for its most current releases. You can check out the maintenance branch for Sakai 2.4 with a subversion client:<p>
+<h3>The Maintenance Branch</h3>
+<p>Sakai uses Subversion for its source control, and has maintenance branches - which include the latest bug fixes - for its most current releases. Complete information on the fixes included in the 2.4 maintenance branch can be found in Confluence:  <a href="http://confluence.sakaiproject.org/confluence/x/s7M">2.4.x Maintenance Branch</a>.  You can check out the maintenance branch for Sakai 2.4 with a subversion client:<p>
 
 <p><b>svn co https://source.sakaiproject.org/svn/sakai/branches/sakai_2-4-x/ </b></p>
 <p>
@@ -340,7 +345,7 @@ If you don't wish to track and merge changes with subversion you can use 'svn ex
 <p>A minimal source tree designed for developers is also made available, called "Sakai Mini," which is meant to build and start up relatively quickly. It includes the Sakai Framework Technologies, the developer's Sakai
 Mercury portal, and a few of the basic applications.  You can check it out of subversion, then just add your application
 code and any further dependencies that your application needs.  You can grab it here, e.g.: </p>
-<p><b>svn export https://source.sakaiproject.org/svn/mini/tags/sakai_2-4-0/</b></p>
+<p><b>svn export https://source.sakaiproject.org/svn/mini/tags/sakai_2-4-1/</b></p>
 <p>(Since the mini is mainly just a convenient support for other development, it's likely that 'svn export' will be the preferred, cleaner way to get this codebase)
 <p>&nbsp;</p>
 
