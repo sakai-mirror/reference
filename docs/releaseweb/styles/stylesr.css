@@ -55,6 +55,26 @@ pre {
 	border-left: dotted 1px #552200;
 	}
 	
+div.informaltable table  {
+	border-width: 1px 1px 1px 1px;
+	border-style: solid solid solid solid;
+	border-color: red red red red;
+	background:#ffd8c0;
+	padding:0px;
+	}
+	
+div.informaltable table tr  {
+	border-width: 0px;
+	border-style: none;
+}
+
+div.informaltable table tr td  {
+	border-width: 0px;
+	border-style: none;
+	padding-left:5px;
+	padding-right:5px;
+}
+	
 dd {
 	margin-left:0em;
 	padding-left:0em;

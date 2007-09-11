@@ -2,7 +2,7 @@
 <html>
 <head>
 
-<title>Sakai 2.3.1 Release Page</title>
+<title>Sakai 2.3.2 Release Page</title>
  <link href="styles/posr.css" rel="stylesheet" type="text/css" />
  <link href="styles/stylesr.css" rel="stylesheet" type="text/css" />
 </head>
@@ -28,7 +28,7 @@
 	  <img src="http://www.sakaiproject.org/images/M_images/arrow.png" height="9"width="9" />
 	  Release
       <img src="http://www.sakaiproject.org/images/M_images/arrow.png" height="9" width="9" />
-	  2.3.1
+	  2.3.2
 	  <br />&nbsp;
 	  <!--END BAR-->
 	</div>
@@ -53,11 +53,23 @@
 
 <!-- BEGIN CONTENT -->
 <div class="pad">
-<h1>Sakai 2.3.1 Release<br/>
- <span style="font:	12px/1.4 Arial, Helvetica, sans-serif;">(January 15, 2007)</span></h1>
-<p>Welcome to the Sakai release page for version 2.3.1!  Sakai 2.3.1 offers a handful of critical fixes to the 2.3.0 release, for both performance and security.  See the <a href="release-notes.html">release notes</a> for more details.</p>
+<h1>Sakai 2.3.2 Release<br/>
+ <span style="font:	12px/1.4 Arial, Helvetica, sans-serif;">(Sept. 12, 2007)</span></h1>
+<div class="informaltable">
+            <table border="1">
+<colgroup><col></colgroup>
+<tbody><tr><td>
+                            <span class="emphasis"><em>Security Update:</em></span> 2.3.2 brings a critical security fix to the 2.3 codebase.  Specifically, a cross-site scripting vulnerability was discovered in Apache MyFaces Tomahawk (v. 1.1.5), which has been corrected in v. 1.1.6.  Those Sakai tools which use MyFaces thus needed to upgrade to use the latest Tomahawk version.  For more details see:
+                            <ul>
+                            <li><a href="http://labs.idefense.com/intelligence/vulnerabilities/display.php?id=544">http://labs.idefense.com/intelligence/vulnerabilities/display.php?id=544</a></li>
+                            <li><a href="http://bugs.sakaiproject.org/jira/browse/SAK-10734">http://bugs.sakaiproject.org/jira/browse/SAK-10734</a></li>
+                            </ul>
+                        </td></tr></tbody>
+</table>
+        </div>
 
-<p>On this page you'll find further details concerning what the release includes, along with system requirements, an installation guide, and links to other relevant community spaces for the Sakai project.</p>
+<p>The Sakai 2.3 series as a whole presents more in the way of feature enhancements and less in the way of API changes than 2.2. Three new provisional tools have been added, while two very successful provisional tools have been promoted to the enterprise bundle. Several existing tools have seen significant enhancements, along with general improvements for the portal and configuration options in sakai.properties.  See the <a href="release-notes.html">release notes</a> for more details.</p>
+
 <br clear="all" />
 
 <div class="pad">
@@ -69,27 +81,27 @@
 <th>Install Type</th>
 <th>Description</th>
 <th>Windows XP</th>
-<th>Mac/*nix</th>
+<th>Linux/Unix/Mac</th>
 </tr>
 <tr>
 	<th>Demo</th>
-	<td>The Sakai Demo is a pre-built Sakai with Tomcat 5.5.17 and a simple
+	<td>The Sakai Demo is a pre-built Sakai with Tomcat and a simple
 configuration, perfect for a quick and easy demo of Sakai. (<i>NOTE:</i> The demo version is not intended for large scale
 implementations.  It is suitable for evaluating the software and
 small pilot implementations on single servers)
 	</td>
 	<td>
-				  <a href="sakai_2-3-1/sakai-demo_2-3-1.zip">
-				  sakai-demo_2-3-1.zip</a><br />
+				  <a href="sakai_2-3-2/sakai-demo_2-3-2.zip">
+				  sakai-demo_2-3-2.zip</a><br />
 				(141.2M)<br/>
-				<a href="sakai_2-3-1/sakai-demo_2-3-1_zip.MD5">MD5</a>
+				<a href="sakai_2-3-2/sakai-demo_2-3-2_zip.MD5">MD5</a>
 	</td>
 	<td>
-				  <a href="sakai_2-3-1/sakai-demo_2-3-1.tar.gz">
-				  sakai-demo_2-3-1.tar.gz</a>
+				  <a href="sakai_2-3-2/sakai-demo_2-3-2.tar.gz">
+				  sakai-demo_2-3-2.tar.gz</a>
 				  <br />
 					(140.1M) <br/>
-					<a href="sakai_2-3-1/sakai-demo_2-3-1_tar_gz.MD5">MD5</a>
+					<a href="sakai_2-3-2/sakai-demo_2-3-2_tar_gz.MD5">MD5</a>
 	</td>
 </tr>
 <tr>
@@ -99,15 +111,15 @@ small pilot implementations on single servers)
 				Download the Binary release if you want to just drop the Sakai bundle into a
 				pre-existing Tomcat environment.
 	</td>
-	<td><a href="sakai_2-3-1/sakai-bin_2-3-1.zip">
-				  sakai-bin_2-3-1.zip</a><br />
+	<td><a href="sakai_2-3-2/sakai-bin_2-3-2.zip">
+				  sakai-bin_2-3-2.zip</a><br />
 				(133.1M) <br/>
-				<a href="sakai_2-3-1/sakai-bin_2-3-1_zip.MD5">MD5</a>
+				<a href="sakai_2-3-2/sakai-bin_2-3-2_zip.MD5">MD5</a>
 	</td>
-	<td><a href="sakai_2-3-1/sakai-bin_2-3-1.tar.gz">
-				  sakai-bin_2-3-1.tar.gz</a><br />
+	<td><a href="sakai_2-3-2/sakai-bin_2-3-2.tar.gz">
+				  sakai-bin_2-3-2.tar.gz</a><br />
 				(132.8M) <br/>
-				<a href="sakai_2-3-1/sakai-bin_2-3-1_tar_gz.MD5">MD5</a>
+				<a href="sakai_2-3-2/sakai-bin_2-3-2_tar_gz.MD5">MD5</a>
 	</td>
 </tr>
 <tr>
@@ -115,13 +127,13 @@ small pilot implementations on single servers)
 	<td>The Sakai Source is all the Sakai source code from this release.&nbsp;
 				   Start from Source if you expect to make any code-level changes to your Sakai system.
 	</td>
-	<td><a href="sakai_2-3-1/sakai-src_2-3-1.zip">sakai-src_2-3-1.zip</a><br />
+	<td><a href="sakai_2-3-2/sakai-src_2-3-2.zip">sakai-src_2-3-2.zip</a><br />
 				(30.4M) <br/>
-				<a href="sakai_2-3-1/sakai-src_2-3-1_zip.MD5">MD5</a>
+				<a href="sakai_2-3-2/sakai-src_2-3-2_zip.MD5">MD5</a>
 	</td>
-	<td><a href="sakai_2-3-1/sakai-src_2-3-1.tar.gz">sakai-src_2-3-1.tar.gz
+	<td><a href="sakai_2-3-2/sakai-src_2-3-2.tar.gz">sakai-src_2-3-2.tar.gz
 				  </a><br />(21.8M) <br/>
-				  <a href="sakai_2-3-1/sakai-src_2-3-1_tar_gz.MD5">MD5</a>
+				  <a href="sakai_2-3-2/sakai-src_2-3-2_tar_gz.MD5">MD5</a>
 	</td>
 </tr>
 </table>
@@ -129,7 +141,7 @@ small pilot implementations on single servers)
 
 <a name="overview"></a><br>
 <h3>System Requirements</h3>
-Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbsp;The platforms against which Sakai 2.3.1 has been specifically QA'ed, however, are:<br />
+Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbsp;The platforms against which Sakai 2.3.2 has been specifically QA'ed, however, are:<br />
 
 <table class="dec">
 <tr>
@@ -183,7 +195,7 @@ Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbs
 
   <p>&nbsp;</p>
   The basic underlying requirements for a successful
-	deployment of Sakai 2.3.1 are:
+	deployment of Sakai 2.3.2 are:
        <table border="0" cellpadding="0" cellspacing="10">
          <tbody>
             <tr>
@@ -193,10 +205,10 @@ Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbs
            </tr>
 <tr><td colspan="4" class="line">&nbsp;</td></tr>
 			 <tr>
-                <td class="top"><p>Java</p></td>
+                <td class="top"><p>Java SE</p></td>
                 <td class="top"><p>1.5.0</p></td>
                 <td>
-				<p>Java 1.5.0 is required to build and run Sakai.</p>
+				<p>Java 1.5.0 is required to build and run Sakai.  JSP pages (among other things) will require some compilation, so the JRE alone will not suffice.</p>
 				<p><em class="note">** NOTE: Security vulnerabilities have been reported for applets under certain minor versions of the JRE.  Sakai does include some applets, so see the <a href="http://sunsolve.sun.com/search/document.do?assetkey=1-26-102171-1">security alert from Sun</a> to get details on the recommended minor versions.</em></p>
                 </td>
               </tr>
@@ -258,9 +270,9 @@ Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbs
           <th><p>Release Notes</p></th>
            <td><p>
             <ul>
-             <li><a href="release-notes.html">2.3.1 Release Notes</a></li>
-             <li><a href="fixed-issues.html">2.3.1 Fixed Issues</a></li>
-             <li><a class="red" href="open-issues.html">2.3.1 Open Issues</span></a></li>
+             <li><a href="release-notes.html">2.3.2 Release Notes</a></li>
+             <li><a href="fixed-issues.html">2.3.2 Fixed Issues</a></li>
+             <li><a class="red" href="open-issues.html">2.3.2 Open Issues</span></a></li>
             </ul></p>
             </td>
        </tr>
@@ -277,8 +289,8 @@ Sakai is Java-based, and will therefore run on a wide variety of platforms. &nbs
 		<tr><td colspan="2" class="line">&nbsp;</td></tr>
        <tr>
          <th><p>Reference Articles</p></th>
-         <td><p>Some of the most authoritative technical documentation on Sakai code and services is found in the form of .doc files in the <b>reference</b> module of Sakai, which can be directly reached through subversion (and is also included in release archives).  The articles for the 2.3.1 release can be found at: <br/>
-           <a href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/architecture/">https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-1/docs/architecture/</a></p><br/>
+         <td><p>Some of the most authoritative technical documentation on Sakai code and services is found in the form of .doc files in the <b>reference</b> module of Sakai, which can be directly reached through subversion (and is also included in release archives).  The articles for the 2.3.2 release can be found at: <br/>
+           <a href="https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-2/docs/architecture/">https://source.sakaiproject.org/svn/reference/tags/sakai_2-3-2/docs/architecture/</a></p><br/>
         </td>
       </tr>
 	  <tr><td colspan="2" class="line">&nbsp;</td></tr>
@@ -330,7 +342,7 @@ If you don't wish to track and merge changes with subversion you can use 'svn ex
 <p>A minimal source tree designed for developers is also made available, called "Sakai Mini," which is meant to build and start up relatively quickly. It includes the Sakai Framework Technologies, the developer's Sakai
 Mercury portal, and a few of the basic applications.  You can check it out of subversion, then just add your application
 code and any further dependencies that your application needs.  You can grab it here, e.g.: </p>
-<p><b>svn export https://source.sakaiproject.org/svn/mini/tags/sakai_2-3-1/</b></p>
+<p><b>svn export https://source.sakaiproject.org/svn/mini/tags/sakai_2-3-2/</b></p>
 <p>(Since the mini is mainly just a convenient support for other development, it's likely that 'svn export' will be the preferred, cleaner way to get this codebase)
 <p>&nbsp;</p>
 
@@ -358,47 +370,10 @@ the collaboration of its community.  For technical questions, <b>sakai-dev</b> i
 <h3>Older Releases</h3>
  Older Sakai Releases are still available:
  <br />
- <ul>2.3 series:
- <li><a href="../2.3.0/">
-    2.3.0</a></li>
+ <ul>2.2:
+ <li><a href="../2.2.3/">
+   2.2.3</a></li>
    </ul>
- <ul>2.2 series:
- <li><a href="../2.2.2/">
-   2.2.2</a></li>
-   <li><i>
-   2.2.1 was superseded by 2.2.2, for security reasons</i></li>
-   <li><a href="../2.2.0/">
-   2.2.0</a></li>
-   </ul>
- <ul>2.1 series:
- <li><a href="../2.1.2/">
-   2.1.2</a></li>
- <li>
- <a href="../2.1.1/">
-  2.1.1</a></li>
- <li>
- <a href="../2.1.0/">
- 2.1.0</a></li>
- </ul>
- <ul>2.0 series:
- <li>
-  <a href="../2.0.1/">
-2.0.1</a></li>
- <li>
- <a href="../2.0.0/">
-2.0.0</a></li>
-</ul>
-<ul>1.5 series:
-<li><a href="../1.5.1/">1.5.1</a>
-</li>
-<li><a href="../1.5.0/">
-1.5.0 </a></li>
-</ul>
-<ul>The original classic:
-<li>
-<a  href="../1.0.0/">
-1.0.0 </a></li>
-</ul>
 <p>&nbsp;</p>
 
 <a name="license"></a>
