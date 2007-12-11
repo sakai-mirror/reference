@@ -628,3 +628,138 @@ function browserSafeDocHeight() {
 	}
 	return Math.max(winHeight,docHeight); 
 }
+
+//***********************************************
+// browserSafeWindowHeight
+//***********************************************
+function browserSafeWindowHeight(overlayId) {
+	windowHeight = window.innerHeight;
+	
+	if (document.all) {
+		windowHeight = document.documentElement.clientHeight;
+
+		if (windowHeight == 0) {
+			windowHeight = document.body.clientHeight;
+		} 
+	}
+		
+	return windowHeight;
+}
+
+// Global variables needed for timeout alert
+var timeoutId;
+
+//***********************************************
+// 	Callback to server to reset session
+//  Do nothing with response, just need it to
+//  touch the server and send page back.
+//************************************************
+	function getTimeoutAlertPage(url)
+	{
+		var http;
+		http = new XMLHttpRequest();
+
+		// GET parameter added so other page will know it
+		// was called by this wait page (and not from iframe)
+		http.open("GET", url, true);
+
+		http.onreadystatechange = function()
+		{
+			if (http.readyState == 4) {
+    			var response = http.responseText; 
+  	       }	 
+		}
+		
+		http.send(null);
+	}
+
+//***********************************************
+// displayTimeoutAlertDiv
+//***********************************************
+function displayTimeoutAlertDiv(overlayId) {
+	overlaydiv = document.getElementById(overlayId);
+	if(overlaydiv) { 
+		if (overlaydiv.className.indexOf('over') == -1)
+			overlaydiv.className = overlaydiv.className + ' overlay';
+
+		overlaydiv.style.display='block';
+		overlaydiv.style.height = browserSafeDocHeight() + "px";
+	}	
+}
+
+//***********************************************
+// displayTimeoutAlertPage
+//***********************************************
+function displayTimeoutAlertPage(overlayPageId) {
+	overlayPage = document.getElementById(overlayPageId);
+	if (overlayPage) {
+		overlayPage.style.display='block';
+		
+		// position it to appear on the page
+		if (window.innerHeight) {
+			pos = window.pageYOffset;
+		}
+		else if (document.documentElement && document.documentElement.scrollTop) {
+			pos = document.documentElement.scrollTop;
+		}
+		else if (document.body) {
+		  pos = document.body.scrollTop;
+		}
+	
+		var winHeight = browserSafeWindowHeight();
+		var docHeight = browserSafeDocHeight();
+		
+		// default position is top is 20% down
+		var minPageHeight = winHeight / 5;
+
+		if (pos < minPageHeight) 
+			pos = '20%';
+		else {
+			// don't want it exactly at the top of the viewable page
+			pos += minPageHeight;
+			pos += 'px';
+		}
+
+		overlayPage.style.top = pos;
+	}
+}
+//***********************************************
+// displayTimeoutAlert
+//***********************************************
+function displayTimeoutAlert() {
+	countdown();
+	displayTimeoutAlertDiv('timeoutAlert_portal_div');
+	
+	displayTimeoutAlertPage('timeoutAlert_page');
+	
+	timeoutId = setInterval("countdown()",60000);
+}
+
+//***********************************************
+// refreshSession
+//***********************************************
+function refreshSession(startSecs, countdownStartTime, dummyUrl) {
+	var el = document.getElementById('seconds');
+	el.value = startSecs;
+	
+	hideElement('timeoutAlert_portal_div');
+	hideElement('timeoutAlert_page');
+	clearInterval(timeoutId);
+	getTimeoutAlertPage(dummyUrl);
+	setTimeout("displayTimeoutAlert()", countdownStartTime);
+}
+
+//***********************************************
+// countdown
+//***********************************************
+function countdown (){
+	var el = document.getElementById('seconds');
+	var secs = parseInt(el.value);
+
+	if (secs > 0) {
+	   el.value = secs - 60;
+	
+	   var mins = Math.floor(secs / 60);
+	   document.getElementById('minutes').innerHTML = (mins < 1) ? 1 : mins;
+	}
+}

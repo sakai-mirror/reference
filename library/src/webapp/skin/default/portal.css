@@ -662,9 +662,12 @@ also hide if are going to be using icon links (as background of <a> nad <li>
 
 /*.portletTitleWrap are wrappers for the tool title documents,
 below they are contextually defined depending on the column as an example,as you may want to adjust the widths accordingly*/ 
+.portletTitleWrap{
+	border-bottom: 2px solid #09c;
+}
+
 #col1 .portletTitleWrap{
 	width: 99%;
-	border-bottom: 2px solid #09c;
 }
 
 #col1 .portletMainWrap{
@@ -673,7 +676,6 @@ below they are contextually defined depending on the column as an example,as you
 
 #col1of2 .portletTitleWrap,#col2of2 .portletTitleWrap{
 	width: 98.5%;
-	border-bottom: 2px solid #09c;
 }
 
 #col1of2 .portletMainWrap,#col2of2 .portletMainWrap{
@@ -1073,4 +1075,30 @@ div#privacy_overlay {
 	-moz-opacity: 0.7;
 	opacity: 0.7;
    z-index: 0;
+}
+
+div.tool_popup {
+    position: absolute;
+    background: #fff;
+    color: #000;
+    border: 4px solid #0198CD;
+    width: 450px;
+    top: 20%;
+    left: 50%;
+    margin-left: -225px;
+    z-index: 10100;
+    padding: 5px 5px 5px 10px;
+}
+
+div.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	filter:alpha(opacity=70);
+	-moz-opacity: 0.7;
+	opacity: 0.7;
+   z-index: 10000;
 }
