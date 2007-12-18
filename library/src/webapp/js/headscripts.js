@@ -722,6 +722,17 @@ function displayTimeoutAlertPage(overlayPageId) {
 
 		overlayPage.style.top = pos;
 	}
+	//if mac and firefox - add iframe shim so that scrollbars are not visible through the popup
+	// SAK-12506
+	if (navigator.userAgent.indexOf("Firefox") > -1 && navigator.platform.indexOf("Mac") > -1 
+	&& parseFloat(navigator.userAgent.substring(navigator.userAgent.indexOf("Firefox")+"Firefox".length+1)) == 2){
+		shim = document.createElement("iframe");
+		shim.style.position="absolute";
+		shim.style.border="0";
+		shim.style.width="500px";
+		shim.style.height="500px";
+		overlayPage.insertBefore(shim, overlayPage.childNodes[0]);
+	}
 }
 //***********************************************
 // displayTimeoutAlert
