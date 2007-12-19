@@ -731,6 +731,7 @@ function displayTimeoutAlertPage(overlayPageId) {
 		shim.style.border="0";
 		shim.style.width="500px";
 		shim.style.height="500px";
+	   	shim.style.zIndex="-5";
 		overlayPage.insertBefore(shim, overlayPage.childNodes[0]);
 	}
 }
