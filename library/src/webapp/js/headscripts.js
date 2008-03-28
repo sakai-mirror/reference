@@ -746,7 +746,7 @@ function displayTimeoutAlertPage(overlayPageId) {
 //***********************************************
 // displayTimeoutAlert
 //***********************************************
-function displayTimeoutAlert() { alert('displayTimeoutAlert()');
+function displayTimeoutAlert() {
 	countdown();
 	displayTimeoutAlertDiv('timeoutAlert_portal_div');
 	
@@ -808,6 +808,6 @@ function countdown (){
 //***********************************************
 // returnHome
 //***********************************************
-function returnHome (){ alert('reloading page');
+function returnHome (){
 	location.reload();
 }
