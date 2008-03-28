@@ -301,6 +301,12 @@ function setMainFrameHeightNow(id)
 			var position = findPosition(frame);
 			parent.window.scrollTo(position[0]+scroll[0], position[1]+scroll[1]);
 		}
+
+// optional hook triggered after the head script fires.
+
+		if (parent.postIframeResize){ 
+			parent.postIframeResize(id);
+		}
 	}
 }
 
@@ -647,7 +653,8 @@ function browserSafeWindowHeight(overlayId) {
 }
 
 // Global variables needed for timeout alert
-var timeoutId;
+var timeoutId = 0;
+var returnHomeId = 0;
 
 //***********************************************
 // 	Callback to server to reset session
@@ -735,10 +742,11 @@ function displayTimeoutAlertPage(overlayPageId) {
 		overlayPage.insertBefore(shim, overlayPage.childNodes[0]);
 	}
 }
+
 //***********************************************
 // displayTimeoutAlert
 //***********************************************
-function displayTimeoutAlert() {
+function displayTimeoutAlert() { alert('displayTimeoutAlert()');
 	countdown();
 	displayTimeoutAlertDiv('timeoutAlert_portal_div');
 	
@@ -750,15 +758,31 @@ function displayTimeoutAlert() {
 //***********************************************
 // refreshSession
 //***********************************************
-function refreshSession(startSecs, countdownStartTime, dummyUrl) {
+function refreshSession(startSecs, countdownStartTime, dummyUrl, refreshServerSession) {
 	var el = document.getElementById('seconds');
-	el.value = startSecs;
 	
-	hideElement('timeoutAlert_portal_div');
-	hideElement('timeoutAlert_page');
-	clearInterval(timeoutId);
-	getTimeoutAlertPage(dummyUrl);
-	setTimeout("displayTimeoutAlert()", countdownStartTime);
+	// ONC-292: 'seconds' element may not exist if timed out
+	// and returnHome() called 
+	if (el) {
+		el.value = startSecs;
+
+		// remove popup window
+		hideElement('timeoutAlert_portal_div');
+		hideElement('timeoutAlert_page');
+	
+		// clear any timers that are actice
+		clearInterval(timeoutId);
+		clearTimeout(timeoutId);
+		clearTimeout(returnHomeId);
+	
+		// if button on popup clicked, ping the server
+		// to refresh session there
+		if (refreshServerSession)
+			getTimeoutAlertPage(dummyUrl);
+		
+		// start the whole process over again
+		timeoutId = setTimeout("displayTimeoutAlert()", countdownStartTime);
+	}
 }
 
 //***********************************************
@@ -773,5 +797,17 @@ function countdown (){
 	
 	   var mins = Math.floor(secs / 60);
 	   document.getElementById('minutes').innerHTML = (mins < 1) ? 1 : mins;
+	   
+	   // if server does not return browser to home page after 2 minutes,
+	   // refreshing page will. ONC-292
+	   if (mins <= 1 || sec <= 0)	
+	   		returnHomeId = setTimeout("returnHome()", 120000);
 	}
+}
+	
+//***********************************************
+// returnHome
+//***********************************************
+function returnHome (){ alert('reloading page');
+	location.reload();
 }
