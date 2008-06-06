@@ -666,8 +666,6 @@ var returnHomeId = 0;
 		var http;
 		http = new XMLHttpRequest();
 
-		// GET parameter added so other page will know it
-		// was called by this wait page (and not from iframe)
 		http.open("GET", url, true);
 
 		http.onreadystatechange = function()
@@ -761,7 +759,7 @@ function displayTimeoutAlert() {
 function refreshSession(startSecs, countdownStartTime, dummyUrl, refreshServerSession) {
 	var el = document.getElementById('seconds');
 	
-	// ONC-292: 'seconds' element may not exist if timed out
+	// SAK-13698: 'seconds' element may not exist if timed out
 	// and returnHome() called 
 	if (el) {
 		el.value = startSecs;
@@ -797,17 +795,17 @@ function countdown (){
 	
 	   var mins = Math.floor(secs / 60);
 	   document.getElementById('minutes').innerHTML = (mins < 1) ? 1 : mins;
-	   
-	   // if server does not return browser to home page after 2 minutes,
-	   // refreshing page will. ONC-292
-	   if (mins <= 1 || sec <= 0)	
-	   		returnHomeId = setTimeout("returnHome()", 120000);
 	}
+
+	   // if server does not return browser to home page after 2 minutes,
+	   // refreshing page will. SAK-13698
+	   if (mins <= 1 || secs <= 0)	
+	   		returnHomeId = setTimeout("returnHome()", 120000);
 }
 	
 //***********************************************
 // returnHome
 //***********************************************
 function returnHome (){
-	location.reload();
+	window.location = timeoutAlertPortalUrl;
 }
