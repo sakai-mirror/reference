@@ -633,7 +633,14 @@ hr.itemSeparator{
 	padding: .1em .3em;
 	border: 1px solid #888;
 }
+.shorttext input[type="password"]{
+	padding: .1em .3em;
+	border: 1px solid #888;
+}
 
+.shorttext input.disabled{
+	background:#eee
+}
 textarea{
 	margin-top: .5em;
 }
