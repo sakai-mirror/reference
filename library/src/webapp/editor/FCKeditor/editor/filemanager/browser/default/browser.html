@@ -55,6 +55,7 @@ var sServerPath = GetUrlParam( 'ServerPath' ) ;
 if ( sServerPath.length > 0 )
 	oConnector.ConnectorUrl += 'ServerPath=' + encodeURIComponent( sServerPath ) + '&' ;
 
+oConnector.editorId		= GetUrlParam( 'editorId' ) ;
 oConnector.ResourceType		= GetUrlParam( 'Type' ) ;
 oConnector.ShowAllTypes		= ( oConnector.ResourceType.length == 0 ) ;
 
@@ -66,6 +67,7 @@ oConnector.SendCommand = function( command, params, callBackFunction )
 	var sUrl = this.ConnectorUrl + 'Command=' + command ;
 	sUrl += '&Type=' + this.ResourceType ;
 	sUrl += '&CurrentFolder=' + encodeURIComponent( this.CurrentFolder ) ;
+	sUrl += '&editorId=' + this.editorId ;
 
 	if ( params ) sUrl += '&' + params ;
 
