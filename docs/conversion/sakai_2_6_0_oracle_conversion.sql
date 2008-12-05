@@ -231,3 +231,155 @@ update CM_ACADEMIC_SESSION_T set IS_CURRENT=1 where SYSDATE >= START_DATE and SY
     create index email_templ_key on EMAIL_TEMPLATE_ITEM (TEMPLATE_KEY);
 
     create sequence hibernate_sequence;
+
+----------------------------------------------------------------------------------------------------------------------------------------
+-- SAK-7924 - add and backfill new site.roleswap permissions into existing realms and templates
+----------------------------------------------------------------------------------------------------------------------------------------
+
+------ View Site in a Different Role Backfill --------
+-- SAK-7924 -- Adding the new site.roleswap permission as well as backfilling where appropriate
+-- roles that can be switched to are defined in sakai.properties with the studentview.roles property
+
+INSERT INTO SAKAI_REALM_FUNCTION VALUES (SAKAI_REALM_FUNCTION_SEQ.NEXTVAL, 'site.roleswap');
+
+-- Add the permission to the templates - this is which roles have permission to access the functionality to switch roles
+-- course sites
+INSERT INTO SAKAI_REALM_RL_FN VALUES((select REALM_KEY from SAKAI_REALM where REALM_ID = '!site.template.course'),
+(select ROLE_KEY from SAKAI_REALM_ROLE where ROLE_NAME = 'Instructor'),
+(select FUNCTION_KEY from SAKAI_REALM_FUNCTION where FUNCTION_NAME = 'site.roleswap'));
+
+-- maintain/access sites
+INSERT INTO SAKAI_REALM_RL_FN VALUES((select REALM_KEY from SAKAI_REALM where REALM_ID = '!site.template'),
+(select ROLE_KEY from SAKAI_REALM_ROLE where ROLE_NAME = 'maintain'),
+(select FUNCTION_KEY from SAKAI_REALM_FUNCTION where FUNCTION_NAME = 'site.roleswap'));
+
+----------------------------------------------------------------------------------------------------------------------------------------
+-- backfill script
+----------------------------------------------------------------------------------------------------------------------------------------
+
+-- course sites
+
+CREATE TABLE PERMISSIONS_TEMP (ROLE_NAME VARCHAR(99), FUNCTION_NAME VARCHAR(99));
+CREATE TABLE PERMISSIONS_TEMP2 (REALM_KEY INTEGER, ROLE_KEY INTEGER, FUNCTION_KEY INTEGER);
+
+INSERT INTO PERMISSIONS_TEMP values ('Instructor','site.roleswap');
+
+INSERT INTO PERMISSIONS_TEMP2 (REALM_KEY, ROLE_KEY, FUNCTION_KEY)
+select distinct SAKAI_REALM.REALM_KEY,
+SAKAI_REALM_ROLE.ROLE_KEY, SAKAI_REALM_FUNCTION.FUNCTION_KEY
+from SAKAI_REALM, SAKAI_REALM_ROLE, PERMISSIONS_TEMP,
+SAKAI_REALM_FUNCTION, SAKAI_SITE
+where SAKAI_REALM_ROLE.ROLE_NAME = PERMISSIONS_TEMP.ROLE_NAME
+AND SAKAI_REALM_FUNCTION.FUNCTION_NAME =
+PERMISSIONS_TEMP.FUNCTION_NAME
+AND (substr(SAKAI_REALM.REALM_ID, 7,
+length(SAKAI_REALM.REALM_ID)) = SAKAI_SITE.SITE_ID)
+AND SAKAI_SITE.TYPE='course';
+
+insert into SAKAI_REALM_RL_FN SELECT * FROM PERMISSIONS_TEMP2
+tmp WHERE
+not exists (
+select 1
+from SAKAI_REALM_RL_FN SRRFI
+where SRRFI.REALM_KEY=tmp.REALM_KEY and SRRFI.ROLE_KEY=tmp.ROLE_KEY and
+SRRFI.FUNCTION_KEY=tmp.FUNCTION_KEY
+);
+
+DROP TABLE PERMISSIONS_TEMP;
+DROP TABLE PERMISSIONS_TEMP2;
+
+-- project sites
+
+CREATE TABLE PERMISSIONS_SRC_TEMP (ROLE_NAME VARCHAR(99), FUNCTION_NAME VARCHAR(99));
+
+INSERT INTO PERMISSIONS_SRC_TEMP values ('maintain','site.roleswap');
+
+-- lookup the role and function numbers
+create table PERMISSIONS_TEMP (ROLE_KEY INTEGER, FUNCTION_KEY INTEGER);
+insert into PERMISSIONS_TEMP (ROLE_KEY, FUNCTION_KEY)
+select SRR.ROLE_KEY, SRF.FUNCTION_KEY
+from PERMISSIONS_SRC_TEMP TMPSRC
+join SAKAI_REALM_ROLE SRR on (TMPSRC.ROLE_NAME = SRR.ROLE_NAME)
+join SAKAI_REALM_FUNCTION SRF on (TMPSRC.FUNCTION_NAME = SRF.FUNCTION_NAME);
+
+-- insert the new functions into the roles of any existing realm that has the role (don't convert the "!site.helper")
+insert into SAKAI_REALM_RL_FN (REALM_KEY, ROLE_KEY, FUNCTION_KEY)
+select
+    SRRFD.REALM_KEY, SRRFD.ROLE_KEY, TMP.FUNCTION_KEY
+from
+    (select distinct SRRF.REALM_KEY, SRRF.ROLE_KEY from SAKAI_REALM_RL_FN SRRF) SRRFD
+    join PERMISSIONS_TEMP TMP on (SRRFD.ROLE_KEY = TMP.ROLE_KEY)
+    join SAKAI_REALM SR on (SRRFD.REALM_KEY = SR.REALM_KEY)
+    where SR.REALM_ID != '!site.helper'
+    and not exists (
+        select 1
+            from SAKAI_REALM_RL_FN SRRFI
+            where SRRFI.REALM_KEY=SRRFD.REALM_KEY and SRRFI.ROLE_KEY=SRRFD.ROLE_KEY and  SRRFI.FUNCTION_KEY=TMP.FUNCTION_KEY
+    );
+
+-- clean up the temp tables
+drop table PERMISSIONS_TEMP;
+drop table PERMISSIONS_SRC_TEMP;
+
+--- Tables added for SAK-12912:Add optional ability to prompt for questions during site creation
+
+    create table SSQ_ANSWER (
+        ID varchar2(99) not null,
+        ANSWER varchar2(255),
+        ANSWER_STRING varchar2(255),
+        FILL_IN_BLANK number(1,0),
+        ORDER_NUM number(10,0),
+        QUESTION_ID number(19,0),
+        primary key (ID)
+    );
+
+    create table SSQ_QUESTION (
+        ID varchar2(99) not null,
+        QUESTION varchar2(255),
+        REQUIRED number(1,0),
+        MULTIPLE_ANSWERS number(1,0),
+        ORDER_NUM number(10,0),
+        IS_CURRENT varchar2(255),
+        SITETYPE_ID number(19,0),
+        primary key (ID)
+    );
+
+    comment on table SSQ_QUESTION is
+        'This table stores site setup questions';
+
+    create table SSQ_SITETYPE_QUESTIONS (
+        ID varchar2(99) not null,
+        SITE_TYPE varchar2(255),
+        INSTRUCTION varchar2(255),
+        URL varchar2(255),
+        URL_LABEL varchar2(255),
+        URL_Target varchar2(255),
+        primary key (ID)
+    );
+
+    create table SSQ_USER_ANSWER (
+        ID varchar2(99) not null,
+        SITE_ID varchar2(255),
+        USER_ID varchar2(255),
+        ANSWER_STRING varchar2(255),
+        ANSWER_ID varchar2(255),
+        QUESTION_ID varchar2(255),
+        primary key (ID)
+    );
+
+    create index SSQ_ANSWER_QUESTION_I on SSQ_ANSWER (QUESTION_ID);
+
+    alter table SSQ_ANSWER 
+        add constraint FK390C0DCC6B21AFB4 
+        foreign key (QUESTION_ID) 
+        references SSQ_QUESTION;
+
+    create index SSQ_QUESTION_SITETYPE_I on SSQ_QUESTION (SITETYPE_ID);
+
+    alter table SSQ_QUESTION 
+        add constraint FKFE88BA7443AD4C69 
+        foreign key (SITETYPE_ID) 
+        references SSQ_SITETYPE_QUESTIONS;
+
+    create sequence hibernate_sequence;
+
