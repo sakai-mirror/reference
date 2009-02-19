@@ -1,3 +1,15 @@
+-- This is the MYSQL Sakai 2.5.4 -> 2.6.0 conversion script
+----------------------------------------------------------------------------------------------------------------------------------------
+-- 
+-- use this to convert a Sakai database from 2.5.3 to 2.6.0.  Run this before you run your first app server.
+-- auto.ddl does not need to be enabled in your app server - this script takes care of all new TABLEs, changed TABLEs, and changed data.
+--
+-- The 2.5.0 - 2.5.2 script can be located at https://source.sakaiproject.org/svn/reference/tags/sakai_2-5-2/docs/conversion/sakai_2_5_0-2_5_2_mysql_conversion.sql
+-- * Note that there was not a 2.5.1 release due to critical issue identified just prior to release 
+-- The 2.5.2 - 2.5.3 script can be located at https://source.sakaiproject.org/svn/reference/tags/sakai_2-5-3/docs/conversion/sakai_2_5_2-2_5_3_mysql_conversion.sql
+-- The 2.5.3 - 2.5.4 script can be located at https://source.sakaiproject.org/svn/reference/tags/sakai-2.5.4/docs/conversion/sakai_2_5_3-2_5_4_mysql_conversion.sql
+----------------------------------------------------------------------------------------------------------------------------------------
+
 --SAK-12527 Changes to Chat Room options do not work consistently
 
 -- add column timeParam and numberParam 
@@ -241,7 +253,7 @@ update CM_ACADEMIC_SESSION_T set IS_CURRENT=1 where CURDATE() >= START_DATE and 
     );
 
     create index email_templ_owner on EMAIL_TEMPLATE_ITEM (OWNER);
-    create index email_templ_key on EMAIL_TEMPLATE_ITEM (TEMPLATE_KEY);=======
+
     create index email_templ_key on EMAIL_TEMPLATE_ITEM (TEMPLATE_KEY);
 
 ----------------------------------------------------------------------------------------------------------------------------------------
@@ -391,4 +403,3 @@ drop table PERMISSIONS_SRC_TEMP;
         add constraint FKFE88BA7443AD4C69 
         foreign key (SITETYPE_ID) 
         references SSQ_SITETYPE_QUESTIONS (ID);
-
