@@ -38,6 +38,8 @@ INSTALL		Provides a URL pointer to online installation documentation
 
 readme_i18n.txt		internationalization info for Sakai
 
+RELEASE-NOTES	Provides a URL pointer to online release notes
+
 sakai.properties	a reference configuration file for Sakai
 
 
