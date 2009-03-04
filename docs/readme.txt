@@ -24,17 +24,9 @@ architecture/	technical documentation and white papers
 
 conversion/	contains the DB conversion scripts to alter
 		the schema from one version to the next
-	
-	
-docbook/	docbook XML source for the Installation guide, 
-		among other things.  This directory is a WIP, and 
-		growing.
-		
+
 loadtesting/	sample scripts used for loadtesting Sakai 
 		using the Apache JMeter loadtesting engine.
-	
-releaseweb/	contains the HTML and CSS for the release
-		web pages.
 	
 webservices/	contains documentation for using Web Service
 		wrappers of the Sakai API.  This is a common
@@ -42,7 +34,7 @@ webservices/	contains documentation for using Web Service
 	
 readme.txt	this file
 
-INSTALL		A plain text version of the Install Guide
+INSTALL		Provides a URL pointer to online installation documentation
 
 readme_i18n.txt		internationalization info for Sakai
 
@@ -59,12 +51,6 @@ been collected by community developers.
 
 Technical documentation and white papers can be found in the architecture/
 directory.
-
-The Sakaipedia is also a good place to search for nuggets of 
-insight into particular questions.
-	
-	http://bugs.sakaiproject.org/confluence/display/ENC/Home
-	
 	
 ISSUE TRACKING
 
