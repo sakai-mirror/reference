@@ -5,10 +5,6 @@ The official website for Sakai is:
 
 	http://www.sakaiproject.org
 	
-The latest release of Sakai can always be found at:
-
-	http://www.sakaiproject.org/release
-	
 To see the institutions involved in the Sakai collaboration and
 their implementation status, see:
 
@@ -59,16 +55,6 @@ Most Sakai collaboration happens in one (or both) of two arenas: the
 collab server, and the Confluence wiki already linked to here a
 number of times (bugs.sakaiproject.org/confluence).
 
-The collab server is a fully functional Sakai deployment, with sites
-set up for community sub-groups, but in day-to-day activity it is
-used most often as a kind of listserv.  You're encouraged to set up an 
-account on the collab server and join any groups you like at:
-
-	http://collab.sakaiproject.org
-	
-The most active site there is the "DG: Development" site, otherwise known as "sakai-dev".
-
-
 
 PROJECT STATUS
 
@@ -80,6 +66,10 @@ the variety of tools - standard or not - available for Sakai is:
 	
 LICENSE
 
-Sakai code is distributed under the ECL license:
+Sakai 2.6 code is distributed under the ECL 2.0 license:
 
-	http://www.opensource.org/licenses/ecl1.txt
+	http://www.osedu.org/licenses/ECL-2.0
+	
+Sakai 2.5 code is distributed under the ECL 1.0 license:
+
+	http://www.opensource.org/licenses/ecl1.php
