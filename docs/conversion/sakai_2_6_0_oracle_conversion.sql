@@ -186,7 +186,6 @@ INSERT INTO SAM_ASSESSMETADATA_T (ASSESSMENTMETADATAID, ASSESSMENTID, LABEL, ENT
 	(sam_assessMetaData_id_s.nextVal, (SELECT ID FROM SAM_ASSESSMENTBASE_T WHERE TITLE='Timed Test' AND TYPEID='142' AND ISTEMPLATE=1), 'markForReview_isInstructorEditable', 'true');
 update SAM_ASSESSACCESSCONTROL_T set MARKFORREVIEW = 1 where ASSESSMENTID = (SELECT ID FROM SAM_ASSESSMENTBASE_T WHERE TITLE='Formative Assessment' AND TYPEID='142' AND ISTEMPLATE=1);
 
-
 -- SAK-13646
 alter table GB_GRADABLE_OBJECT_T add (IS_EXTRA_CREDIT number(1,0), ASSIGNMENT_WEIGHTING double precision);
 alter table GB_CATEGORY_T add (IS_EXTRA_CREDIT number(1,0));
@@ -200,7 +199,6 @@ alter table CM_ACADEMIC_SESSION_T add IS_CURRENT number(1,0) default 0 not null;
 -- recommended that you decide which terms should be treated as current
 -- and edit this script accordingly!
 update CM_ACADEMIC_SESSION_T set IS_CURRENT=1 where SYSDATE >= START_DATE and SYSDATE <= END_DATE;
-
 
 -- Tables for email template service (new tool - SAK-14573)
     create table EMAIL_TEMPLATE_ITEM (
@@ -219,7 +217,8 @@ update CM_ACADEMIC_SESSION_T set IS_CURRENT=1 where SYSDATE >= START_DATE and SY
 
     create index email_templ_key on EMAIL_TEMPLATE_ITEM (TEMPLATE_KEY);
 
-    create sequence hibernate_sequence;
+	create sequence emailtemplate_item_seq;
+ -- create sequence hibernate_sequence;
 
 -- --------------------------------------------------------------------------------------------------------------------------------------
 -- SAK-7924 - add and backfill new site.roleswap permissions into existing realms and templates
@@ -369,8 +368,6 @@ drop table PERMISSIONS_SRC_TEMP;
         add constraint FKFE88BA7443AD4C69 
         foreign key (SITETYPE_ID) 
         references SSQ_SITETYPE_QUESTIONS;
-
-    create sequence hibernate_sequence;
 
 -- --- SAK-15040 site.viewRoster is a newly added permission
 
@@ -685,4 +682,3 @@ CREATE INDEX SAKAI_EVENT_DELAY_REF_INDEX ON SAKAI_EVENT_DELAY
 );
 
 CREATE SEQUENCE SAKAI_EVENT_DELAY_SEQ;
-
