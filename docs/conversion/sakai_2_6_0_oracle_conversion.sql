@@ -187,7 +187,6 @@ INSERT INTO SAM_ASSESSMETADATA_T (ASSESSMENTMETADATAID, ASSESSMENTID, LABEL, ENT
 	(sam_assessMetaData_id_s.nextVal, (SELECT ID FROM SAM_ASSESSMENTBASE_T WHERE TITLE='Timed Test' AND TYPEID='142' AND ISTEMPLATE=1), 'markForReview_isInstructorEditable', 'true');
 update SAM_ASSESSACCESSCONTROL_T set MARKFORREVIEW = 1 where ASSESSMENTID = (SELECT ID FROM SAM_ASSESSMENTBASE_T WHERE TITLE='Formative Assessment' AND TYPEID='142' AND ISTEMPLATE=1);
 
-
 -- SAK-13646
 alter table GB_GRADABLE_OBJECT_T add (IS_EXTRA_CREDIT number(1,0), ASSIGNMENT_WEIGHTING double precision);
 alter table GB_CATEGORY_T add (IS_EXTRA_CREDIT number(1,0));
@@ -201,7 +200,6 @@ alter table CM_ACADEMIC_SESSION_T add IS_CURRENT number(1,0) default 0 not null;
 -- recommended that you decide which terms should be treated as current
 -- and edit this script accordingly!
 update CM_ACADEMIC_SESSION_T set IS_CURRENT=1 where SYSDATE >= START_DATE and SYSDATE <= END_DATE;
-
 
 -- Tables for email template service (new tool - SAK-14573)
     create table EMAIL_TEMPLATE_ITEM (
@@ -219,17 +217,6 @@ update CM_ACADEMIC_SESSION_T set IS_CURRENT=1 where SYSDATE >= START_DATE and SY
     create index email_templ_owner on EMAIL_TEMPLATE_ITEM (OWNER);
 
     create index email_templ_key on EMAIL_TEMPLATE_ITEM (TEMPLATE_KEY);
-
--- SAK-16021 -- The statement 'create sequence hibernate_sequence' is duplicated below following create/alter table SSQ_Question statements.
--- Multiple statements of this nature will cause the DDL script to fail. 
--- Instead added generator param to emailtemplateservice EmailTemplate.hbm.xml mapping:
-
--- <id name="id" type="java.lang.Long" unsaved-value="null">
--- 	<column name="ID" />
--- 	<generator class="native">
--- 		<param name="sequence">emailtemplate_item_seq</param>
--- 	</generator>
--- </id>
 
 	create sequence emailtemplate_item_seq;
  -- create sequence hibernate_sequence;
@@ -383,24 +370,6 @@ drop table PERMISSIONS_SRC_TEMP;
         foreign key (SITETYPE_ID) 
         references SSQ_SITETYPE_QUESTIONS;
 
--- SAK-16021 -- The statement 'create sequence hibernate_sequence' is duplicated 
--- above following Create table EMAIL_TEMPLATE_ITEM statement.
--- Multiple statements of this nature will cause the DDL script to fail. 
--- Instead added generator param to each site-manage *.hbm.xml mapping, as in:
-
--- <id name="id" type="java.lang.Long" unsaved-value="null">
--- 	<column name="ID" />
--- 	<generator class="native">
--- 		<param name="sequence">sitetype_question_seq</param>
--- 	</generator>
--- </id>
-
-	create sequence sitesetup_question_seq;
-	create sequence sitesetup_questionanswer_seq;
-	create sequence sitesetup_useranswer_seq;
-	create sequence sitetype_question_seq;
- -- create sequence hibernate_sequence;
-
 -- --- SAK-15040 site.viewRoster is a newly added permission
 
 INSERT INTO SAKAI_REALM_RL_FN VALUES((select REALM_KEY from SAKAI_REALM where REALM_ID = '!site.user'), (select ROLE_KEY from SAKAI_REALM_ROLE where ROLE_NAME = 'maintain'), (select FUNCTION_KEY from SAKAI_REALM_FUNCTION where FUNCTION_NAME = 'site.viewRoster'));
@@ -413,7 +382,6 @@ INSERT INTO SAKAI_REALM_RL_FN VALUES((select REALM_KEY from SAKAI_REALM where RE
 INSERT INTO SAKAI_REALM_RL_FN VALUES((select REALM_KEY from SAKAI_REALM where REALM_ID = '!group.template.course'), (select ROLE_KEY from SAKAI_REALM_ROLE where ROLE_NAME = 'Instructor'), (select FUNCTION_KEY from SAKAI_REALM_FUNCTION where FUNCTION_NAME = 'site.viewRoster'));
 INSERT INTO SAKAI_REALM_RL_FN VALUES((select REALM_KEY from SAKAI_REALM where REALM_ID = '!group.template.portfolio'), (select ROLE_KEY from SAKAI_REALM_ROLE where ROLE_NAME = 'CIG Coordinator'), (select FUNCTION_KEY from SAKAI_REALM_FUNCTION where FUNCTION_NAME = 'site.viewRoster'));
 INSERT INTO SAKAI_REALM_RL_FN VALUES((select REALM_KEY from SAKAI_REALM where REALM_ID = '/site/mercury'), (select ROLE_KEY from SAKAI_REALM_ROLE where ROLE_NAME = 'maintain'), (select FUNCTION_KEY from SAKAI_REALM_FUNCTION where FUNCTION_NAME = 'site.viewRoster'));
-
 
 -- --------------------------------------------------------------------------------------------------------------------------------------
 -- backfill new site.viewRoster permissions into existing realms
@@ -755,6 +723,27 @@ CREATE INDEX SAKAI_EVENT_DELAY_REF_INDEX ON SAKAI_EVENT_DELAY
 
 CREATE SEQUENCE SAKAI_EVENT_DELAY_SEQ;
 
--- SAK-16021 -- Create a Hibernate sequence table for all Sakai/hbm implementations
--- create sequence hibernate_sequence;
+-- SAK-13584 Further Improve the Performance of the Email Archive and Message API. Note you have to run a bash conversion script on your old mail archive data for it to
+-- appear in the new mail archive. The script is in the source as mailarchive-runconversion.sh. Please see the SAK for more information on this script or SAK-16554 for
+-- updates to this script. 
 
+ALTER TABLE MAILARCHIVE_MESSAGE ADD (
+       SUBJECT           VARCHAR2 (255) default null,
+       BODY              CLOB default null
+);
+
+CREATE INDEX MAILARCHIVE_SUBJECT_INDEX ON MAILARCHIVE_MESSAGE
+(
+        SUBJECT
+);
+
+-- SAK-16463 fix
+alter table MAILARCHIVE_MESSAGE modify XML CLOB;
+
+-- Note after performing these conversions your indexes may be in an invalid state because of the required clob conversion.
+-- You may need to run ths following statement, manually execute the generated 'alter indexes' and re-gather statistics on this table
+-- There is a randomly named index so it can not be automated.
+
+-- See the 2.6 release notes or SAK-16553 for further details
+
+-- select 'alter index '||index_name||' rebuild online;' from user_indexes where status = 'INVALID' or status = 'UNUSABLE';
