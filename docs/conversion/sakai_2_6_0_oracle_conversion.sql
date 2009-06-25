@@ -18,8 +18,8 @@
 -- drop index ISEARCHBUILDERITEM_STA; 
 
 -- SAK-13474 Increase length of announcement channel to 255 chars
-ALTER TABLE announcement_channel MODIFY (CHANNEL_ID VARCHAR2(255));
-ALTER TABLE announcement_message MODIFY (CHANNEL_ID VARCHAR2(255)); 
+ALTER TABLE ANNOUNCEMENT_CHANNEL MODIFY (CHANNEL_ID VARCHAR2(255));
+ALTER TABLE ANNOUNCEMENT_MESSAGE MODIFY (CHANNEL_ID VARCHAR2(255)); 
 
 -- SAK-12527 Changes to Chat Room options do not work consistently
 
