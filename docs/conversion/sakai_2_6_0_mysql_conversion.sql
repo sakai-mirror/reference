@@ -639,7 +639,7 @@ INSERT INTO CITATION_SCHEMA (SCHEMA_ID, PROPERTY_NAME, PROPERTY_VALUE) VALUES('t
     create table ASN_MA_ITEM_T (
         ID bigint not null,
         ASSIGNMENT_ID varchar(255),
-        TEXT varchar(255),
+        TEXT text,
         SHOW_TO integer,
         primary key (ID)
     );
@@ -647,7 +647,7 @@ INSERT INTO CITATION_SCHEMA (SCHEMA_ID, PROPERTY_NAME, PROPERTY_VALUE) VALUES('t
     create table ASN_NOTE_ITEM_T (
         ID bigint not null auto_increment,
         ASSIGNMENT_ID varchar(255),
-        NOTE varchar(255),
+        NOTE text,
         CREATOR_ID varchar(255),
         SHARE_WITH integer,
         primary key (ID)
