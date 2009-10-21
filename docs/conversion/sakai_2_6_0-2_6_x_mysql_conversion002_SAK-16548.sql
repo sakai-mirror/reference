@@ -1,3 +1,5 @@
+-- Additional information and conversion scripts for the Sakai 2.6.x maintenance branch can be found on Confluence at http://confluence.sakaiproject.org//x/NAIAB.
+
 --SAK-16548 - Incorrect internationalization showing the grade NO GRADE (Speed improved version)
 
 -- I would recommend making a backup of the assignment_submission table prior to running this. I've tested it quite a bit in development, 

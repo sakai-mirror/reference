@@ -1,3 +1,5 @@
+-- Additional information and conversion scripts for the Sakai 2.6.x maintenance branch can be found on Confluence at http://confluence.sakaiproject.org//x/NAIAB.
+
 -- SAK-16548 - Incorrect internationalization showing the grade NO GRADE
 -- NOTE: It is possible that your xml column in assignment_submission may be a long type. You need to convert it to a clob if this is the case.
 --       The following SQL will fail to run if the column is a long.
