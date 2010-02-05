@@ -364,6 +364,7 @@ drop table tmp_workflow_guid_map;
 alter table QRTZ_TRIGGERS add PRIORITY number(2);
 alter table QRTZ_FIRED_TRIGGERS add PRIORITY number(2);
 
+
 -- START SiteStats 2.1 (SAK-17773)
 -- IMPORTANT: Installations with previous (contrib) versions of SiteStats deployed should
 --            comment out lines below and consult this url for possible conversion upgrades:
@@ -495,4 +496,8 @@ create index PROFILE_IMAGES_USER_UUID_I on PROFILE_IMAGES_T (USER_UUID);
 create index PROFILE_IMAGES_IS_CURRENT_I on PROFILE_IMAGES_T (IS_CURRENT);
 create index SAKAI_PERSON_META_USER_UUID_I on SAKAI_PERSON_META_T (USER_UUID);
 create index SAKAI_PERSON_META_PROPERTY_I on SAKAI_PERSON_META_T (PROPERTY);
+-- Replace Profile by Profile2 for new and existing tools:
+-- update SAKAI_SITE_TOOL set REGISTRATION='sakai.profile2' where REGISTRATION='sakai.profile';
+-- Replace Profile by Profile2 only for existing tools:
+update SAKAI_SITE_TOOL set REGISTRATION='sakai.profile2' where REGISTRATION='sakai.profile' and SITE_ID='!user';
 -- END Profile2 1.3 (SAK-17773)
