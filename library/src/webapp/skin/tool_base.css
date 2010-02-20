@@ -930,6 +930,9 @@ font-weight: bold;
 	border: 1px solid #000000;
 	padding: 0.5em;
 }
+span.nil a{
+	border:0px solid transparent
+}
 
 /*any list (ul) of messages in a synoptic list view*/
 .synopticList{
