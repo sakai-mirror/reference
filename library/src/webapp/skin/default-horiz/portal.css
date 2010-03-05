@@ -26,6 +26,7 @@ body{
 	overflow:hidden;
 }
 #headerMin{
+	overflow:hidden;
 	border-bottom:2px solid #09C
 }
 
