@@ -32,14 +32,11 @@ alter table SAKAI_PERSON_T add FAVOURITE_QUOTES text;
 alter table SAKAI_PERSON_T add EDUCATION_COURSE text; 
 alter table SAKAI_PERSON_T add EDUCATION_SUBJECTS text; 
 
-
 -- SAK-17485/SAK-10559
 alter table MFR_MESSAGE_T add column NUM_READERS int;
 update MFR_MESSAGE_T set NUM_READERS = 0;
 
-
 -- SAK-15710
-
 ALTER TABLE osp_wizard_page_def 
   ADD (defaultCustomForm bit, defaultReflectionForm bit, defaultFeedbackForm bit, 
   defaultReviewers bit, defaultEvaluationForm bit, defaultEvaluators bit);
@@ -488,3 +485,6 @@ create index SAKAI_PERSON_META_PROPERTY_I on SAKAI_PERSON_META_T (PROPERTY);
 -- Replace Profile by Profile2 only for existing tools:
 update SAKAI_SITE_TOOL set REGISTRATION='sakai.profile2' where REGISTRATION='sakai.profile' and SITE_ID='!user';
 -- END Profile2 1.3 (SAK-17773)
+
+-- SAK-17679/SAK-18116
+alter table EMAIL_TEMPLATE_ITEM add column VERSION int(11) DEFAULT NULL;

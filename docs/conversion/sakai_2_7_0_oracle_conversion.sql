@@ -497,3 +497,6 @@ create index SAKAI_PERSON_META_PROPERTY_I on SAKAI_PERSON_META_T (PROPERTY);
 -- Replace Profile by Profile2 only for existing tools:
 update SAKAI_SITE_TOOL set REGISTRATION='sakai.profile2' where REGISTRATION='sakai.profile' and SITE_ID='!user';
 -- END Profile2 1.3 (SAK-17773)
+
+-- SAK-17679/SAK-18116
+alter table EMAIL_TEMPLATE_ITEM add column VERSION number(10,0) DEFAULT NULL;
