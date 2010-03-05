@@ -498,5 +498,305 @@ create index SAKAI_PERSON_META_PROPERTY_I on SAKAI_PERSON_META_T (PROPERTY);
 update SAKAI_SITE_TOOL set REGISTRATION='sakai.profile2' where REGISTRATION='sakai.profile' and SITE_ID='!user';
 -- END Profile2 1.3 (SAK-17773)
 
+
+
+--///////////////////////////////////
+--///////////////////////////////////
+--///////////////////////////////////
+--// MSGCNTR-2.7
+--///////////////////////////////////
+--///////////////////////////////////
+--///////////////////////////////////
+
+
+
+--////////////////////////////////////////////////////
+--// SAK-11740
+--// Email notification of new posts to forum
+--////////////////////////////////////////////////////
+
+--You may need to run these drop commands if this table still exists in your db
+--DROP TABLE MFR_EMAIL_NOTIFICATION_TIF EXISTS ;
+--drop sequence MFR_EMAIL_NOTIFICATION_S;
+
+CREATE TABLE  "MFR_EMAIL_NOTIFICATION_T"
+   (    "ID" NUMBER(19,0) NOT NULL ENABLE,
+        "VERSION" NUMBER(10,0) NOT NULL ENABLE,
+        "USER_ID" VARCHAR2(255 BYTE) NOT NULL ENABLE,
+        "CONTEXT_ID" VARCHAR2(255 BYTE) NOT NULL ENABLE,
+        "NOTIFICATION_LEVEL" NUMBER(1,0) NOT NULL ENABLE,
+         PRIMARY KEY ("ID")
+  
+   )  ;
+CREATE INDEX "MFR_EMAIL_USER_ID_I" ON  "MFR_EMAIL_NOTIFICATION_T" ("USER_ID")  ;
+
+CREATE INDEX  "MFR_EMAIL_CONTEXT_ID_I" ON  "MFR_EMAIL_NOTIFICATION_T" ("CONTEXT_ID") ;
+
+
+
+create sequence MFR_EMAIL_NOTIFICATION_S;
+
+
+--////////////////////////////////////////////////////
+--// SAK-15052
+--// update cafe versions to 2.7.0-SNAPSHOT
+--////////////////////////////////////////////////////
+
+alter table MFR_MESSAGE_T add THREADID NUMBER(20);
+alter table MFR_MESSAGE_T add LASTTHREADATE TIMESTAMP;
+alter table MFR_MESSAGE_T add LASTTHREAPOST NUMBER(20);
+
+update MFR_MESSAGE_T set THREADID=IN_REPLY_TO,LASTTHREADATE=CREATED;
+
+--////////////////////////////////////////////////////
+--// SAK-10869
+--// Displaying all messages should mark them as read
+--////////////////////////////////////////////////////
+
+
+-- Add AutoMarkThreadsRead functionality to Message Center (SAK-10869)
+
+-- add column to allow AutoMarkThreadsRead as template setting
+alter table MFR_AREA_T add (AUTO_MARK_THREADS_READ NUMBER(1,0));
+update MFR_AREA_T set AUTO_MARK_THREADS_READ=0 where AUTO_MARK_THREADS_READ is NULL;
+alter table MFR_AREA_T modify (AUTO_MARK_THREADS_READ NUMBER(1,0) not null);
+
+-- add column to allow AutoMarkThreadsRead to be set at the forum level
+alter table MFR_OPEN_FORUM_T add (AUTO_MARK_THREADS_READ NUMBER(1,0));
+update MFR_OPEN_FORUM_T set AUTO_MARK_THREADS_READ=0 where AUTO_MARK_THREADS_READ is NULL;
+alter table MFR_OPEN_FORUM_T modify (AUTO_MARK_THREADS_READ NUMBER(1,0) not null);
+
+-- add column to allow AutoMarkThreadsRead to be set at the topic level
+alter table MFR_TOPIC_T add (AUTO_MARK_THREADS_READ NUMBER(1,0));
+update MFR_TOPIC_T set AUTO_MARK_THREADS_READ=0 where AUTO_MARK_THREADS_READ is NULL;
+alter table MFR_TOPIC_T modify (AUTO_MARK_THREADS_READ NUMBER(1,0) not null);
+
+
+
+--////////////////////////////////////////////////////
+--// SAK-10559
+--// View who has read a message
+--////////////////////////////////////////////////////
+
+--if MFR_MESSAGE_T is missing NUM_READERS, run alter and update commands
+--alter table MFR_MESSAGE_T add NUM_READERS int;
+--update MFR_MESSAGE_T set NUM_READERS = 0;
+
+
+--////////////////////////////////////////////////////
+--// SAK-15655
+--// Rework MyWorkspace Synoptic view of Messages & Forums
+--////////////////////////////////////////////////////
+
+create table MFR_SYNOPTIC_ITEM
+(SYNOPTIC_ITEM_ID number(19,0) not null,
+VERSION number(10,0) not null,
+USER_ID varchar2(99 char) not null,
+SITE_ID varchar2(99 char) not null,
+SITE_TITLE varchar2(255 char),
+NEW_MESSAGES_COUNT number(10,0),
+MESSAGES_LAST_VISIT_DT timestamp,
+NEW_FORUM_COUNT number(10,0),
+FORUM_LAST_VISIT_DT timestamp,
+HIDE_ITEM NUMBER(1,0),
+primary key (SYNOPTIC_ITEM_ID),
+unique (USER_ID, SITE_ID));
+
+create sequence MFR_SYNOPTIC_ITEM_S;
+
+create index MRF_SYN_USER on MFR_SYNOPTIC_ITEM (USER_ID);
+
+
+
+--////////////////////////////////////////////////////
+--// MSGCNTR-177
+--// MyWorkspace/Home does now show the Messages & Forums Notifications by default
+--////////////////////////////////////////////////////
+
+update SAKAI_SITE_TOOL
+Set TITLE = 'Unread Messages and Forums'
+Where REGISTRATION = 'sakai.synoptic.messagecenter'; 
+
+INSERT INTO SAKAI_SITE_TOOL VALUES('!user-145', '!user-100', '!user', 'sakai.synoptic.messagecenter', 2, 'Unread Messages and Forums', '1,1' );
+
+create table MSGCNTR_TMP(
+    PAGE_ID VARCHAR2(99),
+    SITE_ID VARCHAR2(99)
+);
+
+insert into MSGCNTR_TMP
+(   
+    Select PAGE_ID, SITE_ID 
+    from SAKAI_SITE_PAGE 
+    where SITE_ID like '~%' 
+    and TITLE = 'Home'
+    and PAGE_ID not in (Select PAGE_ID from SAKAI_SITE_TOOL where REGISTRATION = 'sakai.synoptic.messagecenter')
+);
+
+insert into SAKAI_SITE_TOOL
+(select SYS_GUID(), PAGE_ID, SITE_ID, 'sakai.synoptic.messagecenter', 2, 'Unread Messages and Forums', '1,1' from MSGCNTR_TMP);
+
+drop table MSGCNTR_TMP;
+
+--////////////////////////////////////////////////////
+--//  MSGCNTR-25
+--//  .UIPermissionsManagerImpl - query did not return a unique result: 4 Error in catalina.out
+--////////////////////////////////////////////////////
+
+alter table MFR_AREA_T add constraint MFR_AREA_CONTEXT_UUID_UNIQUE unique (CONTEXT_ID, TYPE_UUID);
+
+--////////////////////////////////////////////////////
+--//  MSGCNTR-148
+--//  Unique constraint not created on MFR_PRIVATE_FORUM_T
+--////////////////////////////////////////////////////
+
+--If this alter query fails, use this select query to find duplicates and remove the duplicate:
+--select OWNER, surrogateKey, COUNT(OWNER) FROM MFR_PRIVATE_FORUM_T GROUP BY OWNER, surrogateKey HAVING COUNT(OWNER)>1;
+ 
+CREATE UNIQUE INDEX MFR_PVT_FRM_OWNER ON  MFR_PRIVATE_FORUM_T (OWNER, surrogateKey); 
+
+--///////////////////////////////////
+--///////////////////////////////////
+--///////////////////////////////////
+--//  END MSGCNTR 2.7
+--///////////////////////////////////
+--///////////////////////////////////
+--///////////////////////////////////
+
+
+-- SAK-17847
+alter table GB_CATEGORY_T
+add (
+	IS_EQUAL_WEIGHT_ASSNS number(1,0),
+	IS_UNWEIGHTED number(1,0),
+	CATEGORY_ORDER number(10,0),
+	ENFORCE_POINT_WEIGHTING number(1,0)
+);
+
+alter table GB_GRADEBOOK_T
+add (
+	IS_EQUAL_WEIGHT_CATS number(1,0),
+	IS_SCALED_EXTRA_CREDIT number(1,0),
+	DO_SHOW_MEAN number(1,0),
+	DO_SHOW_MEDIAN number(1,0),
+	DO_SHOW_MODE number(1,0),
+	DO_SHOW_RANK number(1,0),
+	DO_SHOW_ITEM_STATS number(1,0)
+);
+
+alter table GB_GRADABLE_OBJECT_T
+add (
+	IS_NULL_ZERO number(1,0)
+);
+
+create sequence GB_ACTION_RECORD_S
+start with 1000
+increment by 1
+nocache
+nocycle;
+
+create table GB_ACTION_RECORD_T
+(
+	ID number(19),
+	VERSION number(10),
+	GRADEBOOK_UID varchar2(756),
+	GRADEBOOK_ID number(19),
+	ENTITY_TYPE varchar2(200),
+	ACTION_TYPE varchar2(200),
+	ENTITY_NAME varchar2(756),
+	ENTITY_ID varchar2(200),
+	PARENT_ID varchar2(200),
+	LEARNER_UID varchar2(99),
+	FIELD_NAME varchar2(756),
+	FIELD_VALUE varchar2(756),
+	FIELD_START_VALUE varchar2(756),
+	ACTION_STATUS varchar2(100),
+	DATE_PERFORMED timestamp,
+	DATE_RECORDED timestamp,
+	GRADER_ID varchar2(99)
+);
+
+create index GB_ACTION_RECORD_ID_IDX on GB_ACTION_RECORD_T(ID);
+
+create index GB_ACTION_RECORD_GRADEBOOK_IDX on GB_ACTION_RECORD_T(GRADEBOOK_UID);
+
+create table GB_ACTION_RECORD_PROPERTY_T 
+(
+	ACTION_RECORD_ID number(19),
+	PROPERTY_NAME varchar(756),
+	PROPERTY_VALUE varchar(756)
+);
+
+create index GB_ACTION_RECORD_PROP_ID_IDX on GB_ACTION_RECORD_PROPERTY_T(ACTION_RECORD_ID);
+
+create table GB_USER_DEREFERENCE_T 
+(
+	ID number(19),
+	USER_UID varchar2(99),
+	EID varchar2(99),
+	DISPLAY_ID varchar2(99),
+	DISPLAY_NAME varchar2(756),
+	LAST_NAME_FIRST varchar2(756),
+	SORT_NAME varchar2(756),
+	EMAIL varchar2(756),
+	CREATED_ON timestamp
+);
+
+create unique index GB_USER_DEREF_USER_IDX on GB_USER_DEREFERENCE_T(USER_UID);
+
+create sequence GB_USER_DEREFERENCE_S
+start with 1000
+increment by 1
+nocache
+nocycle;
+
+create table GB_USER_DEREF_RM_UPDATE_T 
+(
+	ID number(19),
+	REALM_ID varchar2(99),
+	LAST_UPDATE timestamp,
+	REALM_COUNT number(19)
+);
+
+create sequence GB_USER_DEREF_RM_UPDATE_S
+start with 1000
+increment by 1
+nocache
+nocycle;
+
+create index GB_USER_DEREF_RM_UP_IDX on GB_USER_DEREF_RM_UPDATE_T(REALM_ID);
+
+
+-- The following should be run when moving from QA-8 to QA-9
+
+create index GB_USER_DEREF_SORT_NM_IDX on GB_USER_DEREFERENCE_T(SORT_NAME);
+create index GB_USER_DEREF_EMAIL_IDX on GB_USER_DEREFERENCE_T(EMAIL);
+
+create table GB_USER_CONFIG_T 
+(
+	ID number(19),
+	USER_UID varchar2(99),
+	GRADEBOOK_ID number(19),
+	CONFIG_FIELD varchar2(99),
+	CONFIG_VALUE varchar2(756)
+);
+
+create sequence GB_USER_CONFIG_S
+start with 1000
+increment by 1
+nocache
+nocycle;
+
+create unique index GB_USER_CONFIG_UNIQ_IDX on GB_USER_CONFIG_T(USER_UID, GRADEBOOK_ID, CONFIG_FIELD);
+-- END SAK-17847
+
+
+-- SAK-15311
+ALTER TABLE GB_GRADABLE_OBJECT_T 
+ADD ( 
+SORT_ORDER number(10,0) 
+); 
+
 -- SAK-17679/SAK-18116
 alter table EMAIL_TEMPLATE_ITEM add column VERSION number(10,0) DEFAULT NULL;
+
