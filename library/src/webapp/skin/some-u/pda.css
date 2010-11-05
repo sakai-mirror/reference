@@ -63,7 +63,10 @@
 	float:left;
 }
 
-#pda-portlet-menu li.sitesLink:before,#pda-portlet-menu li.currentSiteLink:before,#pda-portlet-menu li.currentToolTitle:before{
+#pda-portlet-menu li.resetToolLink{
+    padding-left:5px;
+}
+#pda-portlet-menu li.sitesLink:before,#pda-portlet-menu li.currentSiteParentLink:before,#pda-portlet-menu li.currentSiteChildLink:before,#pda-portlet-menu li.currentSiteLink:before,#pda-portlet-menu li.currentToolTitle:before{
 	content: "\00BB \0020";
 	color: #ff9;
 	font-weight: bold;
@@ -204,4 +207,130 @@
 	height:75px;
 	width:150px;
 	overflow:auto;
+}
+#pda-footer {
+	font-size: 14px !important;
+	font-weight:bold;
+	background-color:#CB2DCC;
+	padding: 1em 0;
+    vertical-align:middle;	
+	text-align: center;
+}
+
+.switch-link, .switch-link:visited{
+	color:#000 !important;
+	background:#fff;
+	padding:10px;
+	text-decoration:none;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	border-radius:10px;
+}	
+.switch-link:hover{
+	text-decoration: underline;
+	
+}
+.skip{
+	display: inline;
+	position: absolute;
+	top: -999px;
+	left: -999px;
+	height: 0;
+}
+/*
+next block has overrides optimizing for certail mobile devices
+*/
+@media screen and (max-device-width: 480px){
+html {
+    -webkit-text-size-adjust: none;
+}
+#pda-portlet-menu{
+	position:absolute;
+	top:0;
+	height:35px;
+	font-size: 14px !important;
+	width:100%;
+	background:#09C url(images/pda-menu-back-ip.png) top left repeat-x;
+	border-bottom:1px solid #222
+}
+#pda-portlet-site-menu, #pda-portlet-page-menu, .portletpda .portletBody{
+	margin-top:36px;
+}
+#pda-portlet-menu li.sitesLink:before, #pda-portlet-menu li.currentSiteLink:before, #pda-portlet-menu li.currentToolTitle:before {
+    content: "";
+}
+#pda-portlet-menu li.currentSiteLink, #pda-portlet-menu li.currentSiteChildLink {
+    font-size: 14px;
+	padding-top:10px;
+	position:relative;
+	height:35px;
+    width: 11em !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-shadow: rgba(0, 0, 0, 0.597656) 0px -1px 0px;
+}
+#pda-portlet-menu li.instanceNote a {
+    text-decoration: none;
+	display:block;
+	width: 55px;
+    margin-top:2px;
+	height:35px;
+	
+}
+#pda-portlet-menu li.instanceNote {
+	position:relative;
+    margin: -6px 3px 0;
+    padding: 5px 5px 5px 0 !important;    
+    background: url(images/pda-menu-instance-icon-ip.png) center left no-repeat;
+    width: 55px;
+}
+#pda-portlet-menu li.resetToolLink{
+    padding:10px 5px;
+}
+#pda-portlet-menu li.helpLink, .currentSiteParentLink, .currentToolTitle, #pda-portlet-menu li.sitesLink {
+     display: none  !important
+}
+#pda-portlet-menu li span a {
+    color: #fff;
+}
+.logoutLink, .loginLink, .switch-link{
+	position:absolute;
+	top:2px;
+	right:2px;
+    -webkit-border-image: url(images/pda-button.png) 10 stretch;
+    text-shadow: rgba(0, 0, 0, 0.597656) 0px -1px 0px;
+    font: normal  bold 13px / 20px Helvetica, sans-serif;
+	height:20px;
+	padding:2px !important;
+    border-width: 3px;
+	text-decoration: none;
+}
+
+.logoutLink a, .loginLink a,.logoutLink a:active, .loginLink a:active, .logoutLink a:focus, .loginLink a:focus{
+		text-decoration: none !important;
+}
+#pda-portlet-site-menu a, #pda-portlet-page-menu a {
+    -webkit-tap-highlight-color: #fff;
+    -webkit-text-size-adjust: none;
+}
+
+
+#pda-footer {
+	padding: .7em 0 1em 0;
+	height:100%;
+	overflow:hidden;
+}
+
+.switch-link, .switch-link:visited {
+	position:relative;
+	color:#fff !important;
+	background:none;
+	padding:5px !important;
+	text-decoration:none !important;
+	-webkit-border-radius:0;
+	-moz-border-radius:0;
+	border-radius:0;
+}	
+
 }
