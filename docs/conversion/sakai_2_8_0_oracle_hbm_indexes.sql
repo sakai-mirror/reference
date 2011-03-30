@@ -4,6 +4,8 @@
 
 -- Check your database and run this script if indexes are missing.
 
+-- Note: create index statements that have been commented out have been included for review purposes.
+
 -- --------------------------------------------------------------------------------------------------------------------------------------
 --
 -- Script insertion format
@@ -16,7 +18,7 @@
 create index SMB_SEARCH on sakai_message_bundle (BASENAME, MODULE_NAME, LOCALE, PROP_NAME);
 
 -- MSGCNTR-360
-CREATE INDEX user_type_context_idx ON MFR_PVT_MSG_USR_T ( USER_ID, TYPE_UUID, CONTEXT_ID, READ_STATUS);
+create index user_type_context_idx ON MFR_PVT_MSG_USR_T ( USER_ID, TYPE_UUID, CONTEXT_ID, READ_STATUS);
 
 -- PRFL-224
 create index PROFILE_CP_USER_UUID_I on PROFILE_COMPANY_PROFILES_T (USER_UUID);
@@ -35,11 +37,10 @@ create index PROFILE_GI_USER_UUID_I on PROFILE_GALLERY_IMAGES_T (USER_UUID);
 create index PROFILE_FRIENDS_CONFIRMED_I on PROFILE_FRIENDS_T (CONFIRMED);
 create index PROFILE_STATUS_DATE_ADDED_I on PROFILE_STATUS_T (DATE_ADDED);
 
--- SAM-775
--- If you get an error when running this script, you will need to clean the duplicates first. Please refer to SAM-775.
-create UNIQUE INDEX ASSESSMENTGRADINGID ON SAM_ITEMGRADING_T (ASSESSMENTGRADINGID, PUBLISHEDITEMID, PUBLISHEDITEMTEXTID, AGENTID, PUBLISHEDANSWERID);
+-- SAM-775 if you get an error when running this script, you will need to clean the duplicates first. See SAM-775 for details.
+-- create UNIQUE INDEX ASSESSMENTGRADINGID ON SAM_ITEMGRADING_T (ASSESSMENTGRADINGID, PUBLISHEDITEMID, PUBLISHEDITEMTEXTID, AGENTID, PUBLISHEDANSWERID);
 
--- SAK-20076: missing Sitestats indexes
+-- SAK-20076 missing Sitestats indexes
 create index SST_PRESENCE_DATE_IX on SST_PRESENCES (P_DATE);
 create index SST_PRESENCE_USER_ID_IX on SST_PRESENCES (USER_ID);
 create index SST_PRESENCE_SITE_ID_IX on SST_PRESENCES (SITE_ID);

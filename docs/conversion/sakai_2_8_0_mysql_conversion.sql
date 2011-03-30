@@ -20,7 +20,7 @@ drop index ANNOUNCEMENT_MESSAGE_CDD on ANNOUNCEMENT_MESSAGE;
 create index ANNOUNCEMENT_MESSAGE_CDD on ANNOUNCEMENT_MESSAGE (CHANNEL_ID, MESSAGE_DATE, MESSAGE_ORDER, DRAFT);
 
 -- SAK-18532/SAK-19522 new column for Email Template service
-alter table EMAIL_TEMPLATE_ITEM add column EMAILFROM text;
+alter table EMAIL_TEMPLATE_ITEM add column EMAILFROM varchar(255) default null;
 
 -- SAK-19448
 alter table EMAIL_TEMPLATE_ITEM modify HTMLMESSAGE LONGTEXT;
@@ -31,11 +31,11 @@ alter table GB_GRADE_RECORD_T add column USER_ENTERED_GRADE varchar(255) default
 -- MSGCNTR-309 start and end dates on Forums and Topics
 alter table MFR_AREA_T add column AVAILABILITY_RESTRICTED bit;
 update MFR_AREA_T set AVAILABILITY_RESTRICTED=0 where AVAILABILITY_RESTRICTED is null;
-alter table MFR_AREA_T modify column AVAILABILITY_RESTRICTED bit not null default '0';
+alter table MFR_AREA_T modify column AVAILABILITY_RESTRICTED bit not null default false;
 
 alter table MFR_AREA_T add column AVAILABILITY bit;
 update MFR_AREA_T set AVAILABILITY=1 where AVAILABILITY is null;
-alter table MFR_AREA_T modify column AVAILABILITY bit not null default '1';
+alter table MFR_AREA_T modify column AVAILABILITY bit not null default true;
 
 alter table MFR_AREA_T add column OPEN_DATE datetime;
 
@@ -43,11 +43,11 @@ alter table MFR_AREA_T add column CLOSE_DATE datetime;
 
 alter table MFR_OPEN_FORUM_T add column AVAILABILITY_RESTRICTED bit;
 update MFR_OPEN_FORUM_T set AVAILABILITY_RESTRICTED=0 where AVAILABILITY_RESTRICTED is null;
-alter table MFR_OPEN_FORUM_T modify column AVAILABILITY_RESTRICTED bit not null default '0';
+alter table MFR_OPEN_FORUM_T modify column AVAILABILITY_RESTRICTED bit not null default false;
 
 alter table MFR_OPEN_FORUM_T add column AVAILABILITY bit;
 update MFR_OPEN_FORUM_T set AVAILABILITY=1 where AVAILABILITY is null;
-alter table MFR_OPEN_FORUM_T modify column AVAILABILITY bit not null default '1';
+alter table MFR_OPEN_FORUM_T modify column AVAILABILITY bit not null default true;
 
 alter table MFR_OPEN_FORUM_T add column OPEN_DATE datetime;
 
@@ -55,11 +55,11 @@ alter table MFR_OPEN_FORUM_T add column CLOSE_DATE datetime;
 
 alter table MFR_TOPIC_T add column AVAILABILITY_RESTRICTED bit;
 update MFR_TOPIC_T set AVAILABILITY_RESTRICTED=0 where AVAILABILITY_RESTRICTED is null;
-alter table MFR_TOPIC_T modify column AVAILABILITY_RESTRICTED bit not null default '0';
+alter table MFR_TOPIC_T modify column AVAILABILITY_RESTRICTED bit not null default false;
 
 alter table MFR_TOPIC_T add column AVAILABILITY bit;
 update MFR_TOPIC_T set AVAILABILITY=1 where AVAILABILITY is null;
-alter table MFR_TOPIC_T modify column AVAILABILITY bit not null default '1';
+alter table MFR_TOPIC_T modify column AVAILABILITY bit not null default true;
 
 alter table MFR_TOPIC_T add column OPEN_DATE datetime null;
 alter table MFR_TOPIC_T add column CLOSE_DATE datetime null;
@@ -253,7 +253,7 @@ alter table SAM_ASSESSMENTGRADING_T add column LASTVISITEDQUESTION integer defau
 -- If you get an error when running this script, you will need to clean the duplicates first. Please refer to SAM-775.
 create unique index ASSESSMENTGRADINGID on SAM_ITEMGRADING_T (ASSESSMENTGRADINGID, PUBLISHEDITEMID, PUBLISHEDITEMTEXTID, AGENTID, PUBLISHEDANSWERID);
 
--- ShortenedUrlService 1.0.0 db creation start
+-- SHORTURL-26 shortenedurlservice 1.0
 create table URL_RANDOMISED_MAPPINGS_T (
 	ID bigint not null auto_increment,
 	TINY varchar(255) not null,
@@ -261,9 +261,8 @@ create table URL_RANDOMISED_MAPPINGS_T (
 	primary key (ID)
 );
 
-create index URL_INDEX on URL_RANDOMISED_MAPPINGS_T (URL);
+create index URL_INDEX on URL_RANDOMISED_MAPPINGS_T (URL(200));
 create index KEY_INDEX on URL_RANDOMISED_MAPPINGS_T (TINY);
--- ShortenedUrlService 1.0.0 db creation end
 
 -- KNL-563 table structure for sakai_message_bundle
 create table SAKAI_MESSAGE_BUNDLE (
@@ -310,4 +309,3 @@ create table VALIDATIONACCOUNT_ITEM (
     ACCOUNT_STATUS int(11) default null,
     PRIMARY KEY (id)
 );
-
