@@ -20,7 +20,7 @@ drop index ANNOUNCEMENT_MESSAGE_CDD on ANNOUNCEMENT_MESSAGE;
 create index ANNOUNCEMENT_MESSAGE_CDD on ANNOUNCEMENT_MESSAGE (CHANNEL_ID, MESSAGE_DATE, MESSAGE_ORDER, DRAFT);
 
 -- SAK-18532/SAK-19522 new column for Email Template service
-alter table EMAIL_TEMPLATE_ITEM add column EMAILFROM text;
+alter table EMAIL_TEMPLATE_ITEM add column EMAILFROM varchar(255) default null;
 
 -- SAK-19448
 alter table EMAIL_TEMPLATE_ITEM modify HTMLMESSAGE LONGTEXT;
@@ -31,11 +31,11 @@ alter table GB_GRADE_RECORD_T add column USER_ENTERED_GRADE varchar(255) default
 -- MSGCNTR-309 start and end dates on Forums and Topics
 alter table MFR_AREA_T add column AVAILABILITY_RESTRICTED bit;
 update MFR_AREA_T set AVAILABILITY_RESTRICTED=0 where AVAILABILITY_RESTRICTED is null;
-alter table MFR_AREA_T modify column AVAILABILITY_RESTRICTED bit not null default '';
+alter table MFR_AREA_T modify column AVAILABILITY_RESTRICTED bit not null default false;
 
 alter table MFR_AREA_T add column AVAILABILITY bit;
 update MFR_AREA_T set AVAILABILITY=1 where AVAILABILITY is null;
-alter table MFR_AREA_T modify column AVAILABILITY bit not null default '1';
+alter table MFR_AREA_T modify column AVAILABILITY bit not null default true;
 
 alter table MFR_AREA_T add column OPEN_DATE datetime;
 
@@ -43,11 +43,11 @@ alter table MFR_AREA_T add column CLOSE_DATE datetime;
 
 alter table MFR_OPEN_FORUM_T add column AVAILABILITY_RESTRICTED bit;
 update MFR_OPEN_FORUM_T set AVAILABILITY_RESTRICTED=0 where AVAILABILITY_RESTRICTED is null;
-alter table MFR_OPEN_FORUM_T modify column AVAILABILITY_RESTRICTED bit not null default '';
+alter table MFR_OPEN_FORUM_T modify column AVAILABILITY_RESTRICTED bit not null default false;
 
 alter table MFR_OPEN_FORUM_T add column AVAILABILITY bit;
 update MFR_OPEN_FORUM_T set AVAILABILITY=1 where AVAILABILITY is null;
-alter table MFR_OPEN_FORUM_T modify column AVAILABILITY bit not null default '1';
+alter table MFR_OPEN_FORUM_T modify column AVAILABILITY bit not null default true;
 
 alter table MFR_OPEN_FORUM_T add column OPEN_DATE datetime;
 
@@ -55,11 +55,11 @@ alter table MFR_OPEN_FORUM_T add column CLOSE_DATE datetime;
 
 alter table MFR_TOPIC_T add column AVAILABILITY_RESTRICTED bit;
 update MFR_TOPIC_T set AVAILABILITY_RESTRICTED=0 where AVAILABILITY_RESTRICTED is null;
-alter table MFR_TOPIC_T modify column AVAILABILITY_RESTRICTED bit not null default '';
+alter table MFR_TOPIC_T modify column AVAILABILITY_RESTRICTED bit not null default false;
 
 alter table MFR_TOPIC_T add column AVAILABILITY bit;
 update MFR_TOPIC_T set AVAILABILITY=1 where AVAILABILITY is null;
-alter table MFR_TOPIC_T modify column AVAILABILITY bit not null default '1';
+alter table MFR_TOPIC_T modify column AVAILABILITY bit not null default true;
 
 alter table MFR_TOPIC_T add column OPEN_DATE datetime null;
 alter table MFR_TOPIC_T add column CLOSE_DATE datetime null;
@@ -146,11 +146,11 @@ alter table PROFILE_IMAGES_T modify RESOURCE_THUMB text not null;
 -- PRFL-252, PRFL-224 add social networking table
 create table PROFILE_SOCIAL_INFO_T (
 	USER_UUID varchar(99) not null,
-	FACEBOOK_USERNAME varchar(255),
-	LINKEDIN_USERNAME varchar(255),
-	MYSPACE_USERNAME varchar(255),
+	FACEBOOK_URL varchar(255),
+	LINKEDIN_URL varchar(255),
+	MYSPACE_URL varchar(255),
 	SKYPE_USERNAME varchar(255),
-	TWITTER_USERNAME varchar(255),
+	TWITTER_URL varchar(255),
 	primary key (USER_UUID)
 );
 
@@ -180,8 +180,8 @@ alter table PROFILE_PRIVACY_T add SOCIAL_NETWORKING_INFO int not null default 0;
 -- PRFL-171 add the new gallery column
 alter table PROFILE_PRIVACY_T add MY_PICTURES int not null default 0;
 
--- PRFL-194 add the new messages column
-alter table PROFILE_PRIVACY_T add MESSAGES int not null default 0;
+-- PRFL-194 add the new messages column, default to 1 (PRFL-593)
+alter table PROFILE_PRIVACY_T add MESSAGES int not null default 1;
 
 -- PRFL-210 add the new businessInfo column
 alter table PROFILE_PRIVACY_T add BUSINESS_INFO int not null default 0;
@@ -209,9 +209,19 @@ alter table PROFILE_PRIVACY_T add MY_KUDOS int not null default 0;
 -- PRFL-382 add gallery feed preference
 alter table PROFILE_PREFERENCES_T add SHOW_GALLERY_FEED bit not null default true;
 
+-- PRFL-392 adjust size of the profile images resource uri columns
+alter table PROFILE_IMAGES_T modify RESOURCE_MAIN text;
+alter table PROFILE_IMAGES_T modify RESOURCE_THUMB text;
+alter table PROFILE_IMAGES_EXTERNAL_T modify URL_MAIN text;
+alter table PROFILE_IMAGES_EXTERNAL_T modify URL_THUMB text;
+
+-- PRFL-540 add indexes to commonly searched columns
+create index PROFILE_FRIENDS_CONFIRMED_I on PROFILE_FRIENDS_T (CONFIRMED);
+create index PROFILE_STATUS_DATE_ADDED_I on PROFILE_STATUS_T (DATE_ADDED);
+
 -- Profile2 1.3-1.4 upgrade end
 
--- SAK-18864/SAK-19951/SAK-19965 added create statement for scheduler_trigger_events
+-- SAK-18864/SAK-19951/SAK-19965 adds missing scheduler_trigger_events table for new persistent jobscheduler event feature
 create table scheduler_trigger_events (
     uuid varchar(36) not null, 
     eventType varchar(255) not null, 
@@ -243,8 +253,7 @@ alter table SAM_ASSESSMENTGRADING_T add column LASTVISITEDQUESTION integer defau
 -- If you get an error when running this script, you will need to clean the duplicates first. Please refer to SAM-775.
 create unique index ASSESSMENTGRADINGID on SAM_ITEMGRADING_T (ASSESSMENTGRADINGID, PUBLISHEDITEMID, PUBLISHEDITEMTEXTID, AGENTID, PUBLISHEDANSWERID);
 
--- ShortenedUrlService 1.0.0 db creation start
-
+-- SHORTURL-26 shortenedurlservice 1.0
 create table URL_RANDOMISED_MAPPINGS_T (
 	ID bigint not null auto_increment,
 	TINY varchar(255) not null,
@@ -252,12 +261,10 @@ create table URL_RANDOMISED_MAPPINGS_T (
 	primary key (ID)
 );
 
-create index URL_INDEX on URL_RANDOMISED_MAPPINGS_T (URL);
+create index URL_INDEX on URL_RANDOMISED_MAPPINGS_T (URL(200));
 create index KEY_INDEX on URL_RANDOMISED_MAPPINGS_T (TINY);
 
--- ShortenedUrlService 1.0.0 db creation end
-
--- KNL-563: dynamic bundling loading
+-- KNL-563 table structure for sakai_message_bundle
 create table SAKAI_MESSAGE_BUNDLE (
     ID bigint(20) not null auto_increment,
     MODULE_NAME varchar(255) not null,
@@ -268,6 +275,8 @@ create table SAKAI_MESSAGE_BUNDLE (
     DEFAULT_VALUE text not null,
     primary key (ID)
 );
+
+create index SMB_SEARCH on sakai_message_bundle (BASENAME, MODULE_NAME, LOCALE, PROP_NAME); 
 
 -- STAT-241 table structure for sst_presences
 create table SST_PRESENCES (
@@ -286,7 +295,7 @@ create index SST_PRESENCE_USER_ID_IX on SST_PRESENCES (USER_ID);
 create index SST_PRESENCE_SITE_ID_IX on SST_PRESENCES (SITE_ID);
 create index SST_PRESENCE_SUD_ID_IX on SST_PRESENCES (SITE_ID, USER_ID, P_DATE);
 
--- RES-2: table structure for validationaccount_item
+--  RES-2: table structure for validationaccount_item
 create table VALIDATIONACCOUNT_ITEM (
     id bigint(20) not null auto_increment,
     USER_ID varchar(255) not null,

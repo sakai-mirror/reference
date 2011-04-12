@@ -59,7 +59,7 @@ create UNIQUE INDEX ASSESSMENTGRADINGID ON SAM_ITEMGRADING_T (ASSESSMENTGRADINGI
 
 -- Gradebook2 support
 -- SAK-19080 / GRBK-736
-alter table GB_GRADE_RECORD_T add USER_ENTERED_GRADE varchar2(127);
+alter table GB_GRADE_RECORD_T add USER_ENTERED_GRADE varchar2(255 CHAR);
 
 
 --MSGCNTR-309
@@ -119,10 +119,10 @@ CREATE INDEX user_type_context_idx ON MFR_PVT_MSG_USR_T ( USER_ID, TYPE_UUID, CO
 
 -- New column for Email Template service
 -- SAK-18532/SAK-19522
-alter table EMAIL_TEMPLATE_ITEM add EMAILFROM varchar2(255);
+alter table EMAIL_TEMPLATE_ITEM add EMAILFROM varchar2(255 CHAR);
 
 -- SAK-18855
-alter table POLL_POLL add POLL_IS_PUBLIC Number(1,0) default 0 not null;
+alter table POLL_POLL add POLL_IS_PUBLIC number(1,0);
 
 
 -- Profile2 1.3-1.4 upgrade start
@@ -130,10 +130,10 @@ alter table POLL_POLL add POLL_IS_PUBLIC Number(1,0) default 0 not null;
 -- add company profile table and index (PRFL-224)
 create table PROFILE_COMPANY_PROFILES_T (
 	ID number(19,0) not null,
-	USER_UUID varchar2(99) not null,
-	COMPANY_NAME varchar2(255),
-	COMPANY_DESCRIPTION varchar2(255),
-	COMPANY_WEB_ADDRESS varchar2(255),
+	USER_UUID varchar2(99 CHAR) not null,
+	COMPANY_NAME varchar2(255 CHAR),
+	COMPANY_DESCRIPTION varchar2(4000),
+	COMPANY_WEB_ADDRESS varchar2(255 CHAR),
 	primary key (ID)
 );
 create sequence COMPANY_PROFILES_S;
@@ -141,26 +141,26 @@ create index PROFILE_CP_USER_UUID_I on PROFILE_COMPANY_PROFILES_T (USER_UUID);
  
 -- add message tables and indexes
 create table PROFILE_MESSAGES_T (
-	ID varchar2(36) not null,
-	FROM_UUID varchar2(99) not null,
+	ID varchar2(36 CHAR) not null,
+	FROM_UUID varchar2(99 CHAR) not null,
 	MESSAGE_BODY varchar2(4000) not null,
-	MESSAGE_THREAD varchar2(36) not null,
-	DATE_POSTED date not null,
+	MESSAGE_THREAD varchar2(36 CHAR) not null,
+	DATE_POSTED timestamp(6) not null,
 	primary key (ID)
 );
 
 create table PROFILE_MESSAGE_PARTICIPANTS_T (
 	ID number(19,0) not null,
-	MESSAGE_ID varchar2(36) not null,
-	PARTICIPANT_UUID varchar2(99) not null,
+	MESSAGE_ID varchar2(36 CHAR) not null,
+	PARTICIPANT_UUID varchar2(99 CHAR) not null,
 	MESSAGE_READ number(1,0) not null,
 	MESSAGE_DELETED number(1,0) not null,
 	primary key (ID)
 );
 
 create table PROFILE_MESSAGE_THREADS_T (
-	ID varchar2(36) not null,
-	SUBJECT varchar2(255) not null,
+	ID varchar2(36 CHAR) not null,
+	SUBJECT varchar2(255 CHAR) not null,
 	primary key (ID)
 );
 
@@ -176,10 +176,10 @@ create index PROFILE_M_P_READ_I on PROFILE_MESSAGE_PARTICIPANTS_T (MESSAGE_READ)
 -- add gallery table and indexes (PRFL-134, PRFL-171)
 create table PROFILE_GALLERY_IMAGES_T (
 	ID number(19,0) not null,
-	USER_UUID varchar2(99) not null,
-	RESOURCE_MAIN varchar2(255) not null,
-	RESOURCE_THUMB varchar2(255) not null,
-	DISPLAY_NAME varchar2(255) not null,
+	USER_UUID varchar2(99 CHAR) not null,
+	RESOURCE_MAIN varchar2(4000) not null,
+	RESOURCE_THUMB varchar2(4000) not null,
+	DISPLAY_NAME varchar2(255 CHAR) not null,
 	primary key (ID)
 );
 create sequence GALLERY_IMAGES_S;
@@ -187,76 +187,85 @@ create index PROFILE_GI_USER_UUID_I on PROFILE_GALLERY_IMAGES_T (USER_UUID);
 
 -- add social networking table (PRFL-252, PRFL-224)
 create table PROFILE_SOCIAL_INFO_T (
-	USER_UUID varchar2(99) not null,
-	FACEBOOK_USERNAME varchar2(255),
-	LINKEDIN_USERNAME varchar2(255),
-	MYSPACE_USERNAME varchar2(255),
-	SKYPE_USERNAME varchar2(255),
-	TWITTER_USERNAME varchar2(255),
+	USER_UUID varchar2(99 CHAR) not null,
+	FACEBOOK_URL varchar2(255 CHAR),
+	LINKEDIN_URL varchar2(255 CHAR),
+	MYSPACE_URL varchar2(255 CHAR),
+	SKYPE_USERNAME varchar2(255 CHAR),
+	TWITTER_URL varchar2(255 CHAR),
 	primary key (USER_UUID)
 );
 
 -- add official image table
 create table PROFILE_IMAGES_OFFICIAL_T (
-	USER_UUID varchar2(99) not null,
+	USER_UUID varchar2(99 CHAR) not null,
 	URL varchar2(4000) not null,
 	primary key (USER_UUID)
 );
 
 -- add kudos table
 create table PROFILE_KUDOS_T (
-	USER_UUID varchar2(99) not null,
+	USER_UUID varchar2(99 CHAR) not null,
 	SCORE number(10,0) not null,
 	PERCENTAGE number(19,2) not null,
-	DATE_ADDED date not null,
+	DATE_ADDED timestamp(6) not null,
 	primary key (USER_UUID)
 );
 
 -- add the new email message preference columns, default to 0, (PRFL-152, PRFL-186)
-alter table PROFILE_PREFERENCES_T add EMAIL_MESSAGE_NEW number(1,0) default 0;
-alter table PROFILE_PREFERENCES_T add EMAIL_MESSAGE_REPLY number(1,0) default 0;
+alter table PROFILE_PREFERENCES_T add EMAIL_MESSAGE_NEW number(1,0) default 0 not null;
+alter table PROFILE_PREFERENCES_T add EMAIL_MESSAGE_REPLY number(1,0) default 0 not null;
 
 -- add social networking privacy column (PRFL-285)
-alter table PROFILE_PRIVACY_T add SOCIAL_NETWORKING_INFO number(1,0) default 0;
+alter table PROFILE_PRIVACY_T add SOCIAL_NETWORKING_INFO number(10,0) default 0 not null;
 
 -- add the new gallery column (PRFL-171)
-alter table PROFILE_PRIVACY_T add MY_PICTURES number(1,0) default 0;
+alter table PROFILE_PRIVACY_T add MY_PICTURES number(10,0) default 0 not null;
 
--- add the new message column (PRFL-194)
-alter table PROFILE_PRIVACY_T add MESSAGES number(1,0) default 0;
+-- add the new message column (PRFL-194), default to 1 (PRFL-593)
+alter table PROFILE_PRIVACY_T add MESSAGES number(10,0) default 1 not null;
 
 -- add the new businessInfo column (PRFL-210)
-alter table PROFILE_PRIVACY_T add BUSINESS_INFO number(1,0) default 0;
+alter table PROFILE_PRIVACY_T add BUSINESS_INFO number(10,0) default 0 not null;
 
 -- add the new staff and student info columns and copy old ACADEMIC_INFO value into them to maintain privacy (PRFL-267)
-alter table PROFILE_PRIVACY_T add STAFF_INFO number(1,0) default 0;
-alter table PROFILE_PRIVACY_T add STUDENT_INFO number(1,0) default 0;
+alter table PROFILE_PRIVACY_T add STAFF_INFO number(10,0) default 0 not null;
+alter table PROFILE_PRIVACY_T add STUDENT_INFO number(10,0) default 0 not null;
 update PROFILE_PRIVACY_T set STAFF_INFO = ACADEMIC_INFO;
 update PROFILE_PRIVACY_T set STUDENT_INFO = ACADEMIC_INFO;
 alter table PROFILE_PRIVACY_T drop column ACADEMIC_INFO;
 
 -- add the new useOfficialImage column (PRFL-90)
-alter table PROFILE_PREFERENCES_T add USE_OFFICIAL_IMAGE number(1,0) default 0;
+alter table PROFILE_PREFERENCES_T add USE_OFFICIAL_IMAGE number(1,0) default 0 not null;
 
 -- remove search privacy setting (PRFL-293)
 alter table PROFILE_PRIVACY_T drop column SEARCH;
 
 -- add kudos preference (PRFL-336)
-alter table PROFILE_PREFERENCES_T add SHOW_KUDOS number(1,0) default 1;
+alter table PROFILE_PREFERENCES_T add SHOW_KUDOS number(1,0) default 1 not null;
 
 -- add kudos privacy (PRFL-336)
-alter table PROFILE_PRIVACY_T add MY_KUDOS number(1,0) default 0;
+alter table PROFILE_PRIVACY_T add MY_KUDOS number(10,0) default 0 not null;
 
 -- add gallery feed preference (PRFL-382)
-alter table PROFILE_PREFERENCES_T add SHOW_GALLERY_FEED number(1,0) default 1;
+alter table PROFILE_PREFERENCES_T add SHOW_GALLERY_FEED number(1,0) default 1 not null;
+
+-- adjust size of the profile images resource uri columns (PRFL-392)
+alter table PROFILE_IMAGES_T modify RESOURCE_MAIN varchar2(4000);
+alter table PROFILE_IMAGES_T modify RESOURCE_THUMB varchar2(4000);
+alter table PROFILE_IMAGES_EXTERNAL_T modify URL_MAIN varchar2(4000);
+alter table PROFILE_IMAGES_EXTERNAL_T modify URL_THUMB varchar2(4000);
+
+-- add indexes to commonly searched columns (PRFL-540)
+create index PROFILE_FRIENDS_CONFIRMED_I on PROFILE_FRIENDS_T (CONFIRMED);
+create index PROFILE_STATUS_DATE_ADDED_I on PROFILE_STATUS_T (DATE_ADDED);
 
 -- Profile2 1.3-1.4 upgrade end
 
--- ShortenedUrlService 1.0.0 db creation start
-
+-- SHORTURL-26 shortenedurlservice 1.0
 create table URL_RANDOMISED_MAPPINGS_T (
 	ID number(19,0) not null,
-	TINY varchar2(255) not null,
+	TINY varchar2(255 CHAR) not null,
 	URL varchar2(4000) not null,
 	primary key (ID)
 );
@@ -265,17 +274,16 @@ create index URL_INDEX on URL_RANDOMISED_MAPPINGS_T (URL);
 create index KEY_INDEX on URL_RANDOMISED_MAPPINGS_T (TINY);
 create sequence URL_RANDOMISED_MAPPINGS_S;
 
--- ShortenedUrlService 1.0.0 db creation end
-
 -- SAK-18864/SAK-19951/SAK-19965 added create statement for scheduler_trigger_events
-create table scheduler_trigger_events (
-    uuid varchar2(36 char) not null, 
-    eventType varchar2(255 char) not null, 
-    jobName varchar2(255 char) not null, 
-    triggerName varchar2(255 char), 
-    eventTime timestamp not null, 
-    message clob, 
-    primary key (uuid));
+create table SCHEDULER_TRIGGER_EVENTS (
+	UUID varchar2(36 CHAR) NOT NULL,
+	EVENTTYPE varchar2(255 CHAR) NOT NULL,
+	JOBNAME varchar2(255 CHAR) NOT NULL,
+	TRIGGERNAME varchar2(255 CHAR),
+	EVENTTIME timestamp NOT NULL,
+	MESSAGE clob,
+	primary key (UUID)
+);
 
 -- STAT-241: Tracking of time spent in site
 create table SST_PRESENCES (
@@ -287,6 +295,9 @@ create table SST_PRESENCES (
 	LAST_VISIT_START_TIME timestamp default null,
 	primary key (ID)
 );
+
+-- STAT-286: missing SiteStats sequence
+create sequence SST_PRESENCE_ID;
 
 -- SAK-20076: missing Sitestats indexes
 create index SST_PRESENCE_DATE_IX on SST_PRESENCES (P_DATE);
@@ -306,22 +317,21 @@ CREATE TABLE SAKAI_MESSAGE_BUNDLE(
         PRIMARY KEY (ID)
 );
 create sequence SAKAI_MESSAGEBUNDLE_S; 
-create index SMB_SEARCH on sakai_message_bundle (BASENAME , MODULE_NAME , LOCALE ); 
+create index SMB_SEARCH on sakai_message_bundle (BASENAME, MODULE_NAME, LOCALE, PROP_NAME); 
 
 -- RES-2: table structure for validationaccount_item
 CREATE TABLE VALIDATIONACCOUNT_ITEM (
         ID NUMBER(19) NOT NULL,
-        USER_ID VARCHAR2(255) NOT NULL,
-        VALIDATION_TOKEN VARCHAR2(255) NOT NULL,
+        USER_ID VARCHAR2(255 CHAR) NOT NULL,
+        VALIDATION_TOKEN VARCHAR2(255 CHAR) NOT NULL,
         VALIDATION_SENT TIMESTAMP(6),
         VALIDATION_RECEIVED TIMESTAMP(6),
         VALIDATIONS_SENT NUMBER(10),
         STATUS NUMBER(10),
-        FIRST_NAME VARCHAR2(255) NOT NULL,
-        SURNAME VARCHAR2(255) NOT NULL,
+        FIRST_NAME VARCHAR2(255 CHAR) NOT NULL,
+        SURNAME VARCHAR2(255 CHAR) NOT NULL,
         ACCOUNT_STATUS NUMBER(10),
         PRIMARY KEY (ID)
 );
 
 create sequence VALIDATIONACCOUNT_ITEM_ID_SEQ;
-
