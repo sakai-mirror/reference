@@ -9,7 +9,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *       http://www.osedu.org/licenses/ECL-2.0
+ *       http://www.opensource.org/licenses/ECL-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -29,16 +29,25 @@ sakai.editor.editors.ckeditor = {};
 // The w and h parameters should be removed as soon as their uses can be migrated.
 sakai.editor.editors.ckeditor.launch = function(targetId, config, w, h) {
     var folder = "";
-    if (sakai.editor.collectionId) {
-        folder = "&CurrentFolder=" + sakai.editor.collectionId;
+
+    var collectionId = "";
+    if (config != null && config.collectionId) {
+        collectionId=config.collectionId;
+    }
+    else if (sakai.editor.collectionId) {
+        collectionId=sakai.editor.collectionId
+    }
+
+    if (collectionId) {
+        folder = "&CurrentFolder=" + collectionId
     }
 
     var ckconfig = {
         skin: 'v2',
         height: 460,
-        filebrowserBrowseUrl :'/library/editor/FCKeditor/editor/filemanager/browser/default/browser.html?Connector=/sakai-fck-connector/web/editor/filemanager/browser/default/connectors/jsp/connector' + folder,
-        filebrowserImageBrowseUrl : '/library/editor/FCKeditor/editor/filemanager/browser/default/browser.html?Type=Image&Connector=/sakai-fck-connector/web/editor/filemanager/browser/default/connectors/jsp/connector' + folder,
-        filebrowserFlashBrowseUrl :'/library/editor/FCKeditor/editor/filemanager/browser/default/browser.html?Type=Flash&Connector=/sakai-fck-connector/web/editor/filemanager/browser/default/connectors/jsp/connector' + folder,
+        filebrowserBrowseUrl :'/library/editor/FCKeditor/editor/filemanager/browser/default/browser.html?Connector=/sakai-fck-connector/web/editor/filemanager/browser/default/connectors/jsp/connector' + collectionId + folder,
+        filebrowserImageBrowseUrl : '/library/editor/FCKeditor/editor/filemanager/browser/default/browser.html?Type=Image&Connector=/sakai-fck-connector/web/editor/filemanager/browser/default/connectors/jsp/connector' + collectionId + folder,
+        filebrowserFlashBrowseUrl :'/library/editor/FCKeditor/editor/filemanager/browser/default/browser.html?Type=Flash&Connector=/sakai-fck-connector/web/editor/filemanager/browser/default/connectors/jsp/connector' + collectionId + folder,
         extraPlugins: (sakai.editor.enableResourceSearch ? 'resourcesearch' : ''),
 
         // These two settings enable the browser's native spell checking and context menus.
