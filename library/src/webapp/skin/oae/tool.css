@@ -1097,8 +1097,8 @@ form[name ="gbForm"] .listHier th, form[action$="spreadsheetEntireGBVerify"] .li
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
-    background:#eee;
-    border-bottom:1px solid #ccc;
+    background: #eee;
+    border-bottom: 1px solid #ccc;
 }
 form[name="gbForm"] .listHier th:first-child,form[action$="spreadsheetEntireGBVerify"]  .listHier th:first-child {
     -webkit-border-bottom-left-radius: 0;
@@ -1119,11 +1119,11 @@ form[name="gbForm"] .listHier th:last-child, form[action$="spreadsheetEntireGBVe
     border-top-right-radius: 0;
 }
 form[action$="spreadsheetEntireGBVerify"] .listHier table td {
-    padding:0 !important;
-    border:none !important
+    padding: 0 !important;
+    border: none !important
 }
 form[action$="spreadsheetEntireGBVerify"] .listHier table tr:hover {
-    background:transparent !important
+    background: transparent !important
 }
 /*
 overrides for samigo
@@ -1135,71 +1135,71 @@ generic samigo overrides
     -moz-border-radius: 3px;
     border-radius: 3px;
     -webkit-border-radius: 3px;
-    color:#c00 !important;
-    padding:5px 5px 5px 20px;
-    background:#ffd5d5 url(../images/exclamation.png) 3px 3px no-repeat;
-    border:1px solid #c00
+    color: #c00 !important;
+    padding: 5px 5px 5px 20px;
+    background: #ffd5d5 url(../images/exclamation.png) 3px 3px no-repeat;
+    border: 1px solid #c00
 }
 .validation {
     -moz-border-radius: 3px;
     border-radius: 3px;
     -webkit-border-radius: 3px;
-    color:#c00 !important;
-    padding:5px 5px 5px 20px;
-    background:#ffd5d5 url(../images/exclamation.png) 3px 3px no-repeat;
-    border:1px solid #c00
+    color: #c00 !important;
+    padding: 5px 5px 5px 20px;
+    background: #ffd5d5 url(../images/exclamation.png) 3px 3px no-repeat;
+    border: 1px solid #c00
 }
 .textBelowHeader {
     padding: 1em 0;
-    color:#777
+    color: #777
 }
 td.lastModified {
-    font-size:.8em;
+    font-size: .8em;
 }
 /*
 overrides for specific views - forms are always the outermost container
 and have unique ids 
 */
 form#authorIndexForm h4 {
-    font-size:110%
+    font-size: 110%
 }
 form#authorIndexForm h5 {
-    color:#777
+    color: #777
 }
 form#authorIndexForm .tier1, form#authorIndexForm .tier2, form#editStudentResults .tier2{
-    margin-left:0 !important
+    margin-left: 0 !important
 }
 form#authorIndexForm .tier1 > h4:first-child {
-    display:none
+    display: none
 }
 form#authorIndexForm table[border="0"] {
-    margin:10px 0;
-    background:#eee;
+    margin: 10px 0;
+    background: #eee;
     -moz-border-radius: 5px;
     border-radius: 5px;
     -webkit-border-radius: 5px;
 }
 form#authorIndexForm table[border="0"] td {
-    padding:3px;
+    padding: 3px;
 }
 form#authorIndexForm table[border="0"] >tbody >tr > td:first-child {
-    padding-left:1em
+    padding-left: 1em
 }
 form#authorIndexForm table[border="0"] .new_assessment {
-    color:#000;
-    font-weight:normal;
+    color: #000;
+    font-weight: normal;
 }
 form#authorIndexForm .titlePending {
-    width:50% !important
+    width: 50% !important
 }
 form#authorIndexForm .lastModified {
-    width:30% !important
+    width: 30% !important
 }
 form#assesssmentForm .navViewAction, form#questionpool .navViewAction, form#editTotalResults  .navViewAction,form#histogram .navViewAction, form#editStudentResults .navViewAction {
-    background:#eee;
-    color:#aaa;
+    background: #eee;
+    color: #aaa;
     font-size: 13px;
-    padding:5px !important;
+    padding: 5px !important;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -1208,175 +1208,171 @@ form#assesssmentForm .navViewAction a,form#questionpool .navViewAction a, form#e
     color: #2683BC;
 }
 table[id^="assesssmentForm"] .tier2 {
-    margin-left:0 !important;
+    margin-left: 0 !important;
 }
 table[id^="assesssmentForm"] .tier2 .longtext {
-    margin-left:0
+    margin-left: 0
 }  
 form#assesssmentForm > .navViewAction+table {
-    border-bottom:1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }
 form#assesssmentForm > .navViewAction+table td {
-    padding:0 0 5px 0
+    padding: 0 0 5px 0
 }
 form#assesssmentForm > .tier1 > table h4 {
-    padding:5px !important;
-    background:#ccc !important;
-    margin-bottom:10px;
+    padding: 5px !important;
+    background: #ccc !important;
+    margin-bottom: 10px;
 }
 form#assesssmentForm > .tier1 > table table[id$="parts"] {
-    border-collapse:collapse;
+    border-collapse: collapse;
 }
 form#assesssmentForm > .tier1 > table table[id$="parts"] h5 {
-    padding:5px 5px  5px 0 !important;
+    padding: 5px 5px  5px 0 !important;
     background: #eee !important;
-    margin:10px 0 0 0 !important
+    margin: 10px 0 0 0 !important
 }
 form#assesssmentForm > .tier1 > table table[id$="parts"] .tier3 {
-    margin-left:0 !important;
-    padding:10px 5px
+    margin-left: 0 !important;
+    padding: 10px 5px
 }
 form#modifyPartForm > .tier1, form#assesssmentForm > .tier1 {
-    margin-left:0 !important;
+    margin-left: 0 !important;
 }
 form#assessmentSettingsAction h4, form#templateEditorForm h4, form#editStudentResults h4[onclick] {
-    cursor:pointer;
-    background:#eee !important;
-    padding:5px;
-    width:80%;
+    cursor: pointer;
+    background: #eee !important;
+    padding: 5px;
+    width: 80%;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
 form#editStudentResults h4[onclick] {
-    width:120%
+    width: 120%
 }
 form#assessmentSettingsAction h4:hover, form#templateEditorForm h4:hover, form#editStudentResults h4[onclick]:hover {
-    background:#d9d9d9 !important;
+    background: #d9d9d9 !important;
 }
 form#assessmentSettingsAction h4 img, form#templateEditorForm h4 img {
-    margin-right:5px;
-    opacity:0.5
+    margin-right: 5px;
+    opacity: 0.5
 }
 form#assessmentSettingsAction h4+div >.tier2, form#templateEditorForm h4+div >.tier2 {
-    margin-left:0 !important;
-    width:80%;
+    margin-left: 0 !important;
+    width: 80%;
 }
 form#assessmentSettingsAction h4+div >.tier2, form#templateEditorForm h4+div >.tier3 {
-    margin-left:1em !important;
+    margin-left: 1em !important;
 }
 form#templateEditorForm h4+div input[id$="submissions_allowed"]{
-    margin-left:3em;
+    margin-left: 3em;
 }
 form#assessmentSettingsAction h4+div >.tier2 >.longtext > label, form#templateEditorForm h4+div >.tier2 >.longtext > label {
-    font-weight:bold !important;
-    color:#666
+    font-weight: bold !important;
+    color: #666
 }
 form#templateEditorForm > .tier1 > p:first-child + h4 + div {
-    padding:1em 0;
+    padding: 1em 0;
 }
 form#templateEditorForm > .tier1 > p:first-child + h4 + div table tr:last-child td:first-child{
-    vertical-align:top;
-    padding-top:1em;
+    vertical-align: top;
+    padding-top: 1em;
 }
 form#templateEditorForm h4+div > .tier2 > .tier3 {
-    margin-left:1em !important
+    margin-left: 1em !important
 }
 form#assessmentSettingsAction table[id^="assessmentSettingsAction"] {
     text-indent: -25px;
     padding-left: 25px;
 }
 form#assessmentSettingsAction table[id$="background_color"], form#assessmentSettingsAction table[id$="background_image"] {
-    margin-left:1em;
+    margin-left: 1em;
 }
 form#assessmentSettingsAction table[id$="background_image"] + input, form#assessmentSettingsAction input[id$="pickColor"] {
-    margin-left:3em;
+    margin-left: 3em;
 }
 form#assessmentSettingsAction > h3 {
-    margin-bottom:1em;
+    margin-bottom: 1em;
 }
 form#assessmentSettingsAction  input[size="80"] {
-    width:350px;
-}
-form#assessmentSettingsAction > h3 + .tier1 > a:last-child {
-    border:1px solid red;
+    width: 350px;
 }
 form#modifyPartForm >.tier1 {
-    margin-left:0 !important;
-    font-weight:bold;
+    margin-left: 0 !important;
+    font-weight: bold;
 }
 form#modifyPartForm >.tier1 .longtext *,form#modifyPartForm >.tier1 .shorttext * {
-    font-weight:normal
+    font-weight: normal
 }
 form#modifyPartForm >.tier1 .longtext > .longtext {
-    font-weight:bold;
-    margin-left:0 !important
+    font-weight: bold;
+    margin-left: 0 !important
 }
 form#modifyPartForm >.tier1 .longtext table *,form#modifyPartForm >.tier1 .longtext * {
-    font-weight:normal;
+    font-weight: normal;
     
 }
 form#modifyPartForm >.tier1 .shorttext + .longtext * {
-    font-weight:normal;
+    font-weight: normal;
 }
 form#modifyPartForm >.tier1 .shorttext + .longtext label {
-    font-weight:bold;
+    font-weight: bold;
 }
 form#selectIndexForm > .tier1, form#selectIndexForm > .tier1 > .tier2, form#takeAssessmentForm > .tier1, form#takeAssessmentForm > .tier1 > .tier2 {
-    margin-left:0 !important
-    
+    margin-left: 0 !important;
 }
 form#takeAssessmentForm > .tier1 > table .tier1, form#takeAssessmentForm > .tier1 > table .tier2 {
-    margin-left:0 !important
+    margin-left: 0 !important;
 }
 form#takeAssessmentForm > .tier1 > table .tier3 {
-    margin:10px 0 0  0 !important;
-    background:#eee;
-    padding:10px;
+    margin: 10px 0 0  0 !important;
+    background: #eee;
+    padding: 10px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
 form#takeAssessmentForm > .tier1 > table .tier3 textarea + a,form#takeAssessmentForm > .tier1 > table .tier3 table + a {
-    display:block;
-    padding-top:5px;
+    display: block;
+    padding-top: 5px;
 }
 form#takeAssessmentForm  div > table > tbody > tr > td > div > table > tbody > tr > td > h5 {
-    font-weight:normal !important;
+    font-weight: normal !important;
 }
 form#submittedForm {
     
 }
 form#itemForm .listHier table {
-    margin:0;
-    margin-top:-10px;
+    margin: 0;
+    margin-top: -10px;
 }
 form#itemForm .listHier table td {
-    padding:0;
-    border:none;
+    padding: 0;
+    border: none;
 }
 form#tableOfContentsForm > .tier1, form#tableOfContentsForm > .tier2, form#tableOfContentsForm  .tier3 {
-    margin-left:0 !important
+    margin-left: 0 !important
 }
 form#tableOfContentsForm > .tier2 h4 {
-    cursor:pointer;
-    background:#eee !important;
-    padding:5px;
+    cursor: pointer;
+    background: #eee !important;
+    padding: 5px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
 form#tableOfContentsForm > .tier2 h4+div {
-    margin:10px 0;
+    margin: 10px 0;
 }
 form#tableOfContentsForm > .tier2 h4+div img {
-    display:none;
+    display: none;
 }
 form#tableOfContentsForm > .tier2 h4+div a {
-    padding:3px 3px 3px 24px;
+    padding: 3px 3px 3px 24px;
 }
 form#tableOfContentsForm > .tier2 .tier3 {
-    padding:5px;
+    padding: 5px;
     text-indent: -25px;
     padding-left: 25px;
 }
@@ -1385,34 +1381,34 @@ TODO: move images off viewport, do not hide
 */
 form#tableOfContentsForm > .tier2 h4+div  img + a {
     background: transparent url(images/page_edit.gif) 0 3px no-repeat;
-    line-height:1.3em;
+    line-height: 1.3em;
 }
 form#tableOfContentsForm h5 {
-    display:inline;
+    display: inline;
     padding-right: 24px;
     border-right: 10px solid transparent;
     background: transparent url(images/page_edit.gif) right center no-repeat;
 }
 form#tableOfContentsForm h5+img {
-    display:none;
+    display: none;
 }
 form#tableOfContentsForm > .tier1 h4 {
-    margin:10px 0;
+    margin: 10px 0;
 }
 form#tableOfContentsForm > h3 + .tier1 {
     padding: 10px 0;
-    color:#C00
+    color: #C00
 }
 form#templateCreateForm  > .tier1, form#templateCreateForm  > .tier1 > .tier2 {
-    margin-left:0 !important;
-    margin-top:1em;
+    margin-left: 0 !important;
+    margin-top: 1em;
 }
 form#templateCreateForm  > .tier1 > h4 {
-    display:none;
+    display: none;
 }
 form#templateCreateForm  > .tier1 > .tier2 {
-    background:#eee;
-    padding:5px;
+    background: #eee;
+    padding: 5px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -1432,128 +1428,125 @@ form#questionpool > .tier1, form#questionpool > .tier2 {
 }
 form#questionpool > .tier1 > table {
     margin: 1em 0;
-    color:#000;
+    color: #000;
 }
 form#questionpool > .tier1 > table td, form#editform > .tier2 > table td {
-    vertical-align:top
+    vertical-align: top
 }
 form#questionpool {
-    color:#777;
+    color: #777;
 }
 form#questionpool > h3 {
-    margin:1em 0 !important
+    margin: 1em 0 !important
 }
 form#editTotalResults > .tier1, form#editTotalResults > .tier1 > .tier2, form#editTotalResults .tier2 {
-    margin-left:0 !important
+    margin-left: 0 !important
 }
 form#histogram .tier1, form#histogram .tier2 {
-    margin-left:0 !important
+    margin-left: 0 !important
 }
 form#histogram .tier2 {
-    padding:10px 0;
-    margin-top:5px;
-    border-top:1px solid #ccc;
+    padding: 10px 0;
+    margin-top: 5px;
+    border-top: 1px solid #ccc;
 }
 form#histogram > .tier1 > .tier2 {
-    margin-top:10px;
-    border:none;
+    margin-top: 10px;
+    border: none;
 }
 form#exportAssessmentForm > .tier1 {
-    margin-left:0 !important
+    margin-left: 0 !important
 }
 form#exportAssessmentForm .form_label {
-    color:#777;
-    padding:1em 0 0 0;
+    color: #777;
+    padding: 1em 0 0 0;
 }
 form#exportAssessmentForm > .tier1 > table  table > tbody > tr:last-child {
-    color:#777 !important
+    color: #777 !important
 } 
 
 form#questionpool table[id$="removeCheckbox"] td, form#questionpoolshare  table[id$="revokeCheckbox"] td, form#questionpoolshare  table[id$="grantCheckbox"] td {
-    border:none;
-    padding:0 !important
+    border: none;
+    padding: 0 !important
 }
 form#questionpoolshare table[id$="withoutAccessTable"] > thead > tr >th:first-child,
     form#questionpoolshare table[id$="withoutAccessTable"] > tbody > tr  > td:first-child,
     form#questionpoolshare table[id$="withAccessTable"] > thead > tr >th:first-child,
     form#questionpoolshare table[id$="withAccessTable"] > tbody > tr  > td:first-child {
-    width:30%;
+    width: 30%;
 }
-form#questionpoolshare table[id$="withoutAccessTable"] > thead > tr >th:last-child,
+form#questionpoolshare table[id$="withoutAccessTable"] > thead > tr >th last-child,
     form#questionpoolshare table[id$="withoutAccessTable"] > tbody > tr  > td:last-child,
     form#questionpoolshare table[id$="withAccessTable"] > thead > tr >th:last-child,
     form#questionpoolshare table[id$="withAccessTable"] > tbody > tr  > td:last-child {
-        width:10%;
+        width: 10%;
 }
 form#importPoolForm .tier1, form#copyPool .tier1, form#copyPool .tier2, form#movePool .tier1, form#movePool .tier2, form#questionpoolshare .tier1, form#questionpoolshare .tier2 {
-    margin-left:0 !important;
-    margin-top:1em;
+    margin-left: 0 !important;
+    margin-top: 1em;
 }
 form#editform > .tier2 {
     margin-left: 0 !important;
-    padding-top:1em;
+    padding-top: 1em;
 }
 form#editform > .tier1, form#editform > .tier1 > .tier2 {
     margin-left: 0 !important;
 }
 form[action$="selectQuestionType"] .validate {
-    margin-left:10px;
+    margin-left: 10px;
 }
 form[action$="selectQuestionType"] .number {
-    background-image:none;
-    display:block;
-    background:#ccc;
-    color:#000;
-    border:1px solid #bbb;
-    padding:5px;
-    height:13px;
-    width:10px;
+    background-image: none;
+    display: block;
+    background: #ccc;
+    color: #000;
+    border: 1px solid #bbb;
+    padding: 5px;
+    height: 13px;
+    width: 10px;
 }
 form#itemFormHeading .tier1 {
-    margin-left:0 !important
+    margin-left: 0 !important
 }
 .portletBody + p.act {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
 form#itemFormHeading + form#itemForm > .tier2 {
-    margin-left:0 !important;
+    margin-left: 0 !important;
 }
 form#itemFormHeading + form#itemForm > .tier2 > .tier2 {
-    margin-left:1em !important
+    margin-left: 1em !important
 }
 form#itemFormHeading + form#itemForm > .tier2 > .longtext > .tier2, form#itemFormHeading + form#itemForm > .tier2 > .longtext > .tier3 {
-    margin-left:0 !important
+    margin-left: 0 !important
 }
 form#itemFormHeading + form#itemForm > .tier2 > .longtext > table {
-    margin:0;
+    margin: 0;
 }
 form#itemFormHeading + form#itemForm > .tier2 > span.longtext {
-    display:block;
+    display: block;
 }
 form#itemFormHeading + form#itemForm > span.longtext > .tier3 {
-    margin-left:1em !important
+    margin-left: 1em !important
 }
 /*
-do these get hidden instead when embedde in OAE? make sure to include posting to schedule for assignments
+These get hidden when embedded in OAE - they are settings establishing communication between CLE tools, affect assignments and samigo
 */
-form[name="newAssignmentForm"] #site + h4 {
-    /*
-    color:red
-    */
+form#publishAssessmentForm .act > select[id$="number"],
+ form[name="newAssignmentForm"] #site + h4,
+ form[name="newAssignmentForm"] label[for="new_assignment_check_auto_announce"],
+ form[name="newAssignmentForm"] input#new_assignment_check_auto_announce,
+ form[name="newAssignmentForm"] label[for="new_assignment_check_add_due_date"],
+ form[name="newAssignmentForm"] input#new_assignment_check_add_due_date,
+ form[name="newAssignmentForm"] label[for="notsendnotif"],
+ form[name="newAssignmentForm"] input#notsendnotif,
+ form[name="newAssignmentForm"] label[for="sendnotif"],
+ form[name="newAssignmentForm"] input#sendnotif,
+ form[name="newAssignmentForm"] label[for="sendnotifsummary"],
+ form[name="newAssignmentForm"] input#sendnotifsummary {
+    display: none;
 }
-form[name="newAssignmentForm"] label[for="new_assignment_check_auto_announce"], form[name="newAssignmentForm"] label[for="notsendreleasegradenotif"],form[name="newAssignmentForm"] label[for="sendreleasegradenotif"] {
-    /*
-    color:red
-    */
-}
-
-form#publishAssessmentForm .act > select[id$="number"], form#publishAssessmentForm .act > select[id$="number"] option {
-    /*
-    color:red;
-    */
-}
-
 /*
 overrides for selects and cancel buttons
 */
@@ -1562,7 +1555,7 @@ select {
     height: 20px;
 }
 select option {
-    padding:3px 5px !important;
+    padding: 3px 5px !important;
 }
 input[type="submit"], input[type="button"] {
     background: #f6f6f5 !important;
@@ -1572,31 +1565,31 @@ input[type="submit"], input[type="button"] {
     background: -o-linear-gradient(top, #f6f6f5 0%,#e0e0e0 93%,#e0e0e0 97%,#e9e9e9 100%) !important;
     background: -ms-linear-gradient(top, #f6f6f5 0%,#e0e0e0 93%,#e0e0e0 97%,#e9e9e9 100%) !important;
     background: linear-gradient(top, #f6f6f5 0%,#e0e0e0 93%,#e0e0e0 97%,#e9e9e9 100%) !important;
-    border: 1px solid #E0E3E5  !important;
-    box-shadow: 0 1px 1px 0 #999999  !important;
-    color: #666666;  !important;
-    font-size: 11px  !important;
-    font-weight: bold  !important;
-    height: 24px  !important;
+    border: 1px solid #E0E3E5 !important;
+    box-shadow: 0 1px 1px 0 #999999 !important;
+    color: #666666 !important;
+    font-size: 11px !important;
+    font-weight: bold !important;
+    height: 24px !important;
     margin-left: 0 !important;
-    text-shadow: 0 2px 3px #FFFFFF  !important;
+    text-shadow: 0 2px 3px #FFFFFF !important;
     padding:5px !important;
     border-radius: 5px;
-    margin-right:3px 
+    margin-right: 3px 
 }
 input[type="submit"]:hover, input[type="button"]:hover {
     background: #fefefe !important;
-    background: -moz-linear-gradient(top, #fefefe 0%, #e9edf0 96%, #e2e5e7 100%)  !important;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefefe), color-stop(96%,#e9edf0), color-stop(100%,#e2e5e7))  !important;
-    background: -webkit-linear-gradient(top, #fefefe 0%,#e9edf0 96%,#e2e5e7 100%)  !important;
-    background: -o-linear-gradient(top, #fefefe 0%,#e9edf0 96%,#e2e5e7 100%)  !important;
-    background: -ms-linear-gradient(top, #fefefe 0%,#e9edf0 96%,#e2e5e7 100%)  !important;
-    background: linear-gradient(top, #fefefe 0%,#e9edf0 96%,#e2e5e7 100%)  !important;
+    background: -moz-linear-gradient(top, #fefefe 0%, #e9edf0 96%, #e2e5e7 100%) !important;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefefe), color-stop(96%,#e9edf0), color-stop(100%,#e2e5e7)) !important;
+    background: -webkit-linear-gradient(top, #fefefe 0%,#e9edf0 96%,#e2e5e7 100%) !important;
+    background: -o-linear-gradient(top, #fefefe 0%,#e9edf0 96%,#e2e5e7 100%) !important;
+    background: -ms-linear-gradient(top, #fefefe 0%,#e9edf0 96%,#e2e5e7 100%) !important;
+    background: linear-gradient(top, #fefefe 0%,#e9edf0 96%,#e2e5e7 100%) !important;
 }
 input[disabled="disabled"], input[disabled="true"], input[disabled="disabled"]:hover, input[disabled="true"]:hover {
-    background:transparent !important;
-    color:#bbb !important;
-    padding:5px !important
+    background: transparent !important;
+    color: #bbb !important;
+    padding: 5px !important
 }
 input[accesskey="x"], form#takeAssessmentForm .act input[id$="cancel1"],
  form#assessmentSettingsAction .act input:last-child,
@@ -1677,7 +1670,7 @@ ambrosia (mnene) overrides
 .ambrosiaEntityListTable th a {
     border: medium none;
     color: #888 !important;
-    font-weight:  normal;
+    font-weight: normal;
     text-decoration: none;
 }
 .ambrosiaEntityListTable > tbody > tr > td {
@@ -1695,7 +1688,7 @@ ambrosia (mnene) overrides
 .ambrosiaModeBar {
     border: none !important;
     text-align: left !important;
-    background:none !important;
+    background: none !important;
     color: #fff
 }
 
@@ -1756,7 +1749,7 @@ ambrosia (mnene) overrides
     border-radius: 3px;
 }
 .ambrosiaNavigationBar .ambrosiaDivider {
-    display:none;
+    display: none;
 }
 .ambrosiaNavigationBar .ambrosiaNavNormal input, .ambrosiaConfirmPanel input {
     background: #f6f6f5 !important;
@@ -1766,26 +1759,26 @@ ambrosia (mnene) overrides
     background: -o-linear-gradient(top, #f6f6f5 0%,#e0e0e0 93%,#e0e0e0 97%,#e9e9e9 100%) !important;
     background: -ms-linear-gradient(top, #f6f6f5 0%,#e0e0e0 93%,#e0e0e0 97%,#e9e9e9 100%) !important;
     background: linear-gradient(top, #f6f6f5 0%,#e0e0e0 93%,#e0e0e0 97%,#e9e9e9 100%) !important;
-    border: 1px solid #E0E3E5  !important;
-    box-shadow: 0 1px 1px 0 #999999  !important;
-    color: #666666;  !important;
-    font-size: 11px  !important;
-    font-weight: bold  !important;
-    height: 24px  !important;
+    border: 1px solid #E0E3E5 !important;
+    box-shadow: 0 1px 1px 0 #999999 !important;
+    color: #666666 !important;
+    font-size: 11px !important;
+    font-weight: bold !important;
+    height: 24px !important;
     margin-left: 0 !important;
-    text-shadow: 0 2px 3px #FFFFFF  !important;
+    text-shadow: 0 2px 3px #FFFFFF !important;
     padding: 5px !important;
     border-radius: 5px;
     margin-right: 3px
 }
 .ambrosiaNavigationBar .ambrosiaNavNormal input:hover,.ambrosiaConfirmPanel input:hover {
     background: #fefefe !important;
-    background: -moz-linear-gradient(top, #fefefe 0%, #e9edf0 96%, #e2e5e7 100%)  !important;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefefe), color-stop(96%,#e9edf0), color-stop(100%,#e2e5e7))  !important;
-    background: -webkit-linear-gradient(top, #fefefe 0%,#e9edf0 96%,#e2e5e7 100%)  !important;
-    background: -o-linear-gradient(top, #fefefe 0%,#e9edf0 96%,#e2e5e7 100%)  !important;
-    background: -ms-linear-gradient(top, #fefefe 0%,#e9edf0 96%,#e2e5e7 100%)  !important;
-    background: linear-gradient(top, #fefefe 0%,#e9edf0 96%,#e2e5e7 100%)  !important;
+    background: -moz-linear-gradient(top, #fefefe 0%, #e9edf0 96%, #e2e5e7 100%) !important;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefefe), color-stop(96%,#e9edf0), color-stop(100%,#e2e5e7)) !important;
+    background: -webkit-linear-gradient(top, #fefefe 0%,#e9edf0 96%,#e2e5e7 100%) !important;
+    background: -o-linear-gradient(top, #fefefe 0%,#e9edf0 96%,#e2e5e7 100%) !important;
+    background: -ms-linear-gradient(top, #fefefe 0%,#e9edf0 96%,#e2e5e7 100%) !important;
+    background: linear-gradient(top, #fefefe 0%,#e9edf0 96%,#e2e5e7 100%) !important;
 }
 .ambrosiaNavigationBar .ambrosiaNavNormal input[disabled="disabled"], .ambrosiaConfirmPanel input[disabled="disabled"] {
     background: transparent !important;
