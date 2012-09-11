@@ -1405,9 +1405,6 @@ ul#otherSiteList li a span, ul.otherSitesCategorList li a span {
     font-size: 80%;
     outline: none;
 }
-#presenceCount {
-    display: none;
-}
 #footerAppTray span.present {
     margin: -2px 0 0 5px !important;
     border: 2px solid #fff;
@@ -1418,10 +1415,11 @@ ul#otherSiteList li a span, ul.otherSitesCategorList li a span {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     height: 14px;
-    width: 14px;
+    width: auto;
+    display: inline;
 }
 #footerAppTray span.empty {
-    visibility: hidden
+    display: none;
 }
 #footerAppPresence {
     border:1px solid transparent;
@@ -1435,11 +1433,11 @@ ul#otherSiteList li a span, ul.otherSitesCategorList li a span {
     background: linear-gradient(to bottom, #103064 0%,#0d3e77 100%);
     top: 60px;
     left:15px;
-    width: 25px;
+    width: auto;
     color: #888;
     vertical-align: middle;
     float: right;
-    padding: 5px 3px;
+    padding: 5px;
     text-align: center;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
