@@ -132,7 +132,7 @@ create table PROFILE_WALL_ITEM_COMMENTS_T (
 	WALL_ITEM_COMMENT_ID bigint not null auto_increment,
 	WALL_ITEM_ID bigint not null,
 	CREATOR_UUID varchar(99) not null,
-	WALL_ITEM_COMMENT_TEXT text not null,
+	WALL_ITEM_COMMENT_TEXT varchar(4000) not null,
 	WALL_ITEM_COMMENT_DATE datetime not null,
 	primary key (WALL_ITEM_COMMENT_ID)
 );
@@ -354,15 +354,15 @@ update MFR_OPEN_FORUM_T set POST_FIRST =0 where POST_FIRST is NULL;
 alter table MFR_OPEN_FORUM_T modify column POST_FIRST bit not null;
 
 -- add column to allow POST_FIRST to be set at the topic level
-alter table MFR_TOPIC_T add column (POST_FIRST bit);
+alter table MFR_TOPIC_T add column POST_FIRST bit AFTER MODERATED;
 update MFR_TOPIC_T set POST_FIRST =0 where POST_FIRST is NULL;
 alter table MFR_TOPIC_T modify column POST_FIRST bit not null;
 
 
 -- MSGCNTR-329 - Add BCC option to Messages
-alter table MFR_PVT_MSG_USR_T add column (BCC bit);
+alter table MFR_PVT_MSG_USR_T add column BCC bit AFTER READ_STATUS;
 update MFR_PVT_MSG_USR_T set BCC=0 where BCC is NULL;
-alter table MFR_PVT_MSG_USR_T modify column BCC bit not null; 
+alter table MFR_PVT_MSG_USR_T modify column BCC bit not null DEFAULT b'0'; 
 alter table MFR_MESSAGE_T add column RECIPIENTS_AS_TEXT_BCC TEXT;
 
 -- MSGCNTR-503 - Internationalization of message priority
@@ -643,8 +643,8 @@ create index lesson_builder_items_sakaiid on lesson_builder_items(sakaiId);
 INSERT INTO SAKAI_SITE_PROPERTY VALUES ('!error', 'display-users-present', 'false');
 
 -- PRFL-612 add avatar image url column to uploaded and external image records
-ALTER TABLE PROFILE_IMAGES_T ADD RESOURCE_AVATAR text not null;
-ALTER TABLE PROFILE_IMAGES_EXTERNAL_T ADD URL_AVATAR text;
+ALTER TABLE PROFILE_IMAGES_T ADD RESOURCE_AVATAR VARCHAR(4000) not null AFTER RESOURCE_THUMB;
+ALTER TABLE PROFILE_IMAGES_EXTERNAL_T ADD URL_AVATAR VARCHAR(4000) NULL DEFAULT NULL;
 
 -- BLTI-156
 CREATE TABLE IF NOT EXISTS lti_mapping (
@@ -733,6 +733,7 @@ alter table EMAIL_TEMPLATE_ITEM add unique key EMAIL_TEMPLATE_ITEM_KEY_LOCALE_KE
 
 -- SAK-22223 don't use null as a template key
 update EMAIL_TEMPLATE_ITEM set TEMPLATE_LOCALE = 'default' where TEMPLATE_LOCALE is null or TEMPLATE_LOCALE = '';
+-- end of SAK-22223 
 
 
 -- KNL-952 - add site.add.project permission to preserve original behaviour
@@ -741,3 +742,12 @@ INSERT INTO SAKAI_REALM_RL_FN VALUES((select REALM_KEY from SAKAI_REALM where RE
 INSERT INTO SAKAI_REALM_RL_FN VALUES((select REALM_KEY from SAKAI_REALM where REALM_ID = '!user.template.registered'), (select ROLE_KEY from SAKAI_REALM_ROLE where ROLE_NAME = '.auth'), (select FUNCTION_KEY from SAKAI_REALM_FUNCTION where FUNCTION_NAME = 'site.add.project'));
 INSERT INTO SAKAI_REALM_RL_FN VALUES((select REALM_KEY from SAKAI_REALM where REALM_ID = '!user.template.sample'), (select ROLE_KEY from SAKAI_REALM_ROLE where ROLE_NAME = '.auth'), (select FUNCTION_KEY from SAKAI_REALM_FUNCTION where FUNCTION_NAME = 'site.add.project'));
 -- end KNL-952
+
+-- SAK-20884  new gradebook column
+ALTER TABLE GB_GRADEBOOK_T ADD COLUMN `DO_SHOW_STATISTICS_CHART`  bit(1) NULL DEFAULT NULL AFTER `DO_SHOW_ITEM_STATS`;
+-- end of SAK-20884 
+
+-- SAK-21683 drop a descending index because not necessary for mysql
+ALTER TABLE ANNOUNCEMENT_MESSAGE DROP INDEX `IE_ANNC_MSG_DATE_DESC`;
+ALTER TABLE MAILARCHIVE_MESSAGE DROP INDEX `IE_MAILARC_MSG_DATE_DESC`;
+-- end of SAK-21683
