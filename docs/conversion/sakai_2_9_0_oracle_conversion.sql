@@ -23,19 +23,21 @@ alter table SAKAI_SITE add SOFTLY_DELETED_DATE timestamp;
 -- Empty the SAKAI_CLUSTER, Oracle refuses to alter the table with records in it..
 delete from SAKAI_CLUSTER;
 -- Change the datatype
-alter table SAKAI_CLUSTER modify (UPDATE_TIME timestamp with time zone);
+alter table SAKAI_CLUSTER modify (UPDATE_TIME timestamp with local time zone);
+
+-- See KNL-985 - These were removed from 2.9.x pending further investigation
 
 -- KNL-735 use a datetype with timezone
 -- Make sure sakai is stopped when running this.
 -- Empty the SAKAI_EVENT & SAKAI_SESSION, Oracle refuses to alter the table with records in it.
-delete from SAKAI_EVENT;
-delete from SAKAI_SESSION;
+-- delete from SAKAI_EVENT;
+-- delete from SAKAI_SESSION;
 
 -- Change the datatype
-alter table SAKAI_EVENT MODIFY (EVENT_DATE timestamp with time zone); 
+-- alter table SAKAI_EVENT MODIFY (EVENT_DATE timestamp with time zone); 
 -- Change the datatype
-alter table SAKAI_SESSION MODIFY (SESSION_START timestamp with time zone); 
-alter table SAKAI_SESSION MODIFY (SESSION_END timestamp with time zone); 
+-- alter table SAKAI_SESSION MODIFY (SESSION_START timestamp with time zone); 
+-- alter table SAKAI_SESSION MODIFY (SESSION_END timestamp with time zone); 
 
 --SAK-19964 Gradebook drop highest and/or lowest or keep highest score for a student
 alter table GB_CATEGORY_T add DROP_HIGHEST number(11,0) null;

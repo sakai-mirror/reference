@@ -20,10 +20,12 @@ alter table SAKAI_SITE add SOFTLY_DELETED_DATE datetime;
 -- KNL-725 use a column type that stores the timezone
 alter table SAKAI_CLUSTER change UPDATE_TIME UPDATE_TIME timestamp;
 
+-- See KNL-985 - These were removed from 2.9.x pending further investigation
+
 -- KNL-734 type of session and event date column
-alter table SAKAI_SESSION change SESSION_START SESSION_START timestamp;
-alter table SAKAI_SESSION change SESSION_END SESSION_END timestamp;
-alter table SAKAI_EVENT change EVENT_DATE EVENT_DATE timestamp;
+-- alter table SAKAI_SESSION change SESSION_START SESSION_START timestamp;
+-- alter table SAKAI_SESSION change SESSION_END SESSION_END timestamp;
+-- alter table SAKAI_EVENT change EVENT_DATE EVENT_DATE timestamp;
 
 -- SAK-19964 Gradebook drop highest and/or lowest or keep highest score for a student
 alter table GB_CATEGORY_T add column DROP_HIGHEST int(11) null;
