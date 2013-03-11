@@ -65,7 +65,7 @@ languages, as follows:
 10) Catalan
     Status: released
     Translated by: n/a
-    Contact: Alex BallestÈ 
+    Contact: Alex Ballest‡§º 
     Local ID: ca_ES
     
 11) Chinese/Traditional (Taiwan)
@@ -82,7 +82,7 @@ languages, as follows:
 	 
 13) Spanish (Spain)
     Status: released
-    Translated by: David Rold·n MartÌnez, Diego del Blanco, Ra˙l Mengod
+    Translated by: David Rold‡•án MartˆÄÅånez, Diego del Blanco, Ra‡•Øl Mengod
     Contact: Federico Jesús Carvajal Rodrigo (fcarvajal@abierta.upv.es)
     Local ID: es_ES
 
@@ -127,7 +127,7 @@ languages, as follows:
 20) Turkish
     Status: 2.8 initial release
     Translated by: n/a
-    Contact: Yasin ÷ZARSLAN <ozarslan@gmail.com>
+    Contact: Yasin ‡§∑ZARSLAN <ozarslan@gmail.com>
     Local ID: tr_TR
                 
 21) Mongolian
@@ -165,6 +165,12 @@ languages, as follows:
     Translated by: Daniel Merino, Pablo San Roman 
     Contact: Daniel Merino (daniel.merino@unavarra.es), Pablo San Roman (pablo.sanroman@unavarra.es)
     Local ID: eu
+
+26) Polish
+    Status: released
+    Translated by: see SAK-23119
+    Contact: see  SAK-23119
+    Local ID: pl_PL
 
 The default language locale must be defined at boot time (though this 
 can be over-ridden by user preferences), by setting the tomcat 
