@@ -42,6 +42,10 @@ function updateAttemptsText(attemptsRemaining) {
   }
 }
 
+function hideMicCheckButton() {
+  $('#audio-mic-check').hide();
+}
+
 function microphoneCheck(stream) {
   if (audio_context) {
     $('#volumemeter').show();
@@ -63,7 +67,7 @@ function microphoneCheck(stream) {
       function() {
         // Once the user starts recording, hide the mic check and stop this loop
         if (recordingStarted) {
-          $('#audio-mic-check').hide();
+          hideMicCheckButton();
           clearInterval(intervalId);
         }
 
@@ -76,6 +80,7 @@ function microphoneCheck(stream) {
           values += freqByteData[i];
         }
         var average = Math.round(values / freqByteData.length) + 120;
+        if (navigator.mozGetUserMedia) average = average + 30;
 
         var grad = vCtx.createLinearGradient(w/10,h*0.2,w/10,h*0.95);
 		grad.addColorStop(0,'red');
@@ -219,6 +224,7 @@ function audioAnalyzer(time) {
   function startRecording(button) {
     recordingStarted = true;
     recordingStopped = false;
+    hideMicCheckButton();
 	
     //Try to stop/reload previous recording
     if (userMediaSupport) {
@@ -314,11 +320,11 @@ function audioAnalyzer(time) {
   function postDataToServer (button) {
     console.log('seconds: ' + maxSeconds + ";remain: " + timeRemaining);
     var duration = maxSeconds - timeRemaining;
-    var attempts = attemptsAllowed - attemptsRemaining;
-    var agentId = navigator.userAgent
+    // attempts is what Samigo expects to be attemptsRemaining
+    // agentId is the Samigo agentId and is not the browser user agent
 
     if (postUrl) {
-        var url  = postUrl + "&agent=" + agentId + "&lastDuration=" + duration + "&suffix=" + "au" + "&attempts=" + attempts;
+        var url  = postUrl + "&agent=" + agentId + "&lastDuration=" + duration + "&suffix=" + "au" + "&attempts=" + attemptsRemaining;
     }
     else {
 	console.log ("postUrl not set yet");
@@ -339,7 +345,7 @@ function audioAnalyzer(time) {
       $.jRecorder.addParameter('agent', agentId);
       $.jRecorder.addParameter('suffix', 'wav');
       $.jRecorder.addParameter('lastDuration', duration);
-      $.jRecorder.addParameter('attempts', attempts);
+      $.jRecorder.addParameter('attempts', attemptsRemaining);
       $.jRecorder.addParameter('Command','QuickUploadAttachment');
 
       $.jRecorder.sendData();
@@ -370,9 +376,6 @@ function audioAnalyzer(time) {
       if ( 4 == this.readyState ) {
         console.log('xhr upload complete'); 
         
-        // refresh the parent page
-        callOpener ("clickReloadLink", window);
-
         // close up shop
         finishAndClose(true, this.responseText);
       }
@@ -382,11 +385,13 @@ function audioAnalyzer(time) {
   }
 
   function finishAndClose (success, responseUrl) {
+    // refresh the parent page
+    callOpener ("clickReloadLink", window);
 
 	//Update the Url if it's passed back and this method accepts it
     callOpener ("updateUrl", responseUrl);
-    $('#audio-levelbar').hide();
-    $('#audio-statusbar').css('width', '2px').show();
+    $('#audio-visual-container').hide();
+    $('#audio-statusbar').show().css('width', '2px').show();
     $('#audio-posting').hide();
     $('#audio-finished').fadeTo('slow', 1.0);
 
@@ -395,37 +400,29 @@ function audioAnalyzer(time) {
       function() {
         $('#audio-statusbar').css('width', ((closeSoon/5)*(maxWidth)) + 'px');
         if (closeSoon > 5) {
-            if (CKEDITOR) {
+            var ckeditor_loaded = false;
+            for (var instances in CKEDITOR.instances) {
+              ckeditor_loaded = true;
+            }
+
+            if (ckeditor_loaded) {
                 curdialog = CKEDITOR.dialog.getCurrent()
                 //Might have closed the dialog
                 if (curdialog) {
-					curdialog.hide();
+                  curdialog.hide();
                 }
-                //Stop timer
-                clearInterval(closer);
             }
             else { 
                 window.close();
-                //Stop timer
-                clearInterval(closer);
             }
+
+            //Stop timer
+            clearInterval(closer);
         }
         closeSoon++;
       }
     , 500);
   }
-
-  function plotLevels (level) {
-    if(level == -1) {
-      $('#audio-levelbar').css('width',  '2px');
-    }
-    else {
-      //console.log(level);
-      $('#audio-levelbar').css("width", (level * (maxWidth/100))+ "px");
-    }
-  }
-
-
 
   function createDownloadLink() {
     $('#audio-play').prop('disabled', '').fadeTo('slow', 1.0);
@@ -501,21 +498,22 @@ $(document).ready(function() {
 
       window.URL = window.URL || window.webkitURL;
       
-      //Experimental Chrome only
       if (AudioContext) {
         audio_context = new AudioContext;
         console.log('Audio context set up.');
       }
-      console.log('navigator.getUserMedia ' + (navigator.getUserMedia ? 'available.' : 'not present!'));
-
     } catch (e) {
       console.log('No web audio support in this browser!' + e.message);
       userMediaSupport = false;
     }
 
     //Maybe no error but still no support 
-    if (navigator.getUserMedia === undefined) {
+    if (navigator.getUserMedia === undefined || typeof audio_context === 'undefined') {
         userMediaSupport = false;
+        console.log('Setting userMediaSupport to false because of bad browser support.');
+    }
+    else {
+      console.log('navigator.getUserMedia ' + (navigator.getUserMedia ? 'available.' : 'not present!'));
     }
 
     if (isNaN(attemptsAllowed)) {
@@ -538,7 +536,7 @@ $(document).ready(function() {
     timerStartPosition = $('#audio-timer').position().left;
     $('#audio-time-allowed').text(timeRemaining);
     $('#audio-max-time').text(maxSeconds);
-    $('#audio-attempts-allowed').text(attemptsRemaining);
+    $('#audio-attempts-allowed').text(attemptsAllowed);
     updateAttemptsText(attemptsRemaining);
 
     maxWidth = $('#audio-controls').width();
@@ -567,19 +565,27 @@ $(document).ready(function() {
     
     }
     else {
-      
-      var flash = document.getElementById('flashrecarea');
-      $(flash).show();
-      $.jRecorder({
-        swf_path : '/library/js/recorder/jRecorder.swf',
-        host : postUrl,
-        swf_object_path : '/library/js/swfobject',
-        //These are in the main body right now because flash couldn't call them
-        callback_started_recording: function()      { startTimer(); },
-        callback_activityLevel:     function(level) { plotLevels(level); },
-        callback_finished_sending:  function(response)  {finishAndClose(true, response) },
-        callback_hide_the_flash:    function() {enableRecording() }
-      });
+      var hasFlashSupport = swfobject.hasFlashPlayerVersion("9.0.18");
+      if (!hasFlashSupport) {
+        $('#audio-visual-container').hide();
+        $('#audio-browser-plea').show(); // Please upgrade your browser!!
+        hideMicCheckButton();
+      }
+      else {
+        var flash = document.getElementById('flashrecarea');
+        $(flash).show();
+        $.jRecorder({
+          swf_path : '/library/js/recorder/jRecorder.swf',
+          host : postUrl,
+          swf_object_path : '/library/js/swfobject',
+          //These are in the main body right now because flash couldn't call them
+          callback_started_recording: function()      { startTimer(); },
+          // I wish this callback worked better but in my testing, it returns high levels no matter my volume
+          // callback_activityLevel:     function(level) { plotLevels(level); }, 
+          callback_finished_sending:  function(response)  {finishAndClose(true, response) },
+          callback_hide_the_flash:    function() { hideMicCheckButton(); enableRecording(); }
+        });
+      }
     }
 
 });
