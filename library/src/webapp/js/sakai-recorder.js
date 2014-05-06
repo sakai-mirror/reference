@@ -35,7 +35,13 @@ function updateAttemptsText(attemptsRemaining) {
   if (isNaN (attemptsRemaining)) return;
 
   console.log('Attempts remaining: ' + attemptsRemaining);
-  $('#audio-attempts').text(attemptsRemaining);
+
+  if (attemptsRemaining > 1000 && unlimitedString) {
+    $('#audio-attempts').text(unlimitedString);
+  }
+  else {
+    $('#audio-attempts').text(attemptsRemaining);
+  }
 
   if (attemptsRemaining == 1) {
     $('#audio-last-attempt').show();
@@ -536,7 +542,14 @@ $(document).ready(function() {
     timerStartPosition = $('#audio-timer').position().left;
     $('#audio-time-allowed').text(timeRemaining);
     $('#audio-max-time').text(maxSeconds);
-    $('#audio-attempts-allowed').text(attemptsAllowed);
+    
+    if (attemptsAllowed > 1000 && unlimitedString) {
+      $('#audio-attempts-allowed').text(unlimitedString);
+    }
+    else {
+      $('#audio-attempts-allowed').text(attemptsAllowed);
+    }
+
     updateAttemptsText(attemptsRemaining);
 
     maxWidth = $('#audio-controls').width();
