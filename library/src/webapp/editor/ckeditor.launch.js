@@ -44,6 +44,12 @@ sakai.editor.editors.ckeditor.launch = function(targetId, config, w, h) {
         folder = "CurrentFolder=" + collectionId
     }
 
+    //Switch to using private collection
+    if (config && config.privateCollection) {
+        collectionId = config.privateCollection
+        folder = "PrivateCollection=true&HideFolder=true&CurrentFolder=" + collectionId
+    }
+
     var language = sakai.locale && sakai.locale.userLanguage || '';
     var country = sakai.locale && sakai.locale.userCountry || null;
 
@@ -195,9 +201,11 @@ sakai.editor.editors.ckeditor.launch = function(targetId, config, w, h) {
 
           var onShow = dialogDefinition.onShow;
           dialogDefinition.onShow = function() {
-              var result = onShow.call(this);
               this.move(this.getPosition().x, $(e.editor.container.$).position().top);
-              return result;
+              if (typeof onShow !== 'undefined' && typeof onShow.call === 'function') {
+                  var result = onShow.call(this);
+                  return result;
+              }
           }
 
           if ( dialogName == 'link' )
