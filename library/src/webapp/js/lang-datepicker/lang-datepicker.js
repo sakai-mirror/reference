@@ -2094,6 +2094,10 @@ isRTL:false
 		cfg.showTimepicker = options.useTime;
 		cfg.parseFormat = options.parseFormat;
 
+		//Enable the dropdowns for month and year SAK-27733
+		cfg.changeMonth = true;
+		cfg.changeYear = true;
+
 		// disable the input field on show as to not display a tablet keyboard
 		cfg.onClose = function(dateText, inst) {
 			$(this).removeProp("disabled");
