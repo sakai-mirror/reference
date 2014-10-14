@@ -2093,6 +2093,7 @@ isRTL:false
 		cfg.altFieldTimeOnly = false;
 		cfg.showTimepicker = options.useTime;
 		cfg.parseFormat = options.parseFormat;
+		cfg.timeFormat = options.timeFormat;
 
 		//Enable the dropdowns for month and year SAK-27733
 		cfg.changeMonth = true;
